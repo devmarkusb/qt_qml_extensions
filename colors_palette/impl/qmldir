@@ -1,0 +1,3 @@
+singleton SysPalColorsActive 1.0 ColorsActive.qml
+singleton SysPalColorsInactive 1.0 ColorsInactive.qml
+singleton SysPalColorsDisabled 1.0 ColorsDisabled.qml
