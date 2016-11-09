@@ -1,6 +1,5 @@
 import "../layout"
 import QtQuick 2.7
-import QtQuick.Controls 1.4
 
 
 Item {
@@ -14,11 +13,13 @@ Item {
 
     Row {
         spacing: ExtSpacing.space1
-        TextField {
+
+        TextField_def {
             id: textfield
             width: ExtSpacing.charLikeWidth * inputWidthInChars
         }
-        Label {
+
+        Label_def {
             id: label
             anchors.verticalCenter: textfield.verticalCenter
         }
