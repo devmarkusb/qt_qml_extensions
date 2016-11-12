@@ -14,12 +14,12 @@ Item {
     Row {
         spacing: ExtSpacing.space1
 
-        TextField_def {
+        TextField_ {
             id: textfield
             width: ExtSpacing.charLikeWidth * inputWidthInChars
         }
 
-        Label_def {
+        Label_ {
             id: label
             anchors.verticalCenter: textfield.verticalCenter
         }

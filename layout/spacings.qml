@@ -1,15 +1,16 @@
 pragma Singleton
 import QtQuick 2.7
-import "../controls"
+import "../controls/QC1_def" //todo specific style choice in library?! Fonts need to get a correct handling yet.
+
 
 Item {
-    Text_def {
-        id: text_def
+    Text_ {
+        id: textSingleton
     }
 
     FontMetrics {
         id: fontMetrics_def
-        font: text_def.font
+        font: textSingleton.font
     }
 
 

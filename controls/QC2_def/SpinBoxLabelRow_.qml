@@ -18,12 +18,12 @@ Item {
     Row {
         spacing: ExtSpacing.space1
 
-        SpinBox_def {
+        SpinBox_ {
             id: spinbox
             width: ExtSpacing.charLikeWidth * (3 + inputWidthInChars)
         }
 
-        Label_def {
+        Label_ {
             id: label
             anchors.verticalCenter: spinbox.verticalCenter
         }

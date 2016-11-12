@@ -1,15 +1,15 @@
-import "../layout"
+import "../../layout"
 import QtQuick 2.7
 
 
-Button_def {
-    Text_def {
-        id: text_def
+Button_ {
+    Text_ {
+        id: textSingleton
     }
 
     FontMetrics {
         id: fontMetrics_def
-        font: text_def.font
+        font: textSingleton.font
     }
 
     implicitWidth: Math.max(ExtSpacing.pixMediumIconSq, 3 * fontMetrics_def.height)
