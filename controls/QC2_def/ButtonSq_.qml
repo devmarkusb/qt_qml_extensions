@@ -4,14 +4,14 @@ import QtQuick 2.7
 
 Button_ {
     Text_ {
-        id: Text_
+        id: textSingleton
     }
 
     FontMetrics {
-        id: fontMetrics_def
-        font: Text_.font
+        id: fontMetricsSingleton
+        font: textSingleton.font
     }
 
-    implicitWidth: Math.max(ExtSpacing.pixMediumIconSq, 3 * fontMetrics_def.height)
+    implicitWidth: Math.max(ExtSpacing.pixlargeIconSq, 3 * fontMetricsSingleton.height)
     implicitHeight: width
 }

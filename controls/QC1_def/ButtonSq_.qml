@@ -8,10 +8,10 @@ Button_ {
     }
 
     FontMetrics {
-        id: fontMetrics_def
+        id: fontMetricsSingleton
         font: textSingleton.font
     }
 
-    implicitWidth: Math.max(ExtSpacing.pixMediumIconSq, 3 * fontMetrics_def.height)
+    implicitWidth: Math.max(ExtSpacing.pixlargeIconSq, 3 * fontMetricsSingleton.height)
     implicitHeight: width
 }

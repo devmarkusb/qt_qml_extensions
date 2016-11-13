@@ -4,14 +4,14 @@ import QtQuick.Controls 2.0
 
 Button {
     Text_ {
-        id: Text_
+        id: textSingleton
     }
 
     FontMetrics {
-        id: fontMetrics_def
-        font: Text_.font
+        id: fontMetricsSingleton
+        font: textSingleton.font
     }
 
-    implicitHeight: 2.5 * fontMetrics_def.height
-    implicitWidth: 25 * fontMetrics_def.averageCharacterWidth
+    implicitHeight: 2.5 * fontMetricsSingleton.height
+    implicitWidth: 25 * fontMetricsSingleton.averageCharacterWidth
 }

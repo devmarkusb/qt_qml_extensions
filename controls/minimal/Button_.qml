@@ -9,10 +9,10 @@ Button {
     }
 
     FontMetrics {
-        id: fontMetrics_def
+        id: fontMetricsSingleton
         font: textSingleton.font
     }
 
-    implicitHeight: 2.4 * fontMetrics_def.height
-    implicitWidth: 25 * fontMetrics_def.averageCharacterWidth
+    implicitHeight: 2.4 * fontMetricsSingleton.height
+    implicitWidth: 25 * fontMetricsSingleton.averageCharacterWidth
 }
