@@ -1,4 +1,3 @@
-import "../../layout"
 import QtQuick 2.7
 
 

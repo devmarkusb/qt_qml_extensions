@@ -1,4 +1,5 @@
-import "../../layout"
+//todo use QC2 spinbox; issue: horizontalAlignment missing
+import "../QC1_def" as QC1
 import QtQuick 2.7
 
 
@@ -18,7 +19,7 @@ Item {
     Row {
         spacing: extSpacing.space1
 
-        SpinBox_ {
+        QC1.SpinBox_ {
             id: spinbox
             width: extSpacing.charLikeWidth * (3 + inputWidthInChars)
         }
