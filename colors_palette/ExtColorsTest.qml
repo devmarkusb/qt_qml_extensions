@@ -1,4 +1,3 @@
-import "../layout"
 import "impl"
 import QtQuick 2.7
 import QtQuick.Window 2.2
@@ -21,7 +20,7 @@ Window {
     Grid {
         id: testGrid
         columns: 16
-        spacing: ExtSpacing.pix1space
+        spacing: 1
 
         Label { text: " " }
         Label { text: " " }

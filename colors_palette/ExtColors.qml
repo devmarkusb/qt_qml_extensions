@@ -2,14 +2,13 @@
     Put the following code right somewhere in your root application item
     \code
     ExtColors {
-        id: extColors
+        id: extColors // don't change this specifier!
         schemeChoice: "def"
     }
     \endcode
     Then you can refer to the various colors via e.g. extColors.activeC.button from everywhere below.
-    The schemeChoice can be chosen to you liking. But it is recommended to use 'extColors' so that
-    even library components can refer to that and are colored as you expect without further ado.
-
+    The schemeChoice can be chosen to you liking.
+    Important: stick to the specifier 'extColors' as it is also used by the library itself.
 */
 
 import "impl"

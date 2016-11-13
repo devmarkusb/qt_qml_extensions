@@ -12,11 +12,11 @@ Item {
     implicitHeight: childrenRect.height
 
     Row {
-        spacing: ExtSpacing.space1
+        spacing: extSpacing.space1
 
         TextField_ {
             id: textfield
-            width: ExtSpacing.charLikeWidth * inputWidthInChars
+            width: extSpacing.charLikeWidth * inputWidthInChars
         }
 
         Label_ {

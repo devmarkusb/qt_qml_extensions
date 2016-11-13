@@ -1,5 +1,5 @@
-import QtQuick.Controls 1.4
+import "../QC2_def"
 
 
-Label {
+Label_ {
 }

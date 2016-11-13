@@ -1,23 +1,21 @@
-pragma Singleton
+/** Usage:
+    Put the following code right somewhere in your root application item
+    \code
+    ExtSpacing {
+        id: extSpacing // don't change this specifier!
+    }
+    \endcode
+    Then you can refer to your global spacings via e.g. extSpacing.space3 from everywhere below.
+    Important: stick to the specifier 'extSpacing' as it is also used by the library itself.
+*/
 import QtQuick 2.7
-import "../controls/QC1_def" //todo specific style choice in library?! Fonts need to get a correct handling yet.
 
 
 Item {
-    Text_ {
-        id: textSingleton
-    }
-
-    FontMetrics {
-        id: fontMetricsSingleton
-        font: textSingleton.font
-    }
-
-
-    readonly property real charLikeMaxWidth: fontMetricsSingleton.maximumCharacterWidth
-    readonly property real charLikeWidth: fontMetricsSingleton.averageCharacterWidth
-    readonly property real charLikeHeight: fontMetricsSingleton.height
-    readonly property real charxLikeHeight: fontMetricsSingleton.xHeight
+    readonly property real charLikeMaxWidth: extFontMetrics.maximumCharacterWidth
+    readonly property real charLikeWidth: extFontMetrics.averageCharacterWidth
+    readonly property real charLikeHeight: extFontMetrics.height
+    readonly property real charxLikeHeight: extFontMetrics.xHeight
 
     readonly property real space0: 0
     readonly property real space1: charxLikeHeight

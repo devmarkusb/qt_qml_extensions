@@ -16,11 +16,11 @@ Item {
     implicitHeight: childrenRect.height
 
     Row {
-        spacing: ExtSpacing.space1
+        spacing: extSpacing.space1
 
         SpinBox_ {
             id: spinbox
-            width: ExtSpacing.charLikeWidth * (3 + inputWidthInChars)
+            width: extSpacing.charLikeWidth * (3 + inputWidthInChars)
         }
 
         Label_ {

@@ -1,6 +1,6 @@
 import "../../layout"
 import QtQuick 2.7
-import QtQuick.Controls 1.5
+import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
 
@@ -15,8 +15,8 @@ Switch {
 
     style: SwitchStyle {
         groove: Rectangle {
-            implicitWidth: ExtSpacing.charLikeWidth * 4 * 2
-            implicitHeight: ExtSpacing.charLikeHeight * 1.5
+            implicitWidth: extSpacing.charLikeWidth * 4 * 2
+            implicitHeight: extSpacing.charLikeHeight * 1.5
             Rectangle {
                 anchors.top: parent.top
                 anchors.left: parent.left
@@ -24,8 +24,8 @@ Switch {
                 width: control.width / 2
                 height: control.height
                 color: control.checked ? onColor : offColor
-                Text {
-                    font.pointSize: Math.max(ExtSpacing.charLikeHeight, control.height)
+                Label_ {
+                    font.pointSize: Math.max(extSpacing.charLikeHeight, control.height)
                     color: charColor
                     anchors.centerIn: parent
                     anchors.verticalCenterOffset: charYcorr
@@ -36,8 +36,8 @@ Switch {
                 width: control.width / 2
                 height: control.height
                 anchors.right: parent.right
-                Text {
-                    font.pointSize: Math.max(ExtSpacing.charLikeHeight, control.height)
+                Label_ {
+                    font.pointSize: Math.max(extSpacing.charLikeHeight, control.height)
                     color: charColor
                     anchors.centerIn: parent
                     anchors.verticalCenterOffset: charYcorr
