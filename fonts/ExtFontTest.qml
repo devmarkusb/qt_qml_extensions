@@ -2,6 +2,7 @@ import "impl"
 import QtQuick 2.7
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
+import QtQuick.Controls 2.0 as QC2
 
 
 Window {
@@ -30,6 +31,14 @@ Window {
 
     width: testGrid.width
     height: testGrid.height
+
+
+    Component.onCompleted: {
+        console.log("defQC1 family: ", extFont_defQC1.normal.family)
+        console.log("defQC2 family: ", extFont_defQC2.normal.family)
+        console.log("def family: ", extFont_def.normal.family)
+        console.log("mistral family: ", extFont_mistral.normal.family)
+    }
 
     Grid {
         id: testGrid
@@ -66,11 +75,33 @@ Window {
         Text { text: exampleText + " 24"; font.pointSize: 24 }
         Text { text: examplePlayground; font.pointSize: 12 }
 
+        QC2.Label { text: "bare QC2 Label (also: don't use)" }
+        QC2.Label { text: exampleText; }
+        QC2.Label { text: exampleText; font.bold: true }
+        QC2.Label { text: exampleText; font.italic: true }
+        QC2.Label { text: exampleText; font.underline: true }
+        QC2.Label { text: exampleText + " 8"; font.pointSize: 8 }
+        QC2.Label { text: exampleText + " 12"; font.pointSize: 12 }
+        QC2.Label { text: exampleText + " 24"; font.pointSize: 24 }
+        QC2.Label { text: examplePlayground; font.pointSize: 12 }
+
+        // It's tempting to use the better looking NativeRendering under Windows desktop.
+        // But this is said to have bad transformation behavior, especially cross platform.
+        QC2.Label { text: "QC2 Label NativeRendering"; renderType: Text.NativeRendering }
+        QC2.Label { text: exampleText; font.family: extFont_defQC1.normal.family; renderType: Text.NativeRendering }
+        QC2.Label { text: exampleText; font.bold: true; renderType: Text.NativeRendering }
+        QC2.Label { text: exampleText; font.italic: true; renderType: Text.NativeRendering }
+        QC2.Label { text: exampleText; font.underline: true; renderType: Text.NativeRendering }
+        QC2.Label { text: exampleText + " 9"; font.pointSize: 9; renderType: Text.NativeRendering }
+        QC2.Label { text: exampleText + " 12"; font.pointSize: 12; renderType: Text.NativeRendering }
+        QC2.Label { text: exampleText + " 24"; font.pointSize: 24; renderType: Text.NativeRendering }
+        QC2.Label { text: examplePlayground; font.pointSize: 12; renderType: Text.NativeRendering }
+
 
         //####################################################################################################################
 
         TestRectangle { Label { text: extFont_defQC1.schemeChoice; font.italic: true } }
-        TestRectangle { Label { font.family: extFont_defQC1.normal.family; text: exampleText; } }
+        TestRectangle { Label { font: extFont_defQC1.normal; text: exampleText; } }
         TestRectangle { Label { font.family: extFont_defQC1.normal.family; text: exampleText; font.bold: true } }
         TestRectangle { Label { font.family: extFont_defQC1.normal.family; text: exampleText; font.italic: true } }
         TestRectangle { Label { font.family: extFont_defQC1.normal.family; text: exampleText; font.underline: true } }
@@ -83,7 +114,7 @@ Window {
         //####################################################################################################################
 
         TestRectangle { Label { text: extFont_defQC2.schemeChoice; font.italic: true } }
-        TestRectangle { Label { font.family: extFont_defQC2.normal.family; text: exampleText; } }
+        TestRectangle { Label { font: extFont_defQC2.normal; text: exampleText; } }
         TestRectangle { Label { font.family: extFont_defQC2.normal.family; text: exampleText; font.bold: true } }
         TestRectangle { Label { font.family: extFont_defQC2.normal.family; text: exampleText; font.italic: true } }
         TestRectangle { Label { font.family: extFont_defQC2.normal.family; text: exampleText; font.underline: true } }
@@ -96,7 +127,7 @@ Window {
         //####################################################################################################################
 
         TestRectangle { Label { text: extFont_def.schemeChoice; font.italic: true } }
-        TestRectangle { Label { font.family: extFont_def.normal.family; text: exampleText; } }
+        TestRectangle { Label { font: extFont_def.normal; text: exampleText; } }
         TestRectangle { Label { font.family: extFont_def.normal.family; text: exampleText; font.bold: true } }
         TestRectangle { Label { font.family: extFont_def.normal.family; text: exampleText; font.italic: true } }
         TestRectangle { Label { font.family: extFont_def.normal.family; text: exampleText; font.underline: true } }
@@ -109,7 +140,7 @@ Window {
         //####################################################################################################################
 
         TestRectangle { Label { text: extFont_mistral.schemeChoice; font.italic: true } }
-        TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; } }
+        TestRectangle { Label { font: extFont_mistral.normal; text: exampleText; } }
         TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; font.bold: true } }
         TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; font.italic: true } }
         TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; font.underline: true } }

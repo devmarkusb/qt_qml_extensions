@@ -1,5 +1,5 @@
 import QtQuick 2.7
-import QtQuick.Controls 1.5
+import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
 
@@ -23,7 +23,7 @@ Switch {
                 width: control.width / 2
                 height: control.height
                 color: control.checked ? onColor : offColor
-                Text {
+                Label_ {
                     font.pointSize: Math.max(extSpacing.charLikeHeight, control.height)
                     color: charColor
                     anchors.centerIn: parent
@@ -35,7 +35,7 @@ Switch {
                 width: control.width / 2
                 height: control.height
                 anchors.right: parent.right
-                Text {
+                Label_ {
                     font.pointSize: Math.max(extSpacing.charLikeHeight, control.height)
                     color: charColor
                     anchors.centerIn: parent
