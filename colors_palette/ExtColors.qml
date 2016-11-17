@@ -20,6 +20,29 @@ Item {
     property string schemeChoice: "def" // choose one from scheme subfolder with lowercase first letter
     readonly property string schemePath: "schemes/" + schemeChoice + "/"
 
+    //! The following colors are provided for states active, inactive and disabled.
+    /**
+        base: background for application window, text fields, combo boxes, grids, selected tabs, ...
+        alternateBase: e.g. for two-colored background of grids
+        text: foreground color for text on base background
+        window: background for dialogs
+        windowText: foreground for text in dialogs
+        highlight: selected text background, active marking color (e.g. focus frames), could also be used
+            as mixin-color (i.e. taking part in some gradient towards a 'usual' color) for special
+            buttons/controls
+        highlightText: foreground for text on highlight-background
+        button, light, midlight, mid, dark: all can be used for button color, either pure or mixed (by gradient).
+            Note that white is a common choice for light and mid and dark are the same in the Windows default
+            palette. The Windows default button color is closest to midlight.
+        shadow: is used for borders, and shadows obviously
+        buttonText: foreground for text on buttons
+
+        Design considerations.
+        * 'accent color' should be understood as the various shades of button colors
+        * provide a sufficient contrast between foreground and background (use tools to check)
+        * make a wise choice of highlight color as this can be used to draw the users attention considerably
+        * if in doubt, disabled state can also be achieved via 0.3 opacity
+    */
     readonly property alias activeC: active_impl
     readonly property alias inactiveC: inactive_impl
     readonly property alias disabledC: disabled_impl
@@ -42,6 +65,8 @@ Item {
         property color text: SysPalColorsActive.text
         property color window: SysPalColorsActive.window
         property color windowText: SysPalColorsActive.windowText
+
+        property real controlOpacity: 1.0
     }
 
     QtObject {
@@ -61,6 +86,8 @@ Item {
         property color text: SysPalColorsInactive.text
         property color window: SysPalColorsInactive.window
         property color windowText: SysPalColorsInactive.windowText
+
+        property real controlOpacity: 1.0
     }
 
     QtObject {
@@ -80,6 +107,8 @@ Item {
         property color text: SysPalColorsDisabled.text
         property color window: SysPalColorsDisabled.window
         property color windowText: SysPalColorsDisabled.windowText
+
+        property real controlOpacity: 0.3
     }
 
 

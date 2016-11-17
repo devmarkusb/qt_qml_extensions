@@ -10,6 +10,6 @@ TextField_ {
         implicitHeight: extSpacing.charLikeHeight
         color: root.enabled ? extColors.activeC.base : extColors.disabledC.base
         border.color: root.enabled ? (root.activeFocus ? extColors.activeC.highlight : extColors.activeC.shadow) : extColors.disabledC.shadow
-        border.width: root.activeFocus ? extSpacing.pix2space : extSpacing.pix1space
+        border.width: root.activeFocus ? extSpacing.wBorderWidthSize2 : extSpacing.wBorderWidth
     }
 }

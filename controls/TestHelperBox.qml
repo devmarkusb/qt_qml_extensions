@@ -3,6 +3,6 @@ import QtQuick.Controls 1.4
 
 
 GroupBox {
-    width: 150
-    height: 100
+    width: 340
+    height: 120
 }

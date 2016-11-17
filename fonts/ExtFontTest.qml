@@ -55,7 +55,7 @@ Window {
         Label { text: "7" }
         Label { text: "8" }
 
-        Label { text: "bare Label" }
+        Label { text: "bare QC1 Label" }
         Label { text: exampleText; }
         Label { text: exampleText; font.bold: true }
         Label { text: exampleText; font.italic: true }
@@ -75,7 +75,7 @@ Window {
         Text { text: exampleText + " 24"; font.pointSize: 24 }
         Text { text: examplePlayground; font.pointSize: 12 }
 
-        QC2.Label { text: "bare QC2 Label (also: don't use)" }
+        QC2.Label { text: "bare QC2 Label (have to live with :/)" }
         QC2.Label { text: exampleText; }
         QC2.Label { text: exampleText; font.bold: true }
         QC2.Label { text: exampleText; font.italic: true }
@@ -100,7 +100,7 @@ Window {
 
         //####################################################################################################################
 
-        TestRectangle { Label { text: extFont_defQC1.schemeChoice; font.italic: true } }
+        TestRectangle { Label { text: extFont_defQC1.schemeChoice + " (QC1 Label)"; font.italic: true } }
         TestRectangle { Label { font: extFont_defQC1.normal; text: exampleText; } }
         TestRectangle { Label { font.family: extFont_defQC1.normal.family; text: exampleText; font.bold: true } }
         TestRectangle { Label { font.family: extFont_defQC1.normal.family; text: exampleText; font.italic: true } }
@@ -113,7 +113,7 @@ Window {
 
         //####################################################################################################################
 
-        TestRectangle { Label { text: extFont_defQC2.schemeChoice; font.italic: true } }
+        TestRectangle { Label { text: extFont_defQC2.schemeChoice + " (QC1 Label)"; font.italic: true } }
         TestRectangle { Label { font: extFont_defQC2.normal; text: exampleText; } }
         TestRectangle { Label { font.family: extFont_defQC2.normal.family; text: exampleText; font.bold: true } }
         TestRectangle { Label { font.family: extFont_defQC2.normal.family; text: exampleText; font.italic: true } }
@@ -126,7 +126,7 @@ Window {
 
         //####################################################################################################################
 
-        TestRectangle { Label { text: extFont_def.schemeChoice; font.italic: true } }
+        TestRectangle { Label { text: extFont_def.schemeChoice + " (QC1 Label)"; font.italic: true } }
         TestRectangle { Label { font: extFont_def.normal; text: exampleText; } }
         TestRectangle { Label { font.family: extFont_def.normal.family; text: exampleText; font.bold: true } }
         TestRectangle { Label { font.family: extFont_def.normal.family; text: exampleText; font.italic: true } }
@@ -139,14 +139,27 @@ Window {
 
         //####################################################################################################################
 
-        TestRectangle { Label { text: extFont_mistral.schemeChoice; font.italic: true } }
-        TestRectangle { Label { font: extFont_mistral.normal; text: exampleText; } }
-        TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; font.bold: true } }
-        TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; font.italic: true } }
-        TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; font.underline: true } }
-        TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; font.pointSize: 8 } }
-        TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; font.pointSize: 12 } }
-        TestRectangle { Label { font.family: extFont_mistral.normal.family; text: exampleText; font.pointSize: 24 } }
-        TestRectangle { Label { font.family: extFont_mistral.normal.family; text: examplePlayground; font.pointSize: 12 } }
+        TestRectangle { QC2.Label { text: extFont_def.schemeChoice + "(QC2 Label) <- POI"; font.italic: true } }
+        TestRectangle { QC2.Label { font: extFont_def.normal; text: exampleText; } }
+        TestRectangle { QC2.Label { font.family: extFont_def.normal.family; text: exampleText; font.bold: true } }
+        TestRectangle { QC2.Label { font.family: extFont_def.normal.family; text: exampleText; font.italic: true } }
+        TestRectangle { QC2.Label { font.family: extFont_def.normal.family; text: exampleText; font.underline: true } }
+        TestRectangle { QC2.Label { font.family: extFont_def.normal.family; text: exampleText; font.pointSize: 8 } }
+        TestRectangle { QC2.Label { font.family: extFont_def.normal.family; text: exampleText; font.pointSize: 12 } }
+        TestRectangle { QC2.Label { font.family: extFont_def.normal.family; text: exampleText; font.pointSize: 24 } }
+        TestRectangle { QC2.Label { font.family: extFont_def.normal.family; text: examplePlayground; font.pointSize: 12 } }
+
+
+        //####################################################################################################################
+
+        TestRectangle { QC2.Label { text: extFont_mistral.schemeChoice + " (QC2 Label)"; font.italic: true } }
+        TestRectangle { QC2.Label { font: extFont_mistral.normal; text: exampleText; } }
+        TestRectangle { QC2.Label { font.family: extFont_mistral.normal.family; text: exampleText; font.bold: true } }
+        TestRectangle { QC2.Label { font.family: extFont_mistral.normal.family; text: exampleText; font.italic: true } }
+        TestRectangle { QC2.Label { font.family: extFont_mistral.normal.family; text: exampleText; font.underline: true } }
+        TestRectangle { QC2.Label { font.family: extFont_mistral.normal.family; text: exampleText; font.pointSize: 8 } }
+        TestRectangle { QC2.Label { font.family: extFont_mistral.normal.family; text: exampleText; font.pointSize: 12 } }
+        TestRectangle { QC2.Label { font.family: extFont_mistral.normal.family; text: exampleText; font.pointSize: 24 } }
+        TestRectangle { QC2.Label { font.family: extFont_mistral.normal.family; text: examplePlayground; font.pointSize: 12 } }
     }
 }

@@ -11,7 +11,7 @@
 import QtQuick 2.7
 
 
-Item {
+QtObject {
     readonly property real charLikeMaxWidth: extFontMetrics.maximumCharacterWidth
     readonly property real charLikeWidth: extFontMetrics.averageCharacterWidth
     readonly property real charLikeHeight: extFontMetrics.height
@@ -38,4 +38,7 @@ Item {
     readonly property int pixLARGEIconSq: 96
     readonly property int pixhugeIconSq: 128
     readonly property int pixHugeIconSq: 256 // even huger should be achieved by multipliers 2, 4
+
+    readonly property real wBorderWidth: pix1space
+    readonly property real wBorderWidthSize2: pix2space
 }

@@ -1,4 +1,5 @@
 import "../QC2_def"
+import QtQuick 2.7
 
 
 Label_ {

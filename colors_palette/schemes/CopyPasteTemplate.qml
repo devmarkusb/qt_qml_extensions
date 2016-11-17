@@ -22,6 +22,8 @@ State {
         text: SysPalColorsActive.text
         window: SysPalColorsActive.window
         windowText: SysPalColorsActive.windowText
+
+        controlOpacity: 1.0
     }
 
     PropertyChanges {
@@ -41,6 +43,8 @@ State {
         text: SysPalColorsInactive.text
         window: SysPalColorsInactive.window
         windowText: SysPalColorsInactive.windowText
+
+        controlOpacity: 1.0
     }
 
     PropertyChanges {
@@ -60,5 +64,7 @@ State {
         text: SysPalColorsDisabled.text
         window: SysPalColorsDisabled.window
         windowText: SysPalColorsDisabled.windowText
+
+        controlOpacity: 0.3
     }
 }
