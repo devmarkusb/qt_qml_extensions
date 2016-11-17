@@ -1,7 +1,7 @@
 import QtQuick 2.7
 
 
-Item {
+Pane_ {
     property alias text: label.text
     property alias defaultValue: spinbox.value
     property int inputWidthInChars: 20

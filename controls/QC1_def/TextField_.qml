@@ -3,5 +3,4 @@ import QtQuick.Controls 1.4
 
 
 TextField {
-    font: extFont.normal
 }

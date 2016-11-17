@@ -1,7 +1,7 @@
 import QtQuick 2.7
 
 
-Item {
+Pane_ {
     property alias text: label.text
     property alias defaultValue: spinbox.value
     property int inputWidthInChars: 20
@@ -11,8 +11,8 @@ Item {
     property alias stepSize: spinbox.stepSize
 
 
-    implicitWidth: childrenRect.width
-    implicitHeight: childrenRect.height
+    width: childrenRect.width
+    height: childrenRect.height
 
     Row {
         spacing: extSpacing.space1

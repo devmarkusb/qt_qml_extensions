@@ -87,7 +87,7 @@ Window {
 
         // It's tempting to use the better looking NativeRendering under Windows desktop.
         // But this is said to have bad transformation behavior, especially cross platform.
-        QC2.Label { text: "QC2 Label NativeRendering"; renderType: Text.NativeRendering }
+        QC2.Label { text: "QC2 Label NativeRendering <- POI"; renderType: Text.NativeRendering }
         QC2.Label { text: exampleText; font.family: extFont_defQC1.normal.family; renderType: Text.NativeRendering }
         QC2.Label { text: exampleText; font.bold: true; renderType: Text.NativeRendering }
         QC2.Label { text: exampleText; font.italic: true; renderType: Text.NativeRendering }

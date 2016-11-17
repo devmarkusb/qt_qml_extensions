@@ -4,5 +4,4 @@ import QtQuick.Controls 1.4
 
 Label {
     elide: Text.ElideRight
-    font: extFont.normal
 }

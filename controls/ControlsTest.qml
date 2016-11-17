@@ -4,9 +4,10 @@ import "../fonts"
 import "../layout"
 import "../os"
 import QtQuick 2.7
-import QtQuick.Window 2.2
+import QtQuick.Controls 1.4
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
+import QtQuick.Window 2.2
 
 
 ApplicationWindow {
@@ -70,9 +71,19 @@ ApplicationWindow {
                     placeholderText: "placeholderText"
                 }
                 TextField_ {
+                    id: disabledTextField
                     placeholderText: "placeholderText"
-                    text: "disabled real text"
+                    text: "disabled real text with selected last word"
+                    width: 250
                     enabled: false
+                    Component.onCompleted: {
+                        disabledTextField.selectWord();
+                    }
+                }
+                TextField_ {
+                    enabled: false
+                    width: 250
+                    placeholderText: "disabled placeholderText"
                 }
             }
         }
@@ -95,9 +106,10 @@ ApplicationWindow {
             }
         }
 
+        // Note, for QC1 comment out the following two
         TestHelperBox {
             id: tabview
-            title: "TabView_"
+            title: "TabView_/TabBar_"
             Column {
                 TabBar_ {
                     id: tabcontrol
@@ -130,7 +142,7 @@ ApplicationWindow {
         } // TestHelperBox
 
         TestHelperBox {
-            title: "TabView_ (disabled)"
+            title: "TabView_/TabBar_ (disabled)"
             Column {
                 TabBar_ {
                     id: tabcontrol_dis
@@ -166,16 +178,74 @@ ApplicationWindow {
             }
         } // TestHelperBox
 
+//        // Note, for QC2 comment out the following two
+//        TestHelperBox {
+//            id: tabview
+//            title: "TabView_/TabBar_"
+//            TabView_ {
+//                anchors.fill: parent
+//                Tab {
+//                    title: "tab red"
+//                    Rectangle {
+//                        color: "red"
+//                        height: 50
+//                    }
+//                }
+//                Tab {
+//                    title: "tab green"
+//                    Rectangle {
+//                        color: "green"
+//                    }
+//                }
+//                Tab {
+//                    title: "tab blue"
+//                    Rectangle {
+//                        color: "blue"
+//                    }
+//                }
+//            }
+//        } // TestHelperBox
+
+//        TestHelperBox {
+//            title: "TabView_/TabBar_ (disabled)"
+//            TabView_ {
+//                enabled: false
+//                anchors.fill: parent
+//                Tab {
+//                    title: "tab red"
+//                    Rectangle {
+//                        color: "red"
+//                        height: 50
+//                    }
+//                }
+//                Tab {
+//                    title: "tab green"
+//                    Rectangle {
+//                        color: "green"
+//                    }
+//                }
+//                Tab {
+//                    title: "tab blue"
+//                    Rectangle {
+//                        color: "blue"
+//                    }
+//                }
+//            }
+//        } // TestHelperBox
+
         TestHelperBox {
             title: "Button_"
             Column {
                 spacing: extSpacing.space3
-                Button_ {
-                    text: "Press me"
-                }
-                Button_ {
-                    text: "Press me"
-                    enabled: false
+                Row {
+                    spacing: extSpacing.space3
+                    Button_ {
+                        text: "Press me"
+                    }
+                    Button_ {
+                        text: "Press me"
+                        enabled: false
+                    }
                 }
                 Button_ {
                     text: "Button with a lot of text - grows automatically :)"
@@ -343,13 +413,142 @@ ApplicationWindow {
 
         TestHelperBox {
             title: "CharColorSwitch_"
-            CharColorSwitch_ {
-                offChar: qsTr("-")
-                onChar: qsTr("+")
-                offColor: "red"
-                onColor: "green"
-                charColor: "white"
-                charYcorr: -2
+            Column {
+                spacing: extSpacing.space3
+                CharColorSwitch_ {
+                    offChar: qsTr("-")
+                    onChar: qsTr("+")
+                    offColor: "red"
+                    onColor: "green"
+                    charColor: "white"
+                    charYcorr: -2
+                }
+                Row {
+                    spacing: extSpacing.space3
+                    CharColorSwitch_ {
+                        enabled: false
+                        checked: false
+                        offChar: qsTr("-")
+                        onChar: qsTr("+")
+                        offColor: "red"
+                        onColor: "green"
+                        charColor: "white"
+                        charYcorr: -2
+                    }
+                    CharColorSwitch_ {
+                        enabled: false
+                        checked: true
+                        offChar: qsTr("-")
+                        onChar: qsTr("+")
+                        offColor: "red"
+                        onColor: "green"
+                        charColor: "white"
+                        charYcorr: -2
+                    }
+                    Label_ {
+                        text: "(both disabled ones)"
+                    }
+                }
+            }
+        }
+
+        TestHelperBox {
+            title: "GroupBox_"
+            Row {
+                spacing: extSpacing.space3
+                GroupBox_ {
+                    title: "A group box"
+                    width: 140
+                    height: 80
+                }
+                GroupBox_ {
+                    enabled: false
+                    title: "A disabled group box"
+                    width: 140
+                    height: 80
+                }
+            }
+        }
+
+        TestHelperBox {
+            title: "RadioButton_"
+            Row {
+                spacing: extSpacing.space3
+                Column {
+                    RadioButton_ {
+                        text: "Excl. Option 1"
+                    }
+                    RadioButton_ {
+                        text: "Excl. Option 2"
+                    }
+                }
+                Column {
+                    RadioButton_ {
+                        text: "Excl. Option 1"
+                        checked: true
+                        enabled: false
+                    }
+                    RadioButton_ {
+                        text: "Excl. Option 2"
+                        enabled: false
+                    }
+                }
+            }
+        }
+
+        TestHelperBox {
+            title: "CheckBox_"
+            Row {
+                spacing: extSpacing.space3
+                Column {
+                    CheckBox_ {
+                        text: "Option 1"
+                    }
+                    CheckBox_ {
+                        text: "Option 2"
+                    }
+                }
+                Column {
+                    CheckBox_ {
+                        text: "Option 1"
+                        checked: true
+                        enabled: false
+                    }
+                    CheckBox_ {
+                        text: "Option 2"
+                        enabled: false
+                    }
+                }
+            }
+        }
+
+        TestHelperBox {
+            title: "SpinBox_"
+            Column {
+                spacing: extSpacing.space3
+                SpinBox_ {
+                }
+                SpinBox_ {
+                    enabled: false
+                }
+            }
+        }
+
+        TestHelperBox {
+            title: "SpinBoxLabelRow_"
+            Column {
+                spacing: extSpacing.space3
+                SpinBoxLabelRow_ {
+                    text: "Text label here"
+                    defaultValue: 42
+                    inputWidthInChars: 5
+                }
+                SpinBoxLabelRow_ {
+                    text: "Text label here"
+                    defaultValue: 42
+                    inputWidthInChars: 5
+                    enabled: false
+                }
             }
         }
     } // Grid

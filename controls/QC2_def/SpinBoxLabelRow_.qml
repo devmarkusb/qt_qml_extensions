@@ -1,9 +1,8 @@
-//todo use QC2 spinbox; issue: horizontalAlignment missing
-import "../QC1_def" as QC1
 import QtQuick 2.7
+import QtQuick.Controls 2.0
 
 
-Item {
+Pane_ {
     property alias text: label.text
     property alias defaultValue: spinbox.value
     property int inputWidthInChars: 20
@@ -19,9 +18,8 @@ Item {
     Row {
         spacing: extSpacing.space1
 
-        QC1.SpinBox_ {
+        SpinBox_ {
             id: spinbox
-            width: extSpacing.charLikeWidth * (3 + inputWidthInChars)
         }
 
         Label_ {
