@@ -10,6 +10,8 @@ TabBar {
 
     implicitHeight: cfgSingleton.hButtonHeight
 
+    opacity: 1.0
+
     background: Rectangle {
         color: extColors.activeC.window
     }

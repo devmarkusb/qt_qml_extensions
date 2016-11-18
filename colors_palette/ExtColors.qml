@@ -66,6 +66,7 @@ Item {
         property color window: SysPalColorsActive.window
         property color windowText: SysPalColorsActive.windowText
 
+        property real controlOptionalOpacity: 1.0
         property real controlOpacity: 1.0
     }
 
@@ -87,6 +88,7 @@ Item {
         property color window: SysPalColorsInactive.window
         property color windowText: SysPalColorsInactive.windowText
 
+        property real controlOptionalOpacity: 1.0
         property real controlOpacity: 1.0
     }
 
@@ -108,7 +110,8 @@ Item {
         property color window: SysPalColorsDisabled.window
         property color windowText: SysPalColorsDisabled.windowText
 
-        property real controlOpacity: 0.3
+        property real controlOptionalOpacity: 0.5
+        property real controlOpacity: 0.5
     }
 
 

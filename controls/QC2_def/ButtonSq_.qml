@@ -1,5 +1,4 @@
 import "../_shared/impl"
-import "../_shared/impl/obtainControlProps.js" as ControlProp
 import QtQuick 2.7
 
 
@@ -26,7 +25,5 @@ Button_ {
         anchors.fill: control
         sourceSize.width: width
         sourceSize.height: height
-
-        opacity: ControlProp.obtainOpacity(control.enabled)
     }
 }

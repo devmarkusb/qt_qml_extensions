@@ -1,10 +1,9 @@
-import "../QC2_def"
 import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
 import QtQuick 2.7
 
 
-TextField_ {
+TextInput {
     id: control
 
     CfgControls {
@@ -20,14 +19,5 @@ TextField_ {
 
     selectByMouse: true
 
-    implicitWidth: cfgSingleton.wTextFieldWidth
-    implicitHeight: cfgSingleton.hTextFieldHeight
-
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
-
-    background: Rectangle {
-        color: control.enabled ? extColors.activeC.base : extColors.disabledC.base
-        border.color: control.enabled ? (control.activeFocus ? extColors.activeC.highlight : extColors.activeC.shadow) : extColors.disabledC.shadow
-        border.width: control.activeFocus ? extSpacing.wBorderWidthSize2 : extSpacing.wBorderWidth
-    }
 }

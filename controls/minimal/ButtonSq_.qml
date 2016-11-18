@@ -24,6 +24,8 @@ Button {
     width: Math.max(squareSideLength, cfgSingleton.sqButtonSideLength)
     height: width
 
+    opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
+
     contentItem: Image {
         id: img
 
@@ -31,7 +33,7 @@ Button {
         sourceSize.width: width
         sourceSize.height: height
 
-        opacity: ControlProp.obtainOpacity(control.enabled)
+        opacity: ControlProp.obtainDisablingOpacity(control.enabled)
     }
 
     background: ButtonBackground {

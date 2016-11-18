@@ -33,6 +33,8 @@ TabButton {
     implicitHeight: cfgSingleton.hButtonHeight
     implicitWidth: Math.max(label.implicitWidth, cfgSingleton.wButtonWidth)
 
+    opacity: 1.0
+
     background: Rectangle {
         radius: 0
 

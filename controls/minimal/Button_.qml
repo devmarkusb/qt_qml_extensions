@@ -1,5 +1,6 @@
 import "impl"
 import "../_shared/impl"
+import "../_shared/impl/obtainControlProps.js" as ControlProp
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 
@@ -14,6 +15,15 @@ Button {
 
     hoverEnabled: true
 
+    CfgControls {
+        id: cfgSingleton
+    }
+
+    implicitHeight: cfgSingleton.hButtonHeight
+    implicitWidth: Math.max(label.implicitWidth, cfgSingleton.wButtonWidth)
+
+    opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
+
     contentItem: Label_ {
         id: label
 
@@ -22,13 +32,6 @@ Button {
 
         text: control.text
     }
-
-    CfgControls {
-        id: cfgSingleton
-    }
-
-    implicitHeight: cfgSingleton.hButtonHeight
-    implicitWidth: Math.max(label.implicitWidth, cfgSingleton.wButtonWidth)
 
     background: ButtonBackground {
     }

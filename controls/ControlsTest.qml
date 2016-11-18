@@ -159,20 +159,16 @@ ApplicationWindow {
                 }
                 StackLayout {
                     currentIndex: tabcontrol_dis.currentIndex
+                    width: tabcontrol.width
                     Rectangle {
                         color: "red"
-                        width: 30
-                        height: 30
+                        height: 50
                     }
                     Rectangle {
                         color: "green"
-                        width: 30
-                        height: 30
                     }
                     Rectangle {
                         color: "blue"
-                        width: 30
-                        height: 30
                     }
                 }
             }
@@ -527,6 +523,8 @@ ApplicationWindow {
             Column {
                 spacing: extSpacing.space3
                 SpinBox_ {
+                    to: 10
+                    value: 10
                 }
                 SpinBox_ {
                     enabled: false
@@ -541,12 +539,10 @@ ApplicationWindow {
                 SpinBoxLabelRow_ {
                     text: "Text label here"
                     defaultValue: 42
-                    inputWidthInChars: 5
                 }
                 SpinBoxLabelRow_ {
                     text: "Text label here"
                     defaultValue: 42
-                    inputWidthInChars: 5
                     enabled: false
                 }
             }

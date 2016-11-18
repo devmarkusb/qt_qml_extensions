@@ -23,6 +23,7 @@ State {
         window: SysPalColorsActive.window
         windowText: SysPalColorsActive.windowText
 
+        controlOptionalOpacity: 1.0
         controlOpacity: 1.0
     }
 
@@ -44,6 +45,7 @@ State {
         window: SysPalColorsInactive.window
         windowText: SysPalColorsInactive.windowText
 
+        controlOptionalOpacity: 1.0
         controlOpacity: 1.0
     }
 
@@ -65,6 +67,7 @@ State {
         window: SysPalColorsDisabled.window
         windowText: SysPalColorsDisabled.windowText
 
-        controlOpacity: 0.3
+        controlOptionalOpacity: 0.5
+        controlOpacity: 0.5
     }
 }

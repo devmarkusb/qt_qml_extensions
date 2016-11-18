@@ -11,6 +11,8 @@ import QtQuick.Controls 2.0
         * Try to get the custom-styled GroupBoxQC1Styled_.qml working (could be time-consuming
             or even impossible - why didn't Qt provide that stuff?)*/
 GroupBox {
-    padding: extSpacing.space1
+    padding: extSpacing.space2
     font: extFont.normal
+
+    // no opacity available here
 }

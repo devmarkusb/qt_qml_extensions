@@ -15,6 +15,8 @@ CheckBox {
 
     implicitHeight: cfgSingleton.hButtonHeight
 
+    opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
+
     indicator: Rectangle {
         implicitWidth: cfgSingleton.wCheckBoxWidth
         implicitHeight: implicitWidth
@@ -44,7 +46,8 @@ CheckBox {
             anchors.fill: parent
             anchors.margins: extSpacing.pix2space
             source: "../_shared/impl/checkmark.png"
-            opacity: ControlProp.obtainOpacity(control.checked)
+
+            opacity: ControlProp.obtainDisablingOpacity(control.enabled)
         }
     }
 

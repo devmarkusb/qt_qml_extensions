@@ -16,6 +16,15 @@ Button {
 
     hoverEnabled: true
 
+    CfgControls {
+        id: cfgSingleton
+    }
+
+    implicitHeight: cfgSingleton.hButtonHeight
+    implicitWidth: Math.max(label.implicitWidth, cfgSingleton.wButtonWidth)
+
+    opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
+
     contentItem: Row {
         leftPadding: extSpacing.space2
         spacing: leftPadding
@@ -31,7 +40,7 @@ Button {
             sourceSize.width: width
             sourceSize.height: height
 
-            opacity: ControlProp.obtainOpacity(control.enabled)
+            opacity: ControlProp.obtainDisablingOpacity(control.enabled)
         }
 
         Label_ {
@@ -44,13 +53,6 @@ Button {
             text: control.text
         }
     }
-
-    CfgControls {
-        id: cfgSingleton
-    }
-
-    implicitHeight: cfgSingleton.hButtonHeight
-    implicitWidth: Math.max(label.implicitWidth, cfgSingleton.wButtonWidth)
 
     background: ButtonBackground {
     }

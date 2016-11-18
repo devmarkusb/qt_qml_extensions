@@ -13,4 +13,10 @@ QtObject {
     readonly property real rRadioButtonInnerRadius: extSpacing.charLikeHeight
 
     readonly property real wCheckBoxWidth: 1.6 * extSpacing.charLikeHeight
+
+    readonly property real wTextFieldWidth: extSpacing.charLikeWidth * 20
+    readonly property real hTextFieldHeight: 2 * extSpacing.charLikeHeight
+
+    readonly property real hSpinIndicatorHeight: hTextFieldHeight
+    readonly property real wSpinIndicatorWidth: hSpinIndicatorHeight
 }
