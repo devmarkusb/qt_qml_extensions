@@ -28,6 +28,10 @@ function obtainBaseAlternateColor(enabled) {
     return enabled ? extColors.activeC.alternateBase : extColors.disabledC.alternateBase;
 }
 
+function obtainBorderColor(enabled) {
+    return enabled ? extColors.activeC.shadow : extColors.disabledC.shadow;
+}
+
 
 //####################################################################################################################
 // font

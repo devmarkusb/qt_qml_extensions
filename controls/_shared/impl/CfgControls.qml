@@ -19,4 +19,6 @@ QtObject {
 
     readonly property real hSpinIndicatorHeight: hTextFieldHeight
     readonly property real wSpinIndicatorWidth: hSpinIndicatorHeight
+
+    readonly property real hSwitchHeight: hTextFieldHeight
 }

@@ -1,4 +1,5 @@
 //todo port to QC2, styling works a bit different
+import "impl"
 import QtQuick 2.7
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
@@ -13,10 +14,14 @@ Switch {
     property real charYcorr: -1 //todo calculate
 
 
+    CfgControls {
+        id: cfgSingleton
+    }
+
     style: SwitchStyle {
         groove: Rectangle {
-            implicitWidth: extSpacing.charLikeWidth * 4 * 2
-            implicitHeight: extSpacing.charLikeHeight * 1.5
+            implicitHeight: cfgSingleton.hSwitchHeight
+            implicitWidth: implicitHeight * 2
             Rectangle {
                 anchors.top: parent.top
                 anchors.left: parent.left

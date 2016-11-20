@@ -110,7 +110,7 @@ Item {
         property color window: SysPalColorsDisabled.window
         property color windowText: SysPalColorsDisabled.windowText
 
-        property real controlOptionalOpacity: 0.5
+        property real controlOptionalOpacity: 1.0
         property real controlOpacity: 0.5
     }
 

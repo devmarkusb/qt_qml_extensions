@@ -67,7 +67,7 @@ State {
         window: SysPalColorsDisabled.window
         windowText: SysPalColorsDisabled.windowText
 
-        controlOptionalOpacity: 0.5
+        controlOptionalOpacity: 1.0
         controlOpacity: 0.5
     }
 }
