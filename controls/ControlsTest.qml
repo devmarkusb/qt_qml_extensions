@@ -6,11 +6,12 @@ import "../os"
 import QtQuick 2.7
 import QtQuick.Controls 1.4
 import QtQuick.Controls 2.0
+import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
 
 
-ApplicationWindow {
+ApplicationWindow_ {
     id: root
 
 
@@ -26,6 +27,7 @@ ApplicationWindow {
     ExtColors {
         id: extColors // don't change this specifier!
         schemeChoice: "def"
+        //schemeChoice: "purple_green"
     }
 
     ExtFont {
@@ -266,27 +268,27 @@ ApplicationWindow {
         }
 
         TestHelperBox {
-            title: "ButtonSq_"
+            title: "ButtonTool_"
             Row {
                 spacing: extSpacing.space3
-                ButtonSq_ {
-                    imageSource: "buttonsq_menu.svg"
+                ButtonTool_ {
+                    imageSource: "menu.svg"
                     squareSideLength: extSpacing.pixlargeIconSq
                 }
-                ButtonSq_ {
-                    imageSource: "buttonsq_menu.svg"
+                ButtonTool_ {
+                    imageSource: "menu.svg"
                     squareSideLength: extSpacing.pixlargeIconSq
                     enabled: false
                 }
 
-                ButtonSq_ {
+                ButtonTool_ {
                     isSpecial: true
-                    imageSource: "buttonsq_menu.svg"
+                    imageSource: "menu.svg"
                     squareSideLength: extSpacing.pixlargeIconSq
                 }
-                ButtonSq_ {
+                ButtonTool_ {
                     isSpecial: true
-                    imageSource: "buttonsq_menu.svg"
+                    imageSource: "menu.svg"
                     squareSideLength: extSpacing.pixlargeIconSq
                     enabled: false
                 }
@@ -446,7 +448,7 @@ ApplicationWindow {
                     }
                 }
             }
-        }
+        } // TestHelperBox
 
         TestHelperBox {
             title: "GroupBox_"
@@ -490,7 +492,7 @@ ApplicationWindow {
                     }
                 }
             }
-        }
+        } // TestHelperBox
 
         TestHelperBox {
             title: "CheckBox_"
@@ -516,7 +518,7 @@ ApplicationWindow {
                     }
                 }
             }
-        }
+        } // TestHelperBox
 
         TestHelperBox {
             title: "SpinBox_"
@@ -547,5 +549,69 @@ ApplicationWindow {
                 }
             }
         }
+
+        TestHelperBox {
+            title: "Dialogs"
+
+            Grid {
+                spacing: extSpacing.space3
+                Button_ {
+                    text: "Popup_"
+
+                    onClicked: {
+                        popup.open()
+                    }
+                }
+
+                Button_ {
+                    text: "Drawer_"
+
+                    onClicked: {
+                        drawer.open()
+                    }
+                }
+
+                Button_ {
+                    text: "FileDialog"
+
+                    onClicked: {
+                        components.fileDialog.open()
+                    }
+                }
+            }
+        } // TestHelperBox
     } // Grid
+
+
+    Popup_ {
+        id: popup
+        width: root.width * 0.75
+        height: root.height * 0.75
+        x: (root.width - width) / 2
+        y: (root.height - height) / 2
+
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+    }
+
+    Drawer_ {
+        id: drawer
+        width: root.width * 0.25
+        height: root.height
+    }
+
+    FileDialog {
+        id: fileDialog
+        title: "Please choose a file"
+        folder: shortcuts.home
+
+        onAccepted: {
+            console.log("You chose: " + fileDialog.fileUrls)
+        }
+
+        onRejected: {
+            console.log("Canceled")
+        }
+    }
 }

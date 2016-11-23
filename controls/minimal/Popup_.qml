@@ -3,15 +3,17 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 
 
-Pane {
+Popup {
     property bool alternateColor: false
 
 
     id: control
 
-    padding: 0 // Pane seems to apply some default padding > 0 (why?!) (padding for its inner content)
+    font: extFont.normal
+
     opacity: 1.0
 
     background: PaneBackground {
+        controlEnabled: true
     }
 }

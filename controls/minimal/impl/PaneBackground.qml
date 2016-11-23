@@ -3,6 +3,8 @@ import QtQuick 2.7
 
 
 Rectangle {
-    color: alternateColor ? ControlProp.obtainBaseAlternateColor(control.enabled) : ControlProp.obtainBaseColor(control.enabled)
+    property bool controlEnabled: control.enabled
+
+    color: alternateColor ? ControlProp.obtainBaseAlternateColor(controlEnabled) : ControlProp.obtainBaseColor(controlEnabled)
     //color: "yellow" // for testing...
 }

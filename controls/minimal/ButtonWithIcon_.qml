@@ -21,7 +21,6 @@ Button {
     }
 
     implicitHeight: cfgSingleton.hButtonHeight
-    implicitWidth: Math.max(label.implicitWidth, cfgSingleton.wButtonWidth)
 
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
 

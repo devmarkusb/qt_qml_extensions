@@ -17,7 +17,12 @@ Rectangle {
         }
         GradientStop {
             position: 1.0
-            color: ButtonProp.obtainButtonColor(control, extColors.activeC.midlight, extColors.activeC.light, extColors.activeC.mid, extColors.disabledC.button)
+            color: {
+                if (isSpecial)
+                    ButtonProp.obtainButtonColor(control, extColors.activeC.button, extColors.activeC.light, extColors.activeC.highlight, extColors.disabledC.button)
+                else
+                    ButtonProp.obtainButtonColor(control, extColors.activeC.midlight, extColors.activeC.light, extColors.activeC.mid, extColors.disabledC.button)
+            }
         }
     }
 

@@ -5,6 +5,7 @@ Item {
     property alias placeholderText: textfield.placeholderText
     property alias text: label.text
     property int inputWidthInChars: 20
+    property alias horizontalAlignment: textfield.horizontalAlignment
 
 
     implicitWidth: childrenRect.width

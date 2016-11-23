@@ -11,7 +11,7 @@ Window {
     }
     ExtColors {
         id: extColors_todo
-        schemeChoice: "todo"
+        schemeChoice: "purple_green"
     }
 
     width: testGrid.width

@@ -121,7 +121,7 @@ Item {
         Def {
         },
 
-        Todo {
+        PurpleGreen {
         },
 
         CopyPasteTemplate {

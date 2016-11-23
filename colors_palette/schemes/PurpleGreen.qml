@@ -3,7 +3,7 @@ import QtQuick 2.7
 
 
 State {
-    name: "copyPasteTemplate"
+    name: "purple_green"
 
     PropertyChanges {
         target: active_impl
