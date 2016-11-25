@@ -14,7 +14,9 @@ TextField_ {
 
     font: extFont.normal
     color: enabled ? extColors.activeC.text : extColors.disabledC.text
-    renderType: ControlProp.obtainRenderType()
+    // In text fields we regularly get strange artifacts when using native rendering on Windows.
+    // This is not being observed for labels.
+    renderType: Text.QtRendering//ControlProp.obtainRenderType()
 
     selectionColor: control.enabled ? extColors.activeC.highlight : extColors.disabledC.highlight
     selectedTextColor : control.enabled ? extColors.activeC.highlightedText : extColors.disabledC.highlightedText

@@ -12,8 +12,10 @@ Switch {
     property color onColor: "green"
     property color charColor: "white"
     property real charYcorr: -1 //todo calculate
+    property alias on: control.checked
 
 
+    id: control
     CfgControls {
         id: cfgSingleton
     }

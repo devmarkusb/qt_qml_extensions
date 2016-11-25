@@ -1,4 +1,0 @@
-module ExtControls
-Button_def 1.0 Button_def.qml
-ButtonSq_def 1.0 ButtonSq_def.qml
-Text_def 1.0 Text_def.qml

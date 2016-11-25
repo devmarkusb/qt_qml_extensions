@@ -96,12 +96,12 @@ ApplicationWindow_ {
                 spacing: extSpacing.space3
                 TextFieldLabelRow_ {
                     placeholderText: "0"
-                    text: "some text"
+                    title: "some text"
                     inputWidthInChars: 10
                 }
                 TextFieldLabelRow_ {
                     placeholderText: "0"
-                    text: "some text"
+                    title: "some text"
                     inputWidthInChars: 10
                     enabled: false
                 }
