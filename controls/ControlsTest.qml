@@ -540,11 +540,11 @@ ApplicationWindow_ {
                 spacing: extSpacing.space3
                 SpinBoxLabelRow_ {
                     text: "Text label here"
-                    defaultValue: 42
+                    value: 42
                 }
                 SpinBoxLabelRow_ {
                     text: "Text label here"
-                    defaultValue: 42
+                    value: 42
                     enabled: false
                 }
             }

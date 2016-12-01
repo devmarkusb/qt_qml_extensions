@@ -17,6 +17,7 @@ GroupBox {
         anchors.verticalCenter: rect.top
         text: control.title
         background:  Pane_ {
+            alternateColor: control.alternateColor
         }
     }
 

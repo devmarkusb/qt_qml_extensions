@@ -3,7 +3,7 @@ import QtQuick 2.7
 
 Item {
     property alias text: label.text
-    property alias defaultValue: spinbox.value
+    property alias value: spinbox.value
     //! !Deprecated! Was/is used for QC1 based component.
     property int inputWidthInChars: 20
     property alias horizontalAlignmentOfInput: spinbox.horizontalTextAlignment
