@@ -3,7 +3,7 @@ import QtQuick 2.7
 
 
 State {
-    name: "purple_green"
+    name: "purpleGreen"
 
     PropertyChanges {
         target: active_impl

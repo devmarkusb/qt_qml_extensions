@@ -4,18 +4,19 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
 
 
-Window {
+ApplicationWindow {
     ExtColors {
         id: extColors_def
         schemeChoice: "def"
     }
     ExtColors {
         id: extColors_todo
-        schemeChoice: "purple_green"
+        schemeChoice: "purpleGreen"
     }
 
     width: testGrid.width
     height: testGrid.height
+    visible: true
 
     Grid {
         id: testGrid
