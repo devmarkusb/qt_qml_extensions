@@ -2,6 +2,8 @@ import QtQuick 2.7
 
 
 QtObject {
+    readonly property real rCommonControlRadius: 5
+
     readonly property real wButtonWidth: 25 * extSpacing.charLikeWidth
     readonly property real hButtonHeight: 2 * extSpacing.charLikeHeight
 
@@ -21,4 +23,6 @@ QtObject {
     readonly property real wSpinIndicatorWidth: hSpinIndicatorHeight
 
     readonly property real hSwitchHeight: hTextFieldHeight
+
+    readonly property real wScrollBarWidth: rRadioButtonRadius
 }

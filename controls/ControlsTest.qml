@@ -16,7 +16,7 @@ ApplicationWindow_ {
 
 
     width: 1200
-    height: 800
+    height: 1000
     visible: true
 
     ExtOS {
@@ -27,7 +27,7 @@ ApplicationWindow_ {
     ExtColors {
         id: extColors // don't change this specifier!
         schemeChoice: "def"
-        //schemeChoice: "purple_green"
+        //schemeChoice: "purpleGreen"
     }
 
     ExtFont {
@@ -453,6 +453,7 @@ ApplicationWindow_ {
         TestHelperBox {
             title: "GroupBox_"
             Row {
+                topPadding: 5
                 spacing: extSpacing.space3
                 GroupBox_ {
                     title: "A group box"
@@ -575,11 +576,37 @@ ApplicationWindow_ {
                     text: "FileDialog"
 
                     onClicked: {
-                        components.fileDialog.open()
+                        fileDialog.open()
                     }
                 }
             }
         } // TestHelperBox
+
+        TestHelperBox {
+            title: "Flickable with ScrollBar_'s"
+            Flickable {
+                anchors.fill: parent
+                contentWidth: width * 1.5
+                contentHeight: height * 1.5
+
+                ScrollBar.vertical: ScrollBar_ {}
+                ScrollBar.horizontal: ScrollBar_ {}
+            }
+        }
+
+        TestHelperBox {
+            title: "Flickable with ScrollBar_'s (disbled)"
+            Flickable {
+                anchors.fill: parent
+                contentWidth: width * 1.5
+                contentHeight: height * 1.5
+
+                enabled: false
+
+                ScrollBar.vertical: ScrollBar_ {}
+                ScrollBar.horizontal: ScrollBar_ {}
+            }
+        }
     } // Grid
 
 

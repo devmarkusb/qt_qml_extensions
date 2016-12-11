@@ -28,6 +28,25 @@ function obtainButtonBorderColor(control, normal, hovered, checked, disabled) {
     return obtainButtonColor_impl(control, normal, hovered, checked, disabled, true);
 }
 
+function obtainPressableControlColor(control, normal, hovered, pressed, disabled) {
+    if (control.enabled) {
+        if (control.pressed)
+            return pressed;
+        else {
+            if (control.hovered)
+                return hovered;
+            else
+                return normal;
+        }
+    }
+    else {
+        if (control.pressed)
+            return pressed;
+        else
+            return disabled;
+    }
+}
+
 
 //####################################################################################################################
 // border

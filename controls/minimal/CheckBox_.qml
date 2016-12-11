@@ -21,6 +21,7 @@ CheckBox {
         implicitWidth: cfgSingleton.wCheckBoxWidth
         implicitHeight: implicitWidth
         y: parent.height / 2 - height / 2
+        radius: cfgSingleton.rCommonControlRadius
         border.width: extSpacing.wBorderWidth
         border.color: {
             if (control.enabled) {

@@ -35,7 +35,7 @@ TabButton {
     opacity: 1.0
 
     background: Rectangle {
-        radius: 0
+        radius: cfgSingleton.rCommonControlRadius
 
         gradient: Gradient {
             GradientStop {

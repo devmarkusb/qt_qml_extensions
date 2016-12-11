@@ -1,9 +1,14 @@
+import "../../_shared/impl"
 import "../../_shared/impl/obtainButtonProps.js" as ButtonProp
 import QtQuick 2.7
 
 
 Rectangle {
-    radius: 0
+    CfgControls {
+        id: cfgSingleton
+    }
+
+    radius: cfgSingleton.rCommonControlRadius
 
     gradient: Gradient {
         GradientStop {

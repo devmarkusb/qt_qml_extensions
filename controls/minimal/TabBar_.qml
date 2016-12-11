@@ -14,5 +14,6 @@ TabBar {
 
     background: Rectangle {
         color: extColors.activeC.window
+        radius: cfgSingleton.rCommonControlRadius
     }
 }
