@@ -16,7 +16,7 @@ QtObject {
 
     readonly property real wCheckBoxWidth: 1.6 * extSpacing.charLikeHeight
 
-    readonly property real wTextFieldWidth: extSpacing.charLikeWidth * 20
+    readonly property real wTextFieldWidth: extSpacing.charLikeWidth * 25
     readonly property real hTextFieldHeight: 2 * extSpacing.charLikeHeight
 
     readonly property real hSpinIndicatorHeight: hTextFieldHeight
@@ -25,4 +25,7 @@ QtObject {
     readonly property real hSwitchHeight: hTextFieldHeight
 
     readonly property real wScrollBarWidth: rRadioButtonRadius
+
+    readonly property real hComboBoxIndicatorHeight: hTextFieldHeight - extSpacing.pix2space * 2
+    readonly property real wComboBoxIndicatorWidth: hComboBoxIndicatorHeight / 2
 }

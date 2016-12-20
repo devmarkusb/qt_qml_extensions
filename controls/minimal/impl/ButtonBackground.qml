@@ -31,6 +31,6 @@ Rectangle {
         }
     }
 
-    border.width: ButtonProp.obtainButtonBorderWidth(control)
     border.color: ButtonProp.obtainButtonBorderColor(control, extColors.activeC.shadow, extColors.activeC.highlight, extColors.activeC.shadow, extColors.disabledC.shadow)
+    border.width: ButtonProp.obtainButtonBorderWidth(control)
 }

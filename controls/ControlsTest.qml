@@ -553,7 +553,6 @@ ApplicationWindow_ {
 
         TestHelperBox {
             title: "Dialogs"
-
             Grid {
                 spacing: extSpacing.space3
                 Button_ {
@@ -605,6 +604,20 @@ ApplicationWindow_ {
 
                 ScrollBar.vertical: ScrollBar_ {}
                 ScrollBar.horizontal: ScrollBar_ {}
+            }
+        }
+
+        TestHelperBox {
+            title: "ComboBox_"
+            Column {
+                spacing: extSpacing.space3
+                ComboBox_ {
+                    model: ["First", "Second", "Third"]
+                }
+                ComboBox_ {
+                    enabled: false
+                    model: ["First", "Second", "Third"]
+                }
             }
         }
     } // Grid
