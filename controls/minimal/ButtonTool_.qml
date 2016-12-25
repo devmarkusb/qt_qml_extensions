@@ -21,7 +21,7 @@ Button {
 
     hoverEnabled: true
 
-    width: Math.max(squareSideLength, cfgSingleton.sqButtonSideLength)
+    width: squareSideLength
     height: width
 
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)

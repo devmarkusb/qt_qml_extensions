@@ -16,7 +16,7 @@ Button_ {
         id: cfgSingleton
     }
 
-    width: Math.max(squareSideLength, cfgSingleton.sqButtonSideLength)
+    width: squareSideLength
     height: width
 
     contentItem: Image {
