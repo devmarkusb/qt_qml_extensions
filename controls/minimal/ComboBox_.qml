@@ -1,3 +1,5 @@
+//! *Important* Your model needs to have a role called text.
+//! (Which you then also should have chosen as textRole for the Combobox.)
 import "impl"
 import "../QC2_def"
 import "../_shared/impl"
@@ -29,7 +31,7 @@ ComboBox_ {
         width: control.width
         height: control.height
         contentItem: Label_ {
-            text: modelData
+            text: model.text ? model.text : modelData // I wonder if there is a way to access the textRole, chosen for the ComboBox
             horizontalAlignment: textHorAlignment
             verticalAlignment: Text.AlignVCenter
         }
@@ -42,7 +44,9 @@ ComboBox_ {
         y: control.topPadding + (control.availableHeight - height) / 2
         width: cfgSingleton.wComboBoxIndicatorWidth
         height: cfgSingleton.hComboBoxIndicatorHeight
-        contextType: "2d"
+        // Impl. note.
+        // The Qt doc example uses a once-declaration of `contextType: "2d"`.
+        // But that does only work for the first appearance of the control, it seems.
 
         Connections {
             target: control
@@ -50,20 +54,21 @@ ComboBox_ {
         }
 
         onPaint: {
-            context.reset();
-            context.moveTo(0, height / 2 + 2);
-            context.lineTo(width, height / 2 + 2);
-            context.lineTo(width / 2, height - 2);
-            context.closePath();
-            context.fillStyle = extColors.activeC.text;
-            context.fill();
+            var ctx = getContext("2d");
+            ctx.reset();
+            ctx.moveTo(0, height / 2 + 2);
+            ctx.lineTo(width, height / 2 + 2);
+            ctx.lineTo(width / 2, height - 2);
+            ctx.closePath();
+            ctx.fillStyle = extColors.activeC.text;
+            ctx.fill();
 
-            context.moveTo(0, height / 2 - 2);
-            context.lineTo(width, height / 2 - 2);
-            context.lineTo(width / 2, 2);
-            context.closePath();
-            context.fillStyle = extColors.activeC.text;
-            context.fill();
+            ctx.moveTo(0, height / 2 - 2);
+            ctx.lineTo(width, height / 2 - 2);
+            ctx.lineTo(width / 2, 2);
+            ctx.closePath();
+            ctx.fillStyle = extColors.activeC.text;
+            ctx.fill();
         }
     }
 
@@ -97,7 +102,7 @@ ComboBox_ {
             ScrollIndicator.vertical: ScrollIndicator { }
         }
 
-        background: Rectangle {            
+        background: Rectangle {
             radius: cfgSingleton.rCommonControlRadius
             border.width: extSpacing.wBorderWidth
             border.color: control.enabled ? extColors.activeC.shadow : extColors.disabledC.shadow
