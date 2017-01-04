@@ -2,7 +2,6 @@ import "minimal"
 import "../colors_palette"
 import "../fonts"
 import "../layout"
-import "../os"
 import QtQuick 2.7
 import QtQuick.Controls 1.4
 import QtQuick.Controls 2.0
@@ -18,11 +17,6 @@ ApplicationWindow_ {
     width: 1200
     height: 1000
     visible: true
-
-    ExtOS {
-        id: extOS
-        os: "WINDOWS"
-    }
 
     ExtColors {
         id: extColors // don't change this specifier!
