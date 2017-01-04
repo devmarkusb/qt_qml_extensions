@@ -1,9 +1,9 @@
-import "../QC2_def"
+import "../QC2_def" as QC2
 import "../_shared/impl/obtainControlProps.js" as ControlProp
 import QtQuick 2.7
 
 
-Label_ {
+QC2.Label_ {
     id: control
 
     font: extFont.normal

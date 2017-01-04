@@ -4,7 +4,8 @@ import QtQuick 2.7
 QtObject {
     readonly property real rCommonControlRadius: 5
 
-    readonly property real wButtonWidth: 25 * extSpacing.charLikeWidth
+    readonly property real wButtonWidth: 20 * extSpacing.charLikeWidth
+    readonly property real wButtonImplicitWidthFactor: 1.25 //! times the label-determined width
     readonly property real hButtonHeight: 2 * extSpacing.charLikeHeight
 
     readonly property real sqButtonSideLength: 3 * extSpacing.charLikeHeight

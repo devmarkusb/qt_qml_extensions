@@ -113,9 +113,10 @@ ApplicationWindow_ {
             id: tabview
             title: "TabView_/TabBar_"
             Column {
+                anchors.fill: parent
+
                 TabBar_ {
                     id: tabcontrol
-                    width: tabview.width - 20
                     TabButton_ {
                         text: "tab red"
                     }
@@ -128,7 +129,8 @@ ApplicationWindow_ {
                 }
                 StackLayout {
                     currentIndex: tabcontrol.currentIndex
-                    width: tabcontrol.width
+                    anchors.left: parent.left
+                    anchors.right: parent.right
                     Rectangle {
                         color: "red"
                         height: 50

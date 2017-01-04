@@ -1,9 +1,10 @@
 import "../_shared/impl"
+import "../QC2_def" as QC2
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 
 
-TabBar {
+QC2.TabBar_ {
     CfgControls {
         id: cfgSingleton
     }

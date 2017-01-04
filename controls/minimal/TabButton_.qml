@@ -1,11 +1,12 @@
 import "impl"
 import "../_shared/impl"
 import "../_shared/impl/obtainButtonProps.js" as ButtonProp
+import "../QC2_def" as QC2
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 
 
-TabButton {
+QC2.TabButton_ {
     id: control
 
     hoverEnabled: true
@@ -13,6 +14,7 @@ TabButton {
     contentItem: Label_ {
         id: label
 
+        anchors.fill: control
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
 

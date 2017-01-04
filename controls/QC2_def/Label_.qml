@@ -5,7 +5,6 @@ import QtQuick.Controls 2.0
 
 
 Label {
-    elide: Text.ElideRight
     renderType: ControlProp.obtainRenderType()
 
     onTextChanged: {
