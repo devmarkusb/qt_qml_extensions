@@ -37,5 +37,5 @@ function obtainBorderColor(enabled) {
 // font
 
 function obtainRenderType() {
-    return extOS.os === "WINDOWS" ? Text.NativeRendering : Text.QtRendering;
+    return Qt.platform.os === "windows" ? Text.NativeRendering : Text.QtRendering;
 }
