@@ -1,10 +1,10 @@
 //! *Important* Your model needs to have a role called text.
 //! (Which you then also should have chosen as textRole for the Combobox.)
-import "impl"
 import "../QC2_def" as QC2
 import "../_shared/impl"
 import "../_shared/impl/obtainButtonProps.js" as ButtonProp
 import "../_shared/impl/obtainControlProps.js" as ControlProp
+import "../_shared/impl/obtainListDelegateProps.js" as ListDelegateProp
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 
@@ -28,14 +28,35 @@ QC2.ComboBox_ {
     hoverEnabled: true
 
     delegate: ItemDelegate {
-        width: control.width
+        id: deleg
+        width: control.width - cbpopup.leftPadding - cbpopup.rightPadding
         height: control.height
         contentItem: Label_ {
             text: model.text ? model.text : modelData // I wonder if there is a way to access the textRole, chosen for the ComboBox
+            elide: Text.ElideRight
             horizontalAlignment: textHorAlignment
             verticalAlignment: Text.AlignVCenter
         }
-        highlighted: control.highlightedIndex == index
+        background:Rectangle {
+            anchors.fill: parent
+            radius: cfgSingleton.rCommonControlRadius
+            color: (index === control.currentIndex)
+                   ? extColors.activeC.mid
+                   : ListDelegateProp.obtainListDelegateColor(control.enabled, mousearea.containsMouse,
+                                                              mousearea.pressed,
+                                                              extColors.activeC.base, extColors.activeC.midlight,
+                                                              extColors.activeC.mid, extColors.activeC.base)
+            MouseArea {
+                id: mousearea
+                anchors.fill: parent
+                hoverEnabled: true
+                onClicked: {
+                    control.currentIndex = index
+                    control.popup.close()
+                }
+            } // MouseArea
+        } // Rectangle
+        highlighted: control.highlightedIndex === index
     }
 
     indicator: Canvas {
@@ -76,6 +97,7 @@ QC2.ComboBox_ {
         rightPadding: control.indicator.width + control.spacing
 
         text: control.displayText
+        elide: Text.ElideRight
         horizontalAlignment: textHorAlignment
         verticalAlignment: Text.AlignVCenter
     }
@@ -88,22 +110,25 @@ QC2.ComboBox_ {
     }
 
     popup: Popup {
-        y: control.height + 1
-        width: control.width
-        implicitHeight: listview.contentHeight
-        padding: cfgSingleton.rCommonControlRadius / 2
+        id: cbpopup
+        y: control.height + extSpacing.pix1space
+        implicitWidth: control.width
+        implicitHeight: listview.contentHeight + topPadding + bottomPadding
+        padding: extSpacing.pix1space
 
         contentItem: ListView {
             id: listview
             clip: true
             model: control.popup.visible ? control.delegateModel : null
             currentIndex: control.highlightedIndex
+            highlightFollowsCurrentItem: false
 
-            ScrollIndicator.vertical: ScrollIndicator { }
+            ScrollIndicator.vertical: ScrollIndicator {}
         }
 
         background: Rectangle {
             radius: cfgSingleton.rCommonControlRadius
+            implicitWidth: cbpopup.implicitWidth
             border.width: extSpacing.wBorderWidth
             border.color: control.enabled ? extColors.activeC.shadow : extColors.disabledC.shadow
             color: control.enabled ? extColors.activeC.base : extColors.disabledC.base
