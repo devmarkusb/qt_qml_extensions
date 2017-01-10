@@ -9,6 +9,7 @@ import QtQuick.Controls 2.0
 GroupBox_ {
     property int textHorAlignment: Text.AlignLeft
     property alias listmodel: listview.model
+    property alias currentIndex: listview.currentIndex
 
 
     id: control
