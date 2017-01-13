@@ -45,8 +45,8 @@ Button {
         Label_ {
             id: label
 
+            isSpecial: control.isSpecial
             height: control.height
-
             verticalAlignment: Text.AlignVCenter
 
             text: control.text

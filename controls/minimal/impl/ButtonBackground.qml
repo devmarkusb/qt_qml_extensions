@@ -15,7 +15,7 @@ Rectangle {
             position: 0.0
             color: {
                 if (isSpecial)
-                    ButtonProp.obtainButtonColor(control, extColors.activeC.highlight, extColors.activeC.highlight, extColors.activeC.highlight, extColors.disabledC.midlight)
+                    ButtonProp.obtainButtonColor(control, Qt.darker(extColors.activeC.highlight), Qt.darker(extColors.activeC.highlight), Qt.darker(extColors.activeC.highlight), extColors.disabledC.midlight)
                 else
                     ButtonProp.obtainButtonColor(control, extColors.activeC.mid, extColors.activeC.mid, extColors.activeC.mid, extColors.disabledC.midlight)
             }
@@ -24,7 +24,7 @@ Rectangle {
             position: 1.0
             color: {
                 if (isSpecial)
-                    ButtonProp.obtainButtonColor(control, extColors.activeC.button, extColors.activeC.light, extColors.activeC.highlight, extColors.disabledC.button)
+                    ButtonProp.obtainButtonColor(control, Qt.lighter(extColors.activeC.highlight), extColors.activeC.midlight, Qt.darker(extColors.activeC.highlight), extColors.disabledC.button)
                 else
                     ButtonProp.obtainButtonColor(control, extColors.activeC.midlight, extColors.activeC.light, extColors.activeC.mid, extColors.disabledC.button)
             }

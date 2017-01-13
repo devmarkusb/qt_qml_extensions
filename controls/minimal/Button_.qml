@@ -27,6 +27,7 @@ QC2.Button_ {
     contentItem: Label_ {
         id: label
 
+        isSpecial: control.isSpecial
         anchors.fill: control
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
