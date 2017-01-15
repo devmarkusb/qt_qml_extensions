@@ -10,6 +10,7 @@ QC2.Button_ {
     //! If you set this to true, the Button will be colored in a special way
     /** More precisely the 'highlight' color from the current color scheme is used.*/
     property bool isSpecial: false
+    property alias horizontalTextAlignment: label.horizontalAlignment
 
 
     id: control
@@ -31,6 +32,8 @@ QC2.Button_ {
         anchors.fill: control
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
+        leftPadding: extSpacing.charLikeWidth
+        rightPadding: leftPadding
 
         text: control.text
     }

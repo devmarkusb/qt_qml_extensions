@@ -583,10 +583,17 @@ ApplicationWindow_ {
                     }
 
                     Button_ {
+                        id: openFileBtn
                         text: "FileDialog"
+                        horizontalTextAlignment: Text.AlignLeft
 
                         onClicked: {
                             fileDialog.open()
+                        }
+                        ShortcutLabel_ {
+                            basecontrol: openFileBtn
+                            sequence: StandardKey.Open
+                            onActivated: openFileBtn.onClicked()
                         }
                     }
                 }
