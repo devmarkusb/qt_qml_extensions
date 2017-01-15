@@ -1,5 +1,6 @@
 //todo port to QC2, styling works a bit different
 import "impl"
+import "impl/obtainButtonProps.js" as ButtonProp
 import QtQuick 2.7
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
@@ -13,6 +14,9 @@ Switch {
     property color charColor: "white"
     property real charYcorr: -1 //todo calculate
     property alias on: control.checked
+    readonly property alias hovered: mousearea.containsMouse
+    readonly property alias down: mousearea.pressed
+    readonly property alias pressed: mousearea.pressed
 
 
     id: control
@@ -56,17 +60,24 @@ Switch {
                 }
             }
             color: offColor
-            border.color: extColors.activeC.shadow
-            border.width: 1
+            border.color: ButtonProp.obtainPressableControlColor(control, extColors.activeC.shadow, extColors.activeC.highlight, extColors.activeC.shadow, extColors.disabledC.shadow)
+            border.width: extSpacing.wBorderWidth
         }
 
         handle: Rectangle {
             width: control.width / 2
             height: control.height
             color: extColors.activeC.midlight
-            border.color: extColors.activeC.shadow
-            border.width: 1
+            border.color: ButtonProp.obtainPressableControlColor(control, extColors.activeC.shadow, extColors.activeC.highlight, extColors.activeC.shadow, extColors.disabledC.shadow)
+            border.width: extSpacing.wBorderWidth
         }
+    }
+
+    MouseArea {
+        id: mousearea
+        anchors.fill: parent
+        hoverEnabled: true
+        acceptedButtons: Qt.NoButton
     }
 }
 
