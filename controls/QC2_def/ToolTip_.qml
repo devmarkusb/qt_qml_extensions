@@ -6,9 +6,17 @@ import QtQuick.Controls 2.0
 ToolTip {
     id: control
 
+    //! Dirty workaround for a Qt bug: delay time didn't have any effect within
+    //! started exe (Windows); qmlscene works.
+    property bool show: extControlsCfg.tooltipsEnabled ? parent.hovered : false
+    onShowChanged: {
+        if (show)
+            control.open()
+        else
+            control.close()
+    }
 
     delay: Qt.styleHints.mousePressAndHoldInterval
-    visible: extControlsCfg.tooltipsEnabled ? parent.hovered : false
 
     contentItem: Label_ {
         text: control.text
