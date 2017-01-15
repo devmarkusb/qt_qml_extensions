@@ -14,4 +14,5 @@ import QtQuick 2.7
 
 QtObject {
     property bool tooltipsEnabled: true
+    property int tooltipTimeout_ms: 2000
 }

@@ -17,6 +17,7 @@ ToolTip {
     }
 
     delay: Qt.styleHints.mousePressAndHoldInterval
+    timeout: extControlsCfg.tooltipTimeout_ms
 
     contentItem: Label_ {
         text: control.text
