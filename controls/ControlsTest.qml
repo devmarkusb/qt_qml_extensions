@@ -37,6 +37,10 @@ ApplicationWindow_ {
         id: extSpacing // don't change this specifier!
     }
 
+    ExtControlsCfg {
+        id: extControlsCfg // don't change this specifier!
+    }
+
     Component.onCompleted: {
     }
 
@@ -650,7 +654,7 @@ ApplicationWindow_ {
                                 text: "Fourth"
                             }
                         }
-                    }
+                    } // ListBox_
                     ListBox_ {
                         enabled: false
                         width: parent.width / 2.5
@@ -669,9 +673,33 @@ ApplicationWindow_ {
                                 text: "Fourth"
                             }
                         }
+                    } // ListBox_
+                } // Row
+            } // TestHelperBox
+
+            TestHelperBox {
+                title: "ToolTip_"
+                Rectangle {
+                    property alias hovered: tooltipRectMA.containsMouse
+                    color: "yellow"
+                    width: 200
+                    height: 50
+                    anchors.centerIn: parent
+                    Label_ {
+                        anchors.centerIn: parent
+                        text: "Please move your mouse here.\nNote, that I have a 'hovered' property."
+                    }
+                    MouseArea {
+                        id: tooltipRectMA
+                        anchors.fill: parent
+                        hoverEnabled: true
+                    }
+
+                    ToolTip_ {
+                        text: "Other than that, I'm just a yellow rectangle :)"
                     }
                 }
-            }
+            } // TestHelperBox
         } // Grid
 
 
