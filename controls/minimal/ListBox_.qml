@@ -19,6 +19,7 @@ GroupBox_ {
     }
 
     padding: extSpacing.pix1space
+    topPadding: 0
     spacing: 0
     implicitWidth: cfgSingleton.wTextFieldWidth
     implicitHeight: 3 * cfgSingleton.hTextFieldHeight + topPadding + bottomPadding
