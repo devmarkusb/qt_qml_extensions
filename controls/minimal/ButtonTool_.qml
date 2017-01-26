@@ -1,6 +1,7 @@
 import "impl"
 import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
+import QtGraphicalEffects 1.0
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 
@@ -34,6 +35,11 @@ Button {
         sourceSize.height: height
 
         opacity: ControlProp.obtainDisablingOpacity(control.enabled)
+        ColorOverlay {
+            anchors.fill: img
+            source: img
+            color: extColors.activeC.text
+        }
     }
 
     background: ButtonBackground {
