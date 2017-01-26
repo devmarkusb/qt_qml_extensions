@@ -1,8 +1,8 @@
+import "minimal"
 import QtQuick 2.7
-import QtQuick.Controls 1.4
 
 
-GroupBox {
+GroupBox_ {
     width: 340
     height: 120
 }

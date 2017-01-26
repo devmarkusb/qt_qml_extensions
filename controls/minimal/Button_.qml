@@ -32,8 +32,8 @@ QC2.Button_ {
         anchors.fill: control
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        leftPadding: extSpacing.charLikeWidth
-        rightPadding: leftPadding
+        leftPadding: horizontalTextAlignment === Text.AlignLeft ? extSpacing.charLikeWidth : 0
+        rightPadding: horizontalTextAlignment === Text.AlignRight ? extSpacing.charLikeWidth : 0
 
         text: control.text
     }

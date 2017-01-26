@@ -2,6 +2,7 @@ import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
 import QtQuick 2.7
 import QtQuick.Controls 2.0
+import QtGraphicalEffects 1.0
 
 
 CheckBox {
@@ -41,13 +42,18 @@ CheckBox {
         }
 
         Image {
+            id: img
             visible: control.checked
             width: cfgSingleton.wCheckBoxWidth
             height: width
             anchors.fill: parent
             anchors.margins: extSpacing.pix2space
             source: "../_shared/impl/checkmark.png"
-
+            ColorOverlay {
+                anchors.fill: img
+                source: img
+                color: extColors.activeC.text
+            }
             opacity: ControlProp.obtainDisablingOpacity(control.enabled)
         }
     }

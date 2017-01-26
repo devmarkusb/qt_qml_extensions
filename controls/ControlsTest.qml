@@ -21,7 +21,8 @@ ApplicationWindow_ {
     ExtColors {
         id: extColors // don't change this specifier!
         schemeChoice: "def"
-        //schemeChoice: "purpleGreen"
+//        schemeChoice: "inverseDef"
+//        schemeChoice: "purpleGreen"
     }
 
     ExtFont {
@@ -346,28 +347,28 @@ ApplicationWindow_ {
                     anchors.fill: parent
 
                     Rectangle {
-                        color: "black"
+                        color: "gray"
                         anchors.left: parent.left
                         anchors.top: parent.top
                         width: 10
                         height: width
                     }
                     Rectangle {
-                        color: "black"
+                        color: "gray"
                         anchors.right: parent.right
                         anchors.top: parent.top
                         width: 10
                         height: width
                     }
                     Rectangle {
-                        color: "black"
+                        color: "gray"
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
                         width: 10
                         height: width
                     }
                     Rectangle {
-                        color: "black"
+                        color: "gray"
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
                         width: 10
@@ -386,28 +387,28 @@ ApplicationWindow_ {
                     anchors.fill: parent
 
                     Rectangle {
-                        color: "black"
+                        color: "gray"
                         anchors.left: parent.left
                         anchors.top: parent.top
                         width: 10
                         height: width
                     }
                     Rectangle {
-                        color: "black"
+                        color: "gray"
                         anchors.right: parent.right
                         anchors.top: parent.top
                         width: 10
                         height: width
                     }
                     Rectangle {
-                        color: "black"
+                        color: "gray"
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
                         width: 10
                         height: width
                     }
                     Rectangle {
-                        color: "black"
+                        color: "gray"
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
                         width: 10
@@ -695,6 +696,7 @@ ApplicationWindow_ {
                     Label_ {
                         anchors.centerIn: parent
                         text: "Please move your mouse here.\nNote, that I have a 'hovered' property."
+                        color: "black"
                     }
                     MouseArea {
                         id: tooltipRectMA

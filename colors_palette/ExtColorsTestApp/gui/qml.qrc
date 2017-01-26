@@ -9,6 +9,7 @@
         <file>../../impl/TestRectangle.qml</file>
         <file>../../schemes/CopyPasteTemplate.qml</file>
         <file>../../schemes/Def.qml</file>
+        <file>../../schemes/Inverse.qml</file>
         <file>../../schemes/PurpleGreen.qml</file>
     </qresource>
 </RCC>

@@ -14,6 +14,10 @@ ApplicationWindow {
         id: extColors_todo
         schemeChoice: "purpleGreen"
     }
+    ExtColors {
+        id: extColors_inverseDef
+        schemeChoice: "inverseDef"
+    }
 
     width: testGrid.width
     height: testGrid.height
@@ -120,6 +124,60 @@ ApplicationWindow {
             TestRectangle { color: extColors_def.disabledC.mid }
             TestRectangle { color: extColors_def.disabledC.dark }
             TestRectangle { color: extColors_def.disabledC.shadow }
+
+
+            //####################################################################################################################
+
+            TestRectangle {}
+            TestRectangle { Label { text: "active"; anchors.centerIn: parent } }
+            TestRectangle { color: extColors_inverseDef.activeC.base }
+            TestRectangle { color: extColors_inverseDef.activeC.alternateBase }
+            TestRectangle { color: extColors_inverseDef.activeC.text }
+            TestRectangle { color: extColors_inverseDef.activeC.window }
+            TestRectangle { color: extColors_inverseDef.activeC.windowText }
+            TestRectangle { color: extColors_inverseDef.activeC.button }
+            TestRectangle { color: extColors_inverseDef.activeC.buttonText }
+            TestRectangle { color: extColors_inverseDef.activeC.highlight }
+            TestRectangle { color: extColors_inverseDef.activeC.highlightedText }
+            TestRectangle { color: extColors_inverseDef.activeC.light }
+            TestRectangle { color: extColors_inverseDef.activeC.midlight }
+            TestRectangle { color: extColors_inverseDef.activeC.mid }
+            TestRectangle { color: extColors_inverseDef.activeC.dark }
+            TestRectangle { color: extColors_inverseDef.activeC.shadow }
+
+            TestRectangle { Label { text: extColors_inverseDef.schemeChoice; font.italic: true; anchors.centerIn: parent } }
+            TestRectangle { Label { text: "inactive"; anchors.centerIn: parent } }
+            TestRectangle { color: extColors_inverseDef.inactiveC.base }
+            TestRectangle { color: extColors_inverseDef.inactiveC.alternateBase }
+            TestRectangle { color: extColors_inverseDef.inactiveC.text }
+            TestRectangle { color: extColors_inverseDef.inactiveC.window }
+            TestRectangle { color: extColors_inverseDef.inactiveC.windowText }
+            TestRectangle { color: extColors_inverseDef.inactiveC.button }
+            TestRectangle { color: extColors_inverseDef.inactiveC.buttonText }
+            TestRectangle { color: extColors_inverseDef.inactiveC.highlight }
+            TestRectangle { color: extColors_inverseDef.inactiveC.highlightedText }
+            TestRectangle { color: extColors_inverseDef.inactiveC.light }
+            TestRectangle { color: extColors_inverseDef.inactiveC.midlight }
+            TestRectangle { color: extColors_inverseDef.inactiveC.mid }
+            TestRectangle { color: extColors_inverseDef.inactiveC.dark }
+            TestRectangle { color: extColors_inverseDef.inactiveC.shadow }
+
+            TestRectangle {}
+            TestRectangle { Label { text: "disabled"; anchors.centerIn: parent } }
+            TestRectangle { color: extColors_inverseDef.disabledC.base }
+            TestRectangle { color: extColors_inverseDef.disabledC.alternateBase }
+            TestRectangle { color: extColors_inverseDef.disabledC.text }
+            TestRectangle { color: extColors_inverseDef.disabledC.window }
+            TestRectangle { color: extColors_inverseDef.disabledC.windowText }
+            TestRectangle { color: extColors_inverseDef.disabledC.button }
+            TestRectangle { color: extColors_inverseDef.disabledC.buttonText }
+            TestRectangle { color: extColors_inverseDef.disabledC.highlight }
+            TestRectangle { color: extColors_inverseDef.disabledC.highlightedText }
+            TestRectangle { color: extColors_inverseDef.disabledC.light }
+            TestRectangle { color: extColors_inverseDef.disabledC.midlight }
+            TestRectangle { color: extColors_inverseDef.disabledC.mid }
+            TestRectangle { color: extColors_inverseDef.disabledC.dark }
+            TestRectangle { color: extColors_inverseDef.disabledC.shadow }
 
 
             //####################################################################################################################

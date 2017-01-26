@@ -125,6 +125,9 @@ Item {
         },
 
         CopyPasteTemplate {
+        },
+
+        Inverse {
         }
     ] // states
 }

@@ -9,13 +9,14 @@ GroupBox {
 
     id: control
 
-    padding: extSpacing.space2
+    padding: extSpacing.space3
     topPadding: extSpacing.charLikeHeight / 2
 
     label: Label_ {
         x: extSpacing.space2
         anchors.verticalCenter: rect.top
         text: control.title
+        opacity: 1.0 // fix for a disabled group box (the frame would draw over text if text get's opacity lower 1.0)
         background:  Pane_ {
             alternateColor: control.alternateColor
         }

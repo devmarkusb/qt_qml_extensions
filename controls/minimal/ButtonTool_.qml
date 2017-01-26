@@ -21,8 +21,8 @@ Button {
 
     hoverEnabled: true
 
-    width: squareSideLength
-    height: width
+    implicitWidth: squareSideLength
+    implicitHeight: width
 
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
 

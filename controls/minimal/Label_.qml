@@ -12,7 +12,7 @@ QC2.Label_ {
     font: extFont.normal
     color: {
         if (isSpecial)
-            enabled ? extColors.activeC.highlightedText : extColors.disabledC.highlightedText
+            enabled ? extColors.activeC.highlightedText : extColors.inactiveC.highlightedText
         else
             enabled ? extColors.activeC.text : extColors.disabledC.text
     }

@@ -26,7 +26,7 @@ Rectangle {
                 if (isSpecial)
                     ButtonProp.obtainButtonColor(control, Qt.lighter(extColors.activeC.highlight), extColors.activeC.midlight, Qt.darker(extColors.activeC.highlight), extColors.disabledC.button)
                 else
-                    ButtonProp.obtainButtonColor(control, extColors.activeC.midlight, extColors.activeC.light, extColors.activeC.mid, extColors.disabledC.button)
+                    ButtonProp.obtainButtonColor(control, extColors.activeC.midlight, extColors.activeC.light, extColors.activeC.mid, extColors.disabledC.light)
             }
         }
     }

@@ -9,5 +9,6 @@ QC2.ToolTip_ {
 
     contentItem: Label_ {
         text: control.text
+        color: "black" // we don't change the background color, so let's assume ToolTips will always be the same style
     }
 }
