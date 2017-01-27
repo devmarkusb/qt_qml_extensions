@@ -1,6 +1,7 @@
 import "impl"
 import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
+import QtGraphicalEffects 1.0
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 
@@ -10,6 +11,7 @@ Button {
     /** More precisely the 'highlight' color from the current color scheme is used.*/
     property bool isSpecial: false
     property alias imageSource: img.source
+    property bool colorOverlayActive: false
 
 
     id: control
@@ -40,6 +42,12 @@ Button {
             sourceSize.height: height
 
             opacity: ControlProp.obtainDisablingOpacity(control.enabled)
+            ColorOverlay {
+                anchors.fill: img
+                source: img
+                color: extColors.activeC.text
+                visible: colorOverlayActive
+            }
         }
 
         Label_ {

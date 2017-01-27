@@ -12,6 +12,7 @@ Button {
     property bool isSpecial: false
     property alias imageSource: img.source
     property real squareSideLength: cfgSingleton.sqButtonSideLength
+    property bool colorOverlayActive: true
 
 
     id: control
@@ -39,6 +40,7 @@ Button {
             anchors.fill: img
             source: img
             color: extColors.activeC.text
+            visible: colorOverlayActive
         }
     }
 

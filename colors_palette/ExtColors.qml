@@ -128,6 +128,9 @@ Item {
         },
 
         Inverse {
+        },
+
+        Dark {
         }
     ] // states
 }

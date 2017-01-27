@@ -1,12 +1,10 @@
+import "../_shared/impl/obtainControlProps.js" as ControlProp
 import "impl"
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 
 
 Drawer {
-    property bool alternateColor: false
-
-
     id: control
 
     font: extFont.normal
@@ -15,5 +13,6 @@ Drawer {
 
     background: PaneBackground {
         controlEnabled: true
+        color: ControlProp.obtainWindowColor(control.enabled)
     }
 }

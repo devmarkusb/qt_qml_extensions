@@ -42,11 +42,11 @@ QC2.TabButton_ {
         gradient: Gradient {
             GradientStop {
                 position: 0.0
-                color: ButtonProp.obtainButtonColor(control, extColors.activeC.mid, extColors.activeC.mid, extColors.activeC.button, extColors.disabledC.midlight)
+                color: ButtonProp.obtainButtonColor(control, extColors.activeC.mid, extColors.activeC.mid, extColors.activeC.alternateBase, extColors.disabledC.midlight)
             }
             GradientStop {
                 position: 1.0
-                color: ButtonProp.obtainButtonColor(control, extColors.activeC.midlight, extColors.activeC.light, extColors.activeC.light, extColors.disabledC.button)
+                color: ButtonProp.obtainButtonColor(control, extColors.activeC.midlight, extColors.activeC.light, extColors.activeC.base, extColors.disabledC.button)
             }
         }
 

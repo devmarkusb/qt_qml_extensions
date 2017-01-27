@@ -22,7 +22,7 @@ ApplicationWindow_ {
         id: extColors // don't change this specifier!
         schemeChoice: "def"
 //        schemeChoice: "inverseDef"
-//        schemeChoice: "purpleGreen"
+//        schemeChoice: "dark"
     }
 
     ExtFont {
@@ -706,6 +706,31 @@ ApplicationWindow_ {
 
                     ToolTip_ {
                         text: "Other than that, I'm just a yellow rectangle :)"
+                    }
+                }
+            } // TestHelperBox
+
+            TestHelperBox {
+                title: "alternateBase color"
+                Row {
+                    anchors.fill: parent
+                    Rectangle {
+                        color: extColors.activeC.base
+                        height: parent.height
+                        width: parent.width / 2
+                        Label_ {
+                            anchors.centerIn: parent
+                            text: "base active"
+                        }
+                    }
+                    Rectangle {
+                        color: extColors.activeC.alternateBase
+                        height: parent.height
+                        width: parent.width / 2
+                        Label_ {
+                            anchors.centerIn: parent
+                            text: "altBase active"
+                        }
                     }
                 }
             } // TestHelperBox

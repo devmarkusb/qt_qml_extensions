@@ -54,7 +54,7 @@ GroupBox_ {
                        ? extColors.activeC.mid
                        : ListDelegateProp.obtainListDelegateColor(control.enabled, mousearea.containsMouse,
                                                                   mousearea.pressed,
-                                                                  extColors.activeC.base, extColors.activeC.midlight,
+                                                                  extColors.activeC.base, extColors.activeC.alternateBase,
                                                                   extColors.activeC.mid, extColors.activeC.base)
                 MouseArea {
                     id: mousearea

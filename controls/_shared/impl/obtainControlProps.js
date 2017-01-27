@@ -32,6 +32,10 @@ function obtainBorderColor(enabled) {
     return enabled ? extColors.activeC.shadow : extColors.disabledC.shadow;
 }
 
+function obtainWindowColor(enabled) {
+    return enabled ? extColors.activeC.window : extColors.disabledC.window;
+}
+
 
 //####################################################################################################################
 // font

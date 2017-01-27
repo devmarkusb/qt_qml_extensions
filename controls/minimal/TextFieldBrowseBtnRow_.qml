@@ -37,6 +37,7 @@ Item {
             id: browseBtn
             squareSideLength: textfield.height
             imageSource: "../_shared/impl/open.png"
+            colorOverlayActive: false
             anchors.verticalCenter: textfield.verticalCenter
             onClicked: {
                 selectDialog.open()
