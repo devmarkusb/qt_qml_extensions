@@ -73,22 +73,31 @@ QC2.ComboBox_ {
             target: control
             onPressedChanged: canvas.requestPaint()
         }
+        Connections {
+            target: extColors
+            onTextActiveColorChanged: canvas.requestPaint()
+        }
 
         onPaint: {
             var ctx = getContext("2d");
             ctx.reset();
+
+            // strange enough: only one (the last) assignment to fillStyle
+            // has effect for the whole scope (How do you draw differently colored
+            // shapes?!)
+            ctx.fillStyle = control.enabled ? extColors.activeC.text : extColors.disabledC.text;
+            ctx.strokeStyle = ctx.fillStyle;
+
             ctx.moveTo(0, height / 2 + 2);
             ctx.lineTo(width, height / 2 + 2);
             ctx.lineTo(width / 2, height - 2);
             ctx.closePath();
-            ctx.fillStyle = extColors.activeC.text;
             ctx.fill();
 
             ctx.moveTo(0, height / 2 - 2);
             ctx.lineTo(width, height / 2 - 2);
             ctx.lineTo(width / 2, 2);
             ctx.closePath();
-            ctx.fillStyle = extColors.activeC.text;
             ctx.fill();
         }
     }

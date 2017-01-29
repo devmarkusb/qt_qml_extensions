@@ -22,7 +22,6 @@ ApplicationWindow_ {
         id: extColors // don't change this specifier!
         schemeChoice: "def"
 //        schemeChoice: "inverseDef"
-//        schemeChoice: "dark"
     }
 
     ExtFont {

@@ -47,6 +47,8 @@ Item {
     readonly property alias inactiveC: inactive_impl
     readonly property alias disabledC: disabled_impl
 
+    signal textActiveColorChanged()
+
 
     QtObject {
         id: active_impl
@@ -68,6 +70,10 @@ Item {
 
         property real controlOptionalOpacity: 1.0
         property real controlOpacity: 1.0
+
+        onTextChanged: {
+            textActiveColorChanged()
+        }
     }
 
     QtObject {
