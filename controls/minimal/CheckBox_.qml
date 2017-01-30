@@ -49,12 +49,13 @@ CheckBox {
             anchors.fill: parent
             anchors.margins: extSpacing.pix2space
             source: "../_shared/impl/checkmark.png"
-            ColorOverlay {
-                anchors.fill: img
-                source: img
-                color: extColors.activeC.text
-            }
             opacity: ControlProp.obtainDisablingOpacity(control.enabled)
+        }
+
+        ColorOverlay {
+            anchors.fill: img
+            source: img
+            color: extColors.activeC.text
         }
     }
 

@@ -29,19 +29,20 @@ Button {
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
 
     contentItem: Image {
-        id: img
+            id: img
 
-        anchors.fill: control
-        sourceSize.width: width
-        sourceSize.height: height
+            anchors.fill: control
+            sourceSize.width: width
+            sourceSize.height: height
 
-        opacity: ControlProp.obtainDisablingOpacity(control.enabled)
-        ColorOverlay {
-            anchors.fill: img
-            source: img
-            color: extColors.activeC.text
-            visible: colorOverlayActive
-        }
+            opacity: ControlProp.obtainDisablingOpacity(control.enabled)
+    }
+
+    ColorOverlay {
+        anchors.fill: img
+        source: img
+        color: extColors.activeC.text
+        visible: colorOverlayActive
     }
 
     background: ButtonBackground {

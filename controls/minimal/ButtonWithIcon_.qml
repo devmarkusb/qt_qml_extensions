@@ -42,12 +42,13 @@ Button {
             sourceSize.height: height
 
             opacity: ControlProp.obtainDisablingOpacity(control.enabled)
-            ColorOverlay {
-                anchors.fill: img
-                source: img
-                color: extColors.activeC.text
-                visible: colorOverlayActive
-            }
+        }
+
+        ColorOverlay {
+            anchors.fill: img
+            source: img
+            color: extColors.activeC.text
+            visible: colorOverlayActive
         }
 
         Label_ {
