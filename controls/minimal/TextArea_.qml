@@ -1,3 +1,16 @@
+//! In case you want a scrollable TextArea_, you need to type something like
+/**
+    Flickable {
+        anchors.fill: parent
+        TextArea.flickable: TextArea_ {
+            anchors.fill: parent
+        }
+        ScrollBar.vertical: ScrollBar_ {}
+        ScrollBar.horizontal: ScrollBar_ {}
+    }
+
+  */
+
 import "impl"
 import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
@@ -5,7 +18,7 @@ import "../QC2_def" as QC2
 import QtQuick 2.7
 
 
-QC2.TextField_ {
+QC2.TextArea_ {
     id: control
 
     CfgControls {
@@ -20,11 +33,6 @@ QC2.TextField_ {
 
     selectionColor: control.enabled ? extColors.activeC.highlight : extColors.disabledC.highlight
     selectedTextColor : control.enabled ? extColors.activeC.highlightedText : extColors.disabledC.highlightedText
-
-    selectByMouse: true
-
-    implicitWidth: cfgSingleton.wTextFieldWidth
-    implicitHeight: cfgSingleton.hTextFieldHeight
 
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
 

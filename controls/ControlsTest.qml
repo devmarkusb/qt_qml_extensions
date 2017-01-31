@@ -3,7 +3,7 @@ import "../colors_palette"
 import "../fonts"
 import "../layout"
 import QtQuick 2.7
-import QtQuick.Controls 1.4
+import QtQuick.Controls 1.4 as QC1
 import QtQuick.Controls 2.0
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.3
@@ -731,6 +731,21 @@ ApplicationWindow_ {
                             text: "altBase active"
                         }
                     }
+                }
+            } // TestHelperBox
+
+            TestHelperBox {
+                title: "TextArea_"
+                Flickable {
+                    anchors.fill: parent
+                    TextArea.flickable: TextArea_ {
+                        anchors.fill: parent
+                        wrapMode: TextArea.Wrap
+                        selectByMouse: true
+                        text: "some text...\non multiple lines\na... wrap wrap wrap wrap wrap wrap wrap wrap wrap wrapwrap wrap wrap wrap\nb...\n\nc...\nd\ne\nf\ng"
+                    }
+                    ScrollBar.vertical: ScrollBar_ {}
+                    ScrollBar.horizontal: ScrollBar_ {}
                 }
             } // TestHelperBox
         } // Grid
