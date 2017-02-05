@@ -738,14 +738,15 @@ ApplicationWindow_ {
                 title: "TextArea_"
                 Flickable {
                     anchors.fill: parent
+                    clip: true
+                    ScrollBar.vertical: ScrollBar_ {}
+                    ScrollBar.horizontal: ScrollBar_ {}
                     TextArea.flickable: TextArea_ {
                         anchors.fill: parent
                         wrapMode: TextArea.Wrap
                         selectByMouse: true
                         text: "some text...\non multiple lines\na... wrap wrap wrap wrap wrap wrap wrap wrap wrap wrapwrap wrap wrap wrap\nb...\n\nc...\nd\ne\nf\ng"
                     }
-                    ScrollBar.vertical: ScrollBar_ {}
-                    ScrollBar.horizontal: ScrollBar_ {}
                 }
             } // TestHelperBox
         } // Grid

@@ -2,11 +2,12 @@
 /**
     Flickable {
         anchors.fill: parent
+        clip: true
+        ScrollBar.vertical: ScrollBar_ {}
+        ScrollBar.horizontal: ScrollBar_ {}
         TextArea.flickable: TextArea_ {
             anchors.fill: parent
         }
-        ScrollBar.vertical: ScrollBar_ {}
-        ScrollBar.horizontal: ScrollBar_ {}
     }
 
   */
@@ -30,6 +31,8 @@ QC2.TextArea_ {
     // In text fields we regularly get strange artifacts when using native rendering on Windows.
     // This is not being observed for labels.
     renderType: Text.QtRendering//ControlProp.obtainRenderType()
+    rightPadding: cfgSingleton.wScrollBarWidth * 1.5
+    bottomPadding: rightPadding
 
     selectionColor: control.enabled ? extColors.activeC.highlight : extColors.disabledC.highlight
     selectedTextColor : control.enabled ? extColors.activeC.highlightedText : extColors.disabledC.highlightedText
