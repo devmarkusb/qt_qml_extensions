@@ -17,4 +17,11 @@ Label {
             horizontalAlignment = bak
         }
     }
+
+    onLinkActivated: Qt.openUrlExternally(link)
+    MouseArea {
+        anchors.fill: parent
+        cursorShape: control.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+        acceptedButtons: Qt.NoButton
+    }
 }
