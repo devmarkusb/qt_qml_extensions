@@ -56,6 +56,7 @@ CheckBox {
             anchors.fill: img
             source: img
             color: extColors.activeC.text
+            visible: control.checked
         }
     }
 
