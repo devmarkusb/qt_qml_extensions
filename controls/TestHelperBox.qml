@@ -1,5 +1,5 @@
 import "minimal"
-import QtQuick 2.7
+import QtQuick 2.8
 
 
 GroupBox_ {

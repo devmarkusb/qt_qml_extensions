@@ -5,8 +5,8 @@ import "../_shared/impl"
 import "../_shared/impl/obtainButtonProps.js" as ButtonProp
 import "../_shared/impl/obtainControlProps.js" as ControlProp
 import "../_shared/impl/obtainListDelegateProps.js" as ListDelegateProp
-import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick 2.8
+import QtQuick.Controls 2.1
 
 
 QC2.ComboBox_ {

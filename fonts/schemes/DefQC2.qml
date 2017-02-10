@@ -1,5 +1,5 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.0 as QC2
+import QtQuick 2.8
+import QtQuick.Controls 2.1 as QC2
 
 
 QC2.Label {

@@ -1,8 +1,8 @@
 //todo port to QC2, styling works a bit different
 import "impl"
 import "impl/obtainButtonProps.js" as ButtonProp
-import QtQuick 2.7
-import QtQuick.Controls 1.4
+import QtQuick 2.8
+import QtQuick.Controls 1.5
 import QtQuick.Controls.Styles 1.4
 
 

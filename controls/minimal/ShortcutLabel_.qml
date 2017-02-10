@@ -1,5 +1,5 @@
 import "../_shared/impl/obtainControlProps.js" as ControlProp
-import QtQuick 2.7
+import QtQuick 2.8
 
 
 Label_ {

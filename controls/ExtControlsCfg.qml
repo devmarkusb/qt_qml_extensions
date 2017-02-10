@@ -9,7 +9,7 @@
     extControlsCfg.tooltipsEnabled from everywhere below.
     Important: stick to the specifier 'extControlsCfg' as it is also used by the library itself.
 */
-import QtQuick 2.7
+import QtQuick 2.8
 
 
 QtObject {

@@ -4,7 +4,7 @@
 //! and - if there is a deviation - the measurement when viewed in an app.
 //! So far on Windows its only the alternateBase colors that show such a deviation.
 import "../impl"
-import QtQuick 2.7
+import QtQuick 2.8
 
 
 State {

@@ -8,7 +8,7 @@
     Then you can refer to your global spacings via e.g. extSpacing.space3 from everywhere below.
     Important: stick to the specifier 'extSpacing' as it is also used by the library itself.
 */
-import QtQuick 2.7
+import QtQuick 2.8
 
 
 QtObject {

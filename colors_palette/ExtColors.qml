@@ -13,7 +13,7 @@
 
 import "impl"
 import "schemes"
-import QtQuick 2.7
+import QtQuick 2.8
 
 
 Item {

@@ -16,7 +16,7 @@ import "impl"
 import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
 import "../QC2_def" as QC2
-import QtQuick 2.7
+import QtQuick 2.8
 
 
 QC2.TextArea_ {

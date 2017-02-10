@@ -2,9 +2,9 @@ import "minimal"
 import "../colors_palette"
 import "../fonts"
 import "../layout"
-import QtQuick 2.7
-import QtQuick.Controls 1.4 as QC1
-import QtQuick.Controls 2.0
+import QtQuick 2.8
+import QtQuick.Controls 1.5 as QC1
+import QtQuick.Controls 2.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2

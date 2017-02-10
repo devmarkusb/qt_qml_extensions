@@ -1,4 +1,4 @@
-import QtQuick.Controls 1.4
+import QtQuick.Controls 1.5
 
 
 ComboBox {
