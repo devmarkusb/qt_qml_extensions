@@ -1,5 +1,7 @@
+#include "Toolib/PPDefs/MSVC/SUPPRESS_WARNINGS_EXTERNAL_BEGIN"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "Toolib/PPDefs/MSVC/SUPPRESS_WARNINGS_EXTERNAL_END"
 
 
 int main(int argc, char* argv[])

@@ -1,0 +1,6 @@
+[submodule "colors_palette/ExtColorsTestApp/sdks/googletest"]
+	path = colors_palette/ExtColorsTestApp/sdks/googletest
+	url = d:/projects/git/sdks/unit_test/googletest/
+[submodule "colors_palette/ExtColorsTestApp/sdks/ToolsFL/tooBuildEnv"]
+	path = colors_palette/ExtColorsTestApp/sdks/ToolsFL/tooBuildEnv
+	url = d:/projects/git/libs/ToolsFL/tooBuildEnv/
