@@ -1,3 +1,4 @@
+//! Just an experimenting scheme... still ugly looking.
 import "../impl"
 import QtQuick 2.8
 

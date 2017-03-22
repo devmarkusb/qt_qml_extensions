@@ -1,3 +1,5 @@
+//! Note: The colors in comments are the inverted original Windows system colors on which the
+//! dark scheme design was based roughly.
 import "../impl"
 import QtQuick 2.8
 
@@ -13,7 +15,7 @@ State {
         button: "#1E1E1E"//0F0F0F
         buttonText: "#DCDCDC"//FFFFFF
         dark: "#5F5F5F"//5F5F5F
-        highlight: "#0078D7"//FF872F
+        highlight: "#3399FF"//CC6600
         highlightedText: "#FFFFFF"//000000
         light: "#000000"//000000
         mid: "#4F4F4F"//5F5F5F
@@ -57,7 +59,7 @@ State {
         button: "#1E1E1E"//0F0F0F
         buttonText: "#878787"//878787
         dark: "#5F5F5F"//5F5F5F
-        highlight: "#0078D7"//FF872F
+        highlight: "#3399FF"//CC6600
         highlightedText: "#FFFFFF"//000000
         light: "#000000"//000000
         mid: "#4F4F4F"//5F5F5F

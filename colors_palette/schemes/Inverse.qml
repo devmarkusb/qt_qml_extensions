@@ -1,3 +1,5 @@
+//! Note: The colors in comments are the original Windows system colors (as measured in the color test app)
+//! of which the inverses were taken.
 import "../impl"
 import QtQuick 2.8
 
@@ -13,7 +15,7 @@ State {
         button: "#0F0F0F"//F0F0F0
         buttonText: "#FFFFFF"//000000
         dark: "#5F5F5F"//A0A0A0
-        highlight: "#FF872F"//0078D7
+        highlight: "#CC6600"//3399FF
         highlightedText: "#000000"//FFFFFF
         light: "#000000"//FFFFFF
         mid: "#5F5F5F"//A0A0A0
@@ -57,7 +59,7 @@ State {
         button: "#0F0F0F"//F0F0F0
         buttonText: "#878787"//787878
         dark: "#5F5F5F"//A0A0A0
-        highlight: "#FF872F"//0078D7
+        highlight: "#CC6600"//3399FF
         highlightedText: "#000000"//FFFFFF
         light: "#000000"//FFFFFF
         mid: "#5F5F5F"//A0A0A0

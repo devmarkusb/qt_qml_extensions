@@ -1,7 +1,7 @@
 //! System default colors.
 //! Important observation: Some colors deviate when viewed with qmlscene compared to a real app environment.
-//! The commented color codes concluding the lines are the colors measured when viewed in qmlscene in first place,
-//! and - if there is a deviation - the measurement when viewed in an app.
+//! The commented color codes concluding the lines are the Windows system colors measured when viewed in qmlscene
+//! in first place, and - if there is a deviation - the measurement when viewed in an app.
 //! So far on Windows its only the alternateBase colors that show such a deviation.
 import "../impl"
 import QtQuick 2.8
@@ -18,7 +18,7 @@ State {
         button: SysPalColorsActive.button//F0F0F0
         buttonText: SysPalColorsActive.buttonText//000000
         dark: SysPalColorsActive.dark//A0A0A0
-        highlight: SysPalColorsActive.highlight//0078D7
+        highlight: SysPalColorsActive.highlight//3399FF
         highlightedText: SysPalColorsActive.highlightedText//FFFFFF
         light: SysPalColorsActive.light//FFFFFF
         mid: SysPalColorsActive.mid//A0A0A0
@@ -62,7 +62,7 @@ State {
         button: SysPalColorsDisabled.button//F0F0F0
         buttonText: SysPalColorsDisabled.buttonText//787878
         dark: SysPalColorsDisabled.dark//A0A0A0
-        highlight: SysPalColorsDisabled.highlight//0078D7
+        highlight: SysPalColorsDisabled.highlight//3399FF
         highlightedText: SysPalColorsDisabled.highlightedText//FFFFFF
         light: SysPalColorsDisabled.light//FFFFFF
         mid: SysPalColorsDisabled.mid//A0A0A0
