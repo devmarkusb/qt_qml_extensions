@@ -18,7 +18,7 @@ ScrollBar {
         implicitWidth: cfgSingleton.wScrollBarWidth
         implicitHeight: implicitWidth
         radius: cfgSingleton.rCommonControlRadius
-        color: ButtonProp.obtainPressableControlColor(control, extColors.activeC.mid, extColors.activeC.midlight, extColors.activeC.shadow, extColors.disabledC.midlight)
+        color: ButtonProp.obtainPressableControlColor(control, extColors.activeC.mid, extColors.activeC.shadow, extColors.activeC.shadow, extColors.disabledC.midlight)
         visible: control.size < 1.0 ? true : false
     }
 }
