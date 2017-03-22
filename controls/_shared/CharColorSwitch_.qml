@@ -38,7 +38,7 @@ Switch {
                 Label {
                     elide: Text.ElideRight
                     font.family: extFont.normal.family
-                    font.pointSize: Math.max(extSpacing.charLikeHeight, control.height)
+                    font.pixelSize: control.height
                     color: charColor
                     anchors.centerIn: parent
                     anchors.verticalCenterOffset: charYcorr
@@ -52,7 +52,7 @@ Switch {
                 Label {
                     elide: Text.ElideRight
                     font.family: extFont.normal.family
-                    font.pointSize: Math.max(extSpacing.charLikeHeight, control.height)
+                    font.pixelSize: control.height
                     color: charColor
                     anchors.centerIn: parent
                     anchors.verticalCenterOffset: charYcorr
