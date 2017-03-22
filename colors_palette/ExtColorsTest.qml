@@ -11,6 +11,10 @@ ApplicationWindow {
         schemeChoice: "def"
     }
     ExtColors {
+        id: extColors_bright
+        schemeChoice: "bright"
+    }
+    ExtColors {
         id: extColors_inverseDef
         schemeChoice: "inverseDef"
     }
@@ -128,6 +132,60 @@ ApplicationWindow {
             TestRectangle { color: extColors_def.disabledC.mid }
             TestRectangle { color: extColors_def.disabledC.dark }
             TestRectangle { color: extColors_def.disabledC.shadow }
+
+
+            //####################################################################################################################
+
+            TestRectangle {}
+            TestRectangle { Label { text: "active"; anchors.centerIn: parent } }
+            TestRectangle { color: extColors_bright.activeC.base }
+            TestRectangle { color: extColors_bright.activeC.alternateBase }
+            TestRectangle { color: extColors_bright.activeC.text }
+            TestRectangle { color: extColors_bright.activeC.window }
+            TestRectangle { color: extColors_bright.activeC.windowText }
+            TestRectangle { color: extColors_bright.activeC.button }
+            TestRectangle { color: extColors_bright.activeC.buttonText }
+            TestRectangle { color: extColors_bright.activeC.highlight }
+            TestRectangle { color: extColors_bright.activeC.highlightedText }
+            TestRectangle { color: extColors_bright.activeC.light }
+            TestRectangle { color: extColors_bright.activeC.midlight }
+            TestRectangle { color: extColors_bright.activeC.mid }
+            TestRectangle { color: extColors_bright.activeC.dark }
+            TestRectangle { color: extColors_bright.activeC.shadow }
+
+            TestRectangle { Label { text: extColors_bright.schemeChoice; font.italic: true; anchors.centerIn: parent } }
+            TestRectangle { Label { text: "inactive"; anchors.centerIn: parent } }
+            TestRectangle { color: extColors_bright.inactiveC.base }
+            TestRectangle { color: extColors_bright.inactiveC.alternateBase }
+            TestRectangle { color: extColors_bright.inactiveC.text }
+            TestRectangle { color: extColors_bright.inactiveC.window }
+            TestRectangle { color: extColors_bright.inactiveC.windowText }
+            TestRectangle { color: extColors_bright.inactiveC.button }
+            TestRectangle { color: extColors_bright.inactiveC.buttonText }
+            TestRectangle { color: extColors_bright.inactiveC.highlight }
+            TestRectangle { color: extColors_bright.inactiveC.highlightedText }
+            TestRectangle { color: extColors_bright.inactiveC.light }
+            TestRectangle { color: extColors_bright.inactiveC.midlight }
+            TestRectangle { color: extColors_bright.inactiveC.mid }
+            TestRectangle { color: extColors_bright.inactiveC.dark }
+            TestRectangle { color: extColors_bright.inactiveC.shadow }
+
+            TestRectangle {}
+            TestRectangle { Label { text: "disabled"; anchors.centerIn: parent } }
+            TestRectangle { color: extColors_bright.disabledC.base }
+            TestRectangle { color: extColors_bright.disabledC.alternateBase }
+            TestRectangle { color: extColors_bright.disabledC.text }
+            TestRectangle { color: extColors_bright.disabledC.window }
+            TestRectangle { color: extColors_bright.disabledC.windowText }
+            TestRectangle { color: extColors_bright.disabledC.button }
+            TestRectangle { color: extColors_bright.disabledC.buttonText }
+            TestRectangle { color: extColors_bright.disabledC.highlight }
+            TestRectangle { color: extColors_bright.disabledC.highlightedText }
+            TestRectangle { color: extColors_bright.disabledC.light }
+            TestRectangle { color: extColors_bright.disabledC.midlight }
+            TestRectangle { color: extColors_bright.disabledC.mid }
+            TestRectangle { color: extColors_bright.disabledC.dark }
+            TestRectangle { color: extColors_bright.disabledC.shadow }
 
 
             //####################################################################################################################

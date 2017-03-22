@@ -127,16 +127,16 @@ Item {
         Def {
         },
 
-        PurpleGreen {
-        },
-
-        CopyPasteTemplate {
+        Bright {
         },
 
         Inverse {
         },
 
         Dark {
+        },
+
+        PurpleGreen {
         }
     ] // states
 }

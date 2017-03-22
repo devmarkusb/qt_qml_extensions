@@ -7,7 +7,7 @@
         <file>../../impl/ColorsInactive.qml</file>
         <file>../../impl/qmldir</file>
         <file>../../impl/TestRectangle.qml</file>
-        <file>../../schemes/CopyPasteTemplate.qml</file>
+        <file>../../schemes/Bright.qml</file>
         <file>../../schemes/Dark.qml</file>
         <file>../../schemes/Def.qml</file>
         <file>../../schemes/Inverse.qml</file>
