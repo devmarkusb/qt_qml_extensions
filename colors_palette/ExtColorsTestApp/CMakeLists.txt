@@ -15,7 +15,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 include(buildnr.cmake)
-project(ExtColorsTestApp VERSION 0.1.0.${BUILD_NR})
+project(ExtColorsTestApp VERSION 0.1.${BUILD_NR}.0)
 message(STATUS "project version: " ${PROJECT_VERSION})
 set(TargetAppName ${PROJECT_NAME})
 
