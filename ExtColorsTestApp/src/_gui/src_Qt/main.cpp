@@ -9,6 +9,6 @@ int main(int argc, char* argv[])
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     
-    engine.load(QUrl("qrc:/../../ExtColorsTest.qml"));
+    engine.load(QUrl("qrc:/../../colors_palette/ExtColorsTest.qml"));
     return app.exec();
 }

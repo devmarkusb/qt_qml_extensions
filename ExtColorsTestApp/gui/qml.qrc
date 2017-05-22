@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="../../">
+        <file>../../colors_palette/ExtColorsTest.qml</file>
+        <file>../../colors_palette/ExtColors.qml</file>
+        <file>../../colors_palette/impl/ColorsActive.qml</file>
+        <file>../../colors_palette/impl/ColorsDisabled.qml</file>
+        <file>../../colors_palette/impl/ColorsInactive.qml</file>
+        <file>../../colors_palette/impl/qmldir</file>
+        <file>../../colors_palette/impl/TestRectangle.qml</file>
+        <file>../../colors_palette/schemes/Bright.qml</file>
+        <file>../../colors_palette/schemes/Dark.qml</file>
+        <file>../../colors_palette/schemes/Def.qml</file>
+        <file>../../colors_palette/schemes/Inverse.qml</file>
+        <file>../../colors_palette/schemes/PurpleGreen.qml</file>
+    </qresource>
+</RCC>
