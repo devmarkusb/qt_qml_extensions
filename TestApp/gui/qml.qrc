@@ -113,5 +113,6 @@
         <file>../../layout/impl/TestRectangle.qml</file>
 
         <file>../../TestApp/gui/AppWindow.qml</file>
+        <file>../../TestApp/gui/dummydata/cfgModel.qml</file>
     </qresource>
 </RCC>

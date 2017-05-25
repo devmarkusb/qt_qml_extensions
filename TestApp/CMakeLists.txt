@@ -38,6 +38,7 @@ endif ()
 qt5_add_resources(TargetAppName_RESOURCES gui/qml.qrc)
 
 add_executable(${TargetAppName}
+    src/_gui/src_Qt/cfg_model.h
     src/_gui/src_Qt/main.cpp
     ${TargetAppName_RESOURCES}
 )
