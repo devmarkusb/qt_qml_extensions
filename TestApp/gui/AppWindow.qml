@@ -39,7 +39,7 @@ ApplicationWindow {
     visible: true
 
     property variant win
-    property string qrcPrefixIfNeeded: cfgModel.isGUIonlyMode ? "" : "qrc:/"
+    property string qrcPrefixIfNeeded: cfgModel.isGUIonlyMode ? "../../" : "qrc:/"
 
     Component.onCompleted: {
     }
@@ -49,7 +49,7 @@ ApplicationWindow {
             text: "Controls"
 
             onClicked: {
-                var component = Qt.createComponent(qrcPrefixIfNeeded + "../../controls/ControlsTest.qml");
+                var component = Qt.createComponent(qrcPrefixIfNeeded + "controls/ControlsTest.qml");
                 win = component.createObject(rootAppWindow);
                 win.show();
             }
@@ -59,7 +59,7 @@ ApplicationWindow {
             text: "Layout"
 
             onClicked: {
-                var component = Qt.createComponent(qrcPrefixIfNeeded + "../../layout/ExtLayoutTest.qml");
+                var component = Qt.createComponent(qrcPrefixIfNeeded + "layout/ExtLayoutTest.qml");
                 win = component.createObject(rootAppWindow);
                 win.show();
             }
@@ -69,7 +69,7 @@ ApplicationWindow {
             text: "Colors"
 
             onClicked: {
-                var component = Qt.createComponent(qrcPrefixIfNeeded + "../../colors_palette/ExtColorsTest.qml");
+                var component = Qt.createComponent(qrcPrefixIfNeeded + "colors_palette/ExtColorsTest.qml");
                 win = component.createObject(rootAppWindow);
                 win.show();
             }
@@ -79,7 +79,7 @@ ApplicationWindow {
             text: "Fonts"
 
             onClicked: {
-                var component = Qt.createComponent(qrcPrefixIfNeeded + "../../fonts/ExtFontTest.qml");
+                var component = Qt.createComponent(qrcPrefixIfNeeded + "fonts/ExtFontTest.qml");
                 win = component.createObject(rootAppWindow);
                 win.show();
             }

@@ -35,7 +35,7 @@ else ()
     set(WIN32_ON_OFF_SWITCH "")
 endif ()
 
-qt5_add_resources(TargetAppName_RESOURCES gui/qml.qrc)
+qt5_add_resources(TargetAppName_RESOURCES ../qml.qrc)
 
 add_executable(${TargetAppName}
     src/_gui/src_Qt/cfg_model.h
