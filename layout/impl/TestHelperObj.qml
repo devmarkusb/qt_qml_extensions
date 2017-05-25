@@ -7,6 +7,6 @@ Rectangle {
 
 
     color: "darkblue"
-    width: 10
+    width: 10 * extSpacing.scaleFactor
     height: width
 }
