@@ -36,9 +36,6 @@ Item {
         Mistral {
             id: mistralSingleton
         }
-        CopyPasteTemplate {
-            id: copyPasteTemplateSingleton
-        }
 
         states: [
             State {
@@ -46,6 +43,7 @@ Item {
                 PropertyChanges {
                     target: text
                     font: defqc1Singleton.font
+                    font.pointSize: defqc1Singleton.font.pointSize * extScale.factor
                 }
             },
             State {
@@ -53,6 +51,7 @@ Item {
                 PropertyChanges {
                     target: text
                     font: defqc2Singleton.font
+                    font.pointSize: defqc2Singleton.font.pointSize * extScale.factor
                 }
             },
             State {
@@ -60,6 +59,7 @@ Item {
                 PropertyChanges {
                     target: text
                     font: defSingleton.font
+                    font.pointSize: defSingleton.font.pointSize * extScale.factor
                 }
             },
             State {
@@ -67,13 +67,7 @@ Item {
                 PropertyChanges {
                     target: text
                     font: mistralSingleton.font
-                }
-            },
-            State {
-                name: "copyPasteTemplate"
-                PropertyChanges {
-                    target: text
-                    font: copyPasteTemplateSingleton.font
+                    font.pointSize: mistralSingleton.font.pointSize * extScale.factor
                 }
             }
         ] // states

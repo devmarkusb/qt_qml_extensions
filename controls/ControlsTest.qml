@@ -33,6 +33,10 @@ ApplicationWindow_ {
         id: extFontMetrics // don't change this specifier!
     }
 
+    ExtScale {
+        id: extScale // don't change this specifier!
+    }
+
     ExtSpacing {
         id: extSpacing // don't change this specifier!
     }
@@ -284,23 +288,23 @@ ApplicationWindow_ {
                     spacing: extSpacing.space3
                     ButtonTool_ {
                         imageSource: "menu.svg"
-                        squareSideLength: extSpacing.pixlargeIconSq
+                        squareSideLength: extSpacing.wlargeIconSq
                     }
                     ButtonTool_ {
                         imageSource: "menu.svg"
-                        squareSideLength: extSpacing.pixlargeIconSq
+                        squareSideLength: extSpacing.wlargeIconSq
                         enabled: false
                     }
 
                     ButtonTool_ {
                         isSpecial: true
                         imageSource: "menu.svg"
-                        squareSideLength: extSpacing.pixlargeIconSq
+                        squareSideLength: extSpacing.wlargeIconSq
                     }
                     ButtonTool_ {
                         isSpecial: true
                         imageSource: "menu.svg"
-                        squareSideLength: extSpacing.pixlargeIconSq
+                        squareSideLength: extSpacing.wlargeIconSq
                         enabled: false
                     }
                 }

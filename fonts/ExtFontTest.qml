@@ -1,3 +1,4 @@
+import "../layout"
 import "impl"
 import QtQuick 2.8
 import QtQuick.Window 2.2
@@ -27,6 +28,10 @@ Window {
     ExtFont {
         id: extFont_mistral
         schemeChoice: "mistral"
+    }
+
+    ExtScale {
+        id: extScale // don't change this specifier!
     }
 
     width: testGrid.width
@@ -92,7 +97,7 @@ Window {
         QC2.Label { text: exampleText; font.bold: true; renderType: Text.NativeRendering }
         QC2.Label { text: exampleText; font.italic: true; renderType: Text.NativeRendering }
         QC2.Label { text: exampleText; font.underline: true; renderType: Text.NativeRendering }
-        QC2.Label { text: exampleText + " 9"; font.pointSize: 9; renderType: Text.NativeRendering }
+        QC2.Label { text: exampleText + " 8"; font.pointSize: 8; renderType: Text.NativeRendering }
         QC2.Label { text: exampleText + " 12"; font.pointSize: 12; renderType: Text.NativeRendering }
         QC2.Label { text: exampleText + " 24"; font.pointSize: 24; renderType: Text.NativeRendering }
         QC2.Label { text: examplePlayground; font.pointSize: 12; renderType: Text.NativeRendering }

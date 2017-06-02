@@ -101,18 +101,19 @@
         <file>fonts/ExtFontMetrics.qml</file>
         <file>fonts/ExtFontTest.qml</file>
         <file>fonts/impl/TestRectangle.qml</file>
-        <file>fonts/schemes/CopyPasteTemplate.qml</file>
         <file>fonts/schemes/Def.qml</file>
         <file>fonts/schemes/DefQC1.qml</file>
         <file>fonts/schemes/DefQC2.qml</file>
         <file>fonts/schemes/Mistral.qml</file>
         
         <file>layout/ExtLayoutTest.qml</file>
+        <file>layout/ExtScale.qml</file>
         <file>layout/ExtSpacing.qml</file>
         <file>layout/impl/TestHelperObj.qml</file>
         <file>layout/impl/TestRectangle.qml</file>
 
         <file>TestApp/gui/AppWindow.qml</file>
+        <file>TestApp/gui/Draft.qml</file>
         <file>TestApp/gui/dummydata/cfgModel.qml</file>
     </qresource>
 </RCC>

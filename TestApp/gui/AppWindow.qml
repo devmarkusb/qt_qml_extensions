@@ -1,3 +1,4 @@
+import "."
 import "../../colors_palette"
 import "../../controls"
 import "../../fonts"
@@ -8,6 +9,8 @@ import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 
 
+//Draft {
+//}
 ApplicationWindow {
     id: rootAppWindow
 
@@ -23,6 +26,10 @@ ApplicationWindow {
 
     ExtFontMetrics {
         id: extFontMetrics // don't change this specifier!
+    }
+
+    ExtScale {
+        id: extScale // don't change this specifier!
     }
 
     ExtSpacing {
