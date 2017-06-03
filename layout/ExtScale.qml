@@ -42,6 +42,7 @@ Item {
     readonly property bool isPortraitOriented: Screen.orientation === Qt.PortraitOrientation
 
     //! Function set to obtain pixel sizes for input for x, y, width, height, etc, even in a scaling manner.
+    //!@{
     /** Note that (at least on the reference screen) in2p for 100% scaling doesn't yield the exact same result as in2p_nonscaling.
         in2p_nonscaling is better for larger values and in2p is better for smaller ones. Which of course mustn't be taken as a reason
         to choose one over the other. The nonscaling version will e.g. ignore the Windows scale factor, whereas the scaling version doesn't.*/
@@ -76,6 +77,14 @@ Item {
         // an additional calculation step. More understandably the following calculation equals
         // pixels_for_ref_ppi_phys * ppi_phys / refScreen_ppi_phys.
         return pixels_for_96ppi * ppi_phys * ppi_phys / refScreen_ppi_phys / 96.0;
+    }
+    //!@}
+
+    //! Point sizes are likely to yield different pixel sizes on various platforms.
+    //! So far I assume that all agree to understand a point as 1/72 of an inch. Nevertheless, using
+    //! this function whenever dealing with point sizes will limit to one place to change in case.
+    function point2p(pointSize) {
+        return Math.round(pointSize * ppi_phys / 72.0);
     }
 
     //! Applies factor to value.

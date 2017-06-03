@@ -39,10 +39,10 @@ Window {
 
 
     Component.onCompleted: {
-        console.log("defQC1 family: ", extFont_defQC1.normal.family)
-        console.log("defQC2 family: ", extFont_defQC2.normal.family)
-        console.log("def family: ", extFont_def.normal.family)
-        console.log("mistral family: ", extFont_mistral.normal.family)
+        console.log("defQC1 family:", extFont_defQC1.normal.family, "pointSize:", extFont_defQC1.normal.pointSize, "pixelSize:", extFont_defQC1.normal.pixelSize)
+        console.log("defQC2 family:", extFont_defQC2.normal.family, "pointSize:", extFont_defQC2.normal.pointSize, "pixelSize:", extFont_defQC2.normal.pixelSize)
+        console.log("def family:", extFont_def.normal.family, "pointSize:", extFont_def.normal.pointSize, "pixelSize:", extFont_def.normal.pixelSize)
+        console.log("mistral family:", extFont_mistral.normal.family, "pointSize:", extFont_mistral.normal.pointSize, "pixelSize:", extFont_mistral.normal.pixelSize)
     }
 
     Grid {

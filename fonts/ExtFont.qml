@@ -20,6 +20,10 @@ Item {
     property alias normal: text.font
 
 
+    function convert2properPixelSize(pointSize) {
+        return extScale.point2p(pointSize) * extScale.factor;
+    }
+
     Text {
         id: text
         state: schemeChoice
@@ -43,7 +47,7 @@ Item {
                 PropertyChanges {
                     target: text
                     font: defqc1Singleton.font
-                    font.pointSize: defqc1Singleton.font.pointSize * extScale.factor
+                    font.pixelSize: convert2properPixelSize(defqc1Singleton.font.pointSize)
                 }
             },
             State {
@@ -51,7 +55,7 @@ Item {
                 PropertyChanges {
                     target: text
                     font: defqc2Singleton.font
-                    font.pointSize: defqc2Singleton.font.pointSize * extScale.factor
+                    font.pixelSize: convert2properPixelSize(defqc2Singleton.font.pointSize)
                 }
             },
             State {
@@ -59,7 +63,7 @@ Item {
                 PropertyChanges {
                     target: text
                     font: defSingleton.font
-                    font.pointSize: defSingleton.font.pointSize * extScale.factor
+                    font.pixelSize: convert2properPixelSize(defSingleton.font.pointSize)
                 }
             },
             State {
@@ -67,7 +71,7 @@ Item {
                 PropertyChanges {
                     target: text
                     font: mistralSingleton.font
-                    font.pointSize: mistralSingleton.font.pointSize * extScale.factor
+                    font.pixelSize: convert2properPixelSize(mistralSingleton.font.pointSize)
                 }
             }
         ] // states
