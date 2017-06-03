@@ -7,6 +7,6 @@ Rectangle {
 
 
     color: "darkblue"
-    width: 10 * extScale.factor
+    width: extSpacing.wTinyIconSq
     height: width
 }

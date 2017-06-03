@@ -49,7 +49,7 @@ Window {
         ScrollBar.vertical: ScrollBar {}
 
         ColumnLayout {
-            spacing: 10
+            spacing: extSpacing.pixLayoutSpacing
 
             RowLayout {
                 Label_ {
@@ -83,7 +83,7 @@ Window {
             Grid {
                 id: propertyGrid
                 columns: 2
-                spacing: 10
+                spacing: extSpacing.pixLayoutSpacing
 
                 Label_ { text: "Screen name" }
                 Label_ { text: Screen.name }
@@ -113,7 +113,7 @@ Window {
             Grid {
                 id: testGrid
                 columns: 2
-                spacing: 10
+                spacing: extSpacing.pixLayoutSpacing
 
 
                 Label_ { text: "inch square (scaling logically)" }
