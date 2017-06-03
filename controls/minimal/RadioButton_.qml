@@ -22,7 +22,7 @@ RadioButton {
         implicitHeight: implicitWidth
         y: parent.height / 2 - height / 2
         radius: cfgSingleton.rRadioButtonRadius
-        border.width: extSpacing.wBorderWidth
+        border.width: extSpacing.pixBorderWidth
         border.color: {
             if (control.enabled) {
                 if (control.hovered || control.activeFocus)

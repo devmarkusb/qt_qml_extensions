@@ -7,7 +7,7 @@ PaneBackground {
         id: cfgSingleton
     }
 
-    border.width: extSpacing.wBorderWidth
+    border.width: extSpacing.pixBorderWidth
     border.color: ControlProp.obtainBorderColor(control.enabled)
     radius: cfgSingleton.rCommonControlRadius
 }

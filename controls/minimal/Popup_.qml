@@ -16,6 +16,6 @@ Popup {
         controlEnabled: true
         color: ControlProp.obtainWindowColor(control.enabled)
         border.color: extColors.activeC.dark
-        border.width: extSpacing.wBorderWidth
+        border.width: extSpacing.pixBorderWidth
     }
 }

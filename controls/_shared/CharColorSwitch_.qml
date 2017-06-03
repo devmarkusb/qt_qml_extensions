@@ -61,7 +61,7 @@ Switch {
             }
             color: offColor
             border.color: ButtonProp.obtainPressableControlColor(control, extColors.activeC.shadow, extColors.activeC.highlight, extColors.activeC.shadow, extColors.disabledC.shadow)
-            border.width: extSpacing.wBorderWidth
+            border.width: extSpacing.pixBorderWidth
         }
 
         handle: Rectangle {
@@ -69,7 +69,7 @@ Switch {
             height: control.height
             color: extColors.activeC.midlight
             border.color: ButtonProp.obtainPressableControlColor(control, extColors.activeC.shadow, extColors.activeC.highlight, extColors.activeC.shadow, extColors.disabledC.shadow)
-            border.width: extSpacing.wBorderWidth
+            border.width: extSpacing.pixBorderWidth
         }
     }
 

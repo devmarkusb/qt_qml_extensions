@@ -53,7 +53,7 @@ function obtainPressableControlColor(control, normal, hovered, pressed, disabled
 
 function obtainButtonBorderWidth(control) {
     if (control.activeFocus && !control.hovered && !control.pressed && !control.checked)
-        return extSpacing.wBorderWidthSize2;
+        return extSpacing.pixBorderWidthSize2;
     else
-        return extSpacing.wBorderWidth;
+        return extSpacing.pixBorderWidth;
 }

@@ -113,7 +113,7 @@ QC2.ComboBox_ {
 
     background: Rectangle {
         radius: cfgSingleton.rCommonControlRadius
-        border.width: extSpacing.wBorderWidth
+        border.width: extSpacing.pixBorderWidth
         border.color: ButtonProp.obtainButtonBorderColor(control, extColors.activeC.shadow, extColors.activeC.highlight, extColors.activeC.shadow, extColors.disabledC.shadow)
         color: ButtonProp.obtainPressableControlColor(control, extColors.activeC.base, extColors.activeC.button, extColors.activeC.midlight, extColors.disabledC.midlight)
     }
@@ -138,7 +138,7 @@ QC2.ComboBox_ {
         background: Rectangle {
             radius: cfgSingleton.rCommonControlRadius
             implicitWidth: cbpopup.implicitWidth
-            border.width: extSpacing.wBorderWidth
+            border.width: extSpacing.pixBorderWidth
             border.color: control.enabled ? extColors.activeC.shadow : extColors.disabledC.shadow
             color: control.enabled ? extColors.activeC.base : extColors.disabledC.base
         }

@@ -28,18 +28,34 @@ QtObject {
     readonly property real space12: 12 * charxLikeHeight
     readonly property real space24: 24 * charxLikeHeight
 
-    readonly property int pix1space: 1 //! non-custom-scaling
-    readonly property int pix2space: 2 //! non-custom-scaling
+    readonly property real wTinyIconSq: 16 * extScale.factor
+    readonly property real wSmallIconSq: 24 * extScale.factor
+    readonly property real wMediumIconSq: 32 * extScale.factor
+    readonly property real wlargeIconSq: 48 * extScale.factor
+    readonly property real wLargeIconSq: 64 * extScale.factor
+    readonly property real wLARGEIconSq: 96 * extScale.factor
+    readonly property real whugeIconSq: 128 * extScale.factor
+    readonly property real wHugeIconSq: 256 * extScale.factor //! even huger should be achieved by multipliers 2, 4
 
-    readonly property int wTinyIconSq: 16 * extScale.factor
-    readonly property int wSmallIconSq: 24 * extScale.factor
-    readonly property int wMediumIconSq: 32 * extScale.factor
-    readonly property int wlargeIconSq: 48 * extScale.factor
-    readonly property int wLargeIconSq: 64 * extScale.factor
-    readonly property int wLARGEIconSq: 96 * extScale.factor
-    readonly property int whugeIconSq: 128 * extScale.factor
-    readonly property int wHugeIconSq: 256 * extScale.factor //! even huger should be achieved by multipliers 2, 4
 
-    readonly property real wBorderWidth: pix1space //! non-custom-scaling
-    readonly property real wBorderWidthSize2: pix2space //! non-custom-scaling
+    //### non scaling properties ###
+    //! The following spacings are non-scaling (not via logical ppi like Windows scale factor and also not via custom factor of extScale).
+    //! They are mostly used for borders, separators, and all kind of spacing situations that wouldn't look good or waste too much space
+    //! if being scaled.
+    //! These constants start with 'pix' prefix to express their pixel-perfect behavior.
+    //!@{
+
+    readonly property real pix0space: 0
+    readonly property real pix1space: 1
+    readonly property real pix2space: 2
+    readonly property real pix3space: 3
+    readonly property real pix4space: 4
+    readonly property real pix5space: 5
+
+    readonly property real pixBorderWidth: pix1space
+    readonly property real pixBorderWidthSize2: pix2space
+
+    //! Useful for grids, row, columns, tables.
+    readonly property real pixLayoutSpacing: pix2space
+    //!@}
 }

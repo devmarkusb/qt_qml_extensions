@@ -34,9 +34,9 @@ Button {
         Image {
             id: img
 
-            height: control.height - 2 * extSpacing.wBorderWidthSize2
+            height: control.height - 2 * extSpacing.pixBorderWidthSize2
             width: height
-            y: extSpacing.wBorderWidthSize2
+            y: extSpacing.pixBorderWidthSize2
 
             sourceSize.width: width
             sourceSize.height: height
