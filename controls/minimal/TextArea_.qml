@@ -20,13 +20,30 @@ import QtQuick 2.8
 
 
 QC2.TextArea_ {
+    property real fontSizeFactor: 1.0
+    property font fontToUse: extFont.normal
+
+
     id: control
 
     CfgControls {
         id: cfgSingleton
     }
 
-    font: extFont.normal
+    // { copied code start (Label_, TextField_, TextInput_, TextArea_)
+//    font: fontToUse
+    font.capitalization: fontToUse.capitalization
+    font.family: fontToUse.family
+    font.hintingPreference: fontToUse.hintingPreference
+    font.letterSpacing: fontToUse.letterSpacing
+    // strange enough, if I don't specify the font size here, the font won't custom scale anymore if I set e.g. italic (!?)
+    font.pixelSize: extFont.convert2properPixelSize(fontToUse.pointSize * fontSizeFactor)
+    font.strikeout: fontToUse.strikeout
+    font.underline: fontToUse.underline
+    font.weight: fontToUse.weight
+    font.wordSpacing: fontToUse.wordSpacing
+    // } copied code end
+
     color: enabled ? extColors.activeC.text : extColors.disabledC.text
     // In text fields we regularly get strange artifacts when using native rendering on Windows.
     // This is not being observed for labels.

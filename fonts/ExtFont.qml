@@ -23,6 +23,7 @@ Item {
         return extScale.point2p(pointSize);
     }
 
+
     Text {
         id: text
         state: schemeChoice

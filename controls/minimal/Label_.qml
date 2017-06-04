@@ -6,21 +6,24 @@ import QtQuick 2.8
 QC2.Label_ {
     property bool isSpecial: false
     property real fontSizeFactor: 1.0
+    property font fontToUse: extFont.normal
 
 
     id: control
 
-//    font: extFont.normal // either that or you need to specify all :/ no way to override single sub props
-    font.capitalization: extFont.normal.capitalization
-    font.family: extFont.normal.family
-    font.hintingPreference: extFont.normal.hintingPreference
-    font.letterSpacing: extFont.normal.letterSpacing
+    // { copied code start (Label_, TextField_, TextInput_, TextArea_)
+//    font: fontToUse // either that or you need to specify all :/ no way to override single sub props
+    font.capitalization: fontToUse.capitalization
+    font.family: fontToUse.family
+    font.hintingPreference: fontToUse.hintingPreference
+    font.letterSpacing: fontToUse.letterSpacing
     // strange enough, if I don't specify the font size here, the font won't custom scale anymore if I set e.g. italic (!?)
-    font.pixelSize: extFont.convert2properPixelSize(extFont.normal.pointSize * fontSizeFactor)
-    font.strikeout: extFont.normal.strikeout
-    font.underline: extFont.normal.underline
-    font.weight: extFont.normal.weight
-    font.wordSpacing: extFont.normal.wordSpacing
+    font.pixelSize: extFont.convert2properPixelSize(fontToUse.pointSize * fontSizeFactor)
+    font.strikeout: fontToUse.strikeout
+    font.underline: fontToUse.underline
+    font.weight: fontToUse.weight
+    font.wordSpacing: fontToUse.wordSpacing
+    // } copied code end
 
     color: {
         if (isSpecial)
