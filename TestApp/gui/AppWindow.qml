@@ -1,3 +1,5 @@
+//! You can take this file as a blueprint of how to make use of this qt qml extension lib
+//! in your own applications. Especially notice the hint for the Ext... declarations below.
 import "."
 import "../../colors_palette"
 import "../../controls"
@@ -14,6 +16,9 @@ import QtQuick.Window 2.2
 ApplicationWindow {
     id: rootAppWindow
 
+    //! Hint: The following Ext... global declarations are what you will mostly always need in all of your
+    //! applications as well - alongside with the import according statements above.
+    //!@{
     ExtColors {
         id: extColors // don't change this specifier!
         schemeChoice: "bright"
@@ -39,9 +44,10 @@ ApplicationWindow {
     ExtControlsCfg {
         id: extControlsCfg // don't change this specifier!
     }
+    //!@}
 
-    width: 640
-    height: 480
+    width: extSpacing.twoThirdAvailableAppWidth
+    height: extSpacing.twoThirdAvailableAppHeight
 
     visible: true
 
