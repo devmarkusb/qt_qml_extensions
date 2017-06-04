@@ -19,9 +19,8 @@ Item {
     property string schemeChoice: "def" // choose one from scheme subfolder with lowercase first letter
     property alias normal: text.font
 
-
     function convert2properPixelSize(pointSize) {
-        return extScale.point2p(pointSize) * extScale.factor;
+        return extScale.custom_scaled(extScale.point2p(pointSize));
     }
 
     Text {
@@ -47,7 +46,6 @@ Item {
                 PropertyChanges {
                     target: text
                     font: defqc1Singleton.font
-                    font.pixelSize: convert2properPixelSize(defqc1Singleton.font.pointSize)
                 }
             },
             State {
@@ -55,7 +53,6 @@ Item {
                 PropertyChanges {
                     target: text
                     font: defqc2Singleton.font
-                    font.pixelSize: convert2properPixelSize(defqc2Singleton.font.pointSize)
                 }
             },
             State {
@@ -63,7 +60,6 @@ Item {
                 PropertyChanges {
                     target: text
                     font: defSingleton.font
-                    font.pixelSize: convert2properPixelSize(defSingleton.font.pointSize)
                 }
             },
             State {
@@ -71,7 +67,6 @@ Item {
                 PropertyChanges {
                     target: text
                     font: mistralSingleton.font
-                    font.pixelSize: convert2properPixelSize(mistralSingleton.font.pointSize)
                 }
             }
         ] // states

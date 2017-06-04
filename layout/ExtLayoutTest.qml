@@ -9,8 +9,10 @@ import QtQuick.Window 2.2
 
 
 Window {
-    width: Screen.desktopAvailableWidth * 0.66
-    height: Screen.desktopAvailableHeight * 0.66
+    id: root
+
+    width: extSpacing.twoThirdAvailableAppWidth
+    height: extSpacing.twoThirdAvailableAppHeight
 
     ExtColors {
         id: extColors // don't change this specifier!
@@ -54,6 +56,7 @@ Window {
             RowLayout {
                 Label_ {
                     text: "Scale factor"
+                    font.italic: true // this stays for testing the fix of an ugly bug where this breaks custom scaling
                     anchors.verticalCenter: scaleSlider.verticalCenter
                 }
 
@@ -108,6 +111,9 @@ Window {
 
                 Label_ { text: "primary orientation" }
                 Label_ { text: extScale.orientationToString(Screen.primaryOrientation) + " (" + Screen.primaryOrientation + ")" }
+
+                Label_ { text: "window content dimensions" }
+                Label_ { text: root.width + "x" + root.height }
             }
 
             Grid {
