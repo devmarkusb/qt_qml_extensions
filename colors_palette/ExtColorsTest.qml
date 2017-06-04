@@ -1,4 +1,6 @@
 import "impl"
+import "../fonts"
+import "../layout"
 import QtQuick 2.8
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.5
@@ -10,21 +12,42 @@ ApplicationWindow {
         id: extColors_def
         schemeChoice: "def"
     }
+
     ExtColors {
         id: extColors_bright
         schemeChoice: "bright"
     }
+
     ExtColors {
         id: extColors_inverseDef
         schemeChoice: "inverseDef"
     }
+
     ExtColors {
         id: extColors_dark
         schemeChoice: "dark"
     }
+
     ExtColors {
         id: extColors_todo
         schemeChoice: "purpleGreen"
+    }
+
+    ExtFont {
+        id: extFont // don't change this specifier!
+        schemeChoice: "def"
+    }
+
+    ExtFontMetrics {
+        id: extFontMetrics // don't change this specifier!
+    }
+
+    ExtScale {
+        id: extScale // don't change this specifier!
+    }
+
+    ExtSpacing {
+        id: extSpacing // don't change this specifier!
     }
 
     width: testGrid.width
@@ -43,7 +66,7 @@ ApplicationWindow {
         Grid {
             id: testGrid
             columns: 16
-            spacing: 1
+            spacing: extSpacing.pix1space
 
             Label { text: " " }
             Label { text: " " }
