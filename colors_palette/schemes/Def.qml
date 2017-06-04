@@ -18,7 +18,7 @@ State {
         button: SysPalColorsActive.button//F0F0F0
         buttonText: SysPalColorsActive.buttonText//000000
         dark: SysPalColorsActive.dark//A0A0A0
-        highlight: SysPalColorsActive.highlight//3399FF
+        highlight: SysPalColorsActive.highlight//3399FF // strange: this randomly seems to change to #0078D7 occasionally
         highlightedText: SysPalColorsActive.highlightedText//FFFFFF
         light: SysPalColorsActive.light//FFFFFF
         mid: SysPalColorsActive.mid//A0A0A0
