@@ -9,9 +9,20 @@
     Important: stick to the specifier 'extSpacing' as it is also used by the library itself.
 */
 import QtQuick 2.8
+import QtQuick.Window 2.2
 
 
 QtObject {
+    //! Lowest most reasonable resolution.
+    readonly property real minMostReasonable3to2AppWidth: 480
+    readonly property real minMostReasonable3to2AppHeight: 320
+    //! Lowest but not most reasonable resolution.
+    readonly property real min4to3AppWidth: 320
+    readonly property real min4to3AppHeight: 240
+    //! Useful for making app window occupy 2/3 of the available screen space. Golden ratio would be about 0.618.
+    readonly property real twoThirdAvailableAppWidth: Screen.desktopAvailableWidth * 0.66
+    readonly property real twoThirdAvailableAppHeight: Screen.desktopAvailableHeight * 0.66
+
     // Impl. note: although the font size is already scaled separately, the font metrics aren't yet.
     readonly property real charLikeMaxWidth: extFontMetrics.maximumCharacterWidth * extScale.factor
     readonly property real charLikeWidth: extFontMetrics.averageCharacterWidth * extScale.factor
