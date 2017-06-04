@@ -64,8 +64,9 @@ ApplicationWindow_ {
 
             Grid {
                 columns: 5
-                spacing: extSpacing.space6
+                spacing: extSpacing.pixLayoutSpacing
                 padding: spacing
+                Layout.topMargin: extSpacing.charLikeHeight
 
                 TestHelperBox {
                     title: "Label_"
@@ -622,7 +623,7 @@ ApplicationWindow_ {
                 }
 
                 TestHelperBox {
-                    title: "Flickable with ScrollBar_'s (disbled)"
+                    title: "Flickable with ScrollBar_'s (disabled)"
                     Flickable {
                         anchors.fill: parent
                         contentWidth: width * 1.5

@@ -3,6 +3,6 @@ import QtQuick 2.8
 
 
 GroupBox_ {
-    width: 340
-    height: 120
+    width: extScale.in2p(4)
+    height: extScale.in2p(1.25)
 }
