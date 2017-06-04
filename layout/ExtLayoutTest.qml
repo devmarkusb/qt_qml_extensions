@@ -1,4 +1,5 @@
 import "impl"
+import "../_shared"
 import "../colors_palette"
 import "../controls/minimal"
 import "../fonts"
@@ -53,34 +54,7 @@ Window {
         ColumnLayout {
             spacing: extSpacing.pixLayoutSpacing
 
-            RowLayout {
-                Label_ {
-                    text: "Scale factor"
-                    font.italic: true // this stays for testing the fix of an ugly bug where this breaks custom scaling
-                    anchors.verticalCenter: scaleSlider.verticalCenter
-                }
-
-                Slider {
-                    id: scaleSlider
-                    from: 0.1
-                    to: 10.0
-                    value: extScale.factor
-                    stepSize: 0.1
-                    snapMode: Slider.SnapOnRelease
-                    ToolTip {
-                        parent: scaleSlider.handle
-                        visible: scaleSlider.pressed
-                        text: scaleSlider.valueAt(scaleSlider.position).toFixed(1)
-                    }
-                    onValueChanged: {
-                        extScale.factor = value
-                    }
-                }
-
-                Label_ {
-                    text: extScale.factor
-                    anchors.verticalCenter: scaleSlider.verticalCenter
-                }
+            CustomScaler {
             }
 
             Grid {
@@ -180,7 +154,7 @@ Window {
                 //        TestRectangle { TestHelperObj { a: extSpacing.whugeIconSq } }
                 //        Label_ { text: "wHugeIconSq" }
                 //        TestRectangle { TestHelperObj { a: extSpacing.wHugeIconSq } }
-            }
-        }
-    }
-}
+            } /// Grid
+        } // ColumnLayout
+    } // Flickable
+} // Window

@@ -52,7 +52,6 @@ ApplicationWindow {
 
     width: testGrid.width
     height: testGrid.height
-    visible: true
 
     Flickable {
         anchors.fill: parent

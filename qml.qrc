@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
+        <file>_shared/CustomScaler.qml</file>
+
         <file>colors_palette/ExtColorsTest.qml</file>
         <file>colors_palette/ExtColors.qml</file>
         <file>colors_palette/impl/ColorsActive.qml</file>
