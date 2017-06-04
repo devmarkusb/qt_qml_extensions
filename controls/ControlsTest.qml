@@ -473,20 +473,23 @@ ApplicationWindow_ {
                 } // TestHelperBox
 
                 TestHelperBox {
+                    id: groupBoxes
                     title: "GroupBox_"
-                    Row {
-                        topPadding: 5
-                        spacing: extSpacing.space3
+                    RowLayout {
+                        anchors.fill: parent
+                        spacing: extSpacing.pixLayoutSpacing * 2
                         GroupBox_ {
                             title: "A group box"
-                            width: 140
-                            height: 80
+                            Layout.topMargin: extSpacing.charLikeHeight
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
                         }
                         GroupBox_ {
                             enabled: false
                             title: "A disabled group box"
-                            width: 140
-                            height: 80
+                            Layout.topMargin: extSpacing.charLikeHeight
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
                         }
                     }
                 }
