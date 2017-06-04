@@ -11,6 +11,11 @@ Window {
     readonly property string examplePlayground: "012345679.:?!_oO0_1lL"
 
     ExtFont {
+        id: extFont // don't change this specifier!
+        schemeChoice: "def"
+    }
+
+    ExtFont {
         id: extFont_defQC1
         schemeChoice: "defQC1"
     }
@@ -30,8 +35,16 @@ Window {
         schemeChoice: "mistral"
     }
 
+    ExtFontMetrics {
+        id: extFontMetrics // don't change this specifier!
+    }
+
     ExtScale {
         id: extScale // don't change this specifier!
+    }
+
+    ExtSpacing {
+        id: extSpacing // don't change this specifier!
     }
 
     width: testGrid.width
@@ -48,7 +61,7 @@ Window {
     Grid {
         id: testGrid
         columns: 9
-        spacing: 10
+        spacing: extSpacing.pixLayoutSpacing
 
         Label { text: " " }
         Label { text: "1" }
