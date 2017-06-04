@@ -6,7 +6,7 @@ QtObject {
 
     readonly property real wButtonWidth: 20.0 * extSpacing.charLikeWidth
     readonly property real wButtonImplicitWidthFactor: 1.25 //! times the label-determined width
-    // Impl. note: tried extScale.mm2p(extScale.custom_scaled(8)) on recommendation of 0.8cm button height,
+    // Impl. note: tried extScale.mm2p(8) on recommendation of 0.8cm button height,
     // and this also seems to work properly - even with Windows scale factors. (Corresponds approx. to a
     // 2.3 factor instead of 2.0.)
     readonly property real hButtonHeight: 2.0 * extSpacing.charLikeHeight

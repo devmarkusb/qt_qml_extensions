@@ -41,11 +41,12 @@ Item {
     readonly property bool isPhoneSizeScreen: !isTabletSizeScreenOrLarger
     readonly property bool isPortraitOriented: Screen.orientation === Qt.PortraitOrientation
 
-    //! Function set to obtain pixel sizes for input for x, y, width, height, etc, even in a scaling manner.
+    //! Function set to obtain pixel sizes for input for x, y, width, height, etc., in a *scaling* manner.
     //!@{
     /** Note that (at least on the reference screen) in2p for 100% scaling doesn't yield the exact same result as in2p_nonscaling.
         in2p_nonscaling is better for larger values and in2p is better for smaller ones. Which of course mustn't be taken as a reason
-        to choose one over the other. The nonscaling version will e.g. ignore the Windows scale factor, whereas the scaling version doesn't.*/
+        to choose one over the other. The nonscaling version will e.g. ignore the Windows scale factor, whereas the scaling version doesn't.
+        Beyond that the scaling version also incorporates an additional custom scaling factor if present.*/
     function in2p(length) {
         return dp2p(length * 96.0);
     }
@@ -57,7 +58,7 @@ Item {
 
     //! Cf. in2p. Expects the pixel count for a 96ppi reference screen.
     function dp2p(pixels_for_96ppi) {
-        return pixels_for_96ppi * ppi / 96.0;
+        return custom_scaled(pixels_for_96ppi) * ppi / 96.0;
     }
 
     //! Cf. in2p.
@@ -83,8 +84,9 @@ Item {
     //! Point sizes are likely to yield different pixel sizes on various platforms.
     //! So far I assume that all agree to understand a point as 1/72 of an inch. Nevertheless, using
     //! this function whenever dealing with point sizes will limit to one place to change in case.
+    //! Note that you get a scaling (also custom) result, just as you expect when using points.
     function point2p(pointSize) {
-        return Math.round(pointSize * ppi_phys / 72.0);
+        return Math.round(custom_scaled(pointSize) * ppi_phys / 72.0);
     }
 
     //! Applies factor to value.

@@ -102,9 +102,6 @@ Window {
                 Label_ { text: "inch square (non-scaling)" }
                 TestRectangle { TestHelperObj { a: extScale.in2p_nonscaling(1) } }
 
-                Label_ { text: "inch square (custom-scaling only)" }
-                TestRectangle { TestHelperObj { a: extScale.in2p_nonscaling(extScale.custom_scaled(1)) } }
-
                 Label_ { text: "charLikeMaxWidth" }
                 TestRectangle { Row { spacing: extSpacing.charLikeMaxWidth; TestHelperObj {} TestHelperObj {} } }
                 Label_ { text: "charLikeWidth" }

@@ -20,7 +20,7 @@ Item {
     property alias normal: text.font
 
     function convert2properPixelSize(pointSize) {
-        return extScale.custom_scaled(extScale.point2p(pointSize));
+        return extScale.point2p(pointSize);
     }
 
     Text {
