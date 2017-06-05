@@ -85,6 +85,7 @@ ApplicationWindow_ {
                 TestHelperBox {
                     title: "TextField_"
                     Column {
+                        anchors.fill: parent
                         spacing: extSpacing.space3
                         TextField_ {
                             placeholderText: "placeholderText"
@@ -93,7 +94,7 @@ ApplicationWindow_ {
                             id: disabledTextField
                             placeholderText: "placeholderText"
                             text: "disabled real text with selected last word"
-                            width: 250
+                            width: parent.width
                             enabled: false
                             Component.onCompleted: {
                                 disabledTextField.selectWord();
@@ -101,7 +102,7 @@ ApplicationWindow_ {
                         }
                         TextField_ {
                             enabled: false
-                            width: 250
+                            width: parent.width
                             placeholderText: "disabled placeholderText"
                         }
                     }
@@ -129,11 +130,12 @@ ApplicationWindow_ {
                 TestHelperBox {
                     id: tabview
                     title: "TabView_/TabBar_"
-                    Column {
+                    ColumnLayout {
                         anchors.fill: parent
 
                         TabBar_ {
                             id: tabcontrol
+
                             TabButton_ {
                                 text: "tab red"
                                 customScaling: true
@@ -149,11 +151,10 @@ ApplicationWindow_ {
                         }
                         StackLayout {
                             currentIndex: tabcontrol.currentIndex
-                            anchors.left: parent.left
-                            anchors.right: parent.right
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
                             Rectangle {
                                 color: "red"
-                                height: 50
                             }
                             Rectangle {
                                 color: "green"
@@ -162,12 +163,12 @@ ApplicationWindow_ {
                                 color: "blue"
                             }
                         }
-                    }
+                    } // ColumnLayout
                 } // TestHelperBox
 
                 TestHelperBox {
                     title: "TabView_/TabBar_ (disabled)"
-                    Column {
+                    ColumnLayout {
                         anchors.fill: parent
 
                         TabBar_ {
@@ -188,11 +189,10 @@ ApplicationWindow_ {
                         }
                         StackLayout {
                             currentIndex: tabcontrol_dis.currentIndex
-                            anchors.left: parent.left
-                            anchors.right: parent.right
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
                             Rectangle {
                                 color: "red"
-                                height: 50
                             }
                             Rectangle {
                                 color: "green"
@@ -362,37 +362,7 @@ ApplicationWindow_ {
                     Pane_ {
                         anchors.fill: parent
 
-                        Rectangle {
-                            color: "gray"
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            width: 10
-                            height: width
-                        }
-                        Rectangle {
-                            color: "gray"
-                            anchors.right: parent.right
-                            anchors.top: parent.top
-                            width: 10
-                            height: width
-                        }
-                        Rectangle {
-                            color: "gray"
-                            anchors.left: parent.left
-                            anchors.bottom: parent.bottom
-                            width: 10
-                            height: width
-                        }
-                        Rectangle {
-                            color: "gray"
-                            anchors.right: parent.right
-                            anchors.bottom: parent.bottom
-                            width: 10
-                            height: width
-                        }
-                        Label_ {
-                            text: "squares are just marking the content corners"
-                            anchors.centerIn: parent
+                        TestHelperCornerMarkers {
                         }
                     }
                 } // TestHelperBox
@@ -402,37 +372,7 @@ ApplicationWindow_ {
                     Item {
                         anchors.fill: parent
 
-                        Rectangle {
-                            color: "gray"
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            width: 10
-                            height: width
-                        }
-                        Rectangle {
-                            color: "gray"
-                            anchors.right: parent.right
-                            anchors.top: parent.top
-                            width: 10
-                            height: width
-                        }
-                        Rectangle {
-                            color: "gray"
-                            anchors.left: parent.left
-                            anchors.bottom: parent.bottom
-                            width: 10
-                            height: width
-                        }
-                        Rectangle {
-                            color: "gray"
-                            anchors.right: parent.right
-                            anchors.bottom: parent.bottom
-                            width: 10
-                            height: width
-                        }
-                        Label_ {
-                            text: "squares are just marking the content corners"
-                            anchors.centerIn: parent
+                        TestHelperCornerMarkers {
                         }
                     }
                 } // TestHelperBox
@@ -483,7 +423,7 @@ ApplicationWindow_ {
                     title: "GroupBox_"
                     RowLayout {
                         anchors.fill: parent
-                        spacing: extSpacing.pixLayoutSpacing * 2
+                        spacing: extSpacing.pixLayoutSpacingX2
                         GroupBox_ {
                             title: "A group box"
                             Layout.topMargin: extSpacing.charLikeHeight
@@ -619,6 +559,8 @@ ApplicationWindow_ {
                     }
                 } // TestHelperBox
 
+                // Note, custom scaling doesn't work here. But let's ignore that for now
+                // as this flickable is an academic construction anyway.
                 TestHelperBox {
                     title: "Flickable with ScrollBar_'s"
                     Flickable {
@@ -631,6 +573,7 @@ ApplicationWindow_ {
                     }
                 }
 
+                // Cf. comment on the enabled version above.
                 TestHelperBox {
                     title: "Flickable with ScrollBar_'s (disabled)"
                     Flickable {
@@ -709,8 +652,8 @@ ApplicationWindow_ {
                     Rectangle {
                         property alias hovered: tooltipRectMA.containsMouse
                         color: "yellow"
-                        width: 200
-                        height: 50
+                        width: 50 * extSpacing.charLikeWidth
+                        height: 4 * extSpacing.charLikeHeight
                         anchors.centerIn: parent
                         Label_ {
                             anchors.centerIn: parent

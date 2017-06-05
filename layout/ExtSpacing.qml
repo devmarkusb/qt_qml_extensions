@@ -68,5 +68,6 @@ QtObject {
 
     //! Useful for grids, row, columns, tables.
     readonly property real pixLayoutSpacing: pix2space
+    readonly property real pixLayoutSpacingX2: pix2space * 2
     //!@}
 }
