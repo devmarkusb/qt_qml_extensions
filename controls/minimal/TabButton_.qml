@@ -7,6 +7,9 @@ import QtQuick.Controls 2.1
 
 
 QC2.TabButton_ {
+    property bool customScaling: false
+
+
     id: control
 
     hoverEnabled: true
@@ -25,7 +28,7 @@ QC2.TabButton_ {
         if (control.hovered && !control.pressed && !control.checked)
             return extSpacing.pix1space;
         else
-            return extSpacing.space0;
+            return extSpacing.pix0space;
     }
 
     CfgControls {
@@ -33,6 +36,7 @@ QC2.TabButton_ {
     }
 
     implicitHeight: cfgSingleton.hButtonHeight
+    width: customScaling ?  contentItem.implicitWidth * cfgSingleton.wButtonImplicitWidthFactor : undefined
 
     opacity: 1.0
 
