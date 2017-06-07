@@ -138,15 +138,12 @@ ApplicationWindow_ {
 
                             TabButton_ {
                                 text: "tab red"
-                                customScaling: true
                             }
                             TabButton_ {
                                 text: "tab green"
-                                customScaling: true
                             }
                             TabButton_ {
                                 text: "tab blue"
-                                customScaling: true
                             }
                         }
                         StackLayout {
@@ -176,15 +173,12 @@ ApplicationWindow_ {
                             enabled: false
                             TabButton_ {
                                 text: "tab red"
-                                customScaling: true
                             }
                             TabButton_ {
                                 text: "tab green"
-                                customScaling: true
                             }
                             TabButton_ {
                                 text: "tab blue"
-                                customScaling: true
                             }
                         }
                         StackLayout {

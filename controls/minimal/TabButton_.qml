@@ -7,7 +7,7 @@ import QtQuick.Controls 2.1
 
 
 QC2.TabButton_ {
-    property bool customScaling: false
+    property bool customScaling: true
 
 
     id: control
