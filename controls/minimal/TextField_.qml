@@ -18,15 +18,16 @@ QC2.TextField_ {
 
     // { copied code start (Label_, TextField_, TextInput_, TextArea_)
 //    font: fontToUse
+    font.bold: fontToUse.bold
     font.capitalization: fontToUse.capitalization
     font.family: fontToUse.family
     font.hintingPreference: fontToUse.hintingPreference
+    font.italic: fontToUse.italic
     font.letterSpacing: fontToUse.letterSpacing
     // strange enough, if I don't specify the font size here, the font won't custom scale anymore if I set e.g. italic (!?)
     font.pixelSize: extFont.convert2properPixelSize(fontToUse.pointSize * fontSizeFactor)
     font.strikeout: fontToUse.strikeout
     font.underline: fontToUse.underline
-    font.weight: fontToUse.weight
     font.wordSpacing: fontToUse.wordSpacing
     // } copied code end
 

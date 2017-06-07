@@ -11,6 +11,8 @@ QC2.Button_ {
     /** More precisely the 'highlight' color from the current color scheme is used.*/
     property bool isSpecial: false
     property alias horizontalTextAlignment: label.horizontalAlignment
+    property real fontSizeFactor: 1.0
+    property bool fontBold: false
 
 
     id: control
@@ -29,6 +31,8 @@ QC2.Button_ {
         id: label
 
         isSpecial: control.isSpecial
+        fontSizeFactor: control.fontSizeFactor
+        font.bold: fontBold
         anchors.fill: control
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter

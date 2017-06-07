@@ -7,7 +7,7 @@ import QtQuick.Layouts 1.1
 RowLayout {
     Label_ {
         text: "Scale factor"
-        font.italic: true // this stays for testing the fix of an ugly bug where this breaks custom scaling
+        font.bold: true // this stays for testing the fix of an ugly bug where this breaks custom scaling
         anchors.verticalCenter: scaleSlider.verticalCenter
     }
 
