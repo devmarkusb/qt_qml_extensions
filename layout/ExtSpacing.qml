@@ -39,14 +39,14 @@ QtObject {
     readonly property real space12: 12 * charxLikeHeight
     readonly property real space24: 24 * charxLikeHeight
 
-    readonly property real wTinyIconSq: 16 * extScale.factor
-    readonly property real wSmallIconSq: 24 * extScale.factor
-    readonly property real wMediumIconSq: 32 * extScale.factor
-    readonly property real wlargeIconSq: 48 * extScale.factor
-    readonly property real wLargeIconSq: 64 * extScale.factor
-    readonly property real wLARGEIconSq: 96 * extScale.factor
-    readonly property real whugeIconSq: 128 * extScale.factor
-    readonly property real wHugeIconSq: 256 * extScale.factor //! even huger should be achieved by multipliers 2, 4
+    readonly property real wTinyIconSq: extScale.dp2p(16)
+    readonly property real wSmallIconSq: extScale.dp2p(24)
+    readonly property real wMediumIconSq: extScale.dp2p(32)
+    readonly property real wlargeIconSq: extScale.dp2p(48)
+    readonly property real wLargeIconSq: extScale.dp2p(64)
+    readonly property real wLARGEIconSq: extScale.dp2p(96)
+    readonly property real whugeIconSq: extScale.dp2p(128)
+    readonly property real wHugeIconSq: extScale.dp2p(256) //! even huger should be achieved by multipliers 2, 4
 
 
     //### non scaling properties ###
