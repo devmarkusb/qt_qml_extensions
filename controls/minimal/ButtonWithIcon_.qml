@@ -27,7 +27,7 @@ Button {
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
 
     contentItem: Row {
-        leftPadding: extSpacing.space2
+        leftPadding: extSpacing.space1
         spacing: leftPadding
         anchors.fill: control
 
