@@ -86,7 +86,7 @@ Item {
     //! this function whenever dealing with point sizes will limit to one place to change in case.
     //! Note that you get a scaling (also custom) result, just as you expect when using points.
     function point2p(pointSize) {
-        return Math.round(custom_scaled(pointSize) * ppi_phys / 72.0);
+        return Math.round(custom_scaled(pointSize) * ppi / 72.0);
     }
 
     //! Applies factor to value.
