@@ -13,10 +13,10 @@ import QtQuick.Window 2.2
 
 
 QtObject {
-    //! Lowest most reasonable resolution.
+    //! Lowest most reasonable resolution (aspect ratio 3:2). Motivated by some early iPhone's.
     readonly property real minMostReasonable3to2AppWidth: 480
     readonly property real minMostReasonable3to2AppHeight: 320
-    //! Lowest but not most reasonable resolution.
+    //! Lowest but not most reasonable resolution (aspect ratio 4:3).
     readonly property real min4to3AppWidth: 320
     readonly property real min4to3AppHeight: 240
     //! Useful for making app window occupy 2/3 of the available screen space. Golden ratio would be about 0.618.
