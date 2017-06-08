@@ -35,13 +35,25 @@ else ()
     set(WIN32_ON_OFF_SWITCH "")
 endif ()
 
+include(${TOO_CMAKE_INC_UWP_TOOLS})
+obtain_UWP_resources("60448CE6-4D7E-4122-8A39-1B7B2F027168"
+    "${TOO_CMAKE_INC_UWP_TOOLS_DEF_ICO}"
+    "#336699"
+    TargetAppName_UWP_ASSETS)
+
 qt5_add_resources(TargetAppName_RESOURCES ../qml.qrc)
 
 add_executable(${TargetAppName}
+    ${WIN32_ON_OFF_SWITCH}
     src/_gui/src_Qt/cfg_model.h
     src/_gui/src_Qt/main.cpp
     ${TargetAppName_RESOURCES}
+    ${TargetAppName_UWP_ASSETS}
 )
+
+set(TOO_TEMP_TARGET ${TargetAppName})
+set(TOO_TEMP_QML_DIR ${CMAKE_SOURCE_DIR}/..)
+include(${TOO_CMAKE_INC_QT_DEPLOY_TOO_TEMP_TARGET})
 
 if (WIN32)
     set_property(TARGET ${TargetAppName} APPEND PROPERTY COMPILE_DEFINITIONS UNICODE _UNICODE)
