@@ -1,8 +1,12 @@
+import "../_shared/impl/obtainControlProps.js" as ControlProp
 import QtQuick 2.8
 import QtQuick.Controls 1.5
 
 
 Label {
+    id: control
+
+
     renderType: ControlProp.obtainRenderType()
 
     onTextChanged: {

@@ -4,6 +4,9 @@ import QtQuick.Controls 2.1
 
 
 Label {
+    id: control
+
+
     renderType: ControlProp.obtainRenderType()
 
     onLinkActivated: Qt.openUrlExternally(link)
