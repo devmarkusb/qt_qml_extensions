@@ -1,3 +1,24 @@
+//! Recommended usage:
+/**
+        ColumnLayout {
+            spacing: extSpacing.pix0space
+            TabBar_ {
+                id: tabcontrol
+                TabButton_ {
+                }
+                TabButton_ {
+                }
+            }
+            StackLayout {
+                currentIndex: tabcontrol.currentIndex
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Item {
+                }
+                Item {
+                }
+            }
+*/
 import "../_shared/impl"
 import "../QC2_def" as QC2
 import QtQuick 2.8

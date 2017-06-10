@@ -41,5 +41,5 @@ function obtainWindowColor(enabled) {
 // font
 
 function obtainRenderType() {
-    return Qt.platform.os === "windows" ? Text.NativeRendering : Text.QtRendering;
+    return Qt.platform.os === "windows" || Qt.platform.os === "winrt" ? Text.NativeRendering : Text.QtRendering;
 }

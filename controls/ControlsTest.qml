@@ -18,7 +18,7 @@ Item {
 
     ExtColors {
         id: extColors // don't change this specifier!
-        schemeChoice: "def"
+        schemeChoice: "bright"
     }
 
     ExtFont {
@@ -62,7 +62,7 @@ Item {
 
             Grid {
                 columns: 5
-                spacing: extSpacing.pixLayoutSpacing
+                spacing: extSpacing.pixLayoutSpacingX2
                 padding: spacing
                 Layout.topMargin: extSpacing.charLikeHeight
 
@@ -130,6 +130,7 @@ Item {
                     title: "TabView_/TabBar_"
                     ColumnLayout {
                         anchors.fill: parent
+                        spacing: extSpacing.pix0space
 
                         TabBar_ {
                             id: tabcontrol
@@ -165,6 +166,7 @@ Item {
                     title: "TabView_/TabBar_ (disabled)"
                     ColumnLayout {
                         anchors.fill: parent
+                        spacing: extSpacing.pix0space
 
                         TabBar_ {
                             id: tabcontrol_dis
@@ -517,6 +519,7 @@ Item {
                 TestHelperBox {
                     title: "Dialogs"
                     Grid {
+                        columns: 2
                         spacing: extSpacing.space3
                         Button_ {
                             text: "Popup_"

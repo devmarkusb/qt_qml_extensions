@@ -38,8 +38,10 @@ Item {
     }
 
     Component.onCompleted: {
+        console.log("ExtLayoutTest diagnostic logs {")
         extScale.logScreenProps()
         extScale.logReferenceScreenAndScalingHints()
+        console.log("}")
     }
 
     Flickable {

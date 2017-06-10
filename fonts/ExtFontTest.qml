@@ -51,10 +51,17 @@ Item {
 
 
     Component.onCompleted: {
+        console.log("ExtFontTest diagnostic logs {")
         console.log("defQC1 family:", extFont_defQC1.normal.family, "pointSize:", extFont_defQC1.normal.pointSize, "pixelSize:", extFont_defQC1.normal.pixelSize)
         console.log("defQC2 family:", extFont_defQC2.normal.family, "pointSize:", extFont_defQC2.normal.pointSize, "pixelSize:", extFont_defQC2.normal.pixelSize)
         console.log("def family:", extFont_def.normal.family, "pointSize:", extFont_def.normal.pointSize, "pixelSize:", extFont_def.normal.pixelSize)
         console.log("mistral family:", extFont_mistral.normal.family, "pointSize:", extFont_mistral.normal.pointSize, "pixelSize:", extFont_mistral.normal.pixelSize)
+        console.log("def font's metrics (used in extSpacing):")
+        console.log("charLikeHeight =", extSpacing.charLikeHeight)
+        console.log("charxLikeHeight =", extSpacing.charxLikeHeight)
+        console.log("charLikeWidth =", extSpacing.charLikeWidth)
+        console.log("charLikeMaxWidth =", extSpacing.charLikeMaxWidth)
+        console.log("}")
     }
 
     Grid {

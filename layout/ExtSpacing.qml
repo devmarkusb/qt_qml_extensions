@@ -23,6 +23,11 @@ QtObject {
     readonly property real twoThirdAvailableAppWidth: Screen.desktopAvailableWidth * 0.66
     readonly property real twoThirdAvailableAppHeight: Screen.desktopAvailableHeight * 0.66
 
+    //! Note, it doesn't seem to be a good idea to take these font metrics or even the default font's point/pixel
+    //! size as a foundation for platform independent and scaling respecting choice of spacing. Unfortunately
+    //! for calculating space for text lengths and heights there is no other choice.
+    /** E.g. there are already ugly seemingly unrelated differences between Windows and Windows-UWP affecting
+        all these parameters with varying factors.*/
     // Impl. note: although the font size is already scaled separately, the font metrics aren't yet.
     readonly property real charLikeMaxWidth: extFontMetrics.maximumCharacterWidth * extScale.factor
     readonly property real charLikeWidth: extFontMetrics.averageCharacterWidth * extScale.factor
@@ -30,14 +35,14 @@ QtObject {
     readonly property real charxLikeHeight: extFontMetrics.xHeight * extScale.factor
 
     readonly property real space0: 0 * extScale.factor
-    readonly property real space1: charxLikeHeight
-    readonly property real space2: 2 * charxLikeHeight
-    readonly property real space3: 3 * charxLikeHeight
-    readonly property real space4: 4 * charxLikeHeight
-    readonly property real space5: 5 * charxLikeHeight
-    readonly property real space6: 6 * charxLikeHeight
-    readonly property real space12: 12 * charxLikeHeight
-    readonly property real space24: 24 * charxLikeHeight
+    readonly property real space1: extScale.dp2p(3) // observed as charxLikeHeight_deprecated for an 11pt font
+    readonly property real space2: 2 * space1
+    readonly property real space3: 3 * space1
+    readonly property real space4: 4 * space1
+    readonly property real space5: 5 * space1
+    readonly property real space6: 6 * space1
+    readonly property real space12: 12 * space1
+    readonly property real space24: 24 * space1
 
     readonly property real wTinyIconSq: extScale.dp2p(16)
     readonly property real wSmallIconSq: extScale.dp2p(24)
