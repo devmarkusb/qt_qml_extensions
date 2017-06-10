@@ -370,4 +370,4 @@ Item {
             TestRectangle { color: extColors_todo.disabledC.shadow }
         } // Grid
     } // Flickable
-} // ApplicationWindow
+} // Item

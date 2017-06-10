@@ -157,4 +157,4 @@ Item {
             } /// Grid
         } // ColumnLayout
     } // Flickable
-} // Window
+} // Item

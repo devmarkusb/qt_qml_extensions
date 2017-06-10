@@ -743,4 +743,4 @@ Item {
             } // Grid
         } // ColumnLayout
     } // Flickable
-} // ApplicationWindow
+} // Item
