@@ -99,6 +99,7 @@
         <file>controls/TestHelperCornerMarkers.qml</file>
 
         <file>core/noop.js</file>
+        <file>core/os.js</file>
         
         <file>fonts/ExtFont.qml</file>
         <file>fonts/ExtFontMetrics.qml</file>

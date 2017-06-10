@@ -4,6 +4,7 @@ import "."
 import "../../colors_palette"
 import "../../controls"
 import "../../controls/minimal" // just for demonstrating ApplicationWindow_ here
+import "../../core/os.js" as OS
 import "../../fonts"
 import "../../layout"
 import QtQuick 2.8
@@ -60,6 +61,9 @@ ApplicationWindow_ {
     visible: true
 
     Component.onCompleted: {
+        console.log("TestApp diagnostic logs {")
+        console.log("operating system:", OS.get_platform())
+        console.log("}")
     }
 
     Button {
