@@ -1,12 +1,11 @@
 import "../layout"
 import "impl"
 import QtQuick 2.8
-import QtQuick.Window 2.2
 import QtQuick.Controls 1.5
 import QtQuick.Controls 2.1 as QC2
 
 
-Window {
+Item {
     readonly property string exampleText: "Hello World!"
     readonly property string examplePlayground: "012345679.:?!_oO0_1lL"
 

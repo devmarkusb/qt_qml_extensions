@@ -2,12 +2,10 @@ import "impl"
 import "../fonts"
 import "../layout"
 import QtQuick 2.8
-import QtQuick.Window 2.2
-import QtQuick.Controls 1.5
 import QtQuick.Controls 2.1
 
 
-ApplicationWindow {
+Item {
     ExtColors {
         id: extColors_def
         schemeChoice: "def"

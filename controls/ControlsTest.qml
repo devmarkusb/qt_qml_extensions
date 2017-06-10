@@ -8,12 +8,10 @@ import QtQuick.Controls 1.5 as QC1
 import QtQuick.Controls 2.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.3
-import QtQuick.Window 2.2
 
 
-ApplicationWindow_ {
+Item {
     id: root
-
 
     width: extSpacing.twoThirdAvailableAppWidth
     height: extSpacing.twoThirdAvailableAppHeight

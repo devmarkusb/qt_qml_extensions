@@ -9,7 +9,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 
 
-Window {
+Item {
     id: root
 
     width: extSpacing.twoThirdAvailableAppWidth
@@ -63,7 +63,8 @@ Window {
                 spacing: extSpacing.pixLayoutSpacing
 
                 Label_ { text: "Screen name" }
-                Label_ { text: Screen.name }
+                // under pure UWP the Screen's name doesn't seem to be defined
+                Label_ { text: Screen.name ? Screen.name : "?" }
 
                 Label_ { text: "dimensions" }
                 Label_ { text: Screen.width + "x" + Screen.height }

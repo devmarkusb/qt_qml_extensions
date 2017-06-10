@@ -3,17 +3,18 @@
 import "."
 import "../../colors_palette"
 import "../../controls"
+import "../../controls/minimal" // just for demonstrating ApplicationWindow_ here
 import "../../fonts"
 import "../../layout"
 import QtQuick 2.8
 import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.1
+import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
 
 
 //Draft {
 //}
-ApplicationWindow {
+ApplicationWindow_ {
     id: rootAppWindow
 
     //! Hint: The following Ext... global declarations are what you will mostly always need in all of your
@@ -46,56 +47,100 @@ ApplicationWindow {
     }
     //!@}
 
-    width: extSpacing.twoThirdAvailableAppWidth
-    height: extSpacing.twoThirdAvailableAppHeight
 
+    QtObject {
+        id: impl
+
+        readonly property real defWindowWidth: extSpacing.twoThirdAvailableAppWidth
+        readonly property real defWindowHeight: extSpacing.twoThirdAvailableAppHeight
+    }
+
+    width: impl.defWindowWidth
+    height: impl.defWindowHeight
     visible: true
-
-    property variant win
-    property string qrcPrefixIfNeeded: cfgModel.isGUIonlyMode ? "../../" : "qrc:/"
 
     Component.onCompleted: {
     }
 
-    ColumnLayout {
-        Button {
-            text: "Controls"
+    Button {
+        text: "Go back"
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        z: 1
+        opacity: 0.8
+        visible: pageSwitch.currentIndex !== 0
 
-            onClicked: {
-                var component = Qt.createComponent(qrcPrefixIfNeeded + "controls/ControlsTest.qml");
-                win = component.createObject(rootAppWindow);
-                win.show();
-            }
-        }
-
-        Button {
-            text: "Layout"
-
-            onClicked: {
-                var component = Qt.createComponent(qrcPrefixIfNeeded + "layout/ExtLayoutTest.qml");
-                win = component.createObject(rootAppWindow);
-                win.show();
-            }
-        }
-
-        Button {
-            text: "Colors"
-
-            onClicked: {
-                var component = Qt.createComponent(qrcPrefixIfNeeded + "colors_palette/ExtColorsTest.qml");
-                win = component.createObject(rootAppWindow);
-                win.show();
-            }
-        }
-
-        Button {
-            text: "Fonts"
-
-            onClicked: {
-                var component = Qt.createComponent(qrcPrefixIfNeeded + "fonts/ExtFontTest.qml");
-                win = component.createObject(rootAppWindow);
-                win.show();
-            }
+        onClicked: {
+            pageSwitch.currentIndex = 0
+            rootAppWindow.width = impl.defWindowWidth
+            rootAppWindow.height = impl.defWindowHeight
         }
     }
-}
+
+    StackLayout {
+        id: pageSwitch
+        currentIndex: 0
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+
+        ColumnLayout {
+            id: navPage
+
+            Button {
+                text: "Controls"
+
+                onClicked: {
+                    pageSwitch.currentIndex = 1
+                    rootAppWindow.width = controlsTest.width
+                    rootAppWindow.height = controlsTest.height
+                }
+            }
+
+            Button {
+                text: "Layout"
+
+                onClicked: {
+                    pageSwitch.currentIndex = 2
+                    rootAppWindow.width = layoutTest.width
+                    rootAppWindow.height = layoutTest.height
+                }
+            }
+
+            Button {
+                text: "Colors"
+
+                onClicked: {
+                    pageSwitch.currentIndex = 3
+                    rootAppWindow.width = colorsTest.implicitWidth
+                    rootAppWindow.height = colorsTest.implicitHeight
+                }
+            }
+
+            Button {
+                text: "Fonts"
+
+                onClicked: {
+                    pageSwitch.currentIndex = 4
+                    rootAppWindow.width = fontTest.implicitWidth
+                    rootAppWindow.height = fontTest.implicitHeight
+                }
+            }
+        } // ColumnLayout
+
+        ControlsTest {
+            id: controlsTest
+        }
+
+        ExtLayoutTest {
+            id: layoutTest
+        }
+
+        ExtColorsTest {
+            id: colorsTest
+        }
+
+        ExtFontTest {
+            id: fontTest
+        }
+    } // StackLayout
+} // ApplicationWindow
