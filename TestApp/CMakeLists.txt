@@ -52,7 +52,7 @@ add_executable(${TargetAppName}
 )
 
 set(TOO_TEMP_TARGET ${TargetAppName})
-set(TOO_TEMP_QML_DIR ${CMAKE_SOURCE_DIR}/..)
+set(TOO_TEMP_QML_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 include(${TOO_CMAKE_INC_QT_DEPLOY_TOO_TEMP_TARGET})
 
 if (WIN32)

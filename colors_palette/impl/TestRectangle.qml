@@ -2,6 +2,6 @@ import QtQuick 2.8
 
 
 Rectangle {
-    width: 100
-    height: 50
+    width: extScale.dp2p(100)
+    height: extScale.dp2p(50)
 }
