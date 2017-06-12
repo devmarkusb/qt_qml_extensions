@@ -20,6 +20,11 @@ message(STATUS "project version: " ${PROJECT_VERSION})
 include(${TOO_CMAKE_INC_DEPLOYMENT_BUILD})
 set(TargetAppName ${PROJECT_NAME})
 
+# Not exactly a unit test, but some kind of test host.
+if (NOT TOO_BUILD_UNITTESTS)
+    return ()
+endif ()
+
 include(${TOO_CMAKE_INC_DEFAULTS})
 
 include(${TOO_CMAKE_INC_QT})
