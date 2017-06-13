@@ -11,12 +11,14 @@ Flickable {
     property alias font: textarea.font
 
 
+    id: control
+
     clip: true
     ScrollBar.horizontal: ScrollBar_ {}
     ScrollBar.vertical: ScrollBar_ {}
 
     TextArea.flickable: TextArea_ {
         id: textarea
-        anchors.fill: parent        
+        anchors.fill: control
     }
 }
