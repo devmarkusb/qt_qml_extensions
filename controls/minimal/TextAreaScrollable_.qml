@@ -19,6 +19,5 @@ Flickable {
 
     TextArea.flickable: TextArea_ {
         id: textarea
-        anchors.fill: control
     }
-}
+} // Flickable
