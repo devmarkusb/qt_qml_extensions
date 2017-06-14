@@ -33,9 +33,11 @@ Item {
     //! Analog to ratio_Screen_RefScreen but only considering pixels and ignoring ppi, so use with caution.
     readonly property real pixRatio_Screen_RefScreen: Math.min(impl.screenShortSidelength / impl.refScreenShortSidelength, impl.screenLongSidelength / impl.refScreenLongSidelength);
 
+    readonly property real mm_per_inch: 25.4
+
     //! Returns logical ppi, which e.g. under Windows will contain the system scale factor (and grow along with it).
-    readonly property real ppi: Screen.logicalPixelDensity * 25.4
-    readonly property real ppi_phys: Screen.pixelDensity * 25.4
+    readonly property real ppi: Screen.logicalPixelDensity * mm_per_inch
+    readonly property real ppi_phys: Screen.pixelDensity * mm_per_inch
 
     readonly property bool isTabletSizeScreenOrLarger: Math.sqrt(Screen.width * Screen.width + Screen.height * Screen.height) / ppi > 5.3
     readonly property bool isPhoneSizeScreen: !isTabletSizeScreenOrLarger
@@ -48,27 +50,27 @@ Item {
         to choose one over the other. The nonscaling version will e.g. ignore the Windows scale factor, whereas the scaling version doesn't.
         Beyond that the scaling version also incorporates an additional custom scaling factor if present.*/
     function in2p(length) {
-        return dp2p(length * 96.0);
+        return dp2p(length * refScreen_ppi);
     }
 
     //! Cf. in2p.
     function mm2p(length) {
-        return in2p(length / 25.4);
+        return in2p(length / mm_per_inch);
     }
 
     //! Cf. in2p. Expects the pixel count for a 96ppi reference screen.
     function dp2p(pixels_for_96ppi) {
-        return custom_scaled(pixels_for_96ppi) * ppi / 96.0;
+        return custom_scaled(pixels_for_96ppi) * ppi / refScreen_ppi;
     }
 
     //! Cf. in2p.
     function in2p_nonscaling(length) {
-        return dp2p_nonscaling(length * 96.0);
+        return dp2p_nonscaling(length * refScreen_ppi);
     }
 
     //! Cf. in2p.
     function mm2p_nonscaling(length) {
-        return in2p_nonscaling(length / 25.4);
+        return in2p_nonscaling(length / mm_per_inch);
     }
 
     //! Cf. dp2p.
@@ -77,7 +79,7 @@ Item {
         // to use some strange number different from 96.0 if he wants 1 in. That's why we implemented
         // an additional calculation step. More understandably the following calculation equals
         // pixels_for_ref_ppi_phys * ppi_phys / refScreen_ppi_phys.
-        return pixels_for_96ppi * ppi_phys * ppi_phys / refScreen_ppi_phys / 96.0;
+        return pixels_for_96ppi * ppi_phys * ppi_phys / refScreen_ppi_phys / refScreen_ppi;
     }
     //!@}
 
