@@ -41,7 +41,7 @@ else ()
 endif ()
 
 include(${TOO_CMAKE_INC_UWP_TOOLS})
-obtain_UWP_resources("60448CE6-4D7E-4122-8A39-1B7B2F027168"
+too_obtain_UWP_resources("60448CE6-4D7E-4122-8A39-1B7B2F027168"
     "${TOO_CMAKE_INC_UWP_TOOLS_DEF_ICO}"
     "#336699"
     TargetAppName_UWP_ASSETS)
