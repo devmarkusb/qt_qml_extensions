@@ -67,7 +67,7 @@ endif ()
 
 set_target_properties(${TargetAppName} PROPERTIES DEBUG_POSTFIX "d")
 
-configure_file(app_build_config.h.in ${CMAKE_BINARY_DIR}/testapp_build_config.h)
+configure_file(testapp_build_config.h.in ${CMAKE_BINARY_DIR}/testapp_build_config.h)
 target_include_directories(${TargetAppName} PUBLIC ${CMAKE_BINARY_DIR})
 
 target_include_directories(${TargetAppName} PUBLIC src)
