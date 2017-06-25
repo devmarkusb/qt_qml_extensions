@@ -20,8 +20,9 @@ message(STATUS "project version: " ${PROJECT_VERSION})
 include(${TOO_CMAKE_INC_DEPLOYMENT_BUILD})
 set(TargetAppName ${PROJECT_NAME})
 
+option(TOO_FORCE_TESTAPP "switch on if you intent to build the TestApp (especially needed for standalone build under UWP)" OFF)
 # Not exactly a unit test, but some kind of test host.
-if (NOT TOO_BUILD_UNITTESTS)
+if (NOT TOO_BUILD_UNITTESTS AND NOT ${TOO_FORCE_TESTAPP})
     return ()
 endif ()
 
