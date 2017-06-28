@@ -20,8 +20,9 @@ QtObject {
     readonly property real min4to3AppWidth: 320
     readonly property real min4to3AppHeight: 240
     //! Useful for making app window occupy 2/3 of the available screen space. Golden ratio would be about 0.618.
-    readonly property real twoThirdAvailableAppWidth: Screen.desktopAvailableWidth * 0.66
-    readonly property real twoThirdAvailableAppHeight: Screen.desktopAvailableHeight * 0.66
+    /** Impl. note: desktopAvailableWidth/Height aren't a good choice, as they sum up multi monitors.*/
+    readonly property real twoThirdAvailableAppWidth: Screen.width * 0.66
+    readonly property real twoThirdAvailableAppHeight: Screen.height * 0.66
 
     //! Note, it doesn't seem to be a good idea to take these font metrics or even the default font's point/pixel
     //! size as a foundation for platform independent and scaling respecting choice of spacing. Unfortunately
