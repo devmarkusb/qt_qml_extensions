@@ -56,7 +56,7 @@
         <file>controls/minimal/TextAreaScrollable_.qml</file>
         <file>controls/minimal/TextField_.qml</file>
         <file>controls/minimal/TextFieldBrowseBtnRow_.qml</file>
-        <file>controls/minimal/TextFieldLabelRow_.qml</file>
+        <file>controls/minimal/TextFieldWithLabel_.qml</file>
         <file>controls/minimal/TextInput_.qml</file>
         <file>controls/minimal/ToolTip_.qml</file>
         <file>controls/QC1_def/Button_.qml</file>

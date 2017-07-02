@@ -107,22 +107,38 @@ Item {
                 }
 
                 TestHelperBox {
-                    title: "TextFieldLabelRow_"
-                    Column {
+                    title: "TextFieldWithLabel_"
+                    Row {
                         spacing: extSpacing.space3
-                        TextFieldLabelRow_ {
+                        Column {
+                            spacing: extSpacing.space3
+                            TextFieldWithLabel_ {
+                                placeholderText: "0"
+                                title: "some text"
+                                inputWidthInChars: 10
+                            }
+                            TextFieldWithLabel_ {
+                                placeholderText: "0"
+                                title: "some text"
+                                inputWidthInChars: 10
+                                enabled: false
+                            }
+                            TextFieldWithLabel_ {
+                                placeholderText: "0"
+                                title: "some text"
+                                inputWidthInChars: 10
+                                labelPos: "left"
+                            }
+                        } // Column
+
+                        TextFieldWithLabel_ {
                             placeholderText: "0"
                             title: "some text"
                             inputWidthInChars: 10
+                            labelPos: "top"
                         }
-                        TextFieldLabelRow_ {
-                            placeholderText: "0"
-                            title: "some text"
-                            inputWidthInChars: 10
-                            enabled: false
-                        }
-                    }
-                }
+                    } // Row
+                } // TestHelperBox
 
                 // Note, for QC1 comment out the following two
                 TestHelperBox {
