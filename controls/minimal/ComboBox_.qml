@@ -19,8 +19,8 @@ QC2.ComboBox_ {
         id: cfgSingleton
     }
 
-    padding: 0
-    spacing: 0
+    padding: extSpacing.pix0space
+    spacing: extSpacing.pix0space
     implicitWidth: cfgSingleton.wTextFieldWidth
     implicitHeight: cfgSingleton.hTextFieldHeight
     font: extFont.normal
@@ -123,7 +123,7 @@ QC2.ComboBox_ {
         y: control.height + extSpacing.pix1space
         implicitWidth: control.width
         implicitHeight: listview.contentHeight + topPadding + bottomPadding
-        padding: extSpacing.pix1space
+        padding: extSpacing.pixLayoutSpacing
 
         contentItem: ListView {
             id: listview

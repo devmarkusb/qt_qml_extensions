@@ -19,9 +19,9 @@ GroupBox_ {
         id: cfgSingleton
     }
 
-    padding: extSpacing.pix1space
-    topPadding: 0
-    spacing: 0
+    padding: extSpacing.pixLayoutSpacing
+    topPadding: extSpacing.pix0space
+    spacing: extSpacing.pix0space
     implicitWidth: cfgSingleton.wTextFieldWidth
     implicitHeight: 3 * cfgSingleton.hTextFieldHeight + topPadding + bottomPadding
     font: extFont.normal
