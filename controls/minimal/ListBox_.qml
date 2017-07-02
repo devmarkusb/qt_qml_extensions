@@ -8,6 +8,7 @@ import QtQuick.Controls 2.1
 
 GroupBox_ {
     property int textHorAlignment: Text.AlignLeft
+    property int textElide: Text.ElideRight
     property alias listmodel: listview.model
     property alias currentIndex: listview.currentIndex
 
@@ -39,12 +40,13 @@ GroupBox_ {
             implicitWidth: control.width - control.leftPadding - control.rightPadding
             implicitHeight: cfgSingleton.hTextFieldHeight
             contentItem: Label_ {
+                id: delegLabel
                 anchors.fill: parent
                 leftPadding: cfgSingleton.hTextFieldHeight / 2
                 rightPadding: leftPadding
                 horizontalAlignment: textHorAlignment
                 verticalAlignment: Text.AlignVCenter
-                elide: Text.ElideRight
+                elide: textElide
                 text: model.text ? model.text : modelData // I wonder if there is a way to access the textRole, chosen for the ComboBox
             }
             background: Rectangle {
