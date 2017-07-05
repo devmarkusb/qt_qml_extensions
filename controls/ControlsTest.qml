@@ -134,7 +134,7 @@ Item {
                         TextFieldWithLabel_ {
                             placeholderText: "0"
                             title: "some text"
-                            inputWidthInChars: 10
+                            inputWidthInChars: 20
                             labelPos: "top"
                         }
                     } // Row

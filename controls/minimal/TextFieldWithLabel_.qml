@@ -2,7 +2,7 @@ import QtQuick 2.8
 import QtQuick.Layouts 1.3
 
 
-Item {
+FocusScope {
     property alias placeholderText: textfield.placeholderText
     property var textfieldItem: textfield
     property alias text: textfield.text
@@ -22,7 +22,7 @@ Item {
 
     GridLayout {
         flow: labelPos === "top" ? GridLayout.TopToBottom : GridLayout.LeftToRight
-        layoutDirection: labelPos === "left" ? Qt.LeftToRight : Qt.RightToLeft
+        layoutDirection: labelPos === "right" ? Qt.RightToLeft : Qt.LeftToRight
 
         Label_ {
             id: label
@@ -30,10 +30,11 @@ Item {
 
         TextField_ {
             id: textfield
+            focus: true
             Layout.preferredWidth: inputWidth !== 0 ? inputWidth : extSpacing.charLikeWidth * inputWidthInChars
             onEditingFinished: {
                 control.editingFinished()
             }
         }
-    } // Row
-} // Item
+    } // GridLayout
+} // FocusScope
