@@ -48,16 +48,6 @@ Item {
     FileDialog {
         id: selectDialog
 
-        onVisibleChanged: {
-            if (!control.isGUIonly && visible && control.text.length === 0)
-                folder = shortcuts.home
-        }
-
-        Component.onCompleted: {
-            if (control.isGUIonly)
-                folder = shortcuts.home
-        }
-
         nameFilters: cfgProgMainModel.mainLoadFilters
 
         onAccepted: {
