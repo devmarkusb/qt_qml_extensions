@@ -4,6 +4,7 @@ import "../_shared/impl/obtainControlProps.js" as ControlProp
 import "../_shared/impl/obtainListDelegateProps.js" as ListDelegateProp
 import QtQuick 2.8
 import QtQuick.Controls 2.1
+import QtQuick.Layouts 1.3
 
 
 GroupBox_ {
@@ -11,7 +12,9 @@ GroupBox_ {
     property int textElide: Text.ElideRight
     property alias listmodel: listview.model
     property alias currentIndex: listview.currentIndex
+    property bool hasDeleteItemCap: false
     signal itemDoubleClicked()
+    signal itemDeleteClicked(int idx)
 
 
     id: control
@@ -41,16 +44,32 @@ GroupBox_ {
             id: deleg
             implicitWidth: control.width - control.leftPadding - control.rightPadding
             implicitHeight: cfgSingleton.hTextFieldHeight
-            contentItem: Label_ {
-                id: delegLabel
+            contentItem: RowLayout {
                 anchors.fill: parent
-                leftPadding: cfgSingleton.hTextFieldHeight / 2
-                rightPadding: leftPadding
-                horizontalAlignment: textHorAlignment
-                verticalAlignment: Text.AlignVCenter
-                elide: textElide
-                text: model.text ? model.text : modelData // I wonder if there is a way to access the textRole, chosen for the ComboBox
-            }
+
+                Label_ {
+                    id: delegLabel
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: parent.height
+                    Layout.leftMargin: cfgSingleton.hTextFieldHeight / 2
+                    Layout.rightMargin: leftPadding
+                    horizontalAlignment: textHorAlignment
+                    verticalAlignment: Text.AlignVCenter
+                    elide: textElide
+                    text: model.text ? model.text : modelData // I wonder if there is a way to access the textRole, chosen for the ComboBox
+                }
+                ButtonTool_ {
+                    id: delbtn
+                    visible: hasDeleteItemCap && (mousearea.containsMouse || hovered || (index === listview.currentIndex))
+                    Layout.alignment: Qt.AlignRight
+                    Layout.preferredHeight: parent.height
+                    Layout.preferredWidth: Layout.preferredHeight
+                    imageSource: "../_shared/impl/delete_cross.svg"
+                    onClicked: {
+                        itemDeleteClicked(index)
+                    }
+                } // ButtonTool_
+            } // RowLayout
             background: Rectangle {
                 anchors.fill: parent
                 radius: cfgSingleton.rCommonControlRadius

@@ -18,6 +18,7 @@
         <file>controls/_shared/CharColorSwitch_.qml</file>
         <file>controls/_shared/impl/CfgControls.qml</file>
         <file>controls/_shared/impl/checkmark.png</file>
+        <file>controls/_shared/impl/delete_cross.svg</file>
         <file>controls/_shared/impl/obtainButtonProps.js</file>
         <file>controls/_shared/impl/obtainControlProps.js</file>
         <file>controls/_shared/impl/obtainListDelegateProps.js</file>
