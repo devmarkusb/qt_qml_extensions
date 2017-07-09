@@ -33,6 +33,7 @@ GroupBox_ {
         id: listview
         anchors.fill: parent
         clip: true
+        activeFocusOnTab: true
 
         ScrollIndicator.vertical: ScrollIndicator {}
 
