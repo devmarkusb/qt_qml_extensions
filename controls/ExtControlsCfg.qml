@@ -15,6 +15,8 @@ import QtQuick 2.8
 QtObject {
     property bool tooltipsEnabled: true
     property int tooltipTimeout_ms: 2000
+    property real flickDefaultVelocity: 500
+    property real flickFastVelocity: flickDefaultVelocity * 2
 
     readonly property int invalidIdx: -1
 }

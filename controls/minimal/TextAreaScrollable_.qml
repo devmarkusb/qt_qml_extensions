@@ -20,4 +20,21 @@ Flickable {
     TextArea.flickable: TextArea_ {
         id: textarea
     }
+
+    Keys.onPressed: {
+        if (!readOnly)
+            return
+        if (event.key === Qt.Key_Down) {
+            control.flick(0, -extControlsCfg.flickDefaultVelocity);
+        }
+        else if (event.key === Qt.Key_Up) {
+            control.flick(0, extControlsCfg.flickDefaultVelocity);
+        }
+        else if (event.key === Qt.Key_PageDown) {
+            control.flick(0, -extControlsCfg.flickFastVelocity);
+        }
+        else if (event.key === Qt.Key_PageUp) {
+            control.flick(0, extControlsCfg.flickFastVelocity);
+        }
+    }
 } // Flickable
