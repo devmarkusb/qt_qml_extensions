@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import QtQuick.Dialogs 1.2
+import Qt.labs.platform  1.0
 
 
 Item {
@@ -9,7 +9,7 @@ Item {
     property int inputWidthInChars: 20
     property alias folder: selectDialog.folder
     property alias browseTitle: selectDialog.title
-    property alias fileUrl: selectDialog.fileUrl
+    property alias file: selectDialog.file
     property alias horizontalAlignment: textfield.horizontalAlignment
     property alias validator: textfield.validator
     property bool isGUIonly: false
@@ -43,7 +43,7 @@ Item {
                 selectDialog.open()
             }
         }        
-    }
+    } // Row
 
     FileDialog {
         id: selectDialog
@@ -66,5 +66,5 @@ Item {
 
         onRejected: {
         }
-    }
-}
+    } // FileDialog
+} // Item
