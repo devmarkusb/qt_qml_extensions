@@ -11,6 +11,7 @@ GroupBox_ {
     property int textElide: Text.ElideRight
     property alias listmodel: listview.model
     property alias currentIndex: listview.currentIndex
+    signal itemDoubleClicked()
 
 
     id: control
@@ -64,6 +65,10 @@ GroupBox_ {
                     hoverEnabled: true
                     onClicked: {
                         listview.currentIndex = index
+                    }
+                    onDoubleClicked: {
+                        listview.currentIndex = index
+                        itemDoubleClicked()
                     }
                 } // MouseArea
             } // Rectangle
