@@ -8,13 +8,14 @@ Item {
     property alias text: textfield.text
     property int inputWidthInChars: 20
     property alias folder: selectDialog.folder
+    property alias nameFilters: selectDialog.nameFilters
     property alias browseTitle: selectDialog.title
     property alias file: selectDialog.file
     property alias horizontalAlignment: textfield.horizontalAlignment
     property alias validator: textfield.validator
-    property bool isGUIonly: false
 
     signal accepted()
+    signal rejected()
     signal editingFinished()
 
 
@@ -48,13 +49,12 @@ Item {
     FileDialog {
         id: selectDialog
 
-        nameFilters: cfgProgMainModel.mainLoadFilters
-
         onAccepted: {
             control.accepted()
         }
 
         onRejected: {
+            control.rejected()
         }
     } // FileDialog
 } // Item
