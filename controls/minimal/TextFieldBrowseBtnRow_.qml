@@ -1,5 +1,4 @@
 import QtQuick 2.8
-import Qt.labs.platform  1.0
 
 
 Item {
@@ -7,16 +6,11 @@ Item {
     property var textfieldItem: textfield
     property alias text: textfield.text
     property int inputWidthInChars: 20
-    property alias folder: selectDialog.folder
-    property alias nameFilters: selectDialog.nameFilters
-    property alias browseTitle: selectDialog.title
-    property alias file: selectDialog.file
     property alias horizontalAlignment: textfield.horizontalAlignment
     property alias validator: textfield.validator
 
-    signal accepted()
-    signal rejected()
     signal editingFinished()
+    signal clicked()
 
 
     id: control
@@ -41,20 +35,8 @@ Item {
             colorOverlayActive: false
             anchors.verticalCenter: textfield.verticalCenter
             onClicked: {
-                selectDialog.open()
+                control.clicked()
             }
         }        
     } // Row
-
-    FileDialog {
-        id: selectDialog
-
-        onAccepted: {
-            control.accepted()
-        }
-
-        onRejected: {
-            control.rejected()
-        }
-    } // FileDialog
 } // Item
