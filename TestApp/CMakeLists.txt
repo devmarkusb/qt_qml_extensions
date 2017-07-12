@@ -20,8 +20,9 @@ message(STATUS "project version: " ${PROJECT_VERSION})
 include(${TOO_CMAKE_INC_DEPLOYMENT_BUILD})
 set(TargetAppName ${PROJECT_NAME})
 
+option(TOO_FORCE_TESTAPP "switch on if you intent to build the TestApp (especially needed for standalone build under UWP)" OFF)
 # Not exactly a unit test, but some kind of test host.
-if (NOT TOO_BUILD_UNITTESTS)
+if (NOT TOO_BUILD_UNITTESTS AND NOT ${TOO_FORCE_TESTAPP})
     return ()
 endif ()
 
@@ -66,7 +67,7 @@ endif ()
 
 set_target_properties(${TargetAppName} PROPERTIES DEBUG_POSTFIX "d")
 
-configure_file(app_build_config.h.in ${CMAKE_BINARY_DIR}/app_build_config.h)
+configure_file(testapp_build_config.h.in ${CMAKE_BINARY_DIR}/testapp_build_config.h)
 target_include_directories(${TargetAppName} PUBLIC ${CMAKE_BINARY_DIR})
 
 target_include_directories(${TargetAppName} PUBLIC src)

@@ -1,6 +1,6 @@
 //! *Important* Your model needs to have a role called text.
 //! (Which you then also should have chosen as textRole for the Combobox.)
-import "../QC2_def" as QC2
+import "../QC2_def" as QC2_def
 import "../_shared/impl"
 import "../_shared/impl/obtainButtonProps.js" as ButtonProp
 import "../_shared/impl/obtainControlProps.js" as ControlProp
@@ -9,7 +9,7 @@ import QtQuick 2.8
 import QtQuick.Controls 2.1
 
 
-QC2.ComboBox_ {
+QC2_def.ComboBox_ {
     property int textHorAlignment: Text.AlignLeft
 
 
@@ -104,6 +104,10 @@ QC2.ComboBox_ {
 
     contentItem: Label_ {
         rightPadding: control.indicator.width + control.spacing
+        // Hotfix: update to Qt5.9 removed any space left to the text.
+        // 1. I would like to have the same spacing like in a TextField. 2. How to handle 5.8/5.9 compatibility?
+        // The following line is a compromise hotfix.
+        leftPadding: extSpacing.pixLayoutSpacingX2
 
         text: control.displayText
         elide: Text.ElideRight

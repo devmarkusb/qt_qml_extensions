@@ -284,7 +284,7 @@ Item {
                             }
                         }
                         Button_ {
-                            text: "Button with a lot of text - grows automatically :)"
+                            text: "Button with lots text - grows automatically"
                         }
                     }
                 }
