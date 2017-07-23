@@ -5,6 +5,7 @@ Item {
     property alias placeholderText: textfield.placeholderText
     property var textfieldItem: textfield
     property alias text: textfield.text
+    property alias readOnly: textfield.readOnly
     property int inputWidthInChars: 20
     property alias horizontalAlignment: textfield.horizontalAlignment
     property alias validator: textfield.validator
