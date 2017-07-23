@@ -37,6 +37,7 @@ GroupBox_ {
         anchors.fill: parent
         clip: true
         activeFocusOnTab: true
+        focus: true
 
         ScrollIndicator.vertical: ScrollIndicator {}
 
