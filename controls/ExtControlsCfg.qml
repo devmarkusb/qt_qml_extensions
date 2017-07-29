@@ -9,6 +9,7 @@
     extControlsCfg.tooltipsEnabled from everywhere below.
     Important: stick to the specifier 'extControlsCfg' as it is also used by the library itself.
 */
+import "../core/os.js" as OS
 import QtQuick 2.8
 
 
@@ -19,4 +20,6 @@ QtObject {
     property real flickFastVelocity: flickDefaultVelocity * 2
 
     readonly property int invalidIdx: -1
+
+    readonly property bool shortcutAcceptsStandardKeysOnly: OS.get_platform() === "winrt" ? true : false
 }
