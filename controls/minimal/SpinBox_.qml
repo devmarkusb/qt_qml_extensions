@@ -37,6 +37,7 @@ SpinBox {
         implicitHeight: cfgSingleton.hSpinIndicatorHeight
         text: "+"
         focusPolicy: Qt.NoFocus // focus doesn't really work here anyway (better never than half-baked)
+        onClicked: increase()
     }
 
     down.indicator: Button_ {
@@ -45,6 +46,7 @@ SpinBox {
         implicitHeight: cfgSingleton.hSpinIndicatorHeight
         text: "-"
         focusPolicy: Qt.NoFocus // see comment in up.indicator
+        onClicked: decrease()
     }
 
     background: TextFieldBackground {
