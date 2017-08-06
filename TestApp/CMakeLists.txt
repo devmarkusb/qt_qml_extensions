@@ -34,7 +34,7 @@ find_package(Qt5Quick)
 ################################################################################################
 
 # only purpose of this so far: prevent msvc from showing an additional console window in Qt apps
-if (DEPLOYMENT_BUILD AND WIN32 OR "${DEPLOY_TARGET}" STREQUAL "uwp")
+if (TOO_DEPLOYMENT_BUILD AND WIN32 OR "${TOO_DEPLOY_TARGET}" STREQUAL "uwp")
     set(WIN32_ON_OFF_SWITCH "WIN32")
 else ()
     set(WIN32_ON_OFF_SWITCH "")
