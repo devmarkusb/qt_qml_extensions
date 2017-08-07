@@ -14,6 +14,7 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+include(${TOO_CMAKE_INC_DEPLOYMENT_BUILD})
 include(${TOO_CMAKE_INC_BUILDNR})
 project(TestApp VERSION 0.1.${BUILD_NR}.0)
 message(STATUS "project version: " ${PROJECT_VERSION})
