@@ -51,6 +51,7 @@ too_obtain_UWP_resources(
     "${PROJECT_VERSION}"
     "${TOO_CMAKE_INC_UWP_TOOLS_DEF_ICO}"
     "#336699"
+    ""
     TargetAppName_UWP_ASSETS)
 
 qt5_add_resources(TargetAppName_RESOURCES ../qml.qrc)
