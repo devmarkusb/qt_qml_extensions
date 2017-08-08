@@ -14,19 +14,18 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
-include(${TOO_CMAKE_INC_DEPLOYMENT_BUILD})
 include(${TOO_CMAKE_INC_BUILDNR})
 project(TestApp VERSION 0.1.${BUILD_NR}.0)
 message(STATUS "project version: " ${PROJECT_VERSION})
 set(TargetAppName ${PROJECT_NAME})
+
+include(${TOO_CMAKE_INC_DEFAULTS})
 
 option(TOO_FORCE_TESTAPP "switch on if you intent to build the TestApp (especially needed for standalone build under UWP)" OFF)
 # Not exactly a unit test, but some kind of test host.
 if (NOT TOO_BUILD_UNITTESTS AND NOT ${TOO_FORCE_TESTAPP})
     return ()
 endif ()
-
-include(${TOO_CMAKE_INC_DEFAULTS})
 
 include(${TOO_CMAKE_INC_QT})
 find_package(Qt5Quick)
