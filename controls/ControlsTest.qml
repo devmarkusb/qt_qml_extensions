@@ -564,6 +564,7 @@ Item {
                             ShortcutLabel_ {
                                 basecontrol: openFileBtn
                                 sequence: StandardKey.Open
+                                text: nativeText
                                 onActivated: openFileBtn.onClicked()
                             }
                         }
