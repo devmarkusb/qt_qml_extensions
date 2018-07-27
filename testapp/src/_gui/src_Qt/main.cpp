@@ -16,6 +16,6 @@ int main(int argc, char* argv[])
     CfgModel cfg_model;
     root_context->setContextProperty(QStringLiteral("cfgModel"), &cfg_model);
 
-    engine.load(QUrl("qrc:/TestApp/gui/AppWindow.qml"));
+    engine.load(QUrl("qrc:/testapp/gui/AppWindow.qml"));
     return app.exec();
 }

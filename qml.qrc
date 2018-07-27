@@ -117,8 +117,8 @@
         <file>layout/impl/TestHelperObj.qml</file>
         <file>layout/impl/TestRectangle.qml</file>
 
-        <file>TestApp/gui/AppWindow.qml</file>
-        <file>TestApp/gui/Draft.qml</file>
-        <file>TestApp/gui/dummydata/cfgModel.qml</file>
+        <file>testapp/gui/AppWindow.qml</file>
+        <file>testapp/gui/Draft.qml</file>
+        <file>testapp/gui/dummydata/cfgModel.qml</file>
     </qresource>
 </RCC>

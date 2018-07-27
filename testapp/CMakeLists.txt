@@ -15,7 +15,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 include(${TOO_CMAKE_INC_BUILDNR})
-project(TestApp VERSION 0.1.${BUILD_NR}.0)
+project(qt_qml_extensions_testapp VERSION 0.1.${BUILD_NR}.0)
 message(STATUS "project version: " ${PROJECT_VERSION})
 set(TargetAppName ${PROJECT_NAME})
 
@@ -64,9 +64,8 @@ add_executable(${TargetAppName}
     ${TargetAppName_UWP_ASSETS}
 )
 
-set(TOO_TEMP_TARGET ${TargetAppName})
-set(TOO_TEMP_QML_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
-include(${TOO_CMAKE_INC_QT_DEPLOY_TOO_TEMP_TARGET})
+include(${TOO_CMAKE_INC_QT_DEPLOY})
+too_qt_deploy(${TargetAppName} ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 if (WIN32)
     set_property(TARGET ${TargetAppName} APPEND PROPERTY COMPILE_DEFINITIONS UNICODE _UNICODE)

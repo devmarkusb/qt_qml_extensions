@@ -1,1 +1,1 @@
-add_subdirectory(TestApp)
+add_subdirectory(testapp)
