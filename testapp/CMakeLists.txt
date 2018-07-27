@@ -67,12 +67,6 @@ add_executable(${TargetAppName}
 include(${TOO_CMAKE_INC_QT_DEPLOY})
 too_qt_deploy(${TargetAppName} ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-if (WIN32)
-    set_property(TARGET ${TargetAppName} APPEND PROPERTY COMPILE_DEFINITIONS UNICODE _UNICODE)
-endif ()
-
-set_target_properties(${TargetAppName} PROPERTIES DEBUG_POSTFIX "d")
-
 configure_file(testapp_build_config.h.in ${CMAKE_BINARY_DIR}/testapp_build_config.h)
 target_include_directories(${TargetAppName} PUBLIC ${CMAKE_BINARY_DIR})
 
@@ -81,3 +75,5 @@ target_include_directories(${TargetAppName} SYSTEM PUBLIC ${Qt5Quick_INCLUDE_DIR
 target_include_directories(${TargetAppName} SYSTEM PUBLIC ${tooBuildEnv_INCLUDE_DIRS})
 
 target_link_libraries(${TargetAppName} PUBLIC Qt5::Quick)
+
+too_set_target_defaults(${TargetAppName})
