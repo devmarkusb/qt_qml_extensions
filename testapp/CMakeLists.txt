@@ -65,7 +65,7 @@ add_executable(${TargetAppName}
 )
 
 too_include(qt_deploy.cmake)
-too_qt_deploy(${TargetAppName} ${CMAKE_CURRENT_SOURCE_DIR}/..)
+too_qt_deploy(${TargetAppName} ${CMAKE_CURRENT_LIST_DIR}/..)
 
 configure_file(testapp_build_config.h.in ${CMAKE_BINARY_DIR}/testapp_build_config.h)
 target_include_directories(${TargetAppName} PUBLIC ${CMAKE_BINARY_DIR})
