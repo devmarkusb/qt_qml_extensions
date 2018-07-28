@@ -61,7 +61,7 @@ ApplicationWindow_ {
     visible: true
 
     Component.onCompleted: {
-        console.log("TestApp diagnostic logs {")
+        console.log("testapp diagnostic logs {")
         console.log("operating system:", OS.get_platform())
         console.log("}")
     }

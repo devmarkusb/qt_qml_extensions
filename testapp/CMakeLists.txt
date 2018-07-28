@@ -21,7 +21,7 @@ set(TargetAppName ${PROJECT_NAME})
 
 too_include(defaults.cmake)
 
-option(TOO_FORCE_TESTAPP "switch on if you intent to build the TestApp (especially needed for standalone build under UWP)" OFF)
+option(TOO_FORCE_TESTAPP "switch on if you intent to build the testapp (especially needed for standalone build under UWP)" OFF)
 # Not exactly a unit test, but some kind of test host.
 if (NOT TOO_BUILD_UNITTESTS AND NOT ${TOO_FORCE_TESTAPP})
     return ()
@@ -42,9 +42,9 @@ endif ()
 
 too_include(uwp_tools.cmake)
 too_obtain_UWP_resources(
-    "TestApp"
+    "testapp"
     "MB"
-    "TestApp"
+    "testapp"
     ""
     ""
     ""
