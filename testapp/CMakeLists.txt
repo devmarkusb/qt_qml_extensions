@@ -14,12 +14,12 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
-include(${TOO_CMAKE_INC_BUILDNR})
+too_include(buildnr.cmake)
 project(qt_qml_extensions_testapp VERSION 0.1.${BUILD_NR}.0)
 message(STATUS "project version: " ${PROJECT_VERSION})
 set(TargetAppName ${PROJECT_NAME})
 
-include(${TOO_CMAKE_INC_DEFAULTS})
+too_include(defaults.cmake)
 
 option(TOO_FORCE_TESTAPP "switch on if you intent to build the TestApp (especially needed for standalone build under UWP)" OFF)
 # Not exactly a unit test, but some kind of test host.
@@ -27,7 +27,7 @@ if (NOT TOO_BUILD_UNITTESTS AND NOT ${TOO_FORCE_TESTAPP})
     return ()
 endif ()
 
-include(${TOO_CMAKE_INC_QT})
+too_include(qt.cmake)
 find_package(Qt5Quick)
 
 
@@ -40,7 +40,7 @@ else ()
     set(WIN32_ON_OFF_SWITCH "")
 endif ()
 
-include(${TOO_CMAKE_INC_UWP_TOOLS})
+too_include(uwp_tools.cmake)
 too_obtain_UWP_resources(
     "TestApp"
     "MB"
@@ -64,7 +64,7 @@ add_executable(${TargetAppName}
     ${TargetAppName_UWP_ASSETS}
 )
 
-include(${TOO_CMAKE_INC_QT_DEPLOY})
+too_include(qt_deploy.cmake)
 too_qt_deploy(${TargetAppName} ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 configure_file(testapp_build_config.h.in ${CMAKE_BINARY_DIR}/testapp_build_config.h)
