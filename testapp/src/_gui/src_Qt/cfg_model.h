@@ -1,9 +1,10 @@
 #ifndef CFG_MODEL_H_ehuf73rhf874hf78y4fng
 #define CFG_MODEL_H_ehuf73rhf874hf78y4fng
 
-#include "toolib/PPDefs/MSVC/SUPPRESS_WARNINGS_EXTERNAL_BEGIN"
+#include "toolib/warnings.h"
+TOO_PRAGMA_WARNINGS_PUSH_DISABLE_ALL
 #include <QObject>
-#include "toolib/PPDefs/MSVC/SUPPRESS_WARNINGS_EXTERNAL_END"
+TOO_PRAGMA_WARNINGS_POP
 
 
 class CfgModel : public QObject
