@@ -12,6 +12,7 @@ Label_ {
 
 
     id: control
+    visible: extControlsCfg.tooltipsEnabled
     anchors.right: basecontrol.right
     anchors.rightMargin: extSpacing.charLikeWidth
     height: basecontrol.height
