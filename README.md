@@ -1,4 +1,21 @@
-1 Quick Guide
+# qt_qml_extensions library
+
+To provide more uniform usage, style, defaults and control of
+qml elements.
+
+## Usage and start of the qt_qml_extensions_testapp
+
+Set environment variables:
+* `export dev_sdk_path=/path-to-sdks/` where versions of Qt reside
+  (and possibly also boost).
+* `export dev_qt_base=$dev_sdk_path/qt_linux` (e.g.) where Qt versions
+  can be found in subdirs like `5.9.1`.
+
+Set CMake variables:
+* `UL_QT5_VERSION` to e.g. `5.9.1`
+* `UL_QT_COMPILER_SUBDIR` to e.g. `gcc_64`
+
+## Quick guide
 
     1 For an up-to-date usage blueprint please refer to the AppWindow.qml of testapp.
         You might especially just copy and paste the Ext... declarations block at the
@@ -17,8 +34,7 @@
             import QtQuick.Controls 2.1 as QC1
         in order to write e.g. QC1.Button instead of Button.
 
-
-2 Implementation notes
+## Implementation notes
 
     1 Controls
         Please note that only the 'minimal' style is always in up-to-date shape. If you want
