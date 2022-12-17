@@ -10,15 +10,15 @@
         You can tailor this one to your needs.
         Note that you will need to re-run CMake.
 */
-#ifndef APPNAME_BUILD_CONFIG_H_INCL
-#define APPNAME_BUILD_CONFIG_H_INCL
+#ifndef APPNAME_BUILD_CONFIG_H_lkxfjgn349gx5392gh8
+#define APPNAME_BUILD_CONFIG_H_lkxfjgn349gx5392gh8
 
 #include <string>
 
 
 namespace appname
 {
-inline std::string get_version_of_module()
+inline std::string getVersionOfLib()
 {
     return "@PROJECT_VERSION@";
 }

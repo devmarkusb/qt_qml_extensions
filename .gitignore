@@ -1,3 +1,11 @@
-*.user
-*.qmlc
 *.jsc
+*.qmlc
+*.user
+.clang-format
+.idea
+_build*
+bin
+bin_*
+cmake-build-*
+lib
+lib_*

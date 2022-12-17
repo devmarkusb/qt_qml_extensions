@@ -1,10 +1,10 @@
 #ifndef CFG_MODEL_H_ehuf73rhf874hf78y4fng
 #define CFG_MODEL_H_ehuf73rhf874hf78y4fng
 
-#include "toolib/warnings.h"
-TOO_PRAGMA_WARNINGS_PUSH_AND_DISABLE_ALL_MSVC
+#include "ul/ul.h"
+UL_PRAGMA_WARNINGS_PUSH_AND_DISABLE_ALL_MSVC
 #include <QObject>
-TOO_PRAGMA_WARNINGS_POP
+UL_PRAGMA_WARNINGS_POP
 
 
 class CfgModel : public QObject
@@ -15,7 +15,10 @@ class CfgModel : public QObject
     Q_PROPERTY(bool isGUIonlyMode READ isGUIonlyMode CONSTANT FINAL)
 
 public:
-    bool isGUIonlyMode() const { return false; }
+    static bool isGUIonlyMode()
+    {
+        return false;
+    }
 };
 
 #endif
