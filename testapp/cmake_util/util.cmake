@@ -8,7 +8,7 @@ include(FetchContent)
 
 FetchContent_Declare(mb-util
         GIT_REPOSITORY "/home/markus/projects/git/libs/util"
-        GIT_TAG HEAD
+        GIT_TAG origin/HEAD
         GIT_SHALLOW ON
         )
 
