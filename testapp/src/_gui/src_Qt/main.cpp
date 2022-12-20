@@ -1,9 +1,9 @@
 #include "cfg_model.h"
 #include "ul/ul.h"
 UL_PRAGMA_WARNINGS_PUSH_AND_DISABLE_ALL_MSVC
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QQmlContext>
+#include "QGuiApplication"
+#include "QQmlApplicationEngine"
+#include "QQmlContext"
 UL_PRAGMA_WARNINGS_POP
 
 
