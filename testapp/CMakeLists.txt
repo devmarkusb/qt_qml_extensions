@@ -35,7 +35,7 @@ if (NOT UL_BUILD_UNITTESTS AND NOT ${UL_FORCE_TESTAPP})
     return ()
 endif ()
 
-ul_include(qt.cmake)
+ul_include(qt5.cmake)
 find_package(Qt5 COMPONENTS Quick)
 
 
