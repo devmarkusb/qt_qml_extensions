@@ -3,5 +3,6 @@
 _build*
 bin
 bin_*
+clangformat.sh
 lib
 lib_*
