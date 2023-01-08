@@ -6,7 +6,6 @@ UL_PRAGMA_WARNINGS_PUSH_AND_DISABLE_ALL_MSVC
 #include "QObject"
 UL_PRAGMA_WARNINGS_POP
 
-
 class CfgModel : public QObject
 {
     Q_OBJECT
