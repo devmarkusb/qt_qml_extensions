@@ -6,9 +6,7 @@ qml elements.
 ## Usage and start of the qt_qml_extensions_testapp
 
 Set environment variables:
-* `export dev_sdk_path=/path-to-sdks/` where versions of Qt reside.
-* `export dev_qt_base=$dev_sdk_path/qt_linux` (e.g.) where Qt versions
-  can be found in subdirs like `5.9.1`.
+* `dev_qt_base` where Qt versions can be found in subdirs like `5.9.1`.
 
 Set CMake variables:
 * `UL_QT5_VERSION` to e.g. `5.9.1`
