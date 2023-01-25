@@ -27,7 +27,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
-        version: ${{qt_version}}
+        version: $qt_version
         target: 'desktop'
         arch: ''
         dir: '${{github.workspace}}/externlibs/qt/'
@@ -49,7 +49,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: >
         cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
-        -DUL_QT5_VERSION:STRING=${{qt_version}} -DUL_QT_COMPILER_SUBDIR:STRING=${{matrix.config.qtcomp}}
+        -DUL_QT5_VERSION:STRING=$qt_version -DUL_QT_COMPILER_SUBDIR:STRING=${{matrix.config.qtcomp}}
 
     - name: Build
       # Build your program with the given configuration
