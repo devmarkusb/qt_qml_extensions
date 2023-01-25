@@ -27,7 +27,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
-        version: '${{qt_version}}'
+        version: '5.15.2' #todo can't get $qt_version working
         target: 'desktop'
         arch: ''
         dir: '${{github.workspace}}/externlibs/qt/'
