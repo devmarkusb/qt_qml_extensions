@@ -39,4 +39,9 @@ Set CMake variables:
         or add the desired components first. Of course the idea is still, that QC2_def (and
         QC1_def as long as it is not considered deprecated) contains common stuff and styles are
         build based on that.
-        
+
+## Contributing
+
+### todos
+
+1. Qt 5.9.9 works, but Qt 5.15.2 is broken, lots of error logs also...
