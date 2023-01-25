@@ -1,5 +1,7 @@
 # qt_qml_extensions library
 
+[![build](https://github.com/devmarkusb/qt_qml_extensions/actions/workflows/build.yml/badge.svg)](https://github.com/devmarkusb/qt_qml_extensions/actions/workflows/build.yml)
+
 To provide more uniform usage, style, defaults and control of
 qml elements.
 
