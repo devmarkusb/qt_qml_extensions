@@ -34,15 +34,15 @@ jobs:
         install-deps: 'true'
         modules: ''
         archives: ''
-        cache: 'true'
+        cache: 'false'
         cache-key-prefix: 'install-qt-action'
         setup-python: 'false'
         tools: ''
         set-env: 'true'
         tools-only: 'false'
-        aqtversion: '==2.1.*'
-        py7zrversion: '==0.19.*'
-        extra: '--external 7z'
+        #aqtversion: '==2.1.*'
+        #py7zrversion: '==0.19.*'
+        #extra: '--external 7z'
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
