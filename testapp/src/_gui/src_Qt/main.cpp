@@ -9,6 +9,8 @@ UL_PRAGMA_WARNINGS_POP
 int main(int argc, char* argv[])
 {
     QGuiApplication app(argc, argv);
+    app.setOrganizationName("devmarkusb");
+    app.setOrganizationDomain("org");
     QQmlApplicationEngine engine;
     auto root_context = engine.rootContext();
 

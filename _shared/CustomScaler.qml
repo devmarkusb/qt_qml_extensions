@@ -8,7 +8,7 @@ RowLayout {
     Label_ {
         text: "Scale factor"
         font.bold: true // this stays for testing the fix of an ugly bug where this breaks custom scaling
-        anchors.verticalCenter: scaleSlider.verticalCenter
+        Layout.alignment: Qt.AlignVCenter
     }
 
     Slider {
@@ -30,6 +30,6 @@ RowLayout {
 
     Label_ {
         text: extScale.factor
-        anchors.verticalCenter: scaleSlider.verticalCenter
+        Layout.alignment: Qt.AlignVCenter
     }
 }

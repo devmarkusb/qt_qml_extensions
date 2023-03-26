@@ -42,14 +42,10 @@ Item {
         id: extControlsCfg // don't change this specifier!
     }
 
-    Component.onCompleted: {
-    }
-
     Flickable {
         anchors.fill: parent
         contentWidth: contentItem.childrenRect.width
         contentHeight: contentItem.childrenRect.height
-        clip: true
 
         ScrollBar.horizontal: ScrollBar_ {}
         ScrollBar.vertical: ScrollBar_ {}
@@ -717,7 +713,6 @@ Item {
                         ScrollBar.vertical: ScrollBar_ {}
                         ScrollBar.horizontal: ScrollBar_ {}
                         TextArea.flickable: TextArea_ {
-                            anchors.fill: parent
                             wrapMode: TextArea.Wrap
                             selectByMouse: true
                             text: "some text...\non multiple lines\na... wrap wrap wrap wrap wrap wrap wrap wrap wrap wrapwrap wrap wrap wrap\nb...\n\nc...\nd\ne\nf\ng"

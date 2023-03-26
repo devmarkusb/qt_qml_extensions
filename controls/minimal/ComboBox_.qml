@@ -71,11 +71,15 @@ QC2_def.ComboBox_ {
 
         Connections {
             target: control
-            onPressedChanged: canvas.requestPaint()
+            function onPressedChanged() {
+                canvas.requestPaint()
+            }
         }
         Connections {
             target: extColors
-            onTextActiveColorChanged: canvas.requestPaint()
+            function onTextActiveColorChanged() {
+                canvas.requestPaint()
+            }
         }
 
         onPaint: {
