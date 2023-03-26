@@ -21,7 +21,7 @@ if (NOT UL_BUILD_UNITTESTS AND NOT ${UL_FORCE_TESTAPP})
 endif ()
 
 ul_include(qt5.cmake)
-find_package(Qt5 COMPONENTS Quick)
+find_package(Qt5 COMPONENTS Quick QuickControls2)
 
 
 ################################################################################################
@@ -67,7 +67,7 @@ target_include_directories(${target} PUBLIC src)
 target_include_directories(${target} SYSTEM PUBLIC ${Qt5Quick_INCLUDE_DIRS})
 target_include_directories(${target} SYSTEM PUBLIC ${ul_INCLUDE_DIRS})
 
-target_link_libraries(${target} PUBLIC Qt5::Quick)
+target_link_libraries(${target} PUBLIC Qt::Quick Qt::QuickControls2)
 
 ul_set_target_defaults(${target})
 

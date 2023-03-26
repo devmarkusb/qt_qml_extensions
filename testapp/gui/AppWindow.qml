@@ -76,8 +76,6 @@ ApplicationWindow_ {
 
         onClicked: {
             pageSwitch.currentIndex = 0
-            rootAppWindow.width = impl.defWindowWidth
-            rootAppWindow.height = impl.defWindowHeight
         }
     }
 
@@ -95,8 +93,6 @@ ApplicationWindow_ {
 
                 onClicked: {
                     pageSwitch.currentIndex = 1
-                    rootAppWindow.width = controlsTest.width
-                    rootAppWindow.height = controlsTest.height
                 }
             }
 
@@ -105,8 +101,6 @@ ApplicationWindow_ {
 
                 onClicked: {
                     pageSwitch.currentIndex = 2
-                    rootAppWindow.width = layoutTest.width
-                    rootAppWindow.height = layoutTest.height
                 }
             }
 
@@ -115,8 +109,6 @@ ApplicationWindow_ {
 
                 onClicked: {
                     pageSwitch.currentIndex = 3
-                    rootAppWindow.width = colorsTest.implicitWidth
-                    rootAppWindow.height = colorsTest.implicitHeight
                 }
             }
 
@@ -125,8 +117,6 @@ ApplicationWindow_ {
 
                 onClicked: {
                     pageSwitch.currentIndex = 4
-                    rootAppWindow.width = fontTest.implicitWidth
-                    rootAppWindow.height = fontTest.implicitHeight
                 }
             }
         } // ColumnLayout

@@ -55,7 +55,6 @@ Item {
         anchors.fill: parent
         contentWidth: contentItem.childrenRect.width
         contentHeight: contentItem.childrenRect.height
-        clip: true
 
         ScrollBar.horizontal: ScrollBar {}
         ScrollBar.vertical: ScrollBar {}
