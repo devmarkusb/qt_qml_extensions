@@ -12,9 +12,6 @@ import QtQuick.Window 2.2
 Item {
     id: root
 
-    width: extSpacing.twoThirdAvailableAppWidth
-    height: extSpacing.twoThirdAvailableAppHeight
-
     ExtColors {
         id: extColors // don't change this specifier!
         schemeChoice: "bright"
@@ -46,13 +43,14 @@ Item {
 
     Flickable {
         anchors.fill: parent
-        contentWidth: contentItem.childrenRect.width
-        contentHeight: contentItem.childrenRect.height
+        contentWidth: colLayout.childrenRect.width
+        contentHeight: colLayout.childrenRect.height
 
-        ScrollBar.horizontal: ScrollBar {}
-        ScrollBar.vertical: ScrollBar {}
+        ScrollBar.horizontal: ScrollBar_ {}
+        ScrollBar.vertical: ScrollBar_ {}
 
         ColumnLayout {
+            id: colLayout
             spacing: extSpacing.pixLayoutSpacing
 
             CustomScaler {
@@ -96,7 +94,6 @@ Item {
                 id: testGrid
                 columns: 2
                 spacing: extSpacing.pixLayoutSpacing
-
 
                 Label_ { text: "inch square (scaling logically)" }
                 TestRectangle { TestHelperObj { a: extScale.in2p(1) } }

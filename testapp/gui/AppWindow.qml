@@ -51,8 +51,8 @@ ApplicationWindow_ {
     QtObject {
         id: impl
 
-        readonly property real defWindowWidth: extSpacing.twoThirdAvailableAppWidth
-        readonly property real defWindowHeight: extSpacing.twoThirdAvailableAppHeight
+        readonly property real defWindowWidth: Screen.width
+        readonly property real defWindowHeight: Screen.height
     }
 
     width: impl.defWindowWidth
@@ -81,8 +81,7 @@ ApplicationWindow_ {
         id: pageSwitch
 
         currentIndex: 0
-        Layout.fillWidth: true
-        Layout.fillHeight: true
+        anchors.fill: parent
 
         ColumnLayout {
             id: navPage
@@ -118,18 +117,26 @@ ApplicationWindow_ {
 
         ControlsTest {
             id: controlsTest
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
 
         ExtLayoutTest {
             id: layoutTest
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
 
         ExtColorsTest {
             id: colorsTest
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
 
         ExtFontTest {
             id: fontTest
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
     } // StackLayout
 } // ApplicationWindow_
