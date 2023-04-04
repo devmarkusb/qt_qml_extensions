@@ -47,6 +47,8 @@ build based on that.
 
 ## Contributing
 
-### todos
+At the moment the testapp is working under Qt 5.15.2. Also on Android, with a certain
+combination of versions of Java, NDK, and so on, example configuration see
+cmake-android.sh.
 
-1. Qt 5.9.9 works, but Qt 5.15.2 is broken, lots of error logs also...
+### todos
