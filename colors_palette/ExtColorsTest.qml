@@ -1,4 +1,5 @@
 import "impl"
+import "../controls/minimal"
 import "../fonts"
 import "../layout"
 import QtQuick 2.8
@@ -48,16 +49,13 @@ Item {
         id: extSpacing // don't change this specifier!
     }
 
-    width: testGrid.width
-    height: testGrid.height
-
     Flickable {
         anchors.fill: parent
         contentWidth: contentItem.childrenRect.width
         contentHeight: contentItem.childrenRect.height
 
-        ScrollBar.horizontal: ScrollBar {}
-        ScrollBar.vertical: ScrollBar {}
+        ScrollBar.horizontal: ScrollBar_ {}
+        ScrollBar.vertical: ScrollBar_ {}
 
         Grid {
             id: testGrid

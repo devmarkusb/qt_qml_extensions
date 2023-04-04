@@ -13,9 +13,6 @@ import QtQuick.Layouts 1.3
 Item {
     id: root
 
-    width: extSpacing.twoThirdAvailableAppWidth
-    height: extSpacing.twoThirdAvailableAppHeight
-
     ExtColors {
         id: extColors // don't change this specifier!
         schemeChoice: "bright"
