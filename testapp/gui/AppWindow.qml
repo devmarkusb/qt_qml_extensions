@@ -1,5 +1,5 @@
-//! You can take this file as a blueprint of how to make use of this qt qml extension lib
-//! in your own applications. Especially notice the hint for the Ext... declarations below.
+/** You can take this file as a blueprint of how to make use of this qt qml extension lib
+    in your own applications. Especially notice the hint for the Ext... declarations below.*/
 import "."
 import "../../colors_palette"
 import "../../controls"
@@ -12,14 +12,14 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
 
-
-//Draft {
-//}
 ApplicationWindow_ {
     id: rootAppWindow
 
-    //! Hint: The following Ext... global declarations are what you will mostly always need in all of your
-    //! applications as well - alongside with the import according statements above.
+    // for experimenting
+    //Draft {}
+
+    //* Hint: The following Ext... global declarations are what you will mostly always need in all of your
+    //        applications as well - alongside with the import according statements above.
     //!@{
     ExtColors {
         id: extColors // don't change this specifier!
@@ -48,7 +48,6 @@ ApplicationWindow_ {
     }
     //!@}
 
-
     QtObject {
         id: impl
 
@@ -73,14 +72,14 @@ ApplicationWindow_ {
         z: 1
         opacity: 0.8
         visible: pageSwitch.currentIndex !== 0
-
         onClicked: {
-            pageSwitch.currentIndex = 0
+            pageSwitch.currentIndex = 0;
         }
     }
 
     StackLayout {
         id: pageSwitch
+
         currentIndex: 0
         Layout.fillWidth: true
         Layout.fillHeight: true
@@ -90,33 +89,29 @@ ApplicationWindow_ {
 
             Button {
                 text: "Controls"
-
                 onClicked: {
-                    pageSwitch.currentIndex = 1
+                    pageSwitch.currentIndex = 1;
                 }
             }
 
             Button {
                 text: "Layout"
-
                 onClicked: {
-                    pageSwitch.currentIndex = 2
+                    pageSwitch.currentIndex = 2;
                 }
             }
 
             Button {
                 text: "Colors"
-
                 onClicked: {
-                    pageSwitch.currentIndex = 3
+                    pageSwitch.currentIndex = 3;
                 }
             }
 
             Button {
                 text: "Fonts"
-
                 onClicked: {
-                    pageSwitch.currentIndex = 4
+                    pageSwitch.currentIndex = 4;
                 }
             }
         } // ColumnLayout
