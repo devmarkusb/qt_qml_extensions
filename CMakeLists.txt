@@ -90,8 +90,8 @@ if (ANDROID)
             VERSION_CODE 1
             # uncomment the following two lines for a signed release build apk
             # *and* increment VERSION_CODE above
-            KEYSTORE ${CMAKE_SOURCE_DIR}/doc/stores/googleplaystore/upload_keystore.jks upload
-            KEYSTORE_PASSWORD "rMi5Y53Qxx5Z5jWH"
+            KEYSTORE ${UL_ANDROID_SIGN_KEY_PATH} key
+            KEYSTORE_PASSWORD ${UL_ANDROID_SIGN_KEY_PASS}
             NAME ${target}
             PACKAGE_SOURCES ${UL_CMAKE_UTIL_DIR}/android
             PACKAGE_NAME "org.enterprise.${targetLowerCase}"

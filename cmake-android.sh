@@ -4,14 +4,17 @@ set -x
 
 if [ -z "$1" ]
 then
-    echo "You need to pass Debug or Release as parameter."
+    echo "You need to pass Debug or Release as parameter, then path to signing key file, then pass."
     exit
 fi
 
 echo "Hint: you might want to delete cmake-build-debug/release dir(s) for clean cmake run first"
 
 build_config=$1
+sign_key_path=$2
+sign_key_pass=$3
 subdir_lowercase=${1,,}
+build_dir=_build-$subdir_lowercase-android
 
 # Uncomment arm/x86 blocks according to your needs.
 # Typically arm is more popular for deployments. And x86 is the only convenient (performance-wise) build
@@ -25,8 +28,6 @@ subdir_lowercase=${1,,}
 
 ### x86 ###
 # Note, you might need to rename (copy) some subdirs in your NDK.
-
-build_dir=_build-$subdir_lowercase-android
 
 mkdir -p $build_dir
 
@@ -44,6 +45,8 @@ cmake \
 -DANDROID_STL="c++_shared" \
 -DANDROID_ABI="arm64-v8a" \
 -DANDROID_PLATFORM=28 \
+-DUL_ANDROID_SIGN_KEY_PATH=$sign_key_path \
+-DUL_ANDROID_SIGN_KEY_PASS=$sign_key_pass \
 -DUL_QT5_VERSION=5.15.2 \
 -DUL_QT_COMPILER_SUBDIR=android \
 -DUL_FORCE_TESTAPP=ON \
