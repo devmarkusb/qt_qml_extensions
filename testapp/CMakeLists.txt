@@ -23,9 +23,6 @@ endif ()
 ul_include(qt5.cmake)
 find_package(Qt5 COMPONENTS Quick QuickControls2)
 
-
-################################################################################################
-
 # only purpose of this so far: prevent msvc from showing an additional console window in Qt apps
 if (UL_DEPLOYMENT_BUILD AND WIN32 OR "${UL_DEPLOY_TARGET}" STREQUAL "uwp")
     set(WIN32_ON_OFF_SWITCH "WIN32")
@@ -49,22 +46,33 @@ ul_obtain_UWP_resources(
 
 qt5_add_resources(target_RESOURCES ../qml.qrc)
 
-add_executable(${target}
-    ${WIN32_ON_OFF_SWITCH}
+set(target_IMPL_SOURCES
     src/_gui/src_Qt/cfg_model.h
     src/_gui/src_Qt/main.cpp
-    ${target_RESOURCES}
-    ${target_UWP_ASSETS}
 )
 
+set(target_input
+    ${WIN32_ON_OFF_SWITCH}
+    ${target_UWP_ASSETS}
+    ${target_RESOURCES}
+    ${target_IMPL_SOURCES}
+)
+
+set(target_QML_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
+
+if (ANDROID)
+    add_library(${target} SHARED ${target_input})
+else ()
+    add_executable(${target} ${target_input})
+endif ()
+
 ul_include(qt_deploy.cmake)
-ul_qt_deploy(${target} ${CMAKE_CURRENT_LIST_DIR}/..)
+ul_qt_deploy(${target} ${target_QML_DIR})
 
 configure_file(testapp_build_config.h.in ${CMAKE_BINARY_DIR}/testapp_build_config.h)
 target_include_directories(${target} PUBLIC ${CMAKE_BINARY_DIR})
 
 target_include_directories(${target} PUBLIC src)
-target_include_directories(${target} SYSTEM PUBLIC ${Qt5Quick_INCLUDE_DIRS})
 target_include_directories(${target} SYSTEM PUBLIC ${ul_INCLUDE_DIRS})
 
 target_link_libraries(${target} PUBLIC Qt::Quick Qt::QuickControls2)
@@ -72,3 +80,18 @@ target_link_libraries(${target} PUBLIC Qt::Quick Qt::QuickControls2)
 ul_set_target_defaults(${target})
 
 set_property(SOURCE qrc_qml.cpp PROPERTY SKIP_AUTOMOC ON)
+
+if (ANDROID)
+    include(${UL_CMAKE_UTIL_DIR}/qt-android-cmake.cmake)
+    string(TOLOWER ${target} targetLowerCase)
+    add_qt_android_apk(${target}_apk ${target}
+            VERSION_CODE 1
+            # uncomment the following two lines for a signed release build apk
+            # *and* increment VERSION_CODE above
+            KEYSTORE ${CMAKE_SOURCE_DIR}/doc/stores/googleplaystore/upload_keystore.jks upload
+            KEYSTORE_PASSWORD "rMi5Y53Qxx5Z5jWH"
+            NAME ${target}
+            PACKAGE_SOURCES ${UL_CMAKE_UTIL_DIR}/android
+            PACKAGE_NAME "org.enterprise.${targetLowerCase}"
+            BUILDTOOLS_REVISION "28.0.3")
+endif ()
