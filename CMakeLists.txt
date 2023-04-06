@@ -23,7 +23,7 @@ if (NOT UL_BUILD_UNITTESTS AND NOT ${UL_FORCE_TESTAPP})
 endif ()
 
 ul_include(qt5.cmake)
-find_package(Qt5 COMPONENTS Quick QuickControls2)
+find_package(Qt5 COMPONENTS Quick QuickControls2 Svg)
 
 # only purpose of this so far: prevent msvc from showing an additional console window in Qt apps
 if (UL_DEPLOYMENT_BUILD AND WIN32 OR "${UL_DEPLOY_TARGET}" STREQUAL "uwp")
@@ -77,7 +77,7 @@ target_include_directories(${target} PUBLIC ${CMAKE_BINARY_DIR})
 target_include_directories(${target} PUBLIC src)
 target_include_directories(${target} SYSTEM PUBLIC ${ul_INCLUDE_DIRS})
 
-target_link_libraries(${target} PUBLIC Qt::Quick Qt::QuickControls2)
+target_link_libraries(${target} PUBLIC Qt::Quick Qt::QuickControls2 Qt::Svg)
 
 ul_set_target_defaults(${target})
 

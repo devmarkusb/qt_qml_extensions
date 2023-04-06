@@ -40,6 +40,8 @@ Item {
     }
 
     Flickable {
+        id: flickable
+
         anchors.fill: parent
         contentWidth: contentItem.childrenRect.width
         contentHeight: contentItem.childrenRect.height
@@ -277,7 +279,7 @@ Item {
                             }
                         }
                         Button_ {
-                            text: "Button with lots text - grows automatically"
+                            text: "Button with lot's of text - grows automatically"
                         }
                     }
                 }
@@ -721,10 +723,10 @@ Item {
 
             Popup_ {
                 id: popup
-                width: root.width * 0.75
-                height: root.height * 0.75
-                x: (root.width - width) / 2
-                y: (root.height - height) / 2
+                width: flickable.width * 0.75
+                height: flickable.height * 0.75
+                x: flickable.contentX + (flickable.width - width) / 2
+                y: flickable.contentY + (flickable.height - height) / 2
 
                 modal: true
                 focus: true
