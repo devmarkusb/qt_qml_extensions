@@ -1,8 +1,6 @@
 *.user
-.clang-format
 _build*
 bin
 bin_*
-clangformat.sh
 lib
 lib_*

@@ -6,8 +6,7 @@ UL_PRAGMA_WARNINGS_PUSH_AND_DISABLE_ALL_MSVC
 #include "QQmlContext"
 UL_PRAGMA_WARNINGS_POP
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     QGuiApplication app(argc, argv);
     app.setOrganizationName("devmarkusb");
     app.setOrganizationDomain("org");
