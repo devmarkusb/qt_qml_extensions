@@ -6,16 +6,14 @@ UL_PRAGMA_WARNINGS_PUSH_AND_DISABLE_ALL_MSVC
 #include "QObject"
 UL_PRAGMA_WARNINGS_POP
 
-class CfgModel : public QObject
-{
+class CfgModel : public QObject {
     Q_OBJECT
 
     //! true if started via qmlscene
     Q_PROPERTY(bool isGUIonlyMode READ isGUIonlyMode CONSTANT FINAL)
 
 public:
-    static bool isGUIonlyMode()
-    {
+    static bool isGUIonlyMode() {
         return false;
     }
 };

@@ -13,6 +13,7 @@ set(target ${PROJECT_NAME})
 
 ul_include(defaults.cmake)
 
+set(UL_ADDITIONAL_CLANG_FORMAT_DIRS "testapp" CACHE STRING "" FORCE)
 ul_include(clang-format.cmake)
 ul_include(githooks.cmake)
 
