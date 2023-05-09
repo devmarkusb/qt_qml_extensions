@@ -14,7 +14,7 @@ import QtQuick 2.8
 
 
 QtObject {
-    property bool tooltipsEnabled: OS.get_platform() === "android" || OS.get_platform() === "ios" ? false : true
+    property bool tooltipsEnabled: OS.is_mobile() ? false : true
     property int tooltipTimeout_ms: 2000
     property real flickDefaultVelocity: 500
     property real flickFastVelocity: flickDefaultVelocity * 2
