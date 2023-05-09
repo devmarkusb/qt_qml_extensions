@@ -10,24 +10,25 @@
 */
 import QtQuick 2.8
 import QtQuick.Window 2.2
+import "../core/os.js" as OS
 
 
 QtObject {
     //! Lowest most reasonable resolution (aspect ratio 3:2). Motivated by some early iPhone's.
-    readonly property real minMostReasonable3to2AppWidth: 480
-    readonly property real minMostReasonable3to2AppHeight: 320
+    readonly property real minMostReasonable3to2AppWidth: OS.is_mobile() ? Screen.width : 480
+    readonly property real minMostReasonable3to2AppHeight: OS.is_mobile() ? Screen.height : 320
     //! Lowest but not most reasonable resolution (aspect ratio 4:3).
-    readonly property real min4to3AppWidth: 320
-    readonly property real min4to3AppHeight: 240
+    readonly property real min4to3AppWidth: OS.is_mobile() ? Screen.width : 320
+    readonly property real min4to3AppHeight: OS.is_mobile() ? Screen.width : 240
     //! Useful for making app window occupy 2/3 of the available screen space. Golden ratio would be about 0.618.
     /** Impl. note: desktopAvailableWidth/Height aren't a good choice, as they sum up multi monitors.*/
     readonly property real twoThirdAvailableAppWidth: Screen.width * 0.66
     readonly property real twoThirdAvailableAppHeight: Screen.height * 0.66
 
-    //! Note, it doesn't seem to be a good idea to take these font metrics or even the default font's point/pixel
-    //! size as a foundation for platform independent and scaling respecting choice of spacing. Unfortunately
-    //! for calculating space for text lengths and heights there is no other choice.
-    /** E.g. there are already ugly seemingly unrelated differences between Windows and Windows-UWP affecting
+    /** Note, it doesn't seem to be a good idea to take these font metrics or even the default font's point/pixel
+        size as a foundation for platform independent and scaling respecting choice of spacing. Unfortunately
+        for calculating space for text lengths and heights there is no other choice.
+        E.g. there are already ugly seemingly unrelated differences between Windows and Windows-UWP affecting
         all these parameters with varying factors.*/
     // Impl. note: although the font size is already scaled separately, the font metrics aren't yet.
     readonly property real charLikeMaxWidth: extFontMetrics.maximumCharacterWidth * extScale.factor
@@ -56,10 +57,10 @@ QtObject {
 
 
     //### non scaling properties ###
-    //! The following spacings are non-scaling (not via logical ppi like Windows scale factor and also not via custom factor of extScale).
-    //! They are mostly used for borders, separators, and all kind of spacing situations that wouldn't look good or waste too much space
-    //! if being scaled.
-    //! These constants start with 'pix' prefix to express their pixel-perfect behavior.
+    /** The following spacings are non-scaling (not via logical ppi like Windows scale factor and also not via custom factor of extScale).
+        They are mostly used for borders, separators, and all kind of spacing situations that wouldn't look good or waste too much space
+        if being scaled.
+        These constants start with 'pix' prefix to express their pixel-perfect behavior.*/
     //!@{
 
     readonly property real pix0space: 0
