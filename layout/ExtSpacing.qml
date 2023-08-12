@@ -19,7 +19,7 @@ QtObject {
     readonly property real minMostReasonable3to2AppHeight: OS.is_mobile() ? Screen.height : 320
     //! Lowest but not most reasonable resolution (aspect ratio 4:3).
     readonly property real min4to3AppWidth: OS.is_mobile() ? Screen.width : 320
-    readonly property real min4to3AppHeight: OS.is_mobile() ? Screen.width : 240
+    readonly property real min4to3AppHeight: OS.is_mobile() ? Screen.height : 240
     //! Useful for making app window occupy 2/3 of the available screen space. Golden ratio would be about 0.618.
     /** Impl. note: desktopAvailableWidth/Height aren't a good choice, as they sum up multi monitors.*/
     readonly property real twoThirdAvailableAppWidth: Screen.width * 0.66
