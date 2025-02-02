@@ -78,7 +78,7 @@ target_include_directories(${target} PUBLIC ${CMAKE_BINARY_DIR})
 target_include_directories(${target} PUBLIC src)
 target_include_directories(${target} SYSTEM PUBLIC ${ul_INCLUDE_DIRS})
 
-target_link_libraries(${target} PUBLIC Qt::Quick Qt::QuickControls2 Qt::Svg)
+target_link_libraries(${target} PUBLIC mb-util Qt::Quick Qt::QuickControls2 Qt::Svg)
 
 ul_set_target_defaults(${target})
 
