@@ -14,8 +14,8 @@ jobs:
     env:
       CC: ${{matrix.config.CC}}
       CXX: ${{matrix.config.CXX}}
-      qt_version: 5.15.2
-      dev_qt_base: $Qt5_DIR
+      qt_version: 6.8.2
+      dev_qt_base: $Qt6_DIR
 
     # The CMake configure and build commands are platform-agnostic and should work equally well on Windows or Mac.
     # You can convert this to a matrix build if you need cross-platform coverage.
@@ -28,7 +28,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
-        version: '5.15.2' #todo can't get $qt_version working
+        version: '6.8.2' #todo can't get $qt_version working
         target: 'desktop'
         arch: ''
         dir: '${{github.workspace}}/externlibs/qt/'
