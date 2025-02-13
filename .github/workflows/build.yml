@@ -26,14 +26,14 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Install Qt
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         version: '6.8.2' #todo can't get $qt_version working
         target: 'desktop'
         arch: ''
         dir: '${{github.workspace}}/externlibs/qt/'
         install-deps: 'true'
-        modules: ''
+        modules: 'core5compat'
         archives: ''
         cache: 'false'
         cache-key-prefix: 'install-qt-action'
