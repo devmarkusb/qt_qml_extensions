@@ -1,11 +1,9 @@
 import "../colors_palette"
-import "../controls/QC1_def" as QC1_def
 import "../controls/QC2_def" as QC2_def
 import "../controls/minimal" as Min
 import "../layout"
 import QtQuick 2.8
-import QtQuick.Controls 1.5 as QC1
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 
 
@@ -21,11 +19,6 @@ Item {
     ExtFont {
         id: extFont // don't change this specifier!
         schemeChoice: "def"
-    }
-
-    ExtFont {
-        id: extFont_defQC1
-        schemeChoice: "defQC1"
     }
 
     ExtFont {
@@ -57,7 +50,6 @@ Item {
 
     Component.onCompleted: {
         console.log("ExtFontTest diagnostic logs {")
-        console.log("defQC1 family:", extFont_defQC1.normal.family, "pointSize:", extFont_defQC1.normal.pointSize, "pixelSize:", extFont_defQC1.normal.pixelSize)
         console.log("defQC2 family:", extFont_defQC2.normal.family, "pointSize:", extFont_defQC2.normal.pointSize, "pixelSize:", extFont_defQC2.normal.pixelSize)
         console.log("def family:", extFont_def.normal.family, "pointSize:", extFont_def.normal.pointSize, "pixelSize:", extFont_def.normal.pixelSize)
         console.log("mistral family:", extFont_mistral.normal.family, "pointSize:", extFont_mistral.normal.pointSize, "pixelSize:", extFont_mistral.normal.pixelSize)
@@ -103,16 +95,6 @@ Item {
                 Text { text: exampleText + " 24"; font.pixelSize: extScale.point2p(24) }
                 Text { text: examplePlayground; font.pixelSize: extScale.point2p(12) }
 
-                Label { text: "bare QC1 Label" }
-                QC1.Label { text: exampleText; }
-                QC1.Label { text: exampleText; font.bold: true }
-                QC1.Label { text: exampleText; font.italic: true }
-                QC1.Label { text: exampleText; font.underline: true }
-                QC1.Label { text: exampleText + " 8"; font.pixelSize: extScale.point2p(8) }
-                QC1.Label { text: exampleText + " 12"; font.pixelSize: extScale.point2p(12) }
-                QC1.Label { text: exampleText + " 24"; font.pixelSize: extScale.point2p(24) }
-                QC1.Label { text: examplePlayground; font.pixelSize: extScale.point2p(12) }
-
                 Label { text: "bare QC2 Label" }
                 Label { text: exampleText; }
                 Label { text: exampleText; font.bold: true }
@@ -124,9 +106,9 @@ Item {
                 Label { text: examplePlayground; font.pixelSize: extScale.point2p(12) }
 
                 // It's tempting to use the better looking NativeRendering under Windows desktop.
-                // But this is said to have bad transformation behavior, especially cross platform.
+                // But this is said to have bad transformation behavior, especially cross-platform.
                 Label { text: "QC2 Label NativeRendering" }
-                Label { text: exampleText; font.family: extFont_defQC1.normal.family; renderType: Text.NativeRendering }
+                Label { text: exampleText; font.family: extFont_defQC2.normal.family; renderType: Text.NativeRendering }
                 Label { text: exampleText; font.bold: true; renderType: Text.NativeRendering }
                 Label { text: exampleText; font.italic: true; renderType: Text.NativeRendering }
                 Label { text: exampleText; font.underline: true; renderType: Text.NativeRendering }
@@ -134,19 +116,6 @@ Item {
                 Label { text: exampleText + " 12"; font.pixelSize: extScale.point2p(12); renderType: Text.NativeRendering }
                 Label { text: exampleText + " 24"; font.pixelSize: extScale.point2p(24); renderType: Text.NativeRendering }
                 Label { text: examplePlayground; font.pixelSize: extScale.point2p(12); renderType: Text.NativeRendering }
-
-
-                //####################################################################################################################
-
-                Label { text: extFont_defQC1.schemeChoice + " (QC1 Label)"; font.italic: true }
-                QC1_def.Label_ { font: extFont_defQC1.normal; text: exampleText; }
-                QC1_def.Label_ { font.family: extFont_defQC1.normal.family; text: exampleText; font.bold: true }
-                QC1_def.Label_ { font.family: extFont_defQC1.normal.family; text: exampleText; font.italic: true }
-                QC1_def.Label_ { font.family: extFont_defQC1.normal.family; text: exampleText; font.underline: true }
-                QC1_def.Label_ { font.family: extFont_defQC1.normal.family; text: exampleText; font.pixelSize: extScale.point2p(8) }
-                QC1_def.Label_ { font.family: extFont_defQC1.normal.family; text: exampleText; font.pixelSize: extScale.point2p(12) }
-                QC1_def.Label_ { font.family: extFont_defQC1.normal.family; text: exampleText; font.pixelSize: extScale.point2p(24) }
-                QC1_def.Label_ { font.family: extFont_defQC1.normal.family; text: examplePlayground; font.pixelSize: extScale.point2p(12) }
 
 
                 //####################################################################################################################
@@ -187,12 +156,6 @@ Item {
                 Min.Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.pixelSize: extScale.point2p(24) }
                 Min.Label_ { font.family: extFont_mistral.normal.family; text: examplePlayground; font.pixelSize: extScale.point2p(12) }
             } // Grid
-
-            Label {
-                visible: Qt.platform.os === "winrt"
-                text: "Warning: for the winrt platform the Quick Controls 1 (QC1) Label isn't supported (yet?!)"
-                color: "red"
-            }
         } /// ColumnLayout
     } /// Flickable
 } // Item

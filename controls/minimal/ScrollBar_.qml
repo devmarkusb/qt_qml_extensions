@@ -1,7 +1,7 @@
 import "../_shared/impl"
 import "../_shared/impl/obtainButtonProps.js" as ButtonProp
 import QtQuick 2.8
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.2
 
 
 ScrollBar {

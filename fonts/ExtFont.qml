@@ -28,9 +28,6 @@ Item {
         id: text
         state: schemeChoice
 
-        DefQC1 {
-            id: defqc1Singleton
-        }
         DefQC2 {
             id: defqc2Singleton
         }
@@ -42,13 +39,6 @@ Item {
         }
 
         states: [
-            State {
-                name: "defQC1"
-                PropertyChanges {
-                    target: text
-                    font: defqc1Singleton.font
-                }
-            },
             State {
                 name: "defQC2"
                 PropertyChanges {

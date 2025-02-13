@@ -2,7 +2,7 @@
 //! or such in order for the group box title not to overlap GUI parts above.
 import "impl"
 import QtQuick 2.8
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.2
 
 
 GroupBox {

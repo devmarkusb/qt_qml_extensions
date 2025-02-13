@@ -3,7 +3,7 @@ import "../_shared/impl"
 import "../_shared/impl/obtainButtonProps.js" as ButtonProp
 import "../QC2_def" as QC2
 import QtQuick 2.8
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.2
 
 
 QC2.TabButton_ {

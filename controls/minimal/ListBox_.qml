@@ -3,7 +3,7 @@ import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
 import "../_shared/impl/obtainListDelegateProps.js" as ListDelegateProp
 import QtQuick 2.8
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 
 

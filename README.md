@@ -8,10 +8,10 @@ qml elements.
 ## Usage and start of the qt_qml_extensions_testapp
 
 Set environment variables:
-* `dev_qt_base` where Qt versions can be found in subdirs like `5.9.1`.
+* `dev_qt_base` where Qt versions can be found in subdirs like `6.8.2`.
 
 Set CMake variables:
-* `UL_QT5_VERSION` to e.g. `5.9.1`
+* `UL_QT6_VERSION` to e.g. `6.8.2` or `UL_QT5_VERSION` to e.g. `5.9.1`
 * `UL_QT_COMPILER_SUBDIR` to e.g. `gcc_64`
 
 ## Quick guide
@@ -31,10 +31,9 @@ Set CMake variables:
    make clear, whether you use the Controls 1 or 2 version. E.g. it is good practice
    to write
    ```
-   import QtQuick.Controls 1.5 as QC1
-   import QtQuick.Controls 2.1 as QC1
+   import QtQuick.Controls 2.2 as QC2
    ```
-   in order to write e.g. QC1.Button instead of Button.
+   in order to write e.g. QC2.Button instead of Button.
 
 ## Implementation notes
 
