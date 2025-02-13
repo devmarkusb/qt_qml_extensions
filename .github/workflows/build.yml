@@ -33,7 +33,7 @@ jobs:
         arch: ''
         dir: '${{github.workspace}}/externlibs/qt/'
         install-deps: 'true'
-        modules: 'core5compat'
+        modules: 'qt5compat'
         archives: ''
         cache: 'false'
         cache-key-prefix: 'install-qt-action'
