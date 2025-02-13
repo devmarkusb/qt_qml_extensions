@@ -4,10 +4,9 @@ import "../colors_palette"
 import "../fonts"
 import "../layout"
 import QtQuick 2.8
-import QtQuick.Controls 1.5 as QC1
-import QtQuick.Controls 2.1
-import QtQuick.Dialogs 1.2
-import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.2
+import QtQuick.Dialogs
+import QtQuick.Layouts
 
 
 Item {
@@ -135,7 +134,6 @@ Item {
                     } // Row
                 } // TestHelperBox
 
-                // Note, for QC1 comment out the following two
                 TestHelperBox {
                     id: tabview
                     title: "TabView_/TabBar_"
@@ -208,61 +206,6 @@ Item {
                         }
                     }
                 } // TestHelperBox
-
-                // Note, for QC2 comment out the following two
-                // TestHelperBox {
-                //     id: tabview
-                //     title: "TabView_/TabBar_"
-                //     TabView_ {
-                //         anchors.fill: parent
-                //         Tab {
-                //             title: "tab red"
-                //             Rectangle {
-                //                 color: "red"
-                //                 height: 50
-                //             }
-                //         }
-                //         Tab {
-                //             title: "tab green"
-                //             Rectangle {
-                //                 color: "green"
-                //             }
-                //         }
-                //         Tab {
-                //             title: "tab blue"
-                //             Rectangle {
-                //                 color: "blue"
-                //             }
-                //         }
-                //     }
-                // } // TestHelperBox
-
-                // TestHelperBox {
-                //     title: "TabView_/TabBar_ (disabled)"
-                //     TabView_ {
-                //         enabled: false
-                //         anchors.fill: parent
-                //         Tab {
-                //             title: "tab red"
-                //             Rectangle {
-                //                 color: "red"
-                //                 height: 50
-                //             }
-                //         }
-                //         Tab {
-                //             title: "tab green"
-                //             Rectangle {
-                //                 color: "green"
-                //             }
-                //         }
-                //         Tab {
-                //             title: "tab blue"
-                //             Rectangle {
-                //                 color: "blue"
-                //             }
-                //         }
-                //     }
-                // } // TestHelperBox
 
                 TestHelperBox {
                     title: "Button_"
@@ -742,7 +685,7 @@ Item {
             FileDialog {
                 id: fileDialog
                 title: "Please choose a file"
-                folder: shortcuts.home
+                currentFolder: StandardPaths.writableLocation(StandardPaths.HomeLocation)
 
                 onAccepted: {
                     console.log("You chose: " + fileDialog.fileUrls)

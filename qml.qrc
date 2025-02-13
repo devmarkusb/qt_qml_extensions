@@ -60,22 +60,6 @@
         <file>controls/minimal/TextFieldWithLabel_.qml</file>
         <file>controls/minimal/TextInput_.qml</file>
         <file>controls/minimal/ToolTip_.qml</file>
-        <file>controls/QC1_def/Button_.qml</file>
-        <file>controls/QC1_def/ButtonTool_.qml</file>
-        <file>controls/QC1_def/CharColorSwitch_.qml</file>
-        <file>controls/QC1_def/CheckBox_.qml</file>
-        <file>controls/QC1_def/ComboBox_.qml</file>
-        <file>controls/QC1_def/GroupBox_.qml</file>
-        <file>controls/QC1_def/Label_.qml</file>
-        <file>controls/QC1_def/Pane_.qml</file>
-        <file>controls/QC1_def/RadioButton_.qml</file>
-        <file>controls/QC1_def/Spacer_Col_.qml</file>
-        <file>controls/QC1_def/Spacer_Row_.qml</file>
-        <file>controls/QC1_def/SpinBox_.qml</file>
-        <file>controls/QC1_def/SpinBoxLabelRow_.qml</file>
-        <file>controls/QC1_def/TabView_.qml</file>
-        <file>controls/QC1_def/TextField_.qml</file>
-        <file>controls/QC1_def/TextFieldLabelRow_.qml</file>
         <file>controls/QC2_def/Button_.qml</file>
         <file>controls/QC2_def/ButtonTool_.qml</file>
         <file>controls/QC2_def/CharColorSwitch_.qml</file>
@@ -107,7 +91,6 @@
         <file>fonts/ExtFontTest.qml</file>
         <file>fonts/impl/TestRectangle.qml</file>
         <file>fonts/schemes/Def.qml</file>
-        <file>fonts/schemes/DefQC1.qml</file>
         <file>fonts/schemes/DefQC2.qml</file>
         <file>fonts/schemes/Mistral.qml</file>
         

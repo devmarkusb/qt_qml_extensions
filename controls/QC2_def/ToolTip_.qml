@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.2
 
 
 //! Expects the parent item to have a 'hovered' bool property.

@@ -1,5 +1,10 @@
-import "../QC1_def" as QC1
+import QtQuick 2.8
 
 
-QC1.Spacer_Col_ {
+Item {
+    id: root
+
+    property alias spacing: root.height
+
+    width: 1 // dummy value different from 0
 }

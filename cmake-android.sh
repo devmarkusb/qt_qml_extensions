@@ -47,7 +47,7 @@ cmake \
 -DANDROID_PLATFORM=28 \
 -DUL_ANDROID_SIGN_KEY_PATH=$sign_key_path \
 -DUL_ANDROID_SIGN_KEY_PASS=$sign_key_pass \
--DUL_QT5_VERSION=5.15.2 \
+-DUL_QT6_VERSION=6.8.2 \
 -DUL_QT_COMPILER_SUBDIR=android \
 -DUL_FORCE_TESTAPP=ON \
 .. -Wno-deprecated

@@ -23,8 +23,10 @@ if (NOT UL_BUILD_UNITTESTS AND NOT ${UL_FORCE_TESTAPP})
     return ()
 endif ()
 
-ul_include(qt5.cmake)
-find_package(Qt5 COMPONENTS Quick QuickControls2 Svg)
+ul_include(qt6.cmake)
+find_package(Qt6 REQUIRED COMPONENTS Core5Compat Quick QuickControls2 Svg)
+qt_standard_project_setup()
+set(CMAKE_AUTORCC ON)
 
 # only purpose of this so far: prevent msvc from showing an additional console window in Qt apps
 if (UL_DEPLOYMENT_BUILD AND WIN32 OR "${UL_DEPLOY_TARGET}" STREQUAL "uwp")
@@ -47,8 +49,6 @@ ul_obtain_UWP_resources(
         ""
         target_UWP_ASSETS)
 
-qt5_add_resources(target_RESOURCES qml.qrc)
-
 set(target_IMPL_SOURCES
     testapp/src/_gui/src_Qt/cfg_model.h
     testapp/src/_gui/src_Qt/main.cpp
@@ -59,6 +59,7 @@ set(target_input
     ${target_UWP_ASSETS}
     ${target_RESOURCES}
     ${target_IMPL_SOURCES}
+    qml.qrc
 )
 
 set(target_QML_DIR ${CMAKE_CURRENT_LIST_DIR})
@@ -78,7 +79,7 @@ target_include_directories(${target} PUBLIC ${CMAKE_BINARY_DIR})
 target_include_directories(${target} PUBLIC src)
 target_include_directories(${target} SYSTEM PUBLIC ${ul_INCLUDE_DIRS})
 
-target_link_libraries(${target} PUBLIC mb-util Qt::Quick Qt::QuickControls2 Qt::Svg)
+target_link_libraries(${target} PUBLIC mb-util Qt::Core5Compat Qt::Quick Qt::QuickControls2 Qt::Svg)
 
 ul_set_target_defaults(${target})
 
