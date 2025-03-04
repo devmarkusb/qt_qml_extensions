@@ -1,6 +1,5 @@
 //! *Important* Your model needs to have a role called text.
 //! (Which you then also should have chosen as textRole for the Combobox.)
-import "../QC2_def" as QC2_def
 import "../_shared/impl"
 import "../_shared/impl/obtainButtonProps.js" as ButtonProp
 import "../_shared/impl/obtainControlProps.js" as ControlProp
@@ -9,7 +8,7 @@ import QtQuick 2.8
 import QtQuick.Controls 2.2
 
 
-QC2_def.ComboBox_ {
+ComboBox {
     property int textHorAlignment: Text.AlignLeft
 
 

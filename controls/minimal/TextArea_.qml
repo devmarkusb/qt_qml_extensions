@@ -15,11 +15,11 @@
 import "impl"
 import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
-import "../QC2_def" as QC2
 import QtQuick 2.8
+import QtQuick.Controls 2.2
 
 
-QC2.TextArea_ {
+TextArea {
     property real fontSizeFactor: 1.0
     property font fontToUse: extFont.normal
 
@@ -58,5 +58,12 @@ QC2.TextArea_ {
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
 
     background: TextFieldBackground {
+    }
+
+    onLinkActivated: Qt.openUrlExternally(link)
+    MouseArea {
+        anchors.fill: parent
+        cursorShape: control.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+        acceptedButtons: Qt.NoButton
     }
 }
