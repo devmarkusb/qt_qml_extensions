@@ -16,41 +16,38 @@ sign_key_pass=$3
 subdir_lowercase=${1,,}
 build_dir=_build-$subdir_lowercase-android
 
-# Uncomment arm/x86 blocks according to your needs.
-# Typically arm is more popular for deployments. And x86 is the only convenient (performance-wise) build
-# to be tested within an emulator on a desktop computer.
-# Look for the call to add_qt_android_apk in CMakeLists.txt for further important instructions concerning
-# deployment builds.
-
 # set
 #-DUL_DEPLOYMENT_BUILD=ON \
 # below for deployment build
-
-### x86 ###
-# Note, you might need to rename (copy) some subdirs in your NDK.
 
 mkdir -p $build_dir
 
 cd $build_dir || exit
 
-ndk_path=$dev_sdk_path/Android/Sdk/ndk/21.3.6528147
+sdk_path=$dev_sdk_path/Android/Sdk
+ndk_path=$sdk_path/ndk/28.0.13004108
 
-cmake \
--G "Unix Makefiles" \
--DCMAKE_BUILD_TYPE=$build_config \
--DUL_DEPLOYMENT_BUILD=OFF \
--DCMAKE_TOOLCHAIN_FILE=$ndk_path/build/cmake/android.toolchain.cmake \
--DUL_JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 \
--DUL_ANDROID_NDK=$ndk_path \
--DANDROID_STL="c++_shared" \
--DANDROID_ABI="arm64-v8a" \
--DANDROID_PLATFORM=28 \
--DUL_ANDROID_SIGN_KEY_PATH=$sign_key_path \
--DUL_ANDROID_SIGN_KEY_PASS=$sign_key_pass \
--DUL_QT6_VERSION=6.8.2 \
--DUL_QT_COMPILER_SUBDIR=android \
--DUL_FORCE_TESTAPP=ON \
-.. -Wno-deprecated
+
+#    -DQT_CHAINLOAD_TOOLCHAIN_FILE=$ndk_path/build/cmake/android.toolchain.cmake \
+#    -DQT_ANDROID_SDK_BUILD_TOOLS_REVISION=36 \
+
+export QT_ANDROID_KEYSTORE_PATH=$sign_key_path
+export QT_ANDROID_KEYSTORE_ALIAS=key
+export QT_ANDROID_KEYSTORE_STORE_PASS=Q6KHNhs8tAFsPiYgbpoxo9FXfcQENzvu
+export QT_ANDROID_KEYSTORE_KEY_PASS=$sign_key_pass
+
+$dev_sdk_path/qt_linux/6.8.2/android_arm64_v8a/bin/qt-cmake \
+    -DCMAKE_BUILD_TYPE=$build_config \
+    -DQT_ANDROID_BUILD_ALL_ABIS=TRUE \
+    -DANDROID_SDK_ROOT=$sdk_path \
+    -DANDROID_NDK_ROOT=$ndk_path \
+    -DQT_ANDROID_TARGET_SDK_VERSION=35 \
+    -DCMAKE_PREFIX_PATH=$dev_sdk_path/qt_linux/6.8.2/gcc_64 \
+    -DQT_ANDROID_SIGN_AAB=True \
+    -S .. -B . \
+    -G Ninja
+
+pwd
+cmake --build . --verbose --target aab
 
 cd ..
-cmake --build $build_dir

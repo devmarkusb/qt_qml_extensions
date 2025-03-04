@@ -1,12 +1,11 @@
 import "impl"
 import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
-import "../QC2_def" as QC2
 import QtQuick 2.8
 import QtQuick.Controls 2.2
 
 
-QC2.Button_ {
+Button {
     //! If you set this to true, the Button will be colored in a special way
     /** More precisely the 'highlight' color from the current color scheme is used.*/
     property bool isSpecial: false
@@ -23,6 +22,7 @@ QC2.Button_ {
         id: cfgSingleton
     }
 
+    implicitWidth: Math.max(cfgSingleton.wButtonWidth, contentItem.implicitWidth * cfgSingleton.wButtonImplicitWidthFactor)
     implicitHeight: cfgSingleton.hButtonHeight
 
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)

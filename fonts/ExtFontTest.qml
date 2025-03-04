@@ -1,6 +1,5 @@
 import "../colors_palette"
-import "../controls/QC2_def" as QC2_def
-import "../controls/minimal" as Min
+import "../controls/minimal"
 import "../layout"
 import QtQuick 2.8
 import QtQuick.Controls 2.2
@@ -66,8 +65,8 @@ Item {
         contentWidth: contentItem.childrenRect.width
         contentHeight: contentItem.childrenRect.height
 
-        ScrollBar.horizontal: Min.ScrollBar_ {}
-        ScrollBar.vertical: Min.ScrollBar_ {}
+        ScrollBar.horizontal: ScrollBar_ {}
+        ScrollBar.vertical: ScrollBar_ {}
 
         ColumnLayout {
             Grid {
@@ -120,41 +119,28 @@ Item {
 
                 //####################################################################################################################
 
-                Label { text: extFont_defQC2.schemeChoice + " (QC2_def Label)"; font.italic: true }
-                QC2_def.Label_ { font: extFont_defQC2.normal; text: exampleText; }
-                QC2_def.Label_ { font.family: extFont_defQC2.normal.family; text: exampleText; font.bold: true }
-                QC2_def.Label_ { font.family: extFont_defQC2.normal.family; text: exampleText; font.italic: true }
-                QC2_def.Label_ { font.family: extFont_defQC2.normal.family; text: exampleText; font.underline: true }
-                QC2_def.Label_ { font.family: extFont_defQC2.normal.family; text: exampleText; font.pixelSize: extScale.point2p(8) }
-                QC2_def.Label_ { font.family: extFont_defQC2.normal.family; text: exampleText; font.pixelSize: extScale.point2p(12) }
-                QC2_def.Label_ { font.family: extFont_defQC2.normal.family; text: exampleText; font.pixelSize: extScale.point2p(24) }
-                QC2_def.Label_ { font.family: extFont_defQC2.normal.family; text: examplePlayground; font.pixelSize: extScale.point2p(12) }
-
-
-                //####################################################################################################################
-
                 Label { text: extFont_def.schemeChoice + " (minimal Label)"; font.italic: true }
-                Min.Label_ { font: extFont_def.normal; text: exampleText; }
-                Min.Label_ { font.family: extFont_def.normal.family; text: exampleText; font.bold: true }
-                Min.Label_ { font.family: extFont_def.normal.family; text: exampleText; font.italic: true }
-                Min.Label_ { font.family: extFont_def.normal.family; text: exampleText; font.underline: true }
-                Min.Label_ { font.family: extFont_def.normal.family; text: exampleText; font.pixelSize: extScale.point2p(8) }
-                Min.Label_ { font.family: extFont_def.normal.family; text: exampleText; font.pixelSize: extScale.point2p(12) }
-                Min.Label_ { font.family: extFont_def.normal.family; text: exampleText; font.pixelSize: extScale.point2p(24) }
-                Min.Label_ { font.family: extFont_def.normal.family; text: examplePlayground; font.pixelSize: extScale.point2p(12) }
+                Label_ { font: extFont_def.normal; text: exampleText; }
+                Label_ { font.family: extFont_def.normal.family; text: exampleText; font.bold: true }
+                Label_ { font.family: extFont_def.normal.family; text: exampleText; font.italic: true }
+                Label_ { font.family: extFont_def.normal.family; text: exampleText; font.underline: true }
+                Label_ { font.family: extFont_def.normal.family; text: exampleText; font.pixelSize: extScale.point2p(8) }
+                Label_ { font.family: extFont_def.normal.family; text: exampleText; font.pixelSize: extScale.point2p(12) }
+                Label_ { font.family: extFont_def.normal.family; text: exampleText; font.pixelSize: extScale.point2p(24) }
+                Label_ { font.family: extFont_def.normal.family; text: examplePlayground; font.pixelSize: extScale.point2p(12) }
 
 
                 //####################################################################################################################
 
                 Label { text: extFont_mistral.schemeChoice + " (minimal Label)"; font.italic: true }
-                Min.Label_ { font: extFont_mistral.normal; text: exampleText; }
-                Min.Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.bold: true }
-                Min.Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.italic: true }
-                Min.Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.underline: true }
-                Min.Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.pixelSize: extScale.point2p(8) }
-                Min.Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.pixelSize: extScale.point2p(12) }
-                Min.Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.pixelSize: extScale.point2p(24) }
-                Min.Label_ { font.family: extFont_mistral.normal.family; text: examplePlayground; font.pixelSize: extScale.point2p(12) }
+                Label_ { font: extFont_mistral.normal; text: exampleText; }
+                Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.bold: true }
+                Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.italic: true }
+                Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.underline: true }
+                Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.pixelSize: extScale.point2p(8) }
+                Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.pixelSize: extScale.point2p(12) }
+                Label_ { font.family: extFont_mistral.normal.family; text: exampleText; font.pixelSize: extScale.point2p(24) }
+                Label_ { font.family: extFont_mistral.normal.family; text: examplePlayground; font.pixelSize: extScale.point2p(12) }
             } // Grid
         } /// ColumnLayout
     } /// Flickable

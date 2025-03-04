@@ -124,19 +124,10 @@ Item {
     state: schemeChoice
 
     states: [
-        Def {
-        },
-
-        Bright {
-        },
-
-        Inverse {
-        },
-
-        Dark {
-        },
-
-        PurpleGreen {
-        }
+        Def,
+        Bright,
+        Inverse,
+        Dark,
+        PurpleGreen
     ] // states
 }

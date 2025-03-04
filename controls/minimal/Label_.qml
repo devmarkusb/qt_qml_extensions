@@ -1,15 +1,17 @@
-import "../QC2_def" as QC2
 import "../_shared/impl/obtainControlProps.js" as ControlProp
 import QtQuick 2.8
+import QtQuick.Controls 2.2
 
 
-QC2.Label_ {
+Label {
     property bool isSpecial: false
     property real fontSizeFactor: 1.0
     property font fontToUse: extFont.normal
 
 
     id: control
+
+    renderType: ControlProp.obtainRenderType()
 
     // { copied code start (Label_, TextField_, TextInput_, TextArea_)
 //    font: fontToUse // either that or you need to specify all :/ no way to override single sub props
@@ -33,4 +35,11 @@ QC2.Label_ {
             enabled ? extColors.activeC.text : extColors.disabledC.text
     }
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
+
+    onLinkActivated: Qt.openUrlExternally(link)
+    MouseArea {
+        anchors.fill: parent
+        cursorShape: control.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+        acceptedButtons: Qt.NoButton
+    }
 }

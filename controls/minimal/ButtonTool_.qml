@@ -6,7 +6,7 @@ import QtQuick 2.8
 import QtQuick.Controls 2.2
 
 
-Button {
+Button_ {
     //! If you set this to true, the Button will be colored in a special way
     /** More precisely the 'highlight' color from the current color scheme is used.*/
     property bool isSpecial: false
@@ -25,6 +25,8 @@ Button {
 
     implicitWidth: squareSideLength
     implicitHeight: implicitWidth
+
+    height: width
 
     opacity: ControlProp.obtainOptionalDisablingOpacity(control.enabled)
 

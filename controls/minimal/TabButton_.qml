@@ -1,12 +1,11 @@
 import "impl"
 import "../_shared/impl"
 import "../_shared/impl/obtainButtonProps.js" as ButtonProp
-import "../QC2_def" as QC2
 import QtQuick 2.8
 import QtQuick.Controls 2.2
 
 
-QC2.TabButton_ {
+TabButton {
     property bool customScaling: true
 
 
@@ -35,6 +34,7 @@ QC2.TabButton_ {
         id: cfgSingleton
     }
 
+    //implicitWidth: contentItem.implicitWidth * cfgSingleton.wButtonImplicitWidthFactor
     implicitHeight: cfgSingleton.hButtonHeight
     width: customScaling ?  contentItem.implicitWidth * cfgSingleton.wButtonImplicitWidthFactor : undefined
 

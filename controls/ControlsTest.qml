@@ -1,4 +1,4 @@
-import "minimal"
+import "minimal" as Min
 import "../_shared"
 import "../colors_palette"
 import "../fonts"
@@ -458,11 +458,11 @@ Item {
                     title: "SpinBoxLabelRow_"
                     Column {
                         spacing: extSpacing.space3
-                        SpinBoxLabelRow_ {
+                        Min.SpinBoxLabelRow_ {
                             text: "Text label here"
                             value: 42
                         }
-                        SpinBoxLabelRow_ {
+                        Min.SpinBoxLabelRow_ {
                             text: "Text label here"
                             value: 42
                             enabled: false
