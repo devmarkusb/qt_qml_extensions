@@ -3,6 +3,7 @@ import "../_shared"
 import "../colors_palette"
 import "../fonts"
 import "../layout"
+import Qt.labs.platform
 import QtQuick 2.8
 import QtQuick.Controls 2.2
 import QtQuick.Dialogs
@@ -248,23 +249,23 @@ Item {
                     Row {
                         spacing: extSpacing.space3
                         ButtonTool_ {
-                            imageSource: "menu.svg"
+                            imageSource: "../menu.svg"
                             squareSideLength: extSpacing.wlargeIconSq
                         }
                         ButtonTool_ {
-                            imageSource: "menu.svg"
+                            imageSource: "../menu.svg"
                             squareSideLength: extSpacing.wlargeIconSq
                             enabled: false
                         }
 
                         ButtonTool_ {
                             isSpecial: true
-                            imageSource: "menu.svg"
+                            imageSource: "../menu.svg"
                             squareSideLength: extSpacing.wlargeIconSq
                         }
                         ButtonTool_ {
                             isSpecial: true
-                            imageSource: "menu.svg"
+                            imageSource: "../menu.svg"
                             squareSideLength: extSpacing.wlargeIconSq
                             enabled: false
                         }
@@ -278,11 +279,11 @@ Item {
                         Column {
                             spacing: extSpacing.space3
                             ButtonWithIcon_ {
-                                imageSource: "spheres.svg"
+                                imageSource: "../spheres.svg"
                                 text: "Press me"
                             }
                             ButtonWithIcon_ {
-                                imageSource: "spheres.svg"
+                                imageSource: "../spheres.svg"
                                 text: "Press me"
                                 enabled: false
                             }
@@ -292,12 +293,12 @@ Item {
                             spacing: extSpacing.space3
                             ButtonWithIcon_ {
                                 isSpecial: true
-                                imageSource: "spheres.svg"
+                                imageSource: "../spheres.svg"
                                 text: "Press me"
                             }
                             ButtonWithIcon_ {
                                 isSpecial: true
-                                imageSource: "spheres.svg"
+                                imageSource: "../spheres.svg"
                                 text: "Press me"
                                 enabled: false
                             }
