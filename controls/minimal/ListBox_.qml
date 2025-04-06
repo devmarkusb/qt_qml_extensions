@@ -36,8 +36,11 @@ GroupBox_ {
         id: listview
         anchors.fill: parent
         clip: true
-        activeFocusOnTab: true
         focus: true
+        activeFocusOnTab: true
+        boundsBehavior: Flickable.StopAtBounds
+
+        highlightFollowsCurrentItem: true
 
         ScrollIndicator.vertical: ScrollIndicator {}
 
@@ -45,9 +48,23 @@ GroupBox_ {
             id: deleg
             implicitWidth: control.width - control.leftPadding - control.rightPadding
             implicitHeight: cfgSingleton.hTextFieldHeight
+
+            MouseArea {
+                id: mousearea
+                anchors.fill: parent
+                hoverEnabled: true
+                onClicked: {
+                    listview.currentIndex = index
+                }
+                onDoubleClicked: {
+                    listview.currentIndex = index
+                    itemDoubleClicked()
+                }
+            }
+
             contentItem: RowLayout {
                 anchors.fill: parent
-
+                z: 1 // above background
                 Label_ {
                     id: delegLabel
                     Layout.fillWidth: true
@@ -73,25 +90,14 @@ GroupBox_ {
             } // RowLayout
             background: Rectangle {
                 anchors.fill: parent
+                z: 0 // ensure it's below content and MouseArea
                 radius: cfgSingleton.rCommonControlRadius
                 color: (index === listview.currentIndex)
-                       ? extColors.activeC.mid
-                       : ListDelegateProp.obtainListDelegateColor(control.enabled, mousearea.containsMouse,
-                                                                  mousearea.pressed,
-                                                                  extColors.activeC.base, extColors.activeC.alternateBase,
-                                                                  extColors.activeC.mid, extColors.activeC.base)
-                MouseArea {
-                    id: mousearea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: {
-                        listview.currentIndex = index
-                    }
-                    onDoubleClicked: {
-                        listview.currentIndex = index
-                        itemDoubleClicked()
-                    }
-                } // MouseArea
+                    ? extColors.activeC.mid
+                    : ListDelegateProp.obtainListDelegateColor(control.enabled, mousearea.containsMouse,
+                        mousearea.pressed,
+                        extColors.activeC.base, extColors.activeC.alternateBase,
+                        extColors.activeC.mid, extColors.activeC.base)
             } // Rectangle
         } // ItemDelegate
     } // ListView
