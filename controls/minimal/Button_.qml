@@ -33,7 +33,6 @@ Button {
         isSpecial: control.isSpecial
         fontSizeFactor: control.fontSizeFactor
         font.bold: fontBold
-        anchors.fill: control
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         leftPadding: horizontalTextAlignment === Text.AlignLeft ? extSpacing.charLikeWidth : 0
