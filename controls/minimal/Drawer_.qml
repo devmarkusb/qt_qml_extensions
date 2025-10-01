@@ -1,7 +1,7 @@
 import "../_shared/impl/obtainControlProps.js" as ControlProp
 import "impl"
-import QtQuick 2.8
-import QtQuick.Controls 2.2
+import QtQuick
+import QtQuick.Controls
 
 
 Drawer {

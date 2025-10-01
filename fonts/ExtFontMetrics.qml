@@ -9,7 +9,7 @@
     Important: stick to the specifier 'extFontMetrics' as it is also used by the library itself.
 */
 
-import QtQuick 2.8
+import QtQuick
 
 
 FontMetrics {

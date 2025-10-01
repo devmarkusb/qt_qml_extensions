@@ -8,8 +8,8 @@
     Then you can refer to your global scaling toolbox via e.g. extScale.<...> from everywhere below.
     Important: stick to the specifier 'extScale' as it is also used by the library itself.
 */
-import QtQuick 2.8
-import QtQuick.Window 2.2
+import QtQuick
+import QtQuick.Window
 
 
 Item {

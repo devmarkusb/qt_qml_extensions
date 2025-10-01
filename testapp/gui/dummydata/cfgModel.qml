@@ -1,5 +1,5 @@
 //! Exchanges global config data and constants with the cpp sources.
-import QtQuick 2.8
+import QtQuick
 
 
 QtObject {
