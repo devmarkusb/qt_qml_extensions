@@ -1,7 +1,7 @@
 // You might want to set something like
 //      text: qmlextlib.dynTr + nativeText
 import "../_shared/impl/obtainControlProps.js" as ControlProp
-import QtQuick 2.8
+import QtQuick
 
 
 Label_ {

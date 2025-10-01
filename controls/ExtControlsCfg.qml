@@ -10,7 +10,7 @@
     Important: stick to the specifier 'extControlsCfg' as it is also used by the library itself.
 */
 import "../core/os.js" as OS
-import QtQuick 2.8
+import QtQuick
 
 
 QtObject {

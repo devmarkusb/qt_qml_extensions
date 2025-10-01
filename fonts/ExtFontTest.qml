@@ -1,9 +1,9 @@
 import "../colors_palette"
 import "../controls/minimal"
 import "../layout"
-import QtQuick 2.8
-import QtQuick.Controls 2.2
-import QtQuick.Layouts 1.3
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 
 Item {

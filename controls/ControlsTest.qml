@@ -4,8 +4,8 @@ import "../colors_palette"
 import "../fonts"
 import "../layout"
 import Qt.labs.platform
-import QtQuick 2.8
-import QtQuick.Controls 2.2
+import QtQuick
+import QtQuick.Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
 

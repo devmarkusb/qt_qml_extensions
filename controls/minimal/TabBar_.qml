@@ -20,8 +20,8 @@
             }
 */
 import "../_shared/impl"
-import QtQuick 2.8
-import QtQuick.Controls 2.2
+import QtQuick
+import QtQuick.Controls
 
 
 TabBar {

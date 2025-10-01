@@ -7,10 +7,10 @@ import "../../controls/minimal" // just for demonstrating ApplicationWindow_ her
 import "../../core/os.js" as OS
 import "../../fonts"
 import "../../layout"
-import QtQuick 2.8
-import QtQuick.Controls 2.2
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.2
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Window
 
 ApplicationWindow_ {
     id: rootAppWindow

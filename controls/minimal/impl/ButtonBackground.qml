@@ -1,6 +1,6 @@
 import "../../_shared/impl"
 import "../../_shared/impl/obtainButtonProps.js" as ButtonProp
-import QtQuick 2.8
+import QtQuick
 
 
 Rectangle {

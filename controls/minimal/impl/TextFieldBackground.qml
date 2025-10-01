@@ -1,5 +1,5 @@
 import "../../_shared/impl"
-import QtQuick 2.8
+import QtQuick
 
 
 Rectangle {

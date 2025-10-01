@@ -1,7 +1,7 @@
 import "../controls/minimal"
-import QtQuick 2.8
-import QtQuick.Controls 2.2
-import QtQuick.Layouts 1.1
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 
 RowLayout {
