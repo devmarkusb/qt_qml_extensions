@@ -24,6 +24,7 @@ SpinBox {
         id: textField
         z: 2
         text: control.textFromValue(control.value, control.locale)
+        inputMethodHints: Qt.ImhDigitsOnly | Qt.ImhNoPredictiveText
         horizontalAlignment: horizontalTextAlignment
         verticalAlignment: Qt.AlignVCenter
 
