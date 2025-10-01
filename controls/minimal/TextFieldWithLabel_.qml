@@ -7,6 +7,7 @@ FocusScope {
     property var textfieldItem: textfield
     property alias text: textfield.text
     property alias title: label.text
+    property alias inputMethodHints: textfield.inputMethodHints
     property int inputWidthInChars: 20
     property int inputWidth: 0
     property alias horizontalAlignment: textfield.horizontalAlignment
