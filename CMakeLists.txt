@@ -17,12 +17,6 @@ set(UL_ADDITIONAL_CLANG_FORMAT_DIRS "testapp" CACHE STRING "" FORCE)
 ul_include(clang-format.cmake)
 ul_include(githooks.cmake)
 
-option(UL_FORCE_TESTAPP "switch on if you intent to build the testapp (especially needed for standalone build under UWP)" OFF)
-# Not exactly a unit test, but some kind of test host.
-if (NOT UL_BUILD_UNITTESTS AND NOT ${UL_FORCE_TESTAPP})
-    return ()
-endif ()
-
 ul_include(qt.cmake)
 find_package(Qt6 REQUIRED COMPONENTS Core Core5Compat Gui Quick QuickControls2 Svg)
 qt_standard_project_setup(REQUIRES 6.8)
