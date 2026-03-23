@@ -41,6 +41,7 @@ export QT_ANDROID_KEYSTORE_KEY_PASS=$sign_key_pass
 # subdirs: android_arm64_v8a,android_armv7,android_x86,android_x86_64
 $dev_sdk_path/qt_linux/$qt_version/android_arm64_v8a/bin/qt-cmake \
     -DCMAKE_BUILD_TYPE=$build_config \
+    -DCMAKE_CXX_STANDARD=26 \
     -DQT_ANDROID_TARGET_SDK_VERSION=35 \
     -DQT_ANDROID_MIN_SDK_VERSION=21 \
     -DANDROID_SDK_ROOT=$sdk_path \
