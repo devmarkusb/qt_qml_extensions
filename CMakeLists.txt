@@ -59,6 +59,9 @@ set(target_QML_DIR ${CMAKE_CURRENT_LIST_DIR})
 
 qt_add_executable(${target} ${target_input})
 
+# qt_add_qml_module creates a same-named subdirectory under the build tree for QML artifacts.
+set_target_properties(${target} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+
 qt_add_qml_module(${target}
     URI ${target}
     NO_RESOURCE_TARGET_PATH
