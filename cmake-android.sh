@@ -28,6 +28,7 @@ export QT_ANDROID_KEYSTORE_PATH=$sign_key_path
 export QT_ANDROID_KEYSTORE_ALIAS=key
 export QT_ANDROID_KEYSTORE_STORE_PASS=Q6KHNhs8tAFsPiYgbpoxo9FXfcQENzvu
 export QT_ANDROID_KEYSTORE_KEY_PASS=$sign_key_pass
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
 #    -DQT_CHAINLOAD_TOOLCHAIN_FILE=$ndk_path/build/cmake/android.toolchain.cmake \
 #    -DQT_ANDROID_SDK_BUILD_TOOLS_REVISION=36 \
