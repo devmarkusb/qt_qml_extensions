@@ -6,6 +6,10 @@ include(${CMAKE_CURRENT_LIST_DIR}/cmake_util/util.cmake)
 
 include(${ul_CMAKE_DIRS}/cmake_util.cmake)
 
+if(NOT PROJECT_IS_TOP_LEVEL)
+    return()
+endif()
+
 ul_include(buildnr.cmake)
 project(qt_qml_extensions_testapp VERSION 0.1.${BUILD_NR}.0)
 message(STATUS "${PROJECT_NAME} version: " ${PROJECT_VERSION})
