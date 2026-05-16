@@ -19,7 +19,7 @@ ul_include(defaults.cmake)
 
 set(UL_ADDITIONAL_CLANG_FORMAT_DIRS "testapp" CACHE STRING "" FORCE)
 ul_include(clang-format.cmake)
-ul_include(githooks.cmake)
+#ul_include(githooks.cmake)
 
 ul_include(qt.cmake)
 find_package(Qt6 REQUIRED COMPONENTS Core Core5Compat Gui Quick QuickControls2 Svg)
