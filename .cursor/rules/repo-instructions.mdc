@@ -1,0 +1,14 @@
+---
+description: Repository-specific AI agent instructions for qt_qml_extensions
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+Use `AGENTS.md` as the canonical source of repository instructions.
+
+Cursor-specific notes:
+
+- Keep project rules thin; do not duplicate the full contents of `AGENTS.md` here.
+- Apply the approval-only file rules from `AGENTS.md` before editing build outputs, deployment/signing files, generated files, or CI release behavior.
+- When changing QML files used by the top-level app, check whether `CMakeLists.txt` needs its `qt_add_qml_module` file lists updated.
