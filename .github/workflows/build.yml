@@ -14,8 +14,6 @@ jobs:
     env:
       CC: ${{matrix.config.CC}}
       CXX: ${{matrix.config.CXX}}
-      qt_version: 6.9.3
-      dev_qt_base: $Qt6_DIR
 
     # The CMake configure and build commands are platform-agnostic and should work equally well on Windows or Mac.
     # You can convert this to a matrix build if you need cross-platform coverage.
@@ -25,7 +23,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        submodules: 'recursive'
+        submodules: 'false'
+
+    - name: Initialize submodules
+      run: |
+        git config --global url."https://github.com/".insteadOf "git@github.com:"
+        git submodule update --init --recursive --recommend-shallow
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
@@ -33,7 +36,6 @@ jobs:
         version: '6.9.3' #todo can't get $qt_version working
         target: 'desktop'
         arch: ''
-        dir: '${{github.workspace}}/externlibs/qt/'
         install-deps: 'true'
         modules: 'qt5compat'
         archives: ''
@@ -62,4 +64,3 @@ jobs:
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{matrix.build_type}} --output-on-failure
-

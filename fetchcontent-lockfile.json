@@ -1,0 +1,39 @@
+{
+  "dependencies": [
+    {
+      "name": "mb_pre_commit",
+      "git_repository": "https://github.com/devmarkusb/pre-commit",
+      "git_tag": "v3.0.0",
+      "cmake_include": "cmake/mb-pre-commit.cmake"
+    },
+    {
+      "name": "mb_dot_clangformat",
+      "git_repository": "https://github.com/devmarkusb/dot-clangformat",
+      "git_tag": "v1.4.0",
+      "cmake_include": "cmake/mb-dot-clang-format.cmake",
+      "cmake_variables": {
+        "MB_DOT_CLANG_FORMAT_CLANG_FORMAT_MAJOR": "22"
+      }
+    },
+    {
+      "name": "mb_dot_clangtidy",
+      "git_repository": "https://github.com/devmarkusb/dot-clangtidy",
+      "git_tag": "v1.0.0",
+      "cmake_include": "cmake/mb-dot-clang-tidy.cmake",
+      "cmake_variables": {
+        "MB_DOT_CLANG_TIDY_CLANG_TIDY_MAJOR": "22"
+      }
+    },
+    {
+      "name": "mb_util",
+      "package_name": "mb.util",
+      "git_repository": "git@github.com:devmarkusb/util.git",
+      "git_tag": "b332d2d0c95453cf6f946a058ea7fadfdfc468b5",
+      "cmake_variables": {
+        "MB_PRE_COMMIT_SETUP_LAYOUT": "TOP_LEVEL",
+        "MB_UTIL_BUILD_EXAMPLES": "OFF",
+        "MB_UTIL_BUILD_TESTS": "OFF"
+      }
+    }
+  ]
+}

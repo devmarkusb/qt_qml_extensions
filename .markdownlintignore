@@ -1,0 +1,5 @@
+# AI / agent instruction markdown (not user-facing docs)
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.github/copilot-instructions.md

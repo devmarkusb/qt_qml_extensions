@@ -1,8 +1,52 @@
+### github C++ defaults ###
+
+# Prerequisites
+*.d
+
+# Compiled object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Linker files
+*.ilk
+
+# Debugger files
+*.pdb
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug information files
+*.dwo
+
+### custom defaults ###
+
 *.jsc
 *.qmlc
 *.user
-.clang-format
-clangformat.sh
 
 # MAC OS
 *.DS_Store
@@ -25,7 +69,7 @@ out/
 
 # python
 .venv
+__pycache__/
 
 # misc
 CMakeUserPresets.json
-*.user
