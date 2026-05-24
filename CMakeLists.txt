@@ -5,19 +5,16 @@ project(qt_qml_extensions LANGUAGES CXX)
 add_subdirectory(devenv)
 list(PREPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/devenv/cmake")
 
-include(cmake_util/dependencies.cmake)
+include(cmake/dependencies.cmake)
 
 # From fetched https://github.com/devmarkusb/pre-commit (see fetchcontent-lockfile.json).
 mb_pre_commit_setup_project()
 
-if(PROJECT_IS_TOP_LEVEL AND EXISTS "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake")
-    list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake")
-    include(mb-devenv-ctest-root)
-endif()
-
 if(NOT PROJECT_IS_TOP_LEVEL)
     return()
 endif()
+
+include(mb-devenv-ctest-root)
 
 project(qt_qml_extensions_testapp VERSION 0.1.0)
 message(STATUS "${PROJECT_NAME} version: " ${PROJECT_VERSION})
