@@ -1,10 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(qt_qml_extensions LANGUAGES CXX)
-
-add_subdirectory(devenv)
-list(PREPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/devenv/cmake")
-
 if(
     CMAKE_VERSION VERSION_GREATER_EQUAL 3.24
     AND EXISTS
@@ -16,6 +11,11 @@ if(
         "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake/fetch-content-from-lockfile.cmake"
     )
 endif()
+
+project(qt_qml_extensions LANGUAGES CXX)
+
+add_subdirectory(devenv)
+list(PREPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/devenv/cmake")
 
 include(cmake_util/dependencies.cmake)
 
