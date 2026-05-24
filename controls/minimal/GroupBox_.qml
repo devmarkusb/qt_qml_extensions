@@ -19,7 +19,7 @@ GroupBox {
         x: extSpacing.charLikeHeight
         anchors.verticalCenter: rect.top
         text: control.title
-        opacity: 1.0 // fix for a disabled group box (the frame would draw over text if text get's opacity lower 1.0)
+        opacity: 1.0 // fix for a disabled group box (the frame would draw over text if text gets opacity lower 1.0)
         background:  Pane_ {
             alternateColor: control.alternateColor
         }
