@@ -2,38 +2,36 @@ cmake_minimum_required(VERSION 3.16)
 
 project(qt_qml_extensions LANGUAGES CXX)
 
-include(${CMAKE_CURRENT_LIST_DIR}/cmake_util/util.cmake)
-
-include(${ul_CMAKE_DIRS}/cmake_util.cmake)
+include(cmake_util/dependencies.cmake)
 
 if(NOT PROJECT_IS_TOP_LEVEL)
     return()
 endif()
 
-ul_include(buildnr.cmake)
-project(qt_qml_extensions_testapp VERSION 0.1.${BUILD_NR}.0)
+project(qt_qml_extensions_testapp VERSION 0.1.0)
 message(STATUS "${PROJECT_NAME} version: " ${PROJECT_VERSION})
 set(target ${PROJECT_NAME})
 
-ul_include(defaults.cmake)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+include(GNUInstallDirs)
 
-set(UL_ADDITIONAL_CLANG_FORMAT_DIRS "testapp" CACHE STRING "" FORCE)
-ul_include(clang-format.cmake)
-#ul_include(githooks.cmake)
+set(MB_UL_ADDITIONAL_CLANG_FORMAT_DIRS "testapp" CACHE STRING "" FORCE)
 
-ul_include(qt.cmake)
+mb_ul_include(qt.cmake)
 find_package(Qt6 REQUIRED COMPONENTS Core Core5Compat Gui Quick QuickControls2 Svg)
 qt_standard_project_setup(REQUIRES 6.8)
 
 # only purpose of this so far: prevent msvc from showing an additional console window in Qt apps
-if (UL_DEPLOYMENT_BUILD AND WIN32 OR "${UL_DEPLOY_TARGET}" STREQUAL "uwp")
+if((MB_UL_DEPLOYMENT_BUILD AND WIN32) OR "${MB_UL_DEPLOY_TARGET}" STREQUAL "uwp")
     set(WIN32_ON_OFF_SWITCH "WIN32")
 else ()
     set(WIN32_ON_OFF_SWITCH "")
 endif ()
 
-ul_include(uwp_tools.cmake)
-ul_obtain_UWP_resources(
+mb_ul_include(uwp-tools.cmake)
+mb_ul_obtain_UWP_resources(
         "testapp"
         "MB"
         "testapp"
@@ -41,7 +39,7 @@ ul_obtain_UWP_resources(
         ""
         ""
         "${PROJECT_VERSION}"
-        "${UL_CMAKE_INC_UWP_TOOLS_DEF_ICO}"
+        "${MB_UL_CMAKE_INC_UWP_TOOLS_DEF_ICO}"
         "#336699"
         ""
         target_UWP_ASSETS)
@@ -146,17 +144,17 @@ qt_add_qml_module(${target}
         "controls/spheres.svg"
 )
 
-ul_include(qt_deploy.cmake)
-ul_qt_deploy(${target} ${target_QML_DIR})
+mb_ul_include(qt-deploy.cmake)
+mb_ul_qt_deploy(${target} ${target_QML_DIR})
 
 configure_file(testapp_build_config.h.in ${CMAKE_BINARY_DIR}/testapp_build_config.h)
 target_include_directories(${target} PUBLIC ${CMAKE_BINARY_DIR})
 
 target_include_directories(${target} PUBLIC src)
 
-target_link_libraries(${target} PUBLIC mb-util Qt::Core Qt::Core5Compat Qt::Gui Qt::Quick Qt::QuickControls2 Qt::Svg)
+target_link_libraries(${target} PUBLIC mb::util Qt::Core Qt::Core5Compat Qt::Gui Qt::Quick Qt::QuickControls2 Qt::Svg)
 
-ul_set_target_defaults(${target})
+target_compile_features(${target} PUBLIC cxx_std_23)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     target_compile_options(${target} PRIVATE -Wno-missing-prototypes)
