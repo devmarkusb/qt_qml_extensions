@@ -1,17 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
 
-if(
-    CMAKE_VERSION VERSION_GREATER_EQUAL 3.24
-    AND EXISTS
-        "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake/fetch-content-from-lockfile.cmake"
-    AND EXISTS "${CMAKE_CURRENT_LIST_DIR}/fetchcontent-lockfile.json"
-)
-    list(
-        PREPEND CMAKE_PROJECT_TOP_LEVEL_INCLUDES
-        "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake/fetch-content-from-lockfile.cmake"
-    )
-endif()
-
 project(qt_qml_extensions LANGUAGES CXX)
 
 add_subdirectory(devenv)
