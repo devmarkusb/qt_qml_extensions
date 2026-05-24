@@ -7,12 +7,48 @@ qml elements.
 
 ## Usage and start of the qt_qml_extensions_testapp
 
-Set environment variables:
-* `dev_qt_base` where Qt versions can be found in subdirs like `6.8.2`.
+Initialize submodules after cloning:
 
-Set CMake variables:
-* `UL_QT6_VERSION` to e.g. `6.8.2` or `UL_QT5_VERSION` to e.g. `5.9.1`
-* `UL_QT_COMPILER_SUBDIR` to e.g. `gcc_64`
+```sh
+git submodule update --init --recursive --recommend-shallow
+```
+
+With `devenv` initialized, preset builds are available for common GCC, Clang,
+and AppleClang debug/release configurations:
+
+```sh
+cmake --preset gcc-debug
+cmake --build --preset gcc-debug
+ctest --preset gcc-debug
+```
+
+The presets and direct top-level CMake configure use `fetchcontent-lockfile.json`
+to provide `mb.util` and the pre-commit helper modules when CMake 3.24+ is used.
+
+Qt is provided to CMake through `CMAKE_PREFIX_PATH`. This is the intended way to
+point `find_package(Qt6 ...)` at a local Qt installation while keeping
+machine-specific paths out of the shared presets. Put the value in your ignored
+`CMakeUserPresets.json`, or pass it on the command line. CMake requires preset
+names to be unique across `CMakePresets.json` and `CMakeUserPresets.json`, so
+local presets use a `local-` prefix instead of replacing the shared names:
+
+```sh
+cmake --preset local-gcc-debug
+```
+
+```sh
+cmake -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=/path/to/Qt/6.9.3/macos
+```
+
+The test app and preset flow were most recently tested with Qt 6.9.3.
+
+The direct CMake invocation used by CI is still supported:
+
+```sh
+cmake -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_STANDARD=26
+cmake --build build --config Debug
+ctest --test-dir build -C Debug --output-on-failure
+```
 
 ## Quick guide
 
@@ -46,8 +82,8 @@ build based on that.
 
 ## Contributing
 
-At the moment the testapp is working under Qt 5.15.2. Also on Android, with a certain
-combination of versions of Java, NDK, and so on, example configuration see
-cmake-android.sh.
+The test app targets Qt 6 and was most recently tested with Qt 6.9.3. Android
+builds additionally need a matching combination of Java, NDK, and signing setup;
+example configuration see `cmake-android.sh`.
 
 ### todos

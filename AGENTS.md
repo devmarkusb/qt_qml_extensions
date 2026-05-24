@@ -24,12 +24,6 @@ cmake -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_STANDARD=26
 cmake --build build --config RelWithDebInfo
 ```
 
-Local setup may also need the README-documented environment and CMake variables:
-
-- `dev_qt_base`, pointing to a directory that contains Qt version subdirectories.
-- `UL_QT6_VERSION`, for example `6.9.3` or another Qt 6.8+ version.
-- `UL_QT_COMPILER_SUBDIR`, for example `gcc_64`.
-
 Android builds are driven by `cmake-android.sh`, but that script handles signing/deployment details. Do not modify or run it unless the task explicitly calls for Android packaging.
 
 ## Test commands

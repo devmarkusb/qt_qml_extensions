@@ -2,7 +2,30 @@ cmake_minimum_required(VERSION 3.16)
 
 project(qt_qml_extensions LANGUAGES CXX)
 
+add_subdirectory(devenv)
+list(PREPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/devenv/cmake")
+
+if(
+    CMAKE_VERSION VERSION_GREATER_EQUAL 3.24
+    AND EXISTS
+        "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake/fetch-content-from-lockfile.cmake"
+    AND EXISTS "${CMAKE_CURRENT_LIST_DIR}/fetchcontent-lockfile.json"
+)
+    list(
+        PREPEND CMAKE_PROJECT_TOP_LEVEL_INCLUDES
+        "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake/fetch-content-from-lockfile.cmake"
+    )
+endif()
+
 include(cmake_util/dependencies.cmake)
+
+# From fetched https://github.com/devmarkusb/pre-commit (see fetchcontent-lockfile.json).
+mb_pre_commit_setup_project()
+
+if(PROJECT_IS_TOP_LEVEL AND EXISTS "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake")
+    list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake")
+    include(mb-devenv-ctest-root)
+endif()
 
 if(NOT PROJECT_IS_TOP_LEVEL)
     return()
@@ -17,21 +40,26 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 include(GNUInstallDirs)
 
-set(MB_UL_ADDITIONAL_CLANG_FORMAT_DIRS "testapp" CACHE STRING "" FORCE)
-
 mb_ul_include(qt.cmake)
-find_package(Qt6 REQUIRED COMPONENTS Core Core5Compat Gui Quick QuickControls2 Svg)
+find_package(
+    Qt6
+    REQUIRED
+    COMPONENTS Core Core5Compat Gui Quick QuickControls2 Svg
+)
 qt_standard_project_setup(REQUIRES 6.8)
 
 # only purpose of this so far: prevent msvc from showing an additional console window in Qt apps
-if((MB_UL_DEPLOYMENT_BUILD AND WIN32) OR "${MB_UL_DEPLOY_TARGET}" STREQUAL "uwp")
+if(
+    (MB_UL_DEPLOYMENT_BUILD AND WIN32)
+    OR "${MB_UL_DEPLOY_TARGET}" STREQUAL "uwp"
+)
     set(WIN32_ON_OFF_SWITCH "WIN32")
-else ()
+else()
     set(WIN32_ON_OFF_SWITCH "")
-endif ()
+endif()
 
 mb_ul_include(uwp-tools.cmake)
-mb_ul_obtain_UWP_resources(
+mb_ul_obtain_uwp_resources(
         "testapp"
         "MB"
         "testapp"
@@ -42,7 +70,8 @@ mb_ul_obtain_UWP_resources(
         "${MB_UL_CMAKE_INC_UWP_TOOLS_DEF_ICO}"
         "#336699"
         ""
-        target_UWP_ASSETS)
+        target_UWP_ASSETS
+)
 
 set(target_IMPL_SOURCES
     testapp/src/_gui/src_Qt/cfg_model.h
@@ -62,7 +91,10 @@ set(target_QML_DIR ${CMAKE_CURRENT_LIST_DIR})
 qt_add_executable(${target} ${target_input})
 
 # qt_add_qml_module creates a same-named subdirectory under the build tree for QML artifacts.
-set_target_properties(${target} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set_target_properties(
+    ${target}
+    PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+)
 
 qt_add_qml_module(${target}
     URI ${target}
@@ -147,28 +179,42 @@ qt_add_qml_module(${target}
 mb_ul_include(qt-deploy.cmake)
 mb_ul_qt_deploy(${target} ${target_QML_DIR})
 
-configure_file(testapp_build_config.h.in ${CMAKE_BINARY_DIR}/testapp_build_config.h)
+configure_file(
+    testapp_build_config.h.in
+    ${CMAKE_BINARY_DIR}/testapp_build_config.h
+)
 target_include_directories(${target} PUBLIC ${CMAKE_BINARY_DIR})
 
 target_include_directories(${target} PUBLIC src)
 
-target_link_libraries(${target} PUBLIC mb::util Qt::Core Qt::Core5Compat Qt::Gui Qt::Quick Qt::QuickControls2 Qt::Svg)
+target_link_libraries(
+    ${target}
+    PUBLIC
+        mb::util
+        Qt::Core
+        Qt::Core5Compat
+        Qt::Gui
+        Qt::Quick
+        Qt::QuickControls2
+        Qt::Svg
+)
 
 target_compile_features(${target} PUBLIC cxx_std_23)
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     target_compile_options(${target} PRIVATE -Wno-missing-prototypes)
 endif()
 
-if (UNIX AND NOT APPLE AND CMAKE_CROSSCOMPILING)
+if(UNIX AND NOT APPLE AND CMAKE_CROSSCOMPILING)
     find_package(Qt6 REQUIRED COMPONENTS QuickTemplates2)
 
     # Work around QTBUG-86533
     target_link_libraries(${target} PRIVATE Qt6::QuickTemplates2)
 endif()
 
-install(TARGETS ${target}
-    BUNDLE  DESTINATION .
+install(
+    TARGETS ${target}
+    BUNDLE DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )

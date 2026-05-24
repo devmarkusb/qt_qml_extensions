@@ -1,0 +1,58 @@
+# Example config shipped with mb-pre-commit (see configs/v4). Edit freely; CMake may refresh
+# this file on configure unless you disable PRE_COMMIT_INSTALL_EXAMPLE_CONFIG.
+# https://pre-commit.com/
+minimum_pre_commit_version: '4.0.0'
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+    -   id: check-added-large-files
+    -   id: check-case-conflict
+    -   id: check-json
+    -   id: check-merge-conflict
+    -   id: check-symlinks
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: mixed-line-ending
+    -   id: trailing-whitespace
+
+    # Markdown linting
+    # Config file: .markdownlint.yaml
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.48.0
+    hooks:
+    - id: markdownlint
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.2
+    hooks:
+      - id: codespell
+
+    # Python linting and formatting
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.12
+    hooks:
+      - id: ruff
+      - id: ruff-format
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.21.2
+    hooks:
+      - id: pyupgrade
+        args: [--py310-plus]
+
+    # CMake linting and formatting
+  - repo: https://github.com/BlankSpruce/gersemi-pre-commit
+    rev: 0.27.2
+    hooks:
+    - id: gersemi
+      name: CMake linting
+
+    # Clang-format for C++
+    # This brings in a portable version of clang-format.
+    # See also: https://github.com/ssciwr/clang-format-wheel
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v22.1.4
+    hooks:
+    - id: clang-format
+      types_or: [c++, c]

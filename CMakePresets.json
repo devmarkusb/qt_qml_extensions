@@ -1,0 +1,217 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "description": "Shared Ninja output directory and local tooling defaults.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "warnings": {
+        "dev": true,
+        "deprecated": true,
+        "unusedCli": true
+      },
+      "cacheVariables": {
+        "CMAKE_CXX_EXTENSIONS": "OFF",
+        "CMAKE_CXX_STANDARD": "26",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./devenv/cmake/fetch-content-from-lockfile.cmake"
+      }
+    },
+    {
+      "name": "debug",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "gcc",
+      "hidden": true,
+      "toolchainFile": "devenv/cmake/toolchains/gcc-toolchain.cmake"
+    },
+    {
+      "name": "clang",
+      "hidden": true,
+      "toolchainFile": "devenv/cmake/toolchains/clang-toolchain.cmake"
+    },
+    {
+      "name": "appleclang",
+      "hidden": true,
+      "toolchainFile": "devenv/cmake/toolchains/appleclang-toolchain.cmake",
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "23"
+      }
+    },
+    {
+      "name": "MaxSan",
+      "hidden": true,
+      "cacheVariables": {
+        "MB_DEVENV_SANITIZER": "MaxSan"
+      }
+    },
+    {
+      "name": "gcc-debug",
+      "displayName": "GCC Debug",
+      "inherits": [
+        "gcc",
+        "debug",
+        "base"
+      ]
+    },
+    {
+      "name": "gcc-release",
+      "displayName": "GCC RelWithDebInfo",
+      "inherits": [
+        "gcc",
+        "release",
+        "base"
+      ]
+    },
+    {
+      "name": "clang-debug",
+      "displayName": "Clang Debug",
+      "inherits": [
+        "clang",
+        "debug",
+        "base"
+      ]
+    },
+    {
+      "name": "clang-release",
+      "displayName": "Clang RelWithDebInfo",
+      "inherits": [
+        "clang",
+        "release",
+        "base"
+      ]
+    },
+    {
+      "name": "appleclang-debug",
+      "displayName": "AppleClang Debug",
+      "inherits": [
+        "appleclang",
+        "debug",
+        "base"
+      ]
+    },
+    {
+      "name": "appleclang-release",
+      "displayName": "AppleClang RelWithDebInfo",
+      "inherits": [
+        "appleclang",
+        "release",
+        "base"
+      ]
+    },
+    {
+      "name": "appleclang-maxsan-release",
+      "displayName": "AppleClang MaxSan RelWithDebInfo",
+      "inherits": [
+        "MaxSan",
+        "appleclang-release"
+      ]
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "gcc-debug",
+      "configurePreset": "gcc-debug"
+    },
+    {
+      "name": "gcc-release",
+      "configurePreset": "gcc-release"
+    },
+    {
+      "name": "clang-debug",
+      "configurePreset": "clang-debug"
+    },
+    {
+      "name": "clang-release",
+      "configurePreset": "clang-release"
+    },
+    {
+      "name": "appleclang-debug",
+      "configurePreset": "appleclang-debug"
+    },
+    {
+      "name": "appleclang-release",
+      "configurePreset": "appleclang-release"
+    },
+    {
+      "name": "appleclang-maxsan-release",
+      "configurePreset": "appleclang-maxsan-release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "gcc-debug",
+      "configurePreset": "gcc-debug",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "gcc-release",
+      "configurePreset": "gcc-release",
+      "configuration": "RelWithDebInfo",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "clang-debug",
+      "configurePreset": "clang-debug",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "clang-release",
+      "configurePreset": "clang-release",
+      "configuration": "RelWithDebInfo",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "appleclang-debug",
+      "configurePreset": "appleclang-debug",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "appleclang-release",
+      "configurePreset": "appleclang-release",
+      "configuration": "RelWithDebInfo",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "appleclang-maxsan-release",
+      "configurePreset": "appleclang-maxsan-release",
+      "configuration": "RelWithDebInfo",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
