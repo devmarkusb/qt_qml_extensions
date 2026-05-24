@@ -87,6 +87,16 @@ qt_add_executable(
     ${_mb_qt_qml_extensions_testapp_target}
     ${_mb_qt_qml_extensions_testapp_input}
 )
+
+set_target_properties(
+    ${_mb_qt_qml_extensions_testapp_target}
+    PROPERTIES CXX_EXTENSIONS OFF CXX_STANDARD 23 CXX_STANDARD_REQUIRED ON
+)
+target_compile_features(
+    ${_mb_qt_qml_extensions_testapp_target}
+    PUBLIC cxx_std_23
+)
+
 mb_devenv_set_target_defaults(${_mb_qt_qml_extensions_testapp_target})
 
 # qt_add_qml_module creates a same-named subdirectory under the build tree for QML artifacts.
@@ -203,11 +213,6 @@ target_link_libraries(
         Qt::Quick
         Qt::QuickControls2
         Qt::Svg
-)
-
-target_compile_features(
-    ${_mb_qt_qml_extensions_testapp_target}
-    PUBLIC cxx_std_23
 )
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
