@@ -1,7 +1,7 @@
 #ifndef CFG_MODEL_H_ehuf73rhf874hf78y4fng
 #define CFG_MODEL_H_ehuf73rhf874hf78y4fng
 
-#include "ul/ul.h"
+#include "mb/ul/ul.hpp"
 UL_PRAGMA_WARNINGS_PUSH_AND_DISABLE_ALL_MSVC
 #include "QObject"
 UL_PRAGMA_WARNINGS_POP
