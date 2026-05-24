@@ -1,28 +1,39 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.24...4.3)
 
-project(qt_qml_extensions LANGUAGES CXX)
+project(
+    mb.qt-qml-extensions
+    DESCRIPTION "Qt/QML extension components"
+    LANGUAGES CXX
+    VERSION 0.1.0
+)
+
+option(
+    MB_QT_QML_EXTENSIONS_BUILD_TESTAPP
+    "Enable building the test application. Default: ${PROJECT_IS_TOP_LEVEL}. Values: { ON, OFF }."
+    ${PROJECT_IS_TOP_LEVEL}
+)
 
 add_subdirectory(devenv)
 list(PREPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/devenv/cmake")
+
+if(MB_QT_QML_EXTENSIONS_BUILD_TESTAPP)
+    include(mb-devenv-ctest-root)
+endif()
+include(mb-devenv-defaults)
 
 include(cmake/dependencies.cmake)
 
 # From fetched https://github.com/devmarkusb/pre-commit (see fetchcontent-lockfile.json).
 mb_pre_commit_setup_project()
 
-if(NOT PROJECT_IS_TOP_LEVEL)
+if(NOT MB_QT_QML_EXTENSIONS_BUILD_TESTAPP)
     return()
 endif()
 
-include(mb-devenv-ctest-root)
-
-project(qt_qml_extensions_testapp VERSION 0.1.0)
+project(mb.qt_qml_extensions_testapp VERSION ${PROJECT_VERSION})
 message(STATUS "${PROJECT_NAME} version: " ${PROJECT_VERSION})
-set(target ${PROJECT_NAME})
+set(_mb_qt_qml_extensions_testapp_target ${PROJECT_NAME})
 
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
 include(GNUInstallDirs)
 
 mb_ul_include(qt.cmake)
@@ -38,51 +49,55 @@ if(
     (MB_UL_DEPLOYMENT_BUILD AND WIN32)
     OR "${MB_UL_DEPLOY_TARGET}" STREQUAL "uwp"
 )
-    set(WIN32_ON_OFF_SWITCH "WIN32")
+    set(_mb_qt_qml_extensions_testapp_win32_arg "WIN32")
 else()
-    set(WIN32_ON_OFF_SWITCH "")
+    set(_mb_qt_qml_extensions_testapp_win32_arg "")
 endif()
 
 mb_ul_include(uwp-tools.cmake)
 mb_ul_obtain_uwp_resources(
-        "testapp"
-        "MB"
-        "testapp"
-        ""
-        ""
-        ""
-        "${PROJECT_VERSION}"
-        "${MB_UL_CMAKE_INC_UWP_TOOLS_DEF_ICO}"
-        "#336699"
-        ""
-        target_UWP_ASSETS
+    "testapp"
+    "MB"
+    "testapp"
+    ""
+    ""
+    ""
+    "${PROJECT_VERSION}"
+    "${MB_UL_CMAKE_INC_UWP_TOOLS_DEF_ICO}"
+    "#336699"
+    ""
+    _mb_qt_qml_extensions_testapp_uwp_assets
 )
 
-set(target_IMPL_SOURCES
+set(_mb_qt_qml_extensions_testapp_impl_sources
     testapp/src/_gui/src_Qt/cfg_model.h
     testapp/src/_gui/src_Qt/main.cpp
 )
 
-set(target_input
-    ${WIN32_ON_OFF_SWITCH}
+set(_mb_qt_qml_extensions_testapp_input
+    ${_mb_qt_qml_extensions_testapp_win32_arg}
     MACOSX_BUNDLE
-    ${target_UWP_ASSETS}
-    ${target_RESOURCES}
-    ${target_IMPL_SOURCES}
+    ${_mb_qt_qml_extensions_testapp_uwp_assets}
+    ${_mb_qt_qml_extensions_testapp_impl_sources}
 )
 
-set(target_QML_DIR ${CMAKE_CURRENT_LIST_DIR})
+set(_mb_qt_qml_extensions_testapp_qml_dir ${CMAKE_CURRENT_LIST_DIR})
 
-qt_add_executable(${target} ${target_input})
+qt_add_executable(
+    ${_mb_qt_qml_extensions_testapp_target}
+    ${_mb_qt_qml_extensions_testapp_input}
+)
+mb_devenv_set_target_defaults(${_mb_qt_qml_extensions_testapp_target})
 
 # qt_add_qml_module creates a same-named subdirectory under the build tree for QML artifacts.
 set_target_properties(
-    ${target}
+    ${_mb_qt_qml_extensions_testapp_target}
     PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
-qt_add_qml_module(${target}
-    URI ${target}
+qt_add_qml_module(
+    ${_mb_qt_qml_extensions_testapp_target}
+    URI ${_mb_qt_qml_extensions_testapp_target}
     NO_RESOURCE_TARGET_PATH
     QML_FILES
         "_shared/CustomScaler.qml"
@@ -162,18 +177,24 @@ qt_add_qml_module(${target}
 )
 
 mb_ul_include(qt-deploy.cmake)
-mb_ul_qt_deploy(${target} ${target_QML_DIR})
+mb_ul_qt_deploy(
+    ${_mb_qt_qml_extensions_testapp_target}
+    ${_mb_qt_qml_extensions_testapp_qml_dir}
+)
 
 configure_file(
     testapp_build_config.h.in
     ${CMAKE_BINARY_DIR}/testapp_build_config.h
 )
-target_include_directories(${target} PUBLIC ${CMAKE_BINARY_DIR})
+target_include_directories(
+    ${_mb_qt_qml_extensions_testapp_target}
+    PUBLIC ${CMAKE_BINARY_DIR}
+)
 
-target_include_directories(${target} PUBLIC src)
+target_include_directories(${_mb_qt_qml_extensions_testapp_target} PUBLIC src)
 
 target_link_libraries(
-    ${target}
+    ${_mb_qt_qml_extensions_testapp_target}
     PUBLIC
         mb::util
         Qt::Core
@@ -184,31 +205,40 @@ target_link_libraries(
         Qt::Svg
 )
 
-target_compile_features(${target} PUBLIC cxx_std_23)
+target_compile_features(
+    ${_mb_qt_qml_extensions_testapp_target}
+    PUBLIC cxx_std_23
+)
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-    target_compile_options(${target} PRIVATE -Wno-missing-prototypes)
+    target_compile_options(
+        ${_mb_qt_qml_extensions_testapp_target}
+        PRIVATE -Wno-missing-prototypes
+    )
 endif()
 
 if(UNIX AND NOT APPLE AND CMAKE_CROSSCOMPILING)
     find_package(Qt6 REQUIRED COMPONENTS QuickTemplates2)
 
     # Work around QTBUG-86533
-    target_link_libraries(${target} PRIVATE Qt6::QuickTemplates2)
+    target_link_libraries(
+        ${_mb_qt_qml_extensions_testapp_target}
+        PRIVATE Qt6::QuickTemplates2
+    )
 endif()
 
 install(
-    TARGETS ${target}
+    TARGETS ${_mb_qt_qml_extensions_testapp_target}
     BUNDLE DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
 qt_generate_deploy_qml_app_script(
-    TARGET ${target}
-    OUTPUT_SCRIPT deploy_script
+    TARGET ${_mb_qt_qml_extensions_testapp_target}
+    OUTPUT_SCRIPT _mb_qt_qml_extensions_testapp_deploy_script
     MACOS_BUNDLE_POST_BUILD
     NO_UNSUPPORTED_PLATFORM_ERROR
     DEPLOY_USER_QML_MODULES_ON_UNSUPPORTED_PLATFORM
 )
-install(SCRIPT ${deploy_script})
+install(SCRIPT ${_mb_qt_qml_extensions_testapp_deploy_script})
