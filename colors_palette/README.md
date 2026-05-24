@@ -1,3 +1,5 @@
+# Colors Palette
+
 Added additional ExtColorsTestApp, which starts
 ExtColorsTest.qml in a sound app context, not just via qmlscene.
 

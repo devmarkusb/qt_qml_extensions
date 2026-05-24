@@ -38,6 +38,6 @@ Item {
             onClicked: {
                 control.clicked()
             }
-        }        
+        }
     } // Row
 } // Item

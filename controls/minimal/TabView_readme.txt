@@ -25,7 +25,7 @@ The code conversion is done like sketched below.
     }
 
 <--->
-       
+
     TabView_ {
         anchors.fill: parent
         tabPosition: Qt.TopEdge

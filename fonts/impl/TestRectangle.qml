@@ -1,7 +1,7 @@
 import QtQuick
 
 
-Rectangle {    
+Rectangle {
     width: childrenRect.width
     height: childrenRect.height
 }
