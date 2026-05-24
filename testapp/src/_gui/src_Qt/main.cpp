@@ -1,10 +1,7 @@
 #include "cfg_model.h"
-#include "mb/ul/ul.hpp"
-UL_PRAGMA_WARNINGS_PUSH_AND_DISABLE_ALL_MSVC
 #include "QGuiApplication"
 #include "QQmlApplicationEngine"
 #include "QQmlContext"
-UL_PRAGMA_WARNINGS_POP
 
 int main(int argc, char* argv[]) {
     QGuiApplication app(argc, argv);
