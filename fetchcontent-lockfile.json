@@ -28,7 +28,7 @@
       "name": "mb_util",
       "package_name": "mb.util",
       "git_repository": "https://github.com/devmarkusb/util.git",
-      "git_tag": "b332d2d0c95453cf6f946a058ea7fadfdfc468b5",
+      "git_tag": "5a10062f07b08f6ff09aae224cbbb34f7e3eb099",
       "cmake_variables": {
         "MB_PRE_COMMIT_SETUP_LAYOUT": "TOP_LEVEL",
         "MB_UTIL_BUILD_EXAMPLES": "OFF",
