@@ -1,5 +1,5 @@
-#ifndef CFG_MODEL_H_ehuf73rhf874hf78y4fng
-#define CFG_MODEL_H_ehuf73rhf874hf78y4fng
+#ifndef CFG_MODEL_HPP_ehuf73rhf874hf78y4fng
+#define CFG_MODEL_HPP_ehuf73rhf874hf78y4fng
 
 #include "QObject"
 

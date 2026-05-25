@@ -69,7 +69,7 @@ Prefer a freshly configured `build/` directory for verification. Ignored local b
 - Custom controls in style directories generally use a trailing underscore, such as `Button_` and `TextField_`; keep that naming pattern.
 - Prefer the maintained `controls/minimal/` style for new or repaired controls unless the task explicitly targets another style.
 - When adding or renaming QML files used by the top-level app, update the `qt_add_qml_module` `QML_FILES` or `RESOURCES` list.
-- Keep generated headers generated indirectly. Edit `testapp_build_config.h.in`, not build-tree outputs.
+- Keep generated headers generated indirectly. Edit `testapp_build_config.hpp.in`, not build-tree outputs.
 - Keep C++ includes and warning-suppression wrappers consistent with the existing Qt/C++ files.
 
 ## Testing expectations

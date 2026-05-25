@@ -1,4 +1,4 @@
-#include "cfg_model.h"
+#include "cfg_model.hpp"
 #include "QGuiApplication"
 #include "QQmlApplicationEngine"
 #include "QQmlContext"

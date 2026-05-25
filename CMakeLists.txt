@@ -70,7 +70,7 @@ mb_ul_obtain_uwp_resources(
 )
 
 set(_mb_qt_qml_extensions_testapp_impl_sources
-    testapp/src/_gui/src_Qt/cfg_model.h
+    testapp/src/_gui/src_Qt/cfg_model.hpp
     testapp/src/_gui/src_Qt/main.cpp
 )
 
@@ -231,8 +231,8 @@ mb_ul_qt_deploy(
 )
 
 configure_file(
-    testapp_build_config.h.in
-    ${CMAKE_BINARY_DIR}/testapp_build_config.h
+    testapp_build_config.hpp.in
+    ${CMAKE_BINARY_DIR}/testapp_build_config.hpp
 )
 target_include_directories(
     ${_mb_qt_qml_extensions_testapp_target}
