@@ -13,6 +13,7 @@ Environment overrides:
   DEV_SDK_PATH or dev_sdk_path     local SDK root used to derive Android/Qt paths
   QT_ANDROID_ABIS                  default: arm64-v8a
   QT_ANDROID_ARCH                  default: android_arm64_v8a
+  QT_ANDROID_SDK_BUILD_TOOLS_REVISION default: 35.0.0
   QT_ANDROID_KEYSTORE_ALIAS        default: key
   QT_ANDROID_KEYSTORE_*            signing values; args override path/key/store pass
   QT_ANDROID_PACKAGE_NAME          default: org.cismypa.qt_qml_extensions_testapp
@@ -47,6 +48,7 @@ qt_version="${QT_VERSION:-6.9.3}"
 qt_android_arch="${QT_ANDROID_ARCH:-android_arm64_v8a}"
 qt_android_abis="${QT_ANDROID_ABIS:-arm64-v8a}"
 android_ndk_version="${ANDROID_NDK_VERSION:-28.0.13004108}"
+android_build_tools_revision="${QT_ANDROID_SDK_BUILD_TOOLS_REVISION:-35.0.0}"
 android_target_sdk="${QT_ANDROID_TARGET_SDK_VERSION:-35}"
 android_min_sdk="${QT_ANDROID_MIN_SDK_VERSION:-21}"
 package_name="${QT_ANDROID_PACKAGE_NAME:-org.cismypa.qt_qml_extensions_testapp}"
@@ -118,6 +120,7 @@ export QT_ANDROID_KEYSTORE_STORE_PASS="$sign_store_pass"
     -DQT_ANDROID_ABIS="$qt_android_abis" \
     -DQT_ANDROID_MIN_SDK_VERSION="$android_min_sdk" \
     -DQT_ANDROID_PACKAGE_NAME="$package_name" \
+    -DQT_ANDROID_SDK_BUILD_TOOLS_REVISION="$android_build_tools_revision" \
     -DQT_ANDROID_SIGN_AAB=TRUE \
     -DQT_ANDROID_TARGET_SDK_VERSION="$android_target_sdk" \
     -DQT_ANDROID_VERSION_CODE="$version_code" \
