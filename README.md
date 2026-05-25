@@ -69,7 +69,7 @@ Configure these GitHub secrets before running a release:
   secret must contain exactly one JSON object, with no surrounding Markdown,
   labels, or extra text after the closing brace.
 
-The Play Console app for `org.cismypa.qt_qml_extensions_testapp` must already
+The Play Console app for `org.cismypa.qtqmlextensionstestapp` must already
 exist before the GitHub Action can upload to it. Protect the
 `google-play-production` GitHub environment with required reviewers before using
 the `production` track.
