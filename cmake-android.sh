@@ -16,7 +16,7 @@ Environment overrides:
   QT_ANDROID_SDK_BUILD_TOOLS_REVISION default: 35.0.0
   QT_ANDROID_KEYSTORE_ALIAS        default: key
   QT_ANDROID_KEYSTORE_*            signing values; args override path/key/store pass
-  QT_ANDROID_PACKAGE_NAME          default: org.cismypa.qt_qml_extensions_testapp
+  QT_ANDROID_PACKAGE_NAME          default: org.cismypa.qtqmlextensionstestapp
   QT_ANDROID_TARGET_SDK_VERSION    default: 35
   QT_ANDROID_MIN_SDK_VERSION       default: 21
   QT_ANDROID_VERSION_CODE          default: 1
@@ -51,7 +51,7 @@ android_ndk_version="${ANDROID_NDK_VERSION:-28.0.13004108}"
 android_build_tools_revision="${QT_ANDROID_SDK_BUILD_TOOLS_REVISION:-35.0.0}"
 android_target_sdk="${QT_ANDROID_TARGET_SDK_VERSION:-35}"
 android_min_sdk="${QT_ANDROID_MIN_SDK_VERSION:-21}"
-package_name="${QT_ANDROID_PACKAGE_NAME:-org.cismypa.qt_qml_extensions_testapp}"
+package_name="${QT_ANDROID_PACKAGE_NAME:-org.cismypa.qtqmlextensionstestapp}"
 version_code="${QT_ANDROID_VERSION_CODE:-1}"
 version_name="${QT_ANDROID_VERSION_NAME:-1}"
 
