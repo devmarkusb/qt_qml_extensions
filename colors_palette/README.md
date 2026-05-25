@@ -1,5 +1,9 @@
 # Colors Palette
 
+[![build](https://github.com/devmarkusb/qt_qml_extensions/actions/workflows/build.yml/badge.svg)](https://github.com/devmarkusb/qt_qml_extensions/actions/workflows/build.yml)
+[![android-release](https://github.com/devmarkusb/qt_qml_extensions/actions/workflows/android-release.yml/badge.svg)](https://github.com/devmarkusb/qt_qml_extensions/actions/workflows/android-release.yml)
+[![License](https://img.shields.io/badge/license-Boost-blue.svg)](../LICENSE)
+
 Added additional ExtColorsTestApp, which starts
 ExtColorsTest.qml in a sound app context, not just via qmlscene.
 
