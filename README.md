@@ -65,7 +65,9 @@ Configure these GitHub secrets before running a release:
 - `ANDROID_KEYSTORE_ALIAS`: upload key alias.
 - `ANDROID_KEYSTORE_STORE_PASS`: keystore password.
 - `ANDROID_KEYSTORE_KEY_PASS`: key password.
-- `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`: Play Console service-account JSON.
+- `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`: Play Console service-account JSON. The
+  secret must contain exactly one JSON object, with no surrounding Markdown,
+  labels, or extra text after the closing brace.
 
 The Play Console app for `org.cismypa.qt_qml_extensions_testapp` must already
 exist before the GitHub Action can upload to it. Protect the
