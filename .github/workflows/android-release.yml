@@ -108,7 +108,7 @@ jobs:
         version: ${{ env.QT_VERSION }}
         host: linux
         target: desktop
-        arch: gcc_64
+        arch: linux_gcc_64
         dir: ${{ env.QT_INSTALL_DIR }}
         modules: qt5compat
         install-deps: 'true'
