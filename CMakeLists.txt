@@ -92,6 +92,44 @@ set_target_properties(
     ${_mb_qt_qml_extensions_testapp_target}
     PROPERTIES CXX_EXTENSIONS OFF CXX_STANDARD 23 CXX_STANDARD_REQUIRED ON
 )
+if(ANDROID)
+    if(NOT QT_ANDROID_COMPILE_SDK_VERSION AND QT_ANDROID_TARGET_SDK_VERSION)
+        set(QT_ANDROID_COMPILE_SDK_VERSION "${QT_ANDROID_TARGET_SDK_VERSION}")
+    endif()
+
+    set(_mb_qt_qml_extensions_testapp_android_properties)
+    foreach(
+        _mb_qt_qml_extensions_testapp_android_property
+        QT_ANDROID_COMPILE_SDK_VERSION
+        QT_ANDROID_MIN_SDK_VERSION
+        QT_ANDROID_PACKAGE_NAME
+        QT_ANDROID_SDK_BUILD_TOOLS_REVISION
+        QT_ANDROID_TARGET_SDK_VERSION
+        QT_ANDROID_VERSION_CODE
+        QT_ANDROID_VERSION_NAME
+    )
+        if(DEFINED ${_mb_qt_qml_extensions_testapp_android_property})
+            if(
+                NOT "${${_mb_qt_qml_extensions_testapp_android_property}}"
+                    STREQUAL
+                    ""
+            )
+                list(
+                    APPEND _mb_qt_qml_extensions_testapp_android_properties
+                    "${_mb_qt_qml_extensions_testapp_android_property}"
+                    "${${_mb_qt_qml_extensions_testapp_android_property}}"
+                )
+            endif()
+        endif()
+    endforeach()
+
+    if(_mb_qt_qml_extensions_testapp_android_properties)
+        set_target_properties(
+            ${_mb_qt_qml_extensions_testapp_target}
+            PROPERTIES ${_mb_qt_qml_extensions_testapp_android_properties}
+        )
+    endif()
+endif()
 target_compile_features(
     ${_mb_qt_qml_extensions_testapp_target}
     PUBLIC cxx_std_23
