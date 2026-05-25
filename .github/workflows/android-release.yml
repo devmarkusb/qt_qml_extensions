@@ -61,6 +61,7 @@ jobs:
       QT_ANDROID_ABIS: arm64-v8a
       QT_INSTALL_DIR: /tmp/qt
       QT_VERSION: '6.9.3'
+      GOOGLE_PLAY_SERVICE_ACCOUNT_JSON_PATH: /tmp/google-play-service-account.json
 
     steps:
     - uses: actions/checkout@v6
@@ -229,11 +230,54 @@ jobs:
         path: ${{ steps.aab.outputs.path }}
         if-no-files-found: error
 
+    - name: Write Google Play service account
+      if: ${{ github.event_name == 'push' || inputs.publish_to_play }}
+      env:
+        GOOGLE_PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+      run: |
+        if [ -z "$GOOGLE_PLAY_SERVICE_ACCOUNT_JSON" ]; then
+          echo "GOOGLE_PLAY_SERVICE_ACCOUNT_JSON secret is required." >&2
+          exit 1
+        fi
+
+        python3 - <<'PY'
+        import json
+        import os
+        import stat
+        import sys
+
+        try:
+            service_account = json.loads(os.environ["GOOGLE_PLAY_SERVICE_ACCOUNT_JSON"])
+        except json.JSONDecodeError as error:
+            print(
+                "GOOGLE_PLAY_SERVICE_ACCOUNT_JSON must contain exactly one JSON object: "
+                f"{error}",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+
+        required_keys = ("type", "project_id", "private_key", "client_email")
+        missing_keys = [key for key in required_keys if not service_account.get(key)]
+        if missing_keys:
+            print(
+                "GOOGLE_PLAY_SERVICE_ACCOUNT_JSON is missing required key(s): "
+                + ", ".join(missing_keys),
+                file=sys.stderr,
+            )
+            sys.exit(1)
+
+        path = os.environ["GOOGLE_PLAY_SERVICE_ACCOUNT_JSON_PATH"]
+        with open(path, "w", encoding="utf-8") as file:
+            json.dump(service_account, file)
+            file.write("\n")
+        os.chmod(path, stat.S_IRUSR | stat.S_IWUSR)
+        PY
+
     - name: Upload to Google Play
       if: ${{ github.event_name == 'push' || inputs.publish_to_play }}
       uses: r0adkll/upload-google-play@v1
       with:
-        serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+        serviceAccountJson: ${{ env.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON_PATH }}
         packageName: ${{ env.PACKAGE_NAME }}
         releaseFiles: ${{ steps.aab.outputs.path }}
         tracks: ${{ env.PLAY_TRACK }}
