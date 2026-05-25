@@ -50,6 +50,32 @@ cmake --build build --config Debug
 ctest --test-dir build -C Debug --output-on-failure
 ```
 
+## Android release builds
+
+Android App Bundle builds are handled by
+`.github/workflows/android-release.yml`. The workflow can be run manually, and
+tags matching `android-v*` build and upload the signed bundle to the Google Play
+`internal` track.
+
+Configure these GitHub secrets before running a release:
+
+- `ANDROID_UPLOAD_KEYSTORE_BASE64`: base64-encoded upload keystore.
+- `ANDROID_KEYSTORE_ALIAS`: upload key alias.
+- `ANDROID_KEYSTORE_STORE_PASS`: keystore password.
+- `ANDROID_KEYSTORE_KEY_PASS`: key password.
+- `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`: Play Console service-account JSON.
+
+The Play Console app for `org.cismypa.qt_qml_extensions_testapp` must already
+exist before the GitHub Action can upload to it. Protect the
+`google-play-production` GitHub environment with required reviewers before using
+the `production` track.
+
+For local signed AAB builds:
+
+```sh
+./cmake-android.sh Release /path/to/upload.keystore "$ANDROID_KEYSTORE_KEY_PASS" "$ANDROID_KEYSTORE_STORE_PASS"
+```
+
 ## Quick guide
 
 1. For an up-to-date usage blueprint please refer to the AppWindow.qml of testapp.
