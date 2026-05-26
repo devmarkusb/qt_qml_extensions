@@ -115,28 +115,40 @@ ApplicationWindow_ {
             }
         } // ColumnLayout
 
-        ControlsTest {
-            id: controlsTest
+        Loader {
+            id: controlsPage
+
             Layout.fillWidth: true
             Layout.fillHeight: true
+            active: pageSwitch.currentIndex === 1
+            source: active ? Qt.resolvedUrl("../../controls/ControlsTest.qml") : ""
         }
 
-        ExtLayoutTest {
-            id: layoutTest
+        Loader {
+            id: layoutPage
+
             Layout.fillWidth: true
             Layout.fillHeight: true
+            active: pageSwitch.currentIndex === 2
+            source: active ? Qt.resolvedUrl("../../layout/ExtLayoutTest.qml") : ""
         }
 
-        ExtColorsTest {
-            id: colorsTest
+        Loader {
+            id: colorsPage
+
             Layout.fillWidth: true
             Layout.fillHeight: true
+            active: pageSwitch.currentIndex === 3
+            source: active ? Qt.resolvedUrl("../../colors_palette/ExtColorsTest.qml") : ""
         }
 
-        ExtFontTest {
-            id: fontTest
+        Loader {
+            id: fontPage
+
             Layout.fillWidth: true
             Layout.fillHeight: true
+            active: pageSwitch.currentIndex === 4
+            source: active ? Qt.resolvedUrl("../../fonts/ExtFontTest.qml") : ""
         }
     } // StackLayout
 } // ApplicationWindow_
