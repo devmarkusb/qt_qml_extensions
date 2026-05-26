@@ -59,20 +59,42 @@ Android App Bundle builds are handled by
 tags matching `android-v*` build and upload the signed bundle to the Google Play
 `internal` track.
 
+Manual workflow runs use `release_mode`:
+
+- `build_only`: build and upload a signed AAB workflow artifact, but do not
+  publish to Google Play.
+- `publish_build`: build and upload the signed AAB to the selected Google Play
+  track.
+- `publish_build_and_store_entry`: publish the signed AAB and then update the
+  Google Play store entry from `fastlane/metadata/android`.
+- `update_store_entry_only`: update the Google Play store entry from
+  `fastlane/metadata/android` without building an AAB, using a versionCode, or
+  requiring Android signing secrets.
+
+The store entry metadata is managed with Fastlane `supply`. Text files live in
+`fastlane/metadata/android/<locale>/`, and store graphics/screenshots live in
+`fastlane/metadata/android/<locale>/images/`. Image uploads replace the
+corresponding current Play Store set, so keep the complete intended image set in
+the repository before publishing store-entry changes.
+
 Configure these GitHub secrets before running a release:
 
-- `ANDROID_UPLOAD_KEYSTORE_BASE64`: base64-encoded upload keystore.
-- `ANDROID_KEYSTORE_ALIAS`: upload key alias.
-- `ANDROID_KEYSTORE_STORE_PASS`: keystore password.
-- `ANDROID_KEYSTORE_KEY_PASS`: key password.
+- `ANDROID_UPLOAD_KEYSTORE_BASE64`: base64-encoded upload keystore. Required
+  for AAB build modes.
+- `ANDROID_KEYSTORE_ALIAS`: upload key alias. Required for AAB build modes.
+- `ANDROID_KEYSTORE_STORE_PASS`: keystore password. Required for AAB build
+  modes.
+- `ANDROID_KEYSTORE_KEY_PASS`: key password. Required for AAB build modes.
 - `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`: Play Console service-account JSON. The
   secret must contain exactly one JSON object, with no surrounding Markdown,
-  labels, or extra text after the closing brace.
+  labels, or extra text after the closing brace. Required for Google Play upload
+  and store-entry update modes.
 
 The Play Console app for `org.cismypa.qtqmlextensionstestapp` must already
 exist before the GitHub Action can upload to it. Protect the
 `google-play-production` GitHub environment with required reviewers before using
-the `production` track.
+the `production` track or store-entry update modes. Store-entry updates are
+listing changes, not binary releases, and do not require a versionCode bump.
 
 For local signed AAB builds:
 
