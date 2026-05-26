@@ -5,15 +5,50 @@ def env_truthy?(name, default_value = false)
   %w[1 true yes y on].include?(value.downcase)
 end
 
+def play_package_name
+  ENV.fetch("PACKAGE_NAME", "org.cismypa.qtqmlextensionstestapp")
+end
+
+def play_json_key
+  ENV.fetch("GOOGLE_PLAY_SERVICE_ACCOUNT_JSON_PATH")
+end
+
+def play_track
+  ENV.fetch("PLAY_TRACK", "production")
+end
+
+def store_entry_version_code
+  configured_version_code = ENV.fetch("GOOGLE_PLAY_STORE_ENTRY_VERSION_CODE", "").strip
+  configured_version_code = ENV.fetch("VERSION_CODE", "").strip if configured_version_code.empty?
+  return configured_version_code unless configured_version_code.empty?
+
+  version_codes = Array(google_play_track_version_codes(
+    package_name: play_package_name,
+    json_key: play_json_key,
+    track: play_track
+  ))
+  UI.user_error!(
+    "No version codes found on Google Play track '#{play_track}'. " \
+    "Set store_entry_version_code to an existing Play versionCode."
+  ) if version_codes.empty?
+
+  version_codes.map(&:to_i).max.to_s
+end
+
 default_platform(:android)
 
 platform :android do
   desc "Update Google Play store listing metadata and graphics without uploading an app bundle"
   lane :update_store_entry do
+    version_code = store_entry_version_code
+    UI.message("Using existing Google Play #{play_track} versionCode #{version_code} for store-entry metadata.")
+
     upload_to_play_store(
-      package_name: ENV.fetch("PACKAGE_NAME", "org.cismypa.qtqmlextensionstestapp"),
-      json_key: ENV.fetch("GOOGLE_PLAY_SERVICE_ACCOUNT_JSON_PATH"),
+      package_name: play_package_name,
+      json_key: play_json_key,
       metadata_path: ENV.fetch("SUPPLY_METADATA_PATH", "fastlane/metadata/android"),
+      track: play_track,
+      version_code: version_code,
       skip_upload_apk: true,
       skip_upload_aab: true,
       skip_upload_changelogs: true,

@@ -77,6 +77,13 @@ The store entry metadata is managed with Fastlane `supply`. Text files live in
 corresponding current Play Store set, so keep the complete intended image set in
 the repository before publishing store-entry changes.
 
+Fastlane still requires an existing Play release versionCode when uploading
+metadata. Store-entry modes automatically use the new build's `VERSION_CODE` when
+one was built, or otherwise read the highest existing versionCode from the
+selected Play track. If that track has no release, set `store_entry_version_code`
+to any existing Play versionCode. This does not upload a new bundle or bump the
+app version.
+
 Configure these GitHub secrets before running a release:
 
 - `ANDROID_UPLOAD_KEYSTORE_BASE64`: base64-encoded upload keystore. Required
