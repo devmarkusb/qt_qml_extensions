@@ -2,6 +2,8 @@ name: android-release
 
 on:
   push:
+    branches:
+    - '**'
     tags:
     - 'android-v*'
   workflow_dispatch:
