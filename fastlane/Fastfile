@@ -1,0 +1,25 @@
+def env_truthy?(name, default_value = false)
+  value = ENV[name]
+  return default_value if value.nil? || value.empty?
+
+  %w[1 true yes y on].include?(value.downcase)
+end
+
+default_platform(:android)
+
+platform :android do
+  desc "Update Google Play store listing metadata and graphics without uploading an app bundle"
+  lane :update_store_entry do
+    upload_to_play_store(
+      package_name: ENV.fetch("PACKAGE_NAME", "org.cismypa.qtqmlextensionstestapp"),
+      json_key: ENV.fetch("GOOGLE_PLAY_SERVICE_ACCOUNT_JSON_PATH"),
+      metadata_path: ENV.fetch("SUPPLY_METADATA_PATH", "fastlane/metadata/android"),
+      skip_upload_apk: true,
+      skip_upload_aab: true,
+      skip_upload_changelogs: true,
+      sync_image_upload: env_truthy?("GOOGLE_PLAY_SYNC_IMAGE_UPLOAD", true),
+      validate_only: env_truthy?("GOOGLE_PLAY_VALIDATE_ONLY"),
+      changes_not_sent_for_review: env_truthy?("GOOGLE_PLAY_CHANGES_NOT_SENT_FOR_REVIEW")
+    )
+  end
+end

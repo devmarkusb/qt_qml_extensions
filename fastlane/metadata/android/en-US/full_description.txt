@@ -1,0 +1,11 @@
+qt_qml_extensions Test App is a compact Qt/QML demo used to exercise the extension library's reusable controls, color palettes, font helpers, and layout helpers.
+
+The app is primarily a public test surface for the open source qt_qml_extensions project. It lets maintainers verify Android packaging and inspect QML components in a real Qt Quick Controls application.
+
+Features:
+- Minimal custom controls built on Qt Quick Controls 2
+- Color palette and state demonstrations
+- Font and font metrics examples
+- Scaling and spacing helpers for QML layouts
+
+This listing is managed from the repository and can be updated without publishing a new app bundle.
