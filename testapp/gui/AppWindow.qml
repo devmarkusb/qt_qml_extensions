@@ -53,6 +53,15 @@ ApplicationWindow_ {
 
         readonly property real defWindowWidth: Screen.width
         readonly property real defWindowHeight: Screen.height
+
+        function logLoaderStatus(loader, pageName) {
+            if (loader.status === Loader.Ready) {
+                console.log(pageName + " page loaded:", loader.source)
+            }
+            if (loader.status === Loader.Error) {
+                console.error(pageName + " page failed to load:", loader.source)
+            }
+        }
     }
 
     width: impl.defWindowWidth
@@ -122,6 +131,7 @@ ApplicationWindow_ {
             Layout.fillHeight: true
             active: pageSwitch.currentIndex === 1
             source: active ? Qt.resolvedUrl("../../controls/ControlsTest.qml") : ""
+            onStatusChanged: impl.logLoaderStatus(controlsPage, "Controls")
         }
 
         Loader {
@@ -131,6 +141,7 @@ ApplicationWindow_ {
             Layout.fillHeight: true
             active: pageSwitch.currentIndex === 2
             source: active ? Qt.resolvedUrl("../../layout/ExtLayoutTest.qml") : ""
+            onStatusChanged: impl.logLoaderStatus(layoutPage, "Layout")
         }
 
         Loader {
@@ -140,6 +151,7 @@ ApplicationWindow_ {
             Layout.fillHeight: true
             active: pageSwitch.currentIndex === 3
             source: active ? Qt.resolvedUrl("../../colors_palette/ExtColorsTest.qml") : ""
+            onStatusChanged: impl.logLoaderStatus(colorsPage, "Colors")
         }
 
         Loader {
@@ -149,6 +161,7 @@ ApplicationWindow_ {
             Layout.fillHeight: true
             active: pageSwitch.currentIndex === 4
             source: active ? Qt.resolvedUrl("../../fonts/ExtFontTest.qml") : ""
+            onStatusChanged: impl.logLoaderStatus(fontPage, "Fonts")
         }
     } // StackLayout
 } // ApplicationWindow_
