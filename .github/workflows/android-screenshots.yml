@@ -1,0 +1,147 @@
+name: android-screenshots
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-screenshots-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android-screenshots:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+
+    env:
+      ANDROID_API_LEVEL: '35'
+      ANDROID_BUILD_TOOLS_VERSION: '35.0.0'
+      ANDROID_NDK_VERSION: '28.0.13004108'
+      BUILD_DIR: build/android-screenshots
+      PACKAGE_NAME: org.cismypa.qtqmlextensionstestapp
+      QT_ANDROID_ARCH: android_x86_64
+      QT_ANDROID_ABIS: x86_64
+      QT_INSTALL_DIR: /tmp/qt
+      QT_VERSION: '6.9.3'
+      SCREENSHOT_OUTPUT_DIRECTORY: artifacts/android-screenshots
+
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        submodules: 'false'
+
+    - name: Initialize submodules
+      run: |
+        git config --global url."https://github.com/".insteadOf "git@github.com:"
+        git submodule update --init --recursive --recommend-shallow
+
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Install Android SDK packages
+      run: |
+        sdkmanager \
+          "platform-tools" \
+          "platforms;android-${ANDROID_API_LEVEL}" \
+          "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
+          "ndk;${ANDROID_NDK_VERSION}"
+
+    - name: Install Qt for Android
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: ${{ env.QT_VERSION }}
+        host: linux
+        target: android
+        arch: ${{ env.QT_ANDROID_ARCH }}
+        dir: ${{ env.QT_INSTALL_DIR }}
+        modules: qt5compat
+        install-deps: 'true'
+        cache: 'true'
+        setup-python: 'true'
+        set-env: 'true'
+
+    - name: Install host Qt tools
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: ${{ env.QT_VERSION }}
+        host: linux
+        target: desktop
+        arch: linux_gcc_64
+        dir: ${{ env.QT_INSTALL_DIR }}
+        modules: qt5compat
+        install-deps: 'true'
+        cache: 'true'
+        setup-python: 'false'
+        set-env: 'false'
+
+    - name: Configure Android APK build
+      run: |
+        qt_android_root="${QT_INSTALL_DIR}/Qt/${QT_VERSION}/${QT_ANDROID_ARCH}"
+        qt_host_path="${QT_INSTALL_DIR}/Qt/${QT_VERSION}/gcc_64"
+
+        "${qt_android_root}/bin/qt-cmake" \
+          -S . \
+          -B "$BUILD_DIR" \
+          -G Ninja \
+          -DCMAKE_BUILD_TYPE=Debug \
+          -DCMAKE_CXX_STANDARD=26 \
+          -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=./devenv/cmake/fetch-content-from-lockfile.cmake \
+          -DANDROID_NDK_ROOT="${ANDROID_HOME}/ndk/${ANDROID_NDK_VERSION}" \
+          -DANDROID_SDK_ROOT="$ANDROID_HOME" \
+          -DMB_UL_DEPLOYMENT_BUILD=ON \
+          -DQT_ANDROID_ABIS="$QT_ANDROID_ABIS" \
+          -DQT_ANDROID_MIN_SDK_VERSION=23 \
+          -DQT_ANDROID_PACKAGE_NAME="$PACKAGE_NAME" \
+          -DQT_ANDROID_SDK_BUILD_TOOLS_REVISION="$ANDROID_BUILD_TOOLS_VERSION" \
+          -DQT_ANDROID_TARGET_SDK_VERSION="$ANDROID_API_LEVEL" \
+          -DQT_ANDROID_VERSION_CODE="$GITHUB_RUN_NUMBER" \
+          -DQT_ANDROID_VERSION_NAME="screenshots-${GITHUB_RUN_NUMBER}" \
+          -DQT_HOST_PATH="$qt_host_path" \
+          -DUL_DEPLOYMENT_BUILD=ON
+
+    - name: Build Android APK
+      run: cmake --build "$BUILD_DIR" --target apk
+
+    - name: Locate APK
+      id: apk
+      run: |
+        apk_path="$(find "$BUILD_DIR" -type f -name '*.apk' | sort | tail -n 1)"
+        if [ -z "$apk_path" ]; then
+          echo "No APK was produced." >&2
+          exit 1
+        fi
+        echo "path=$apk_path" >> "$GITHUB_OUTPUT"
+
+    - name: Set up Ruby for Fastlane
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
+        bundler-cache: true
+
+    - name: Capture screenshots on emulator
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: ${{ env.ANDROID_API_LEVEL }}
+        target: google_apis
+        arch: x86_64
+        profile: pixel_2
+        disable-animations: true
+        script: |
+          SCREENSHOT_CLEAR_PREVIOUS=1 \
+          QT_ANDROID_APP_APK_PATH="${{ steps.apk.outputs.path }}" \
+          bundle exec fastlane android screenshots
+
+    - name: Upload screenshot artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-screenshots
+        path: ${{ env.SCREENSHOT_OUTPUT_DIRECTORY }}
+        if-no-files-found: error

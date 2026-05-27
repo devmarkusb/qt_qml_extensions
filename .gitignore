@@ -60,6 +60,10 @@
 /compile_commands.json
 /__*/
 /_build*/
+android-screenshot-tests/.gradle/
+android-screenshot-tests/**/build/
+android-screenshot-tests/local.properties
+fastlane/report.xml
 bin/
 bin_*/
 cmake-build-*/
@@ -72,4 +76,5 @@ out/
 __pycache__/
 
 # misc
+.bundle/
 CMakeUserPresets.json

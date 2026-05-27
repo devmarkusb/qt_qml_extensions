@@ -1,3 +1,5 @@
+skip_docs
+
 def env_truthy?(name, default_value = false)
   value = ENV[name]
   return default_value if value.nil? || value.empty?
@@ -35,9 +37,108 @@ def store_entry_version_code
   version_codes.map(&:to_i).max.to_s
 end
 
+def screenshot_host_package_name
+  ENV.fetch("SCREENSHOT_HOST_PACKAGE_NAME", "org.cismypa.qtqmlextensionstestapp.screenshots")
+end
+
+def screenshot_test_class
+  ENV.fetch(
+    "SCREENSHOT_TEST_CLASS",
+    "org.cismypa.qtqmlextensionstestapp.screenshots.QtQmlExtensionsScreenshotsTest"
+  )
+end
+
+def screenshot_host_project_dir
+  ENV.fetch("SCREENSHOT_TEST_PROJECT_DIR", "android-screenshot-tests")
+end
+
+def screenshot_host_apk_path
+  File.join(
+    screenshot_host_project_dir,
+    "screenshot-host",
+    "build",
+    "outputs",
+    "apk",
+    "debug",
+    "screenshot-host-debug.apk"
+  )
+end
+
+def screenshot_test_apk_path
+  File.join(
+    screenshot_host_project_dir,
+    "screenshot-host",
+    "build",
+    "outputs",
+    "apk",
+    "androidTest",
+    "debug",
+    "screenshot-host-debug-androidTest.apk"
+  )
+end
+
+def screenshot_locale
+  ENV.fetch("SCREENSHOT_LOCALE", "en-US")
+end
+
+def screenshot_device_type
+  ENV.fetch("SCREENSHOT_DEVICE_TYPE", "phone")
+end
+
+def screenshot_output_directory
+  ENV.fetch("SCREENSHOT_OUTPUT_DIRECTORY", "fastlane/metadata/android")
+end
+
+def android_target_activity
+  ENV.fetch("QT_ANDROID_TARGET_ACTIVITY", "org.qtproject.qt.android.bindings.QtActivity")
+end
+
+def android_target_package
+  ENV.fetch("QT_ANDROID_TARGET_PACKAGE", play_package_name)
+end
+
+def maybe_install_android_target_apk
+  target_apk_path = ENV.fetch("QT_ANDROID_APP_APK_PATH", "").strip
+  if target_apk_path.empty?
+    UI.message("QT_ANDROID_APP_APK_PATH is not set; assuming #{android_target_package} is already installed.")
+    return
+  end
+
+  UI.message("Installing Qt Android app APK: #{target_apk_path}")
+  sh(ENV.fetch("ADB", "adb"), "install", "-r", target_apk_path)
+end
+
 default_platform(:android)
 
 platform :android do
+  desc "Capture repeatable Android screenshots via UI Automator and fastlane screengrab"
+  lane :screenshots do
+    gradle(
+      project_dir: screenshot_host_project_dir,
+      gradle_path: "./gradlew",
+      tasks: ["assembleDebug", "assembleDebugAndroidTest"]
+    )
+
+    maybe_install_android_target_apk
+
+    capture_android_screenshots(
+      app_apk_path: screenshot_host_apk_path,
+      tests_apk_path: screenshot_test_apk_path,
+      app_package_name: screenshot_host_package_name,
+      tests_package_name: "#{screenshot_host_package_name}.test",
+      use_tests_in_classes: [screenshot_test_class],
+      launch_arguments: [
+        "targetPackage #{android_target_package}",
+        "targetActivity #{android_target_activity}"
+      ],
+      locales: [screenshot_locale],
+      output_directory: screenshot_output_directory,
+      device_type: screenshot_device_type,
+      clear_previous_screenshots: env_truthy?("SCREENSHOT_CLEAR_PREVIOUS"),
+      use_timestamp_suffix: env_truthy?("SCREENSHOT_TIMESTAMP_SUFFIX")
+    )
+  end
+
   desc "Update Google Play store listing metadata and graphics without uploading an app bundle"
   lane :update_store_entry do
     version_code = store_entry_version_code
