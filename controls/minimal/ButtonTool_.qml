@@ -1,9 +1,9 @@
 import "impl"
 import "../_shared/impl"
 import "../_shared/impl/obtainControlProps.js" as ControlProp
-import Qt5Compat.GraphicalEffects
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Effects
 
 
 Button_ {
@@ -40,10 +40,11 @@ Button_ {
             opacity: ControlProp.obtainDisablingOpacity(control.enabled)
     }
 
-    ColorOverlay {
+    MultiEffect {
         anchors.fill: img
         source: img
-        color: extColors.activeC.text
+        colorization: 1.0
+        colorizationColor: extColors.activeC.text
         visible: colorOverlayActive
     }
 
