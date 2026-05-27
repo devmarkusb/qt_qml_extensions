@@ -59,6 +59,15 @@
       }
     },
     {
+      "name": "msvc",
+      "hidden": true,
+      "toolchainFile": "devenv/cmake/toolchains/msvc-toolchain.cmake",
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "23",
+        "MB_DEVENV_ALL_WARNINGS": "OFF"
+      }
+    },
+    {
       "name": "MaxSan",
       "hidden": true,
       "cacheVariables": {
@@ -126,6 +135,24 @@
         "MaxSan",
         "appleclang-release"
       ]
+    },
+    {
+      "name": "msvc-debug",
+      "displayName": "MSVC Debug",
+      "inherits": [
+        "msvc",
+        "debug",
+        "base"
+      ]
+    },
+    {
+      "name": "msvc-release",
+      "displayName": "MSVC RelWithDebInfo",
+      "inherits": [
+        "msvc",
+        "release",
+        "base"
+      ]
     }
   ],
   "buildPresets": [
@@ -156,6 +183,14 @@
     {
       "name": "appleclang-maxsan-release",
       "configurePreset": "appleclang-maxsan-release"
+    },
+    {
+      "name": "msvc-debug",
+      "configurePreset": "msvc-debug"
+    },
+    {
+      "name": "msvc-release",
+      "configurePreset": "msvc-release"
     }
   ],
   "testPresets": [
@@ -210,6 +245,22 @@
     {
       "name": "appleclang-maxsan-release",
       "configurePreset": "appleclang-maxsan-release",
+      "configuration": "RelWithDebInfo",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "msvc-debug",
+      "configurePreset": "msvc-debug",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "msvc-release",
+      "configurePreset": "msvc-release",
       "configuration": "RelWithDebInfo",
       "output": {
         "outputOnFailure": true
