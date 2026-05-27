@@ -7,9 +7,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        preset: [gcc-debug, gcc-release, clang-debug, clang-release]
+        include:
+          - os: ubuntu-24.04
+            preset: gcc-debug
+          - os: ubuntu-24.04
+            preset: gcc-release
+          - os: ubuntu-24.04
+            preset: clang-debug
+          - os: ubuntu-24.04
+            preset: clang-release
+          - os: windows-2022
+            preset: msvc-debug
+          - os: windows-2022
+            preset: msvc-release
 
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v6
@@ -21,11 +33,32 @@ jobs:
         git config --global url."https://github.com/".insteadOf "git@github.com:"
         git submodule update --init --recursive --recommend-shallow
 
+    - name: Set up MSVC
+      if: runner.os == 'Windows'
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x64
+
     - name: Install Qt
+      if: runner.os != 'Windows'
       uses: jurplel/install-qt-action@v4
       with:
         version: '6.9.3'
         target: 'desktop'
+        install-deps: 'true'
+        modules: 'qt5compat'
+        cache: 'false'
+        setup-python: 'false'
+        set-env: 'true'
+
+    - name: Install Qt
+      if: runner.os == 'Windows'
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '6.9.3'
+        host: 'windows'
+        target: 'desktop'
+        arch: 'win64_msvc2022_64'
         install-deps: 'true'
         modules: 'qt5compat'
         cache: 'false'
