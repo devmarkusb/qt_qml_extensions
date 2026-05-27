@@ -129,16 +129,16 @@ jobs:
 
     - name: Capture screenshots on emulator
       uses: reactivecircus/android-emulator-runner@v2
+      env:
+        SCREENSHOT_CLEAR_PREVIOUS: '1'
+        QT_ANDROID_APP_APK_PATH: ${{ steps.apk.outputs.path }}
       with:
         api-level: ${{ env.ANDROID_API_LEVEL }}
         target: google_apis
         arch: x86_64
         profile: pixel_2
         disable-animations: true
-        script: |
-          SCREENSHOT_CLEAR_PREVIOUS=1 \
-          QT_ANDROID_APP_APK_PATH="${{ steps.apk.outputs.path }}" \
-          bundle exec fastlane android screenshots
+        script: bundle exec fastlane android screenshots
 
     - name: Upload screenshot artifact
       uses: actions/upload-artifact@v4
