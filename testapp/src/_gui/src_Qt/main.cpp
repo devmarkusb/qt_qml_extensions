@@ -4,10 +4,12 @@
 #include "QGuiApplication"
 #include "QQmlApplicationEngine"
 #include "QQmlContext"
+#include "QQuickStyle"
 #include "QUrl"
 
 int main(int argc, char* argv[]) {
     QGuiApplication app(argc, argv);
+    QQuickStyle::setStyle(QStringLiteral("Basic"));
     app.setOrganizationName("devmarkusb");
     app.setOrganizationDomain("org");
     QQmlApplicationEngine engine;
