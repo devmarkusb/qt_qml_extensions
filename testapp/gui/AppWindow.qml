@@ -75,7 +75,10 @@ ApplicationWindow_ {
     }
 
     Button {
+        objectName: "navigationBackButton"
+
         text: "Go back"
+        Accessible.name: text
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         z: 1
@@ -96,28 +99,40 @@ ApplicationWindow_ {
             id: navPage
 
             Button {
+                objectName: "navigationControlsButton"
+
                 text: "Controls"
+                Accessible.name: text
                 onClicked: {
                     pageSwitch.currentIndex = 1;
                 }
             }
 
             Button {
+                objectName: "navigationLayoutButton"
+
                 text: "Layout"
+                Accessible.name: text
                 onClicked: {
                     pageSwitch.currentIndex = 2;
                 }
             }
 
             Button {
+                objectName: "navigationColorsButton"
+
                 text: "Colors"
+                Accessible.name: text
                 onClicked: {
                     pageSwitch.currentIndex = 3;
                 }
             }
 
             Button {
+                objectName: "navigationFontsButton"
+
                 text: "Fonts"
+                Accessible.name: text
                 onClicked: {
                     pageSwitch.currentIndex = 4;
                 }

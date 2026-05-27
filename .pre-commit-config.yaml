@@ -27,6 +27,7 @@ repos:
     rev: v2.4.2
     hooks:
       - id: codespell
+        args: [--ignore-words-list=rouge]
 
     # Python linting and formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
