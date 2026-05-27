@@ -1,5 +1,18 @@
 skip_docs
 
+require "pathname"
+
+def repository_root
+  File.expand_path("..", __dir__)
+end
+
+def repository_path(path)
+  pathname = Pathname.new(path)
+  return pathname.to_s if pathname.absolute?
+
+  File.expand_path(path, repository_root)
+end
+
 def env_truthy?(name, default_value = false)
   value = ENV[name]
   return default_value if value.nil? || value.empty?
@@ -49,7 +62,7 @@ def screenshot_test_class
 end
 
 def screenshot_host_project_dir
-  ENV.fetch("SCREENSHOT_TEST_PROJECT_DIR", "android-screenshot-tests")
+  repository_path(ENV.fetch("SCREENSHOT_TEST_PROJECT_DIR", "android-screenshot-tests"))
 end
 
 def screenshot_host_apk_path
@@ -86,7 +99,7 @@ def screenshot_device_type
 end
 
 def screenshot_output_directory
-  ENV.fetch("SCREENSHOT_OUTPUT_DIRECTORY", "fastlane/metadata/android")
+  repository_path(ENV.fetch("SCREENSHOT_OUTPUT_DIRECTORY", "fastlane/metadata/android"))
 end
 
 def android_target_activity
@@ -104,8 +117,17 @@ def maybe_install_android_target_apk
     return
   end
 
+  target_apk_path = repository_path(target_apk_path)
+  UI.user_error!("QT_ANDROID_APP_APK_PATH does not point to an APK: #{target_apk_path}") unless File.file?(target_apk_path)
+
   UI.message("Installing Qt Android app APK: #{target_apk_path}")
   sh(ENV.fetch("ADB", "adb"), "install", "-r", target_apk_path)
+end
+
+def require_apk_file(path, description)
+  UI.user_error!("#{description} was not found at #{path}") unless File.file?(path)
+
+  path
 end
 
 default_platform(:android)
@@ -119,11 +141,14 @@ platform :android do
       tasks: ["assembleDebug", "assembleDebugAndroidTest"]
     )
 
+    screenshot_host_apk = require_apk_file(screenshot_host_apk_path, "Screenshot host APK")
+    screenshot_test_apk = require_apk_file(screenshot_test_apk_path, "Screenshot instrumentation APK")
+
     maybe_install_android_target_apk
 
     capture_android_screenshots(
-      app_apk_path: screenshot_host_apk_path,
-      tests_apk_path: screenshot_test_apk_path,
+      app_apk_path: screenshot_host_apk,
+      tests_apk_path: screenshot_test_apk,
       app_package_name: screenshot_host_package_name,
       tests_package_name: "#{screenshot_host_package_name}.test",
       use_tests_in_classes: [screenshot_test_class],

@@ -118,6 +118,12 @@ jobs:
           echo "No APK was produced." >&2
           exit 1
         fi
+        apk_path="$(realpath "$apk_path")"
+        if [ ! -f "$apk_path" ]; then
+          echo "Located APK does not exist: $apk_path" >&2
+          exit 1
+        fi
+        echo "Located APK: $apk_path"
         echo "path=$apk_path" >> "$GITHUB_OUTPUT"
 
     - name: Set up Ruby for Fastlane
