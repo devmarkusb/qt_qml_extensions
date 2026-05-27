@@ -147,6 +147,40 @@ set_target_properties(
     PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
+function(_mb_qt_qml_extensions_relax_generated_source_warnings target)
+    set(_mb_qt_qml_extensions_generated_source_options
+        "$<$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>:-Wno-missing-prototypes>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>:-Wno-extra-semi-stmt>"
+    )
+
+    get_target_property(_mb_qt_qml_extensions_sources ${target} SOURCES)
+    if(NOT _mb_qt_qml_extensions_sources)
+        return()
+    endif()
+
+    foreach(_mb_qt_qml_extensions_source IN LISTS _mb_qt_qml_extensions_sources)
+        get_source_file_property(
+            _mb_qt_qml_extensions_is_generated
+            "${_mb_qt_qml_extensions_source}"
+            TARGET_DIRECTORY ${target}
+            GENERATED
+        )
+
+        if(_mb_qt_qml_extensions_is_generated)
+            set_property(
+                SOURCE
+                    "${_mb_qt_qml_extensions_source}"
+                    TARGET_DIRECTORY
+                    ${target}
+                APPEND
+                PROPERTY
+                    COMPILE_OPTIONS
+                        ${_mb_qt_qml_extensions_generated_source_options}
+            )
+        endif()
+    endforeach()
+endfunction()
+
 qt_add_qml_module(
     ${_mb_qt_qml_extensions_testapp_target}
     URI ${_mb_qt_qml_extensions_testapp_target}
@@ -228,6 +262,12 @@ qt_add_qml_module(
         "controls/spheres.svg"
 )
 
+cmake_language(
+    DEFER
+    CALL _mb_qt_qml_extensions_relax_generated_source_warnings
+    ${_mb_qt_qml_extensions_testapp_target}
+)
+
 mb_ul_include(qt-deploy.cmake)
 mb_ul_qt_deploy(
     ${_mb_qt_qml_extensions_testapp_target}
@@ -243,8 +283,6 @@ target_include_directories(
     PUBLIC ${CMAKE_BINARY_DIR}
 )
 
-target_include_directories(${_mb_qt_qml_extensions_testapp_target} PUBLIC src)
-
 target_link_libraries(
     ${_mb_qt_qml_extensions_testapp_target}
     PUBLIC
@@ -257,12 +295,11 @@ target_link_libraries(
         Qt::Svg
 )
 
-if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-    target_compile_options(
-        ${_mb_qt_qml_extensions_testapp_target}
-        PRIVATE -Wno-missing-prototypes
-    )
-endif()
+target_compile_options(
+    ${_mb_qt_qml_extensions_testapp_target}
+    PRIVATE
+        "$<$<COMPILE_LANG_AND_ID:CXX,AppleClang>:-Wno-poison-system-directories>"
+)
 
 if(UNIX AND NOT APPLE AND CMAKE_CROSSCOMPILING)
     find_package(Qt6 REQUIRED COMPONENTS QuickTemplates2)

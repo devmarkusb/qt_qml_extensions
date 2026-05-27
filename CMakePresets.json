@@ -21,14 +21,16 @@
         "CMAKE_CXX_EXTENSIONS": "OFF",
         "CMAKE_CXX_STANDARD": "26",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./devenv/cmake/fetch-content-from-lockfile.cmake"
+        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./devenv/cmake/fetch-content-from-lockfile.cmake",
+        "MB_DEVENV_ALL_WARNINGS": "ON"
       }
     },
     {
       "name": "debug",
       "hidden": true,
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "Debug",
+        "MB_DEVENV_SANITIZER": "MaxSan"
       }
     },
     {
