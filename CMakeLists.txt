@@ -151,6 +151,7 @@ function(_mb_qt_qml_extensions_relax_generated_source_warnings target)
     set(_mb_qt_qml_extensions_generated_source_options
         "$<$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>:-Wno-missing-prototypes>"
         "$<$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>:-Wno-extra-semi-stmt>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>:-Wno-float-equal>"
     )
 
     get_target_property(_mb_qt_qml_extensions_sources ${target} SOURCES)
