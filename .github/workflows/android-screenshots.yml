@@ -137,6 +137,7 @@ jobs:
       uses: reactivecircus/android-emulator-runner@v2
       env:
         SCREENSHOT_CLEAR_PREVIOUS: '1'
+        SCREENSHOT_USE_ADB_ROOT: '1'
         QT_ANDROID_APP_APK_PATH: ${{ steps.apk.outputs.path }}
       with:
         api-level: ${{ env.ANDROID_API_LEVEL }}

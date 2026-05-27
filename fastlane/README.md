@@ -61,3 +61,6 @@ Useful overrides:
   `fastlane/metadata/android`.
 - `SCREENSHOT_CLEAR_PREVIOUS=1`: clear previous screenshots in Fastlane output
   before writing new files.
+- `SCREENSHOT_USE_ADB_ROOT=1`: restart ADB as root before pulling screenshots.
+  This is useful on rootable CI emulator images when scoped storage prevents
+  access to the screenshot directory.

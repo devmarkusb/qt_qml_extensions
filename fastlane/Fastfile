@@ -160,7 +160,8 @@ platform :android do
       output_directory: screenshot_output_directory,
       device_type: screenshot_device_type,
       clear_previous_screenshots: env_truthy?("SCREENSHOT_CLEAR_PREVIOUS"),
-      use_timestamp_suffix: env_truthy?("SCREENSHOT_TIMESTAMP_SUFFIX")
+      use_timestamp_suffix: env_truthy?("SCREENSHOT_TIMESTAMP_SUFFIX"),
+      use_adb_root: env_truthy?("SCREENSHOT_USE_ADB_ROOT")
     )
   end
 
