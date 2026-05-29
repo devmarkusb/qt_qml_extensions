@@ -109,6 +109,11 @@ For local signed AAB builds:
 ./cmake-android.sh Release /path/to/upload.keystore "$ANDROID_KEYSTORE_KEY_PASS" "$ANDROID_KEYSTORE_STORE_PASS"
 ```
 
+Android Play Store screenshots can be captured locally with Fastlane
+`screengrab`. See `fastlane/README.md` for prerequisites, APK build steps, and
+the `bundle exec fastlane android screenshots` command. CI runs the same lane
+via the manual `android-screenshots` workflow.
+
 ## Quick guide
 
 1. For an up-to-date usage blueprint please refer to the AppWindow.qml of testapp.
