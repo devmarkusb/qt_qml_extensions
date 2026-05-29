@@ -50,9 +50,15 @@ jobs:
       run: |
         sdkmanager \
           "platform-tools" \
+          "emulator" \
           "platforms;android-${ANDROID_API_LEVEL}" \
           "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
           "ndk;${ANDROID_NDK_VERSION}"
+
+    - name: Free disk space for emulator
+      run: |
+        sudo rm -rf /usr/share/dotnet /usr/local/lib/android/sdk/docs /opt/ghc /opt/hostedtoolcache/CodeQL
+        df -h
 
     - name: Install Qt for Android
       uses: jurplel/install-qt-action@v4
@@ -143,8 +149,11 @@ jobs:
         api-level: ${{ env.ANDROID_API_LEVEL }}
         target: google_apis
         arch: x86_64
-        profile: pixel_2
+        profile: pixel_6
         disable-animations: true
+        force-avd-creation: true
+        emulator-boot-timeout: 900
+        emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot-save -no-snapshot-load -noaudio -no-boot-anim
         script: bundle exec fastlane android screenshots
 
     - name: Upload screenshot artifact
