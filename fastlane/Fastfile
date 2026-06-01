@@ -102,6 +102,21 @@ def screenshot_output_directory
   repository_path(ENV.fetch("SCREENSHOT_OUTPUT_DIRECTORY", "fastlane/metadata/android"))
 end
 
+def screenshot_launch_arguments
+  arguments = [
+    "targetPackage #{android_target_package}",
+    "targetActivity #{android_target_activity}",
+    "appendTimestamp #{env_truthy?('SCREENSHOT_TIMESTAMP_SUFFIX')}"
+  ]
+
+  %w[launchTimeoutMs objectTimeoutMs renderSettleMs].each do |name|
+    value = ENV.fetch("SCREENSHOT_#{name.upcase}", "").strip
+    arguments << "#{name} #{value}" unless value.empty?
+  end
+
+  arguments
+end
+
 def android_target_activity
   ENV.fetch("QT_ANDROID_TARGET_ACTIVITY", "org.qtproject.qt.android.bindings.QtActivity")
 end
@@ -225,10 +240,7 @@ platform :android do
       app_package_name: screenshot_host_package_name,
       tests_package_name: "#{screenshot_host_package_name}.test",
       use_tests_in_classes: [screenshot_test_class],
-      launch_arguments: [
-        "targetPackage #{android_target_package}",
-        "targetActivity #{android_target_activity}"
-      ],
+      launch_arguments: screenshot_launch_arguments,
       locales: [screenshot_locale],
       output_directory: screenshot_output_directory,
       device_type: screenshot_device_type,

@@ -137,5 +137,8 @@ the `artifacts/android-screenshots` directory as a workflow artifact.
 - `SCREENSHOT_SKIP_GRADLE=1`: skip the screenshot harness Gradle build when the
   APKs were already built, for example in CI before the emulator starts.
 - `SCREENSHOT_USE_ADB_ROOT=1`: restart ADB as root before pulling screenshots.
-  This is useful on rootable CI emulator images when scoped storage prevents
-  access to the screenshot directory.
+  Required on CI emulators: the harness writes PNGs under the host app's
+  `Android/data/.../files/screengrab/` directory, which Fastlane pulls with root.
+- `SCREENSHOT_LAUNCHTIMEOUTMS`, `SCREENSHOT_OBJECTTIMEOUTMS`,
+  `SCREENSHOT_RENDERSETTLEMS`: optional instrumentation timeouts for slow
+  emulators (milliseconds).

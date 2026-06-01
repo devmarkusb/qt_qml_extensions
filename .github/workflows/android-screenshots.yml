@@ -151,6 +151,9 @@ jobs:
         SCREENSHOT_CLEAR_PREVIOUS: '1'
         SCREENSHOT_SKIP_GRADLE: '1'
         SCREENSHOT_USE_ADB_ROOT: '1'
+        SCREENSHOT_LAUNCHTIMEOUTMS: '90000'
+        SCREENSHOT_OBJECTTIMEOUTMS: '45000'
+        SCREENSHOT_RENDERSETTLEMS: '2000'
         QT_ANDROID_APP_APK_PATH: ${{ steps.apk.outputs.path }}
       with:
         api-level: ${{ env.ANDROID_API_LEVEL }}
