@@ -134,6 +134,8 @@ the `artifacts/android-screenshots` directory as a workflow artifact.
   `fastlane/metadata/android`.
 - `SCREENSHOT_CLEAR_PREVIOUS=1`: clear previous screenshots in Fastlane output
   before writing new files.
+- `SCREENSHOT_SKIP_GRADLE=1`: skip the screenshot harness Gradle build when the
+  APKs were already built, for example in CI before the emulator starts.
 - `SCREENSHOT_USE_ADB_ROOT=1`: restart ADB as root before pulling screenshots.
   This is useful on rootable CI emulator images when scoped storage prevents
   access to the screenshot directory.

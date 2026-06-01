@@ -110,6 +110,83 @@ def android_target_package
   ENV.fetch("QT_ANDROID_TARGET_PACKAGE", play_package_name)
 end
 
+def adb_binary
+  ENV.fetch("ADB", "adb")
+end
+
+def adb_shell_property(name)
+  `#{adb_binary} shell getprop #{name} 2>/dev/null`.strip
+end
+
+def android_package_manager_ready?
+  output = `#{adb_binary} shell cmd package list packages -s 2>&1`.strip
+  return false if output.empty?
+  return false if output.include?("Can't find service")
+
+  true
+end
+
+def android_device_ready?
+  adb_shell_property("sys.boot_completed") == "1" && android_package_manager_ready?
+end
+
+def wait_for_android_device(timeout_seconds: 300)
+  UI.message("Waiting for Android emulator boot and package manager...")
+  deadline = Time.now + timeout_seconds
+  until Time.now > deadline
+    if android_device_ready?
+      UI.success("Android emulator is ready")
+      return
+    end
+
+    sleep 2
+  end
+
+  boot_completed = adb_shell_property("sys.boot_completed")
+  pm_probe = `#{adb_binary} shell cmd package list packages -s 2>&1`.strip
+  UI.user_error!(
+    "Android emulator not ready after #{timeout_seconds}s " \
+    "(boot_completed=#{boot_completed.inspect}, package_manager=#{pm_probe.inspect})"
+  )
+end
+
+def restart_adb_server
+  system(adb_binary, "kill-server", out: File::NULL, err: File::NULL)
+  system(adb_binary, "start-server", out: File::NULL, err: File::NULL)
+end
+
+def install_android_apk(apk_path, max_attempts: 5)
+  wait_for_android_device
+
+  max_attempts.times do |attempt|
+    begin
+      UI.message("Installing APK (attempt #{attempt + 1}/#{max_attempts}): #{apk_path}")
+      sh(adb_binary, "install", "-r", apk_path)
+      return
+    rescue StandardError => e
+      UI.important("adb install failed: #{e.message}")
+      raise if attempt >= max_attempts - 1
+
+      sleep([5, 10, 15, 20, 30][attempt] || 30)
+      restart_adb_server
+      wait_for_android_device
+    end
+  end
+end
+
+def maybe_build_screenshot_apks
+  if env_truthy?("SCREENSHOT_SKIP_GRADLE")
+    UI.message("SCREENSHOT_SKIP_GRADLE is set; skipping screenshot harness Gradle build.")
+    return
+  end
+
+  gradle(
+    project_dir: screenshot_host_project_dir,
+    gradle_path: "./gradlew",
+    tasks: ["assembleDebug", "assembleDebugAndroidTest"]
+  )
+end
+
 def maybe_install_android_target_apk
   target_apk_path = ENV.fetch("QT_ANDROID_APP_APK_PATH", "").strip
   if target_apk_path.empty?
@@ -120,8 +197,7 @@ def maybe_install_android_target_apk
   target_apk_path = repository_path(target_apk_path)
   UI.user_error!("QT_ANDROID_APP_APK_PATH does not point to an APK: #{target_apk_path}") unless File.file?(target_apk_path)
 
-  UI.message("Installing Qt Android app APK: #{target_apk_path}")
-  sh(ENV.fetch("ADB", "adb"), "install", "-r", target_apk_path)
+  install_android_apk(target_apk_path)
 end
 
 def require_apk_file(path, description)
@@ -135,16 +211,13 @@ default_platform(:android)
 platform :android do
   desc "Capture repeatable Android screenshots via UI Automator and fastlane screengrab"
   lane :screenshots do
-    gradle(
-      project_dir: screenshot_host_project_dir,
-      gradle_path: "./gradlew",
-      tasks: ["assembleDebug", "assembleDebugAndroidTest"]
-    )
+    maybe_build_screenshot_apks
 
     screenshot_host_apk = require_apk_file(screenshot_host_apk_path, "Screenshot host APK")
     screenshot_test_apk = require_apk_file(screenshot_test_apk_path, "Screenshot instrumentation APK")
 
     maybe_install_android_target_apk
+    wait_for_android_device
 
     capture_android_screenshots(
       app_apk_path: screenshot_host_apk,
