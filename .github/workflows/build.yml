@@ -1,6 +1,12 @@
 name: build
 
-on: push
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -73,3 +79,12 @@ jobs:
 
     - name: Test
       run: ctest --preset ${{matrix.preset}}
+
+  dependabot-automerge:
+    needs:
+      - build
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      !github.event.pull_request.draft
+    uses: devmarkusb/devenv/.github/workflows/dependabot-automerge.yml@main
