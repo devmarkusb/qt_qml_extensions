@@ -28,7 +28,7 @@ jobs:
       SCREENSHOT_OUTPUT_DIRECTORY: artifacts/android-screenshots
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v6.0.2
       with:
         submodules: 'false'
 
