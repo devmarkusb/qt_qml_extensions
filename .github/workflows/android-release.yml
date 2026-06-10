@@ -324,7 +324,7 @@ jobs:
 
     - name: Set up Ruby for Fastlane
       if: ${{ github.event_name == 'workflow_dispatch' && (inputs.release_mode == 'publish_build_and_store_entry' || inputs.release_mode == 'update_store_entry_only') }}
-      uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@v1.310.0
       with:
         ruby-version: '3.3'
         bundler-cache: true
