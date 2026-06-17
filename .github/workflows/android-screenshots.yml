@@ -133,7 +133,7 @@ jobs:
         echo "path=$apk_path" >> "$GITHUB_OUTPUT"
 
     - name: Set up Ruby for Fastlane
-      uses: ruby/setup-ruby@v1.310.0
+      uses: ruby/setup-ruby@v1.313.0
       with:
         ruby-version: '3.4.9'
         bundler: '2.7.2'
