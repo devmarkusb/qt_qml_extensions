@@ -3,7 +3,7 @@
     {
       "name": "mb_pre_commit",
       "git_repository": "https://github.com/devmarkusb/pre-commit",
-      "git_tag": "v3.0.0",
+      "git_tag": "v4.0.0",
       "cmake_include": "cmake/mb-pre-commit.cmake"
     },
     {
@@ -28,7 +28,7 @@
       "name": "mb_util",
       "package_name": "mb.util",
       "git_repository": "https://github.com/devmarkusb/util.git",
-      "git_tag": "v1.2.0",
+      "git_tag": "v1.3.0",
       "cmake_variables": {
         "MB_PRE_COMMIT_SETUP_LAYOUT": "TOP_LEVEL",
         "MB_UTIL_BUILD_EXAMPLES": "OFF",
