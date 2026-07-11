@@ -2,6 +2,8 @@
 # this file on configure unless you disable PRE_COMMIT_INSTALL_EXAMPLE_CONFIG.
 # https://pre-commit.com/
 minimum_pre_commit_version: '4.0.0'
+default_language_version:
+  node: '20.19.0'
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
@@ -19,7 +21,7 @@ repos:
     # Markdown linting
     # Config file: .markdownlint.yaml
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.49.0
+    rev: v0.48.0
     hooks:
     - id: markdownlint
       args: [--fix]
@@ -31,7 +33,7 @@ repos:
 
     # Python linting and formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.20
+    rev: v0.15.13
     hooks:
       - id: ruff
       - id: ruff-format
@@ -44,7 +46,7 @@ repos:
 
     # CMake linting and formatting
   - repo: https://github.com/BlankSpruce/gersemi-pre-commit
-    rev: 0.27.7
+    rev: 0.27.5
     hooks:
     - id: gersemi
       name: CMake linting
