@@ -1,35 +1,91 @@
-import "../controls/minimal"
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
 
 RowLayout {
-    Label_ {
+    id: root
+
+    readonly property real minFactor: 0.1
+    readonly property real maxFactor: 10.0
+    readonly property real uiFontSize: extScale.dp2p_nonscaling(11)
+
+    Label {
         text: "Scale factor"
         font.bold: true // this stays for testing the fix of an ugly bug where this breaks custom scaling
+        font.pixelSize: root.uiFontSize
         Layout.alignment: Qt.AlignVCenter
     }
 
     Slider {
         id: scaleSlider
-        from: 0.1
-        to: 10.0
-        value: extScale.factor
-        stepSize: 0.1
+
+        property bool syncingValue: false
+
+        function factorToPosition(factor) {
+            var logMin = Math.log10(root.minFactor)
+            var logMax = Math.log10(root.maxFactor)
+            return (Math.log10(factor) - logMin) / (logMax - logMin)
+        }
+
+        function positionToFactor(position) {
+            var logMin = Math.log10(root.minFactor)
+            var logMax = Math.log10(root.maxFactor)
+            return Math.pow(10, logMin + position * (logMax - logMin))
+        }
+
+        function snapFactor(factor) {
+            return Math.max(root.minFactor, Math.min(root.maxFactor, Math.round(factor * 10) / 10))
+        }
+
+        from: 0
+        to: 1
+        stepSize: 0.002
         snapMode: Slider.SnapOnRelease
+        font.pixelSize: root.uiFontSize
+        Layout.preferredWidth: extScale.dp2p_nonscaling(240)
+        Layout.preferredHeight: extScale.dp2p_nonscaling(28)
+        Layout.alignment: Qt.AlignVCenter
+
+        Component.onCompleted: value = factorToPosition(extScale.factor)
+
+        onPressedChanged: {
+            if (!pressed) {
+                var snapped = snapFactor(extScale.factor)
+                syncingValue = true
+                extScale.factor = snapped
+                value = factorToPosition(snapped)
+                syncingValue = false
+            }
+        }
+
+        onValueChanged: {
+            if (syncingValue)
+                return
+            extScale.factor = positionToFactor(value)
+        }
+
         ToolTip {
             parent: scaleSlider.handle
             visible: scaleSlider.pressed
-            text: scaleSlider.valueAt(scaleSlider.position).toFixed(1)
+            text: scaleSlider.positionToFactor(scaleSlider.position).toFixed(1)
         }
-        onValueChanged: {
-            extScale.factor = value
+
+        Connections {
+            target: extScale
+            function onFactorChanged() {
+                if (scaleSlider.pressed)
+                    return
+                scaleSlider.syncingValue = true
+                scaleSlider.value = scaleSlider.factorToPosition(extScale.factor)
+                scaleSlider.syncingValue = false
+            }
         }
     }
 
-    Label_ {
-        text: extScale.factor
+    Label {
+        text: extScale.factor.toFixed(1)
+        font.pixelSize: root.uiFontSize
         Layout.alignment: Qt.AlignVCenter
     }
 }
