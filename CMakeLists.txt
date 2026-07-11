@@ -1,5 +1,35 @@
 cmake_minimum_required(VERSION 3.24...4.3)
 
+# Tier-A lockfile wiring for IDE/direct configures that do not use CMakePresets.
+# Presets set CMAKE_PROJECT_TOP_LEVEL_INCLUDES in cache; avoid duplicating the hook.
+set(_mb_qt_qml_extensions_fc_lockfile
+    "${CMAKE_CURRENT_LIST_DIR}/devenv/cmake/fetch-content-from-lockfile.cmake"
+)
+set(_mb_qt_qml_extensions_fc_configured FALSE)
+foreach(_mb_qt_qml_extensions_fc_inc IN LISTS CMAKE_PROJECT_TOP_LEVEL_INCLUDES)
+    if(
+        _mb_qt_qml_extensions_fc_inc
+            MATCHES
+            "fetch-content-from-lockfile\\.cmake$"
+    )
+        set(_mb_qt_qml_extensions_fc_configured TRUE)
+        break()
+    endif()
+endforeach()
+if(NOT _mb_qt_qml_extensions_fc_configured)
+    list(
+        APPEND CMAKE_PROJECT_TOP_LEVEL_INCLUDES
+        "${_mb_qt_qml_extensions_fc_lockfile}"
+    )
+endif()
+if(NOT MB_DEVENV_ROOT)
+    set(MB_DEVENV_ROOT
+        "${CMAKE_CURRENT_LIST_DIR}"
+        CACHE PATH
+        "Consumer project root (directory containing fetchcontent-lockfile.json)."
+    )
+endif()
+
 project(
     mb.qt-qml-extensions
     DESCRIPTION "Qt/QML extension components"
@@ -24,7 +54,7 @@ include(mb-devenv-defaults)
 include(cmake/dependencies.cmake)
 
 # From fetched https://github.com/devmarkusb/pre-commit (see fetchcontent-lockfile.json).
-mb_pre_commit_setup_project()
+mb_pre_commit_setup_project(PRE_COMMIT_INSTALL_EXAMPLE_CONFIG OFF)
 
 if(NOT MB_QT_QML_EXTENSIONS_BUILD_TESTAPP)
     return()
