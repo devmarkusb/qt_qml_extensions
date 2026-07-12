@@ -1,3 +1,4 @@
+import "../core/os.js" as OS
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -8,7 +9,19 @@ RowLayout {
 
     readonly property real minFactor: 0.1
     readonly property real maxFactor: 10.0
-    readonly property real uiFontSize: extScale.dp2p_nonscaling(11)
+
+    function nonScalingLayoutDp(pixels_for_96ppi) {
+        if (!OS.is_mobile())
+            return extScale.dp2p_nonscaling(pixels_for_96ppi)
+        // dp2p_nonscaling is physical-density based; Android/iOS layout uses device-independent pixels.
+        return pixels_for_96ppi * extScale.ppi_phys / extScale.refScreen_ppi / Screen.devicePixelRatio
+    }
+
+    readonly property real uiFontSize: nonScalingLayoutDp(11)
+    readonly property real sliderPreferredWidth: OS.is_mobile()
+        ? Math.min(nonScalingLayoutDp(240), Screen.width * 0.55)
+        : nonScalingLayoutDp(240)
+    readonly property real sliderPreferredHeight: nonScalingLayoutDp(28)
 
     Label {
         text: "Scale factor"
@@ -43,8 +56,9 @@ RowLayout {
         stepSize: 0.002
         snapMode: Slider.SnapOnRelease
         font.pixelSize: root.uiFontSize
-        Layout.preferredWidth: extScale.dp2p_nonscaling(240)
-        Layout.preferredHeight: extScale.dp2p_nonscaling(28)
+        height: root.sliderPreferredHeight
+        Layout.preferredWidth: root.sliderPreferredWidth
+        Layout.preferredHeight: root.sliderPreferredHeight
         Layout.alignment: Qt.AlignVCenter
 
         Component.onCompleted: value = factorToPosition(extScale.factor)
