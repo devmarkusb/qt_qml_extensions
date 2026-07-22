@@ -72,8 +72,8 @@ jobs:
     environment: ${{ github.event_name == 'workflow_dispatch' && (inputs.release_mode == 'update_store_entry_only' || inputs.release_mode == 'publish_build_and_store_entry' || (inputs.release_mode == 'publish_build' && inputs.track == 'production')) && 'google-play-production' || 'google-play-internal' }}
 
     env:
-      ANDROID_API_LEVEL: '35'
-      ANDROID_BUILD_TOOLS_VERSION: '35.0.0'
+      ANDROID_API_LEVEL: '36'
+      ANDROID_BUILD_TOOLS_VERSION: '36.0.0'
       ANDROID_NDK_VERSION: '28.0.13004108'
       BUILD_DIR: build/android-release
       KEYSTORE_PATH: /tmp/qt-qml-extensions-upload.keystore
