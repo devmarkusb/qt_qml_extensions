@@ -13,11 +13,11 @@ Environment overrides:
   DEV_SDK_PATH or dev_sdk_path     local SDK root used to derive Android/Qt paths
   QT_ANDROID_ABIS                  default: arm64-v8a
   QT_ANDROID_ARCH                  default: android_arm64_v8a
-  QT_ANDROID_SDK_BUILD_TOOLS_REVISION default: 35.0.0
+  QT_ANDROID_SDK_BUILD_TOOLS_REVISION default: 36.0.0
   QT_ANDROID_KEYSTORE_ALIAS        default: key
   QT_ANDROID_KEYSTORE_*            signing values; args override path/key/store pass
   QT_ANDROID_PACKAGE_NAME          default: org.cismypa.qtqmlextensionstestapp
-  QT_ANDROID_TARGET_SDK_VERSION    default: 35
+  QT_ANDROID_TARGET_SDK_VERSION    default: 36
   QT_ANDROID_MIN_SDK_VERSION       default: 21
   QT_ANDROID_VERSION_CODE          default: 1
   QT_ANDROID_VERSION_NAME          default: 1
@@ -48,8 +48,8 @@ qt_version="${QT_VERSION:-6.9.3}"
 qt_android_arch="${QT_ANDROID_ARCH:-android_arm64_v8a}"
 qt_android_abis="${QT_ANDROID_ABIS:-arm64-v8a}"
 android_ndk_version="${ANDROID_NDK_VERSION:-28.0.13004108}"
-android_build_tools_revision="${QT_ANDROID_SDK_BUILD_TOOLS_REVISION:-35.0.0}"
-android_target_sdk="${QT_ANDROID_TARGET_SDK_VERSION:-35}"
+android_build_tools_revision="${QT_ANDROID_SDK_BUILD_TOOLS_REVISION:-36.0.0}"
+android_target_sdk="${QT_ANDROID_TARGET_SDK_VERSION:-36}"
 android_min_sdk="${QT_ANDROID_MIN_SDK_VERSION:-21}"
 package_name="${QT_ANDROID_PACKAGE_NAME:-org.cismypa.qtqmlextensionstestapp}"
 version_code="${QT_ANDROID_VERSION_CODE:-1}"
