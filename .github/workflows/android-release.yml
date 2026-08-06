@@ -273,7 +273,7 @@ jobs:
 
     - name: Upload AAB artifact
       if: ${{ github.event_name == 'push' || inputs.release_mode == 'build_only' || inputs.release_mode == 'publish_build' || inputs.release_mode == 'publish_build_and_store_entry' }}
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: qt-qml-extensions-testapp-${{ env.VERSION_NAME }}-${{ env.VERSION_CODE }}.aab
         path: ${{ steps.aab.outputs.path }}
