@@ -285,8 +285,7 @@ jobs:
         name: qt-qml-extensions-testapp-${{ env.VERSION_NAME }}-${{ env.VERSION_CODE }}.aab
         path: ${{ steps.aab.outputs.path }}
         if-no-files-found: error
-        retention-days: 14
-
+        retention-days: 7
     - name: Write Google Play service account
       if: ${{ github.event_name == 'push' || inputs.release_mode == 'publish_build' || inputs.release_mode == 'publish_build_and_store_entry' || inputs.release_mode == 'update_store_entry_only' }}
       env:
