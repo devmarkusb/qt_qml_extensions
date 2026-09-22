@@ -172,3 +172,4 @@ jobs:
         name: android-screenshots
         path: ${{ env.SCREENSHOT_OUTPUT_DIRECTORY }}
         if-no-files-found: error
+        retention-days: 7
