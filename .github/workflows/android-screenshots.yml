@@ -64,7 +64,7 @@ jobs:
       uses: jurplel/install-qt-action@v4
       with:
         version: ${{ env.QT_VERSION }}
-        host: linux
+        host: all_os # Qt 6.7+ Android packages use the all_os archive path.
         target: android
         arch: ${{ env.QT_ANDROID_ARCH }}
         dir: ${{ env.QT_INSTALL_DIR }}
