@@ -279,7 +279,13 @@ jobs:
         echo "path=$aab_path" >> "$GITHUB_OUTPUT"
 
     - name: Write Google Play service account
-      if: ${{ github.event_name == 'push' || inputs.release_mode == 'publish_build' || inputs.release_mode == 'publish_build_and_store_entry' || inputs.release_mode == 'update_store_entry_only' }}
+      if: >
+        github.event_name == 'push' && github.ref_type == 'tag' ||
+        github.event_name == 'workflow_dispatch' && (
+          inputs.release_mode == 'publish_build' ||
+          inputs.release_mode == 'publish_build_and_store_entry' ||
+          inputs.release_mode == 'update_store_entry_only'
+        )
       env:
         GOOGLE_PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
       run: |
@@ -329,7 +335,12 @@ jobs:
         bundler-cache: true
 
     - name: Upload to Google Play
-      if: ${{ github.event_name == 'push' || inputs.release_mode == 'publish_build' || inputs.release_mode == 'publish_build_and_store_entry' }}
+      if: >
+        github.event_name == 'push' && github.ref_type == 'tag' ||
+        github.event_name == 'workflow_dispatch' && (
+          inputs.release_mode == 'publish_build' ||
+          inputs.release_mode == 'publish_build_and_store_entry'
+        )
       uses: r0adkll/upload-google-play@v1
       with:
         serviceAccountJson: ${{ env.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON_PATH }}

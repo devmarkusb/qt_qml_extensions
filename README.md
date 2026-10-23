@@ -58,6 +58,7 @@ Android App Bundle builds are handled by
 `.github/workflows/android-release.yml`. The workflow can be run manually, and
 tags matching `android-v*` build and upload the signed bundle to the Google Play
 `internal` track.
+Branch pushes run the build without publishing to Google Play.
 
 Manual workflow runs use `release_mode`:
 
